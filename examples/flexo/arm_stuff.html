@@ -7,8 +7,20 @@
 <script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/MTLLoader.js"></script>
 <script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/OBJLoader.js"></script>
 <script src="../../dist/altspace.js"></script>
+<script src="arm_stuff.js"></script>
 </head>
 <body>
-<script src="arm_stuff.js"></script>
+<!-- <script>
+    var scene = new THREE.Scene();
+    var renderer = altspace.getThreeJSRenderer();
+
+    var skeleton;
+
+    skeleton = altspace.getThreeJSTrackingSkeleton();
+
+    var i;
+    for(i = 0; i < Object.keys(skeleton).length; i++)
+        console.log(skeleton[i]);
+</script> -->
 </body>
 </html>
