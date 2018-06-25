@@ -25,7 +25,7 @@
 				sim = new altspace.utilities.Simulation();
 				loadItemModel(
 					"https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube.obj",
-					"https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube%20-%202K.mtl"
+					"https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube%20-%208K.mtl"
 				);
 			}
 
@@ -60,6 +60,9 @@
 					)
 				);
 				item.name = "ITEM";
+				item.scale.x = 0.1;
+				item.scale.y = 0.1;
+				item.scale.z = 0.1;
 				//item.rotation.y += Math.PI / 8;
 				//item.rotation.x += Math.PI / 12;
 				sim.scene.add(item);
