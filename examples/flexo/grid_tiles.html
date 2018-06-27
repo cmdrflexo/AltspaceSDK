@@ -84,7 +84,8 @@
 				{ position : true, rotation : true, scale : true }
 			)
 		);
-		model.position.set(info.x, 0, info.z);
+        model.position.set(info.x, 0, info.z);
+        model.rotation.y = info.rot;
 		sim.scene.add(model);
         return model;
     }
@@ -93,9 +94,9 @@
     function ready() {
         // for(var i = 0; i < models.length; i++)
         //     var tile = sceneSync.instantiate("Tile", i);
-        var tile = sceneSync.instantiate("Tile", {index: 4, x : 0,  z : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x : 10, z : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x : 0,  z : 10});
+        var tile = sceneSync.instantiate("Tile", {index: 4, x : 0,  z : 0,   rot :   0});
+        var tile = sceneSync.instantiate("Tile", {index: 3, x : 10, z : 0,   rot : -90});
+        var tile = sceneSync.instantiate("Tile", {index: 3, x : 0,  z : -10, rot :   0});
 	}
 
     // Models
