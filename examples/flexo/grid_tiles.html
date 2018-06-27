@@ -2,43 +2,131 @@
 <html lang=en>
 <head>
 	<meta charset=utf-8>
-	<title>2D Instantiate</title>
+	<title>Grid Tiles</title>
 	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>
 	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/MTLLoader.js"></script>
 	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/OBJLoader.js"></script>
-	<!-- <script src="https://altspacevr.github.io/AltspaceSDK/dist/altspace.js"></script> -->
     <script src="../../dist/altspace.js"></script>
 </head>
 <body>
 <script>
-	// var sim;
-	// var connection;
-	// var sceneSync;
-	// var objFileURL = "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube.obj";
-	// var mtlFileURL = "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube%20-%202K.mtl";
-	// // var objFileURL = "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/road-edge.obj";
-	// // var mtlFileURL = "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/road-edge.mtl";
-	// var boxModel;
+	var sim;
+	var connection;
+    var sceneSync;
+    
+    var config = { authorId : "Flexo", appId : "grid_tiles"};
+    altspace.utilities.sync.connect(config).then(
+        function(connection) { start(connection); }
+    );
 
-	// var size = 10;
+    function start(connection) {
+        this.connection = connection;
+        sim = new altspace.utilities.Simulation();
+        loadModels();
+    }
 
+    function loadModels() {
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        var modelsLoaded = 0;
+        for(var i = 0; i < models.length; i++) {
+            var model;
+            loader.load(
+                models[i].objURL, models[i].mtlURL,
+                function(obj) {
+                    model = obj;
+                    modelsLoaded++;
+                    modelLoaded(i);
+                    if(modelsLoaded == models.length) modelsReady();
+                    else console.log(modelsLoaded);
+                }
+            );
+            // models[i].model = model;
+            // console.log("models[i].model = model;");
+        }
+        // modelsReady();
+    }
+
+    function modelLoaded(i) {
+        console.log("modelLoaded");
+        models[i].model = model;
+    }
+
+    function modelsReady() {
+        // console.log("modelsReady()");
+        // for(var i = 0; i < models.length; i++) {
+        //     console.log(models[i].model);
+        // }
+        sceneSync = new altspace.utilities.behaviors.SceneSync(
+            connection.instance,
+            {
+                instantiators : {"Tile" : createTile},
+                ready : ready
+            }
+        );
+        sim.scene.addBehavior(sceneSync);
+    }
+
+    function createTile(index) {
+        var model = models[index].model.clone();
+        model.addBehaviors(
+			new altspace.utilities.behaviors.Object3DSync(
+				{ position : true, rotation : true, scale : true }
+			)
+		);
+		model.position.set(i * 10, 0, 0);
+		sim.scene.add(model);
+        return model;
+    }
+
+    function ready() {
+        for(var i = 0; i < models.length; i++)
+            var tile = sceneSync.instantiate("Tile", i);
+	}
 
     // Models
-    const Model = Struct("name", "obj", "mtl");
+    class Model {
+        constructor(name, objURL, mtlURL) {
+            this.name   = name;
+            this.objURL = objURL;
+            this.mtlURL = mtlURL;
+            this._model = null;
+        }
+        set model(m) {
+            if(m) this._model = m;
+        }
+        get model() {
+            return this._model;
+        }
+    }
+
+    var modelsURL = "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/";
     var models = [
-        Model(
+        new Model(
             "Marble Cube", 
-            "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube.obj",
-            "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/10m_marble_cube%20-%202K.mtl"
+            modelsURL + "10m_marble_cube.obj",
+            modelsURL + "10m_marble_cube%20-%202K.mtl"
         ),
-        Model(
+        new Model(
+            "Road Center", 
+            modelsURL + "road-center.obj",
+	        modelsURL + "road-center.mtl"
+        ),
+        new Model(
             "Road Edge", 
-            "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/road-edge.obj",
-	        "https://cmdrflexo.github.io/A-Frame_Flexo-180620-01/Scene/Grid%20Objects/road-edge.mtl"
+            modelsURL + "road-edge.obj",
+	        modelsURL + "road-edge.mtl"
+        ),
+        new Model(
+            "Large Sidewalk - Straight", 
+            modelsURL + "large_sidewalk-straight.obj",
+	        modelsURL + "large_sidewalk-straight.mtl"
+        ),
+        new Model(
+            "Large Sidewalk - Corner", 
+            modelsURL + "large_sidewalk-corner.obj",
+	        modelsURL + "large_sidewalk-corner.mtl"
         )
     ];
-
-    console.log(models[0].obj);
 
 </script>
 </body>
