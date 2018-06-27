@@ -118,8 +118,8 @@
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
             
-            var r = math.randomInt(3, 6);
-            if(i % r != 0)
+            // var r = math.randomInt(3, 6);
+            if(i % 5 != 0)
                 var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : -10, rot : 0});
             var tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   0, rot : deg2rad(90)});
             //4
