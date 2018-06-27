@@ -13,6 +13,8 @@
 	var sim;
 	var connection;
     var sceneSync;
+
+    // var model;
     
     var config = { authorId : "Flexo", appId : "grid_tiles"};
     altspace.utilities.sync.connect(config).then(
@@ -32,21 +34,18 @@
             var model;
             loader.load(
                 models[i].objURL, models[i].mtlURL,
-                function(obj) {
+                (function(obj) {
                     model = obj;
                     modelsLoaded++;
-                    modelLoaded(i);
+                    modelLoaded(this, model);
                     if(modelsLoaded == models.length) modelsReady();
                     else console.log(modelsLoaded);
-                }
+                }).bind(i)
             );
-            // models[i].model = model;
-            // console.log("models[i].model = model;");
         }
-        // modelsReady();
     }
 
-    function modelLoaded(i) {
+    function modelLoaded(i, model) {
         console.log("modelLoaded");
         models[i].model = model;
     }
@@ -73,7 +72,7 @@
 				{ position : true, rotation : true, scale : true }
 			)
 		);
-		model.position.set(i * 10, 0, 0);
+		model.position.set(index * 10, 0, 0);
 		sim.scene.add(model);
         return model;
     }
