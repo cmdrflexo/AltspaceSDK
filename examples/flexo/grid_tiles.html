@@ -112,87 +112,88 @@
     */
 
     function ready() {
+        var tile;
 
         for(var z = 0; z < 100; z++)
             for(var x = 0; x < 100; x++) {
-                sceneSync.instantiate("Tile", {index : 6, x : -500 + (x * 10), z : -500 (z * 10), rot : 0 })
+                tile = sceneSync.instantiate("Tile", {index : 6, x : -500 + (x * 10), z : -500 (z * 10), rot : 0 })
             }
 
         for(var i = 0; i < 50; i++) {
             // X Neg
-            var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
-            var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
+            tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
+            tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
             
             if(i % 5 != 0) {
-                var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : -10, rot : 0});
-                var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : 40, rot : 0});
+                tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : -10, rot : 0});
+                tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : 40, rot : 0});
             }
-            var tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   0, rot : deg2rad(90)});
-            var tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   30, rot : deg2rad(-90)});
+            tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   0, rot : deg2rad(90)});
+            tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   30, rot : deg2rad(-90)});
             //4
 
             // X Pos
-            var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 10, rot : deg2rad(-90)});
-            var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 20, rot : deg2rad(90)});
+            tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 10, rot : deg2rad(-90)});
+            tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 20, rot : deg2rad(90)});
         }
 
-        var tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, z :  40, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z :  40, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  40, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :  40, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :   30, z :  40, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 0, x :   40, z :  40, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, z :  40, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z :  40, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  40, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :  40, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :   30, z :  40, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 0, x :   40, z :  40, rot : 0});
 
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, z :  30, rot : deg2rad(-90)});
-        var tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :  30, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  30, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :  30, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 4, x :   30, z :  30, rot : deg2rad(-90)});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :   40, z :  30, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, z :  30, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :  30, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  30, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :  30, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 4, x :   30, z :  30, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :   40, z :  30, rot : deg2rad(-90)});
 
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  20, rot : deg2rad(90)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  20, rot : deg2rad(90)});
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :   10, z :  20, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :   20, z :  20, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   30, z :  20, rot : deg2rad(90)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   40, z :  20, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  20, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  20, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 1, x :   10, z :  20, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 1, x :   20, z :  20, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   30, z :  20, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   40, z :  20, rot : deg2rad(90)});
 
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  10, rot : deg2rad(-90)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :   10, z :  10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :   20, z :  10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   30, z :  10, rot : deg2rad(-90)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   40, z :  10, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  10, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 1, x :   10, z :  10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 1, x :   20, z :  10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   30, z :  10, rot : deg2rad(-90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   40, z :  10, rot : deg2rad(-90)});
 
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, z :   0, rot : deg2rad(90)});
-        var tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : deg2rad(90)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :   0, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :   0, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 4, x :   30, z :   0, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :   40, z :   0, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, z :   0, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : deg2rad(90)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :   0, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z :   0, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 4, x :   30, z :   0, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :   40, z :   0, rot : deg2rad(90)});
 
-        var tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 3, x :   30, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 0, x :   40, z : -10, rot : deg2rad(180)});
-
-
+        tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, z : -10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : deg2rad(180)});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z : -10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, z : -10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 3, x :   30, z : -10, rot : 0});
+        tile = sceneSync.instantiate("Tile", {index: 0, x :   40, z : -10, rot : deg2rad(180)});
 
 
 
-        // var tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : 0});
-        // var tile = sceneSync.instantiate("Tile", {index: 3, x :   10, z :   0, rot : deg2rad(90)});
-        // var tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : 0});
 
-        // var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :   0, rot : deg2rad(180)});
-        // var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z : -10, rot : deg2rad(180)});
-        // var tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, z :  10, rot : deg2rad(180)});
-        // var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
-        // var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  10, rot : deg2rad(-90)});
 
-        var tile = sceneSync.instantiate("Tile", {index: 5, x :    0, z :   0, rot : 0}); // avatar
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   10, z :   0, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : 0});
+
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :   0, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z : -10, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, z :  10, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  10, rot : deg2rad(-90)});
+
+        tile = sceneSync.instantiate("Tile", {index: 5, x :    0, z :   0, rot : 0}); // avatar
     }
     
     function deg2rad(degrees) {
