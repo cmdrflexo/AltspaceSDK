@@ -117,8 +117,9 @@
             // X Neg
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
-
-            var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : -10, rot : 0});
+            
+            if(i % 3 != 0)
+                var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z : -10, rot : 0});
             var tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   0, rot : deg2rad(90)});
             //4
 
