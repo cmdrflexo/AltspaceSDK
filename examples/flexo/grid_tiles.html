@@ -97,10 +97,12 @@
         var tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : 0});
         var tile = sceneSync.instantiate("Tile", {index: 3, x :   10, z :   0, rot : deg2rad(90)});
         var tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :   0, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z : -10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : 0});
-        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  10, rot : 0});
+
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :   0, rot : deg2rad(180)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z : -10, rot : deg2rad(180)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  10, rot : deg2rad(180)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :  10, rot : deg2rad(-90)});
     }
     
     function deg2rad(degrees) {
