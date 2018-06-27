@@ -113,9 +113,12 @@
 
     function ready() {
 
-        for(var i = 0; i < 100; i++) {
+        for(var i = 0; i < 50; i++) {
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
+
+            var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 10, rot : deg2rad(-90)});
+            var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 20, rot : deg2rad(90)});
         }
 
         var tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, z :  40, rot : 0});
