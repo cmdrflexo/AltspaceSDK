@@ -114,9 +114,15 @@
     function ready() {
 
         for(var i = 0; i < 50; i++) {
+            // X Neg
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 20, rot : deg2rad(90)});
 
+            var tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), z :  0, rot : 0});
+            var tile = sceneSync.instantiate("Tile", {index: 4, x : -20 - (10 * i), z : 10, rot : deg2rad(90)});
+            //4
+
+            // X Pos
             var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 10, rot : deg2rad(-90)});
             var tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 20, rot : deg2rad(90)});
         }
