@@ -9,6 +9,12 @@
     <script src="../../dist/altspace.js"></script>
 </head>
 <body>
+<a-scene altspace='vertical-align: bottom;'>
+    <a-assets>
+        <img id='sky' src='images/sky/galaxy.jpg'/>
+    </a-assets>
+    <a-sky src='#sky' radius='10000'></a-sky>
+</a-scene>
 <script>
 	var sim;
 	var connection;
