@@ -65,21 +65,37 @@
         sim.scene.addBehavior(sceneSync);
     }
 
-    function createTile(index) {
-        var model = models[index].model.clone();
+    // function createTile(index) {
+    //     var model = models[index].model.clone();
+    //     model.addBehaviors(
+	// 		new altspace.utilities.behaviors.Object3DSync(
+	// 			{ position : true, rotation : true, scale : true }
+	// 		)
+	// 	);
+	// 	model.position.set(index * 10, 0, 0);
+	// 	sim.scene.add(model);
+    //     return model;
+    // }
+
+    function createTile(info) {
+        var model = models[info.index].model.clone();
         model.addBehaviors(
 			new altspace.utilities.behaviors.Object3DSync(
 				{ position : true, rotation : true, scale : true }
 			)
 		);
-		model.position.set(index * 10, 0, 0);
+		model.position.set(info.x, 0, info.z);
 		sim.scene.add(model);
         return model;
     }
 
+
     function ready() {
-        for(var i = 0; i < models.length; i++)
-            var tile = sceneSync.instantiate("Tile", i);
+        // for(var i = 0; i < models.length; i++)
+        //     var tile = sceneSync.instantiate("Tile", i);
+        var tile = sceneSync.instantiate("Tile", {index: 4, x : 0,  z : 0});
+        var tile = sceneSync.instantiate("Tile", {index: 3, x : 10, z : 0});
+        var tile = sceneSync.instantiate("Tile", {index: 3, x : 0,  z : 10});
 	}
 
     // Models
