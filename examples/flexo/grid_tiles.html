@@ -9,12 +9,12 @@
     <script src="../../dist/altspace.js"></script>
 </head>
 <body>
-<a-scene altspace="fullspace: true">
+<!-- <a-scene>
     <a-assets>
         <img id='sky' src='images/sky/galaxy.jpg'/>
     </a-assets>
-    <a-sky src='#sky' radius='10000'></a-sky>
-</a-scene>
+    <a-sky src='#sky' radius='2500'></a-sky>
+</a-scene> -->
 <script>
 	var sim;
 	var connection;
@@ -98,17 +98,15 @@
 
 
     function ready() {
-        // for(var i = 0; i < models.length; i++)
-        //     var tile = sceneSync.instantiate("Tile", i);
         var tile = sceneSync.instantiate("Tile", {index: 4, x :    0, z :   0, rot : 0});
         var tile = sceneSync.instantiate("Tile", {index: 3, x :   10, z :   0, rot : deg2rad(90)});
         var tile = sceneSync.instantiate("Tile", {index: 3, x :    0, z : -10, rot : 0});
 
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, z :   0, rot : deg2rad(180)}); // 2
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, z : -10, rot : deg2rad(180)}); // 2
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z :   0, rot : deg2rad(180)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, z : -10, rot : deg2rad(180)});
         var tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, z :  10, rot : deg2rad(180)});
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :    0, z :  10, rot : deg2rad(-90)}); // 2
-        var tile = sceneSync.instantiate("Tile", {index: 1, x :   10, z :  10, rot : deg2rad(-90)}); // 2
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :    0, z :  10, rot : deg2rad(-90)});
+        var tile = sceneSync.instantiate("Tile", {index: 2, x :   10, z :  10, rot : deg2rad(-90)});
 
         var tile = sceneSync.instantiate("Tile", {index: 5, x :    0, z :   0, rot : 0});
     }
