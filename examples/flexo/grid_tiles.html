@@ -113,6 +113,11 @@
 
     function ready() {
 
+        for(var z = 0; z < 100; z++)
+            for(var x = 0; x < 100; x++) {
+                sceneSync.instantiate("Tile", {index : 6, x : -500 + (x * 10), z : -500 (z * 10), rot : 0 })
+            }
+
         for(var i = 0; i < 50; i++) {
             // X Neg
             var tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), z : 10, rot : deg2rad(-90)});
@@ -219,15 +224,11 @@
         ),
         new Model(
             "Road Center", 
-            // modelsURL + "road-center.obj",
-            // modelsURL + "road-center.mtl"
             "road-center.obj",
 	        "road-center.mtl"
         ),
         new Model(
             "Road Edge", 
-            // modelsURL + "road-edge.obj",
-            // modelsURL + "road-edge.mtl"
             "road-edge.obj",
 	        "road-edge.mtl"
         ),
@@ -238,8 +239,6 @@
         ),
         new Model(
             "Large Sidewalk - Corner", 
-            // modelsURL + "large_sidewalk-corner.obj",
-            // modelsURL + "large_sidewalk-corner.mtl"
             "large_sidewalk-corner.obj",
 	        "large_sidewalk-corner.mtl"
         ),
@@ -247,6 +246,11 @@
             "Avatar 1", 
             "avatar_1.obj",
 	        "avatar_1.mtl"
+        ),
+        new Model(
+            "Grid Square", 
+            "grid_square.obj",
+	        "grid_square.mtl"
         )
     ];
 
