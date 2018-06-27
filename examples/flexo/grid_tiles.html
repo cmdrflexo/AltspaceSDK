@@ -20,8 +20,6 @@
 	var connection;
     var sceneSync;
 
-    // var model;
-    
     var config = { authorId : "Flexo", appId : "grid_tiles"};
     altspace.utilities.sync.connect(config).then(
         function(connection) { start(connection); }
@@ -57,31 +55,11 @@
     }
 
     function modelsReady() {
-        // console.log("modelsReady()");
-        // for(var i = 0; i < models.length; i++) {
-        //     console.log(models[i].model);
-        // }
         sceneSync = new altspace.utilities.behaviors.SceneSync(
-            connection.instance,
-            {
-                instantiators : {"Tile" : createTile},
-                ready : ready
-            }
+            connection.instance, { instantiators : {"Tile" : createTile}, ready : ready }
         );
         sim.scene.addBehavior(sceneSync);
     }
-
-    // function createTile(index) {
-    //     var model = models[index].model.clone();
-    //     model.addBehaviors(
-	// 		new altspace.utilities.behaviors.Object3DSync(
-	// 			{ position : true, rotation : true, scale : true }
-	// 		)
-	// 	);
-	// 	model.position.set(index * 10, 0, 0);
-	// 	sim.scene.add(model);
-    //     return model;
-    // }
 
     function createTile(info) {
         var model = models[info.index].model.clone();
@@ -130,7 +108,6 @@
             }
             tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   0, rot : deg2rad(90)});
             tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), z :   30, rot : deg2rad(-90)});
-            //4
 
             // X Pos
             tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), z : 10, rot : deg2rad(-90)});
