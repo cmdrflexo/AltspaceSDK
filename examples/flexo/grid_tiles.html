@@ -121,6 +121,8 @@
         tile = sceneSync.instantiate("Tile", {index : 6, x : 0, y : -0.01, z : 0, rot : 0 })
 	    
 	tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
+	    
+	tile = sceneSync.instantiate("Tile", {index : 8, x : 0, y : 0, z : -9, rot : deg2rad(180) })
 
         for(var i = 0; i < 50; i++) {
             // X Neg
@@ -260,6 +262,11 @@
             "NSEW", 
             "NSEW.obj",
 	    "NSEW.mtl"
+        ),
+	new Model(
+            "Mailboc", 
+            "mailbox.obj",
+	    "mailbox.mtl"
         )
     ];
 
