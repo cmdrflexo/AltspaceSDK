@@ -81,6 +81,9 @@
         var tile;
 
         tile = sceneSync.instantiate("Tile", {index : 0, x : 5, y : 0, z : 5, rot : 0 })
+
+        tile = sceneSync.instantiate("Tile", {index : 0, x : 5, y : 0, z : 15, rot : 0 })
+        
         for(var i = 0; i < 50; i++) {
             tile = sceneSync.instantiate("Tile", {index : 1, x : 15, y : 0, z : 5 + (i * 10), rot : 0 })
             tile = sceneSync.instantiate("Tile", {index : 1, x : 25, y : 0, z : 5 + (i * 10), rot : deg2rad(180)})
