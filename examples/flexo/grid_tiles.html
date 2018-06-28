@@ -80,8 +80,11 @@
     function ready() {
         var tile;
 
+        tile = sceneSync.instantiate("Tile", {index : 0, x : 5, y : -0.01, z : 5, rot : 0 })
+        tile = sceneSync.instantiate("Tile", {index : 1, x : 15, y : -0.01, z : 5, rot : 0 })
+
         // Grid
-        tile = sceneSync.instantiate("Tile", {index : 6, x : 5, y : -0.01, z : 5, rot : 0 })
+        // tile = sceneSync.instantiate("Tile", {index : 6, x : 5, y : -0.01, z : 5, rot : 0 })
 
         // tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
         // tile = sceneSync.instantiate("Tile", {index : 8, x : 0, y : 0, z : -9, rot : deg2rad(180) })
@@ -167,13 +170,8 @@
         }
     }
 
-    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/";
+    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
     var models = [
-        new Model(
-            "Marble Cube", 
-            modelsURL + "10m_marble_cube.obj",
-            modelsURL + "10m_marble_cube-2K.mtl"
-        ),
         new Model(
             "Road Center", 
             modelsURL + "road-center.obj",
@@ -183,37 +181,42 @@
             "Road Edge", 
             modelsURL + "road-edge.obj",
 	        modelsURL + "road-edge.mtl"
-        ),
-        new Model(
-            "Large Sidewalk - Straight", 
-            modelsURL + "large_sidewalk-straight.obj",
-	        modelsURL + "large_sidewalk-straight.mtl"
-        ),
-        new Model(
-            "Large Sidewalk - Corner", 
-            modelsURL + "large_sidewalk-corner.obj",
-	        modelsURL + "large_sidewalk-corner.mtl"
-        ),
-        new Model(
-            "Avatar 1", 
-            "avatar_1.obj",
-	        "avatar_1.mtl"
-        ),
-        new Model(
-            "Grid Square", 
-            modelsURL + "grid_square.obj",
-	        modelsURL + "grid_square.mtl"
-        ),
-	new Model(
-            "NSEW", 
-            "NSEW.obj",
-	        "NSEW.mtl"
-        ),
-	new Model(
-            "Mailboc", 
-            "mailbox.obj",
-	        "mailbox.mtl"
         )
+        // new Model(
+        //     "Marble Cube", 
+        //     modelsURL + "10m_marble_cube.obj",
+        //     modelsURL + "10m_marble_cube-2K.mtl"
+        // ),
+        // new Model(
+        //     "Large Sidewalk - Straight", 
+        //     modelsURL + "large_sidewalk-straight.obj",
+	    //     modelsURL + "large_sidewalk-straight.mtl"
+        // ),
+        // new Model(
+        //     "Large Sidewalk - Corner", 
+        //     modelsURL + "large_sidewalk-corner.obj",
+	    //     modelsURL + "large_sidewalk-corner.mtl"
+        // ),
+        // new Model(
+        //     "Avatar 1", 
+        //     "avatar_1.obj",
+	    //     "avatar_1.mtl"
+        // ),
+        // new Model(
+        //     "Grid Square", 
+        //     modelsURL + "grid_square.obj",
+	    //     modelsURL + "grid_square.mtl"
+        // ),
+	    // new Model(
+        //     "NSEW", 
+        //     "NSEW.obj",
+	    //     "NSEW.mtl"
+        // ),
+	    // new Model(
+        //     "Mailbox", 
+        //     "mailbox.obj",
+	    //     "mailbox.mtl"
+        // )
     ];
 
 </script>
