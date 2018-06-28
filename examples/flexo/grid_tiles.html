@@ -119,6 +119,8 @@
         //         tile = sceneSync.instantiate("Tile", {index : 6, x : (x * 10) - 250, y : -0.01, z : (z * 10) - 250, rot : 0 })
         //     }
         tile = sceneSync.instantiate("Tile", {index : 6, x : 0, y : -0.01, z : 0, rot : 0 })
+	    
+	tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
 
         for(var i = 0; i < 50; i++) {
             // X Neg
@@ -253,6 +255,11 @@
             "Grid Square", 
             "grid_square.obj",
 	        "grid_square.mtl"
+        ),
+	new Model(
+            "NSEW", 
+            "NSEW.obj",
+	    "NSEW.mtl"
         )
     ];
 
