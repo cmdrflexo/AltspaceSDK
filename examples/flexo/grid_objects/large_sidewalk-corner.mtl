@@ -2,13 +2,13 @@ newmtl Default
 Kd 1 1 1
 Ke 0 0 0
 Ka 1 1 1
-Ks 0.007 0.007 0.007
+Ks 0 0 0
 Ns 500
 Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/large_sidewalk-straight.png
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/large_sidewalk-corner.png
 
 newmtl Default
 Kd 1 1 1
@@ -20,7 +20,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/large_sidewalk-corner.png
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/Asphalt09_col.jpg
 
 newmtl Default
 Kd 1 1 1
@@ -32,7 +32,6 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/Asphalt09_col.jpg
 
 newmtl Default
 Kd 1 1 1
@@ -44,5 +43,5 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/Asphalt09_col.jpg
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/textures/Asphalt09_col.jpg
 
