@@ -20,8 +20,6 @@
 	var connection;
     var sceneSync;
 
-    // var model;
-    
     var config = { authorId : "Flexo", appId : "grid_tiles"};
     altspace.utilities.sync.connect(config).then(
         function(connection) { start(connection); }
@@ -45,22 +43,17 @@
                     modelsLoaded++;
                     modelLoaded(this, model);
                     if(modelsLoaded == models.length) modelsReady();
-                    else console.log(modelsLoaded);
                 }).bind(i)
             );
         }
     }
 
     function modelLoaded(i, model) {
-        console.log("modelLoaded");
         models[i].model = model;
+        console.log("Loaded: " + models[i].name);
     }
 
     function modelsReady() {
-        // console.log("modelsReady()");
-        // for(var i = 0; i < models.length; i++) {
-        //     console.log(models[i].model);
-        // }
         sceneSync = new altspace.utilities.behaviors.SceneSync(
             connection.instance,
             {
@@ -70,18 +63,6 @@
         );
         sim.scene.addBehavior(sceneSync);
     }
-
-    // function createTile(index) {
-    //     var model = models[index].model.clone();
-    //     model.addBehaviors(
-	// 		new altspace.utilities.behaviors.Object3DSync(
-	// 			{ position : true, rotation : true, scale : true }
-	// 		)
-	// 	);
-	// 	model.position.set(index * 10, 0, 0);
-	// 	sim.scene.add(model);
-    //     return model;
-    // }
 
     function createTile(info) {
         var model = models[info.index].model.clone();
@@ -96,109 +77,74 @@
         return model;
     }
 
-    /*
-
-        -1   0   1   2   3   4
-     4 [ 0][ 3][ 2][ 2][ 3][ 0]
-     3 [ 3][ 4][ 2][ 2][ 4][ 3]
-     2 [ 2][ 2][ 1][ 1][ 2][ 2]
-     1 [ 2][ 2][ 1][ 1][ 2][ 2]
-     0 [ 3]( 4)[ 2][ 2][ 4][ 3]
-    -1 [ 0][ 3][ 2][ 2][ 3][ 0]
-
-    sidewalk straight ||[]
-    road []|
-
-    */
-
     function ready() {
         var tile;
 
-        // for(var z = 0; z < 50; z++)
-        //     for(var x = 0; x < 50; x++) {
-        //         tile = sceneSync.instantiate("Tile", {index : 6, x : (x * 10) - 250, y : -0.01, z : (z * 10) - 250, rot : 0 })
+        // Grid
+        tile = sceneSync.instantiate("Tile", {index : 6, x : 5, y : -0.01, z : 5, rot : 0 })
+
+        // tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
+        // tile = sceneSync.instantiate("Tile", {index : 8, x : 0, y : 0, z : -9, rot : deg2rad(180) })
+
+        // for(var i = 0; i < 50; i++) {
+        //     // X Neg
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 20, rot : deg2rad(90)});
+        //     if(i % 5 != 0) {
+        //         tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : -10, rot : 0});
+        //         tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : 40, rot : 0});
         //     }
-        tile = sceneSync.instantiate("Tile", {index : 6, x : 0, y : -0.01, z : 0, rot : 0 })
-	    
-	tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
-	    
-	tile = sceneSync.instantiate("Tile", {index : 8, x : 0, y : 0, z : -9, rot : deg2rad(180) })
+        //     tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   0, rot : deg2rad(90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   30, rot : deg2rad(-90)});
+        //     // X Pos
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 20, rot : deg2rad(90)});
+        // }
 
-        for(var i = 0; i < 50; i++) {
-            // X Neg
-            tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
-            tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 20, rot : deg2rad(90)});
-            
-            if(i % 5 != 0) {
-                tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : -10, rot : 0});
-                tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : 40, rot : 0});
-            }
-            tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   0, rot : deg2rad(90)});
-            tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   30, rot : deg2rad(-90)});
-            //4
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z :  40, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  40, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z :  40, rot : 0});
 
-            // X Pos
-            tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
-            tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 20, rot : deg2rad(90)});
-        }
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :  30, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :  30, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  30, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  30, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :  30, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :  30, rot : deg2rad(-90)});
 
-        tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z :  40, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z :  40, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  40, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  40, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z :  40, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  20, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  20, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  20, rot : deg2rad(90)});
 
-        tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :  30, rot : deg2rad(-90)});
-        tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :  30, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  30, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  30, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :  30, rot : deg2rad(-90)});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :  30, rot : deg2rad(-90)});
-
-        tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  20, rot : deg2rad(90)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  20, rot : deg2rad(90)});
-        tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  20, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  20, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  20, rot : deg2rad(90)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  20, rot : deg2rad(90)});
-
-        tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  10, rot : deg2rad(-90)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  10, rot : deg2rad(-90)});
-        tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  10, rot : deg2rad(-90)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  10, rot : deg2rad(-90)});
-
-        tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :   0, rot : deg2rad(90)});
-        tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :   0, rot : deg2rad(90)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :   0, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :   0, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :   0, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :   0, rot : deg2rad(90)});
-
-        tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z : -10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z : -10, rot : deg2rad(180)});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z : -10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z : -10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z : -10, rot : 0});
-        tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z : -10, rot : deg2rad(180)});
-
-
-
-
-
-        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :   0, rot : 0});
-        // tile = sceneSync.instantiate("Tile", {index: 3, x :   10, y : 0, z :   0, rot : deg2rad(90)});
-        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z : -10, rot : 0});
-
-        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :   0, rot : deg2rad(180)});
-        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z : -10, rot : deg2rad(180)});
-        // tile = sceneSync.instantiate("Tile", {index: 1, x :  -10, y : 0, z :  10, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  10, rot : deg2rad(-90)});
         // tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  10, rot : deg2rad(-90)});
-        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  10, rot : deg2rad(-90)});
 
-        tile = sceneSync.instantiate("Tile", {index: 5, x :    0, y : 0, z :   0, rot : 0}); // avatar
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :   0, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :   0, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :   0, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :   0, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :   0, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :   0, rot : deg2rad(90)});
+
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z : -10, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z : -10, rot : deg2rad(180)});
+
+        // Avatar
+        // tile = sceneSync.instantiate("Tile", {index: 5, x :    0, y : 0, z :   0, rot : 0});
     }
     
     function deg2rad(degrees) {
