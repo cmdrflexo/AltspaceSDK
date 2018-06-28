@@ -1,11 +1,12 @@
 newmtl blue
-Kd 0.278642 0.316424 0.439216
+Kd 0.25322 0.289001 0.588235
 Ke 0 0 0
-Ka 0 0 0
-Ks 0.5 0.5 0.5
-Ns 400
+Ka 1 1 1
+Ks 0 0 0
+Ns 500
 Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd mailbox_ao.png
 
