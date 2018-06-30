@@ -22,20 +22,21 @@
                     
                     var originReference = new THREE.Mesh(
                         new THREE.BoxGeometry(1, 1, 1),
-                        new THREE.MeshBasicMaterial(
-                            { 
-                                color: 0xffffff,
-                                transparent : true,
-                                opacity : 0.5
-                            }
-                        )
+                        new THREE.MeshBasicMaterial({ color: 0xffffff })
                     )
+                    originReference.scale.x = -1;
 
                     var groundPlane = new THREE.Mesh(
                         new THREE.PlaneGeometry(1, 1, 1),
                         new THREE.MeshBasicMaterial({ color: 0x40591f })
                     )
                     groundPlane.rotation.x = 45;
+
+                    var groundPlane2 = new THREE.Mesh(
+                        new THREE.PlaneGeometry(1, 1, 1),
+                        new THREE.MeshBasicMaterial({ color: 0xff0000 })
+                    )
+                    groundPlane2.rotation.x = -45;
             
                     var skySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1500, 32, 16),
@@ -58,6 +59,7 @@
                     
                     sim.scene.add(originReference);
                     sim.scene.add(groundPlane);
+                    sim.scene.add(groundPlane2);
                     sim.scene.add(skySphere);
                 });
             });
