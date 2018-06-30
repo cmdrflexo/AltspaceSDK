@@ -1,10 +1,6 @@
 SkyRotate = function(time) {
-    
-    this.rotationSpeed = degressPerSecond  * (Math.PI / 180) * 0.001;
-
-    var full = 1 / 360; // 0.002777
-
-    this.rotationSpeed =  
+    if(time == 0) time = 1;
+    this.rotationSpeed =  (360 / time) * (Math.PI / 180) * 0.001;
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
