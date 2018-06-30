@@ -19,7 +19,7 @@
 
         sim.scene.add(sphere);
 
-        sim.scene.addBehavior(new altspaceutil.behavior.TWEEN());
+        sim.scene.addBehavior(new altspaceutil.behaviors.TWEEN());
         
         var tween = new TWEEN.Tween(sphere.position)
             .to({ x: sphere.position.x, y:3, z:sphere.position.z }, 4000)
