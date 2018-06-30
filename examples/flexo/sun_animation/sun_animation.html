@@ -48,8 +48,8 @@
                     );
                     skySphere.rotation.x = THREE.Math.degToRad(45);
                     skySphere.scale.x = -1;
-                    skySphere.addBehavior(new SkyRotate(-1000));
-                    // skySphere.addBehavior(new SkyFade(1, 1));
+                    skySphere.addBehavior(new SkyRotate(-2000));
+                    skySphere.addBehavior(new SkyFade(1, 1));
                     
                     sim.scene.add(originReference);
                     sim.scene.add(groundPlane);
