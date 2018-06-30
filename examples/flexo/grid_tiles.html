@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<title>Grid Tiles</title>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/MTLLoader.js"></script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/loaders/OBJLoader.js"></script>
+    <script src="../../dist/altspace.js"></script>
+</head>
+<body>
+<!-- <a-scene>
+    <a-assets>
+        <img id='sky' src='images/sky/galaxy.jpg'/>
+    </a-assets>
+    <a-sky src='#sky' radius='2500'></a-sky>
+</a-scene> -->
+<script>
+	var sim;
+	var connection;
+    var sceneSync;
+
+    var config = { authorId : "Flexo", appId : "grid_tiles"};
+    altspace.utilities.sync.connect(config).then(
+        function(connection) { start(connection); }
+    );
+
+    function start(connection) {
+        this.connection = connection;
+        sim = new altspace.utilities.Simulation();
+        loadModels();
+    }
+
+    function loadModels() {
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        var modelsLoaded = 0;
+        for(var i = 0; i < models.length; i++) {
+            var model;
+            loader.load(
+                models[i].objURL, models[i].mtlURL,
+                (function(obj) {
+                    model = obj;
+                    modelsLoaded++;
+                    modelLoaded(this, model);
+                    if(modelsLoaded == models.length) modelsReady();
+                }).bind(i)
+            );
+        }
+    }
+
+    function modelLoaded(i, model) {
+        models[i].model = model;
+        console.log("Loaded: " + models[i].name);
+    }
+
+    function modelsReady() {
+        sceneSync = new altspace.utilities.behaviors.SceneSync(
+            connection.instance,
+            {
+                instantiators : {"Tile" : createTile},
+                ready : ready
+            }
+        );
+        sim.scene.addBehavior(sceneSync);
+    }
+
+    function createTile(info) {
+        var model = models[info.index].model.clone();
+        model.addBehaviors(
+			new altspace.utilities.behaviors.Object3DSync(
+				{ position : true, rotation : true, scale : true }
+			)
+		);
+        model.position.set(info.x, info.y, info.z);
+        model.rotation.set(0, info.rot, 0);
+		sim.scene.add(model);
+        return model;
+    }
+
+    function ready() {
+        var tile;
+
+        tile = sceneSync.instantiate("Tile", {index : 0, x : 5, y : 0, z : 5, rot : 0 })
+
+        tile = sceneSync.instantiate("Tile", {index : 0, x : 5, y : 0, z : 15, rot : 0 })
+        
+        for(var i = 0; i < 50; i++) {
+            tile = sceneSync.instantiate("Tile", {index : 1, x : 15, y : 0, z : 5 + (i * 10), rot : 0 })
+            tile = sceneSync.instantiate("Tile", {index : 1, x : 25, y : 0, z : 5 + (i * 10), rot : deg2rad(180)})
+        }
+
+        // Grid
+        // tile = sceneSync.instantiate("Tile", {index : 6, x : 5, y : -0.01, z : 5, rot : 0 })
+
+        // tile = sceneSync.instantiate("Tile", {index : 7, x : 0, y : 20, z : 0, rot : 0 })
+        // tile = sceneSync.instantiate("Tile", {index : 8, x : 0, y : 0, z : -9, rot : deg2rad(180) })
+
+        // for(var i = 0; i < 50; i++) {
+        //     // X Neg
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : -20 - (10 * i), y : 0, z : 20, rot : deg2rad(90)});
+        //     if(i % 5 != 0) {
+        //         tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : -10, rot : 0});
+        //         tile = sceneSync.instantiate("Tile", {index: 0, x : -20 - (10 * i), y : 0, z : 40, rot : 0});
+        //     }
+        //     tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   0, rot : deg2rad(90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 3, x : -20 - (10 * i), y : 0, z :   30, rot : deg2rad(-90)});
+        //     // X Pos
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 10, rot : deg2rad(-90)});
+        //     tile = sceneSync.instantiate("Tile", {index: 2, x : 50 + (10 * i), y : 0, z : 20, rot : deg2rad(90)});
+        // }
+
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z :  40, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  40, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z :  40, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z :  40, rot : 0});
+
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :  30, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :  30, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :  30, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :  30, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :  30, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :  30, rot : deg2rad(-90)});
+
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  20, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  20, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  20, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  20, rot : deg2rad(90)});
+
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :  -10, y : 0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :    0, y : 0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   10, y : 0, z :  10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 1, x :   20, y : 0, z :  10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   30, y : 0, z :  10, rot : deg2rad(-90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   40, y : 0, z :  10, rot : deg2rad(-90)});
+
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :  -10, y : 0, z :   0, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :    0, y : 0, z :   0, rot : deg2rad(90)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z :   0, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z :   0, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 4, x :   30, y : 0, z :   0, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   40, y : 0, z :   0, rot : deg2rad(90)});
+
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :  -10, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :    0, y : 0, z : -10, rot : deg2rad(180)});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   10, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 2, x :   20, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 3, x :   30, y : 0, z : -10, rot : 0});
+        // tile = sceneSync.instantiate("Tile", {index: 0, x :   40, y : 0, z : -10, rot : deg2rad(180)});
+
+        // Avatar
+        // tile = sceneSync.instantiate("Tile", {index: 5, x :    0, y : 0, z :   0, rot : 0});
+    }
+    
+    function deg2rad(degrees) {
+        return degrees * (Math.PI / 180);
+    }
+
+    // Models
+    class Model {
+        constructor(name, objURL, mtlURL) {
+            this.name   = name;
+            this.objURL = objURL;
+            this.mtlURL = mtlURL;
+            this._model = null;
+        }
+        set model(m) {
+            if(m) this._model = m;
+        }
+        get model() {
+            return this._model;
+        }
+    }
+
+    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
+    var models = [
+        new Model(
+            "Road Center", 
+            modelsURL + "road_center.obj",
+	        modelsURL + "road_center.mtl"
+        ),
+        new Model(
+            "Road Edge", 
+            modelsURL + "road_edge.obj",
+	        modelsURL + "road_edge.mtl"
+        )
+        // new Model(
+        //     "Marble Cube", 
+        //     modelsURL + "10m_marble_cube.obj",
+        //     modelsURL + "10m_marble_cube-2K.mtl"
+        // ),
+        // new Model(
+        //     "Large Sidewalk - Straight", 
+        //     modelsURL + "large_sidewalk-straight.obj",
+	    //     modelsURL + "large_sidewalk-straight.mtl"
+        // ),
+        // new Model(
+        //     "Large Sidewalk - Corner", 
+        //     modelsURL + "large_sidewalk-corner.obj",
+	    //     modelsURL + "large_sidewalk-corner.mtl"
+        // ),
+        // new Model(
+        //     "Avatar 1", 
+        //     "avatar_1.obj",
+	    //     "avatar_1.mtl"
+        // ),
+        // new Model(
+        //     "Grid Square", 
+        //     modelsURL + "grid_square.obj",
+	    //     modelsURL + "grid_square.mtl"
+        // ),
+	    // new Model(
+        //     "NSEW", 
+        //     "NSEW.obj",
+	    //     "NSEW.mtl"
+        // ),
+	    // new Model(
+        //     "Mailbox", 
+        //     "mailbox.obj",
+	    //     "mailbox.mtl"
+        // )
+    ];
+
+</script>
+</body>
+</html>
