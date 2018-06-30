@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang=en>
     <head>
-        <script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
-        <script src="https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
-        <!-- <script src="../_lib/Tween.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+        <script src = "https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
+        <script src = "https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+        <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v0.9.9/js/altspaceutil.min.js"></script>
     </head>
     <body>
         <script>
@@ -12,20 +12,15 @@
         var sim = new altspace.utilities.Simulation();
         
         var sphere = new THREE.Mesh(
-            new THREE.SphereGeometry(1, 8, 4),
+            new THREE.SphereGeometry(10, 8, 4),
             new THREE.MeshBasicMaterial({color: 0x000000})
         );
+        sphere.scale.x = -1;
 
         sim.scene.add(sphere);
 
-        // requestAnimationFrame(render);
-
-        // function render() {
-        //     sphere.rotate.z += 0.01;
-        //      sim.render.render();
-        //     requestAnimationFrame(render);
-        // }
-
+        sim.scene.addBehavior(new altspaceutil.behavior.TWEEN());
+        
         var tween = new TWEEN.Tween(sphere.position)
             .to({ x: sphere.position.x, y:3, z:sphere.position.z }, 4000)
             .delay(500)
