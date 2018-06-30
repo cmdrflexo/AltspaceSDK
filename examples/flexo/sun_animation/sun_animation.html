@@ -21,10 +21,12 @@
                     sim = new altspace.utilities.Simulation();
             
                     var skySphere = new THREE.Mesh(
-                        new THREE.SphereGeometry(300, 32, 16),
+                        new THREE.SphereGeometry(1000, 32, 16),
                         new THREE.MeshBasicMaterial(
                             {
                                 color: 0xffffff, 
+                                transparent : true,
+                                opacity : 0.5,
                                 map: new THREE.Texture(
                                     { 
                                         src: altspaceutil.getAbsoluteURL(skyNightURL)
@@ -35,8 +37,8 @@
                     );
 
                     skySphere.scale.x = -1;
-                    skySphere.position.y = -200;
-                    skySphere.addBehavior(new SkyRotate(180));
+                    // skySphere.position.y = -200;
+                    skySphere.addBehavior(new SkyRotate(600));
 
                     sim.scene.add(skySphere);
                 });
