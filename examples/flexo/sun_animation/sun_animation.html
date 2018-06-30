@@ -37,8 +37,9 @@
                     );
 
                     skySphere.scale.x = -1;
-                    // skySphere.position.y = -200;
                     skySphere.addBehavior(new SkyRotate(600));
+                    skySphere.addBehavior(new SkyFade(1, 1));
+                    skySphere.addBehavior(new SkyFade(delaySeconds, fadeSpeed))
 
                     sim.scene.add(skySphere);
                 });
