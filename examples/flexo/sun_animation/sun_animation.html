@@ -3,6 +3,7 @@
     <head>
         <script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
         <script src="https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
+        <script src="../_lib/tween.js"></script>
     </head>
     <body>
         <script>
@@ -16,13 +17,13 @@
 
         sim.scene.add(sphere);
 
-        requestAnimationFrame(render);
+        // requestAnimationFrame(render);
 
-        function render() {
-            sphere.rotate.z += 0.01;
-             sim.render.render();
-            requestAnimationFrame(render);
-        }
+        // function render() {
+        //     sphere.rotate.z += 0.01;
+        //      sim.render.render();
+        //     requestAnimationFrame(render);
+        // }
 
         var tween = new TWEEN.Tween(sphere.position)
             .to({ x: sphere.position.x, y:3, z:sphere.position.z }, 4000)
