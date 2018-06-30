@@ -27,10 +27,10 @@
                     originReference.scale.x = -1;
 
                     var groundPlane = new THREE.Mesh(
-                        new THREE.PlaneGeometry(3, 3),
+                        new THREE.PlaneGeometry(10000, 10000),
                         new THREE.MeshBasicMaterial({ color: 0x40591f })
                     )
-                    groundPlane.rotation.x = -90;
+                    groundPlane.rotation.x = THREE.Math.degToRad(-90);
             
                     var skySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1500, 32, 16),
