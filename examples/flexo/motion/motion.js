@@ -14,8 +14,9 @@ SkyRotate = function(time) {
 SkyFade = function(delaySeconds, fadeSpeed) {
 
     this.update = function(deltaTime) {
-        this.object3d.material.opacity -= 0.1 * deltaTime;
-        if(this.object3d.material.opacity <= 0)
-            this.object3d.material.opacity = 1;
+        this.object3d.material.opacity = 1;
+        // this.object3d.material.opacity -= 0.1 * deltaTime;
+        // if(this.object3d.material.opacity <= 0)
+        //     this.object3d.material.opacity = 1;
     }
 }
