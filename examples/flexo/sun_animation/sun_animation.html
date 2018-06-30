@@ -21,10 +21,9 @@
                     sim = new altspace.utilities.Simulation();
                     
                     var originReference = new THREE.Mesh(
-                        new THREE.BoxGeometry(1, 1, 1),
+                        new THREE.BoxGeometry(1, 0.1, 1),
                         new THREE.MeshBasicMaterial({ color: 0xffffff })
                     )
-                    originReference.scale.x = -1;
 
                     var groundPlane = new THREE.Mesh(
                         new THREE.PlaneGeometry(10000, 10000),
