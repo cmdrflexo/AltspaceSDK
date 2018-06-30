@@ -5,6 +5,7 @@
         <script src = "https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
         <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v0.9.9/js/altspaceutil.min.js"></script>
+        <script src = "../motion/motion.js"></script>
     </head>
     <body>
         <script>
@@ -16,23 +17,10 @@
             new THREE.MeshBasicMaterial({color: 0x000000})
         );
         sphere.scale.x = -1;
+        sphere.addBehavior(new SkyRotate(90));
 
         sim.scene.add(sphere);
 
-        sim.scene.addBehavior(new altspaceutil.behaviors.TWEEN());
-        
-        var tween = new TWEEN.Tween(sphere.position)
-            .to({ x: sphere.position.x, y:3, z:sphere.position.z }, 4000)
-            .delay(500)
-            .easing(TWEEN.Easing.Elastic.InOut);
-        var tweenBack = new TWEEN.Tween(sphere.position)
-            .to({ x: sphere.position.x, y:1, z:sphere.position.z }, 4000)
-            .delay(500)
-            .easing(TWEEN.Easing.Elastic.InOut);
-        tween.chain(tweenBack);
-        tweenBack.chain(tween);
-        tween.start();
-        
         </script>
     </body>
 </html>
