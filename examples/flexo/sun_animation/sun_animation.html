@@ -12,14 +12,15 @@
         
         var sim = new altspace.utilities.Simulation();
         
-        var sphere = new THREE.Mesh(
+        var skySphere = new THREE.Mesh(
             new THREE.SphereGeometry(10, 8, 4),
             new THREE.MeshBasicMaterial({color: 0x000000})
         );
-        sphere.scale.x = -1;
-        sphere.addBehavior(new SkyRotate(60));
+        skySphere.scale.x = -1;
+        skySphere.position.y = 1.5;
+        skySphere.addBehavior(new SkyRotate(60));
 
-        sim.scene.add(sphere);
+        sim.scene.add(skySphere);
 
         </script>
     </body>
