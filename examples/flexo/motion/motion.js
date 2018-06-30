@@ -17,10 +17,10 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d = parent;
     }
 
+    var fade = 0.0001;
     this.update = function(deltaTime) {
-        // this.object3d.material.opacity = 1;
-        this.object3d.material.opacity -= 0.001 * deltaTime;
-        if(this.object3d.material.opacity <= 0)
-            this.object3d.material.opacity = 1;
+        if(this.object3d.material.opacity <= 0 || this.object3d.material.opacity >= 1)
+            fade = -fade;
+        this.object3d.material.opacity -= fade * deltaTime;
     }
 }
