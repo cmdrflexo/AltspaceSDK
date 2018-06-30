@@ -25,7 +25,7 @@
                         // new THREE.MeshBasicMaterial({color: 0x000000})
                         new THREE.MeshBasicMaterial(
                             {
-                                color: 0xffff00, 
+                                color: 0xffffff, 
                                 map: new THREE.Texture(
                                     { 
                                         src: altspaceutil.getAbsoluteURL(skyDayURL)
@@ -37,7 +37,7 @@
 
                     skySphere.scale.x = -1;
                     skySphere.position.y = 1.5;
-                    skySphere.addBehavior(new SkyRotate(60));
+                    skySphere.addBehavior(new SkyRotate(180));
 
                     sim.scene.add(skySphere);
                 });

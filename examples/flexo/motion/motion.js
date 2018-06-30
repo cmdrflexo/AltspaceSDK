@@ -7,6 +7,6 @@ SkyRotate = function(time) {
     }
 
     this.update = function(deltaTime) {
-        this.object3d.rotation.z += deltaTime * this.rotationSpeed;
+        this.object3d.rotation.y += deltaTime * this.rotationSpeed;
     }
 }
