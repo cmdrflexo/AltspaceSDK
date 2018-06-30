@@ -22,7 +22,6 @@
             
                     var skySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(300, 16, 8),
-                        // new THREE.MeshBasicMaterial({color: 0x000000})
                         new THREE.MeshBasicMaterial(
                             {
                                 color: 0xffffff, 
@@ -36,7 +35,7 @@
                     );
 
                     skySphere.scale.x = -1;
-                    skySphere.position.y = 1.5;
+                    skySphere.position.y = -200;
                     skySphere.addBehavior(new SkyRotate(180));
 
                     sim.scene.add(skySphere);
