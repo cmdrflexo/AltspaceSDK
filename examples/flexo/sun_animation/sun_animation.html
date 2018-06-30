@@ -9,6 +9,9 @@
     </head>
     <body>
         <script>
+            var skyDayURL = "https://img-new.cgtrader.com/items/30329/skybox_017_3d_model_7d6d02d0-afed-484f-b6f9-cf2d9d0476a5.jpg";
+            var skyNightURL = "";
+
             altspace.getEnclosure().then(function(enclosure) {
                 enclosure.requestFullspace().then(function() {
                     enclosure.addEventListener('fullspacechange', function() {
@@ -19,7 +22,17 @@
             
                     var skySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(30, 8, 4),
-                        new THREE.MeshBasicMaterial({color: 0x000000})
+                        // new THREE.MeshBasicMaterial({color: 0x000000})
+                        new THREE.MeshBasicMaterial(
+                            {
+                                color: 0x000000, 
+                                map: new THREE.Texture(
+                                    { 
+                                        src: altspaceutil.getAbsoluteURL(skyDayURL)
+                                    }
+                                )
+                            }
+                        )
                     );
 
                     skySphere.scale.x = -1;
