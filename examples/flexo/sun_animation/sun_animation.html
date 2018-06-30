@@ -31,8 +31,14 @@
                         new THREE.MeshBasicMaterial({ color: 0x062116 })
                     )
                     groundPlane.rotation.x = THREE.Math.degToRad(-90);
-            
-                    var skySphere = new THREE.Mesh(
+                    
+                    var skyDaySphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(1510, 32, 16),
+                        new THREE.MeshBasicMaterial({ color : 0x274a87 })
+                    );
+                    skyDaySphere.scale.x = -1;
+
+                    var skyNightSphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1500, 32, 16),
                         new THREE.MeshBasicMaterial(
                             {
@@ -46,14 +52,15 @@
                             }
                         )
                     );
-                    skySphere.rotation.x = THREE.Math.degToRad(45);
-                    skySphere.scale.x = -1;
-                    skySphere.addBehavior(new SkyRotate(-2000));
-                    skySphere.addBehavior(new SkyFade(1, 1));
+                    skyNightSphere.rotation.x = THREE.Math.degToRad(45);
+                    skyNightSphere.scale.x = -1;
+                    skyNightSphere.addBehavior(new SkyRotate(-2000));
+                    skyNightSphere.addBehavior(new SkyFade(1, 1));
                     
                     sim.scene.add(originReference);
                     sim.scene.add(groundPlane);
-                    sim.scene.add(skySphere);
+                    sim.scene.add(skyNightSphere);
+                    sim.scene.add(skyDaySphere);
                 });
             });
         </script>
