@@ -19,6 +19,12 @@
                     });
 
                     sim = new altspace.utilities.Simulation();
+
+                    var groundPlane = new THREE.Mesh(
+                        new THREE.PlaneGeometry(10000, 1, 1),
+                        new THREE.MeshBasicMaterial({ color: 0x40591f })
+                    )
+                    groundPlane.rotation.x = 90;
             
                     var skySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1500, 32, 16),
@@ -37,7 +43,7 @@
                     );
 
                     skySphere.scale.x = -1;
-                    skySphere.addBehavior(new SkyRotate(600));
+                    skySphere.addBehavior(new SkyRotate(1000));
                     skySphere.addBehavior(new SkyFade(1, 1));
 
                     sim.scene.add(skySphere);

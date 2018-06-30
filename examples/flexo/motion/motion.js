@@ -7,7 +7,7 @@ SkyRotate = function(time) {
     }
 
     this.update = function(deltaTime) {
-        this.object3d.rotation.y += deltaTime * this.rotationSpeed;
+        this.object3d.rotation.z += deltaTime * this.rotationSpeed;
     }
 }
 
@@ -17,7 +17,7 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d = parent;
     }
 
-    var fade = 0.3;
+    var fade = 0.1;
     var opacity = 0;
     this.update = function(deltaTime) {
         opacity += fade * deltaTime * 0.001;
