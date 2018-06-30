@@ -9,7 +9,7 @@
     </head>
     <body>
         <script>
-            var skyDayURL = "https://img-new.cgtrader.com/items/30329/skybox_017_3d_model_7d6d02d0-afed-484f-b6f9-cf2d9d0476a5.jpg";
+            var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
             altspace.getEnclosure().then(function(enclosure) {
@@ -33,7 +33,17 @@
                     
                     var skyDaySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1600, 32, 16),
-                        new THREE.MeshBasicMaterial({ color : 0x274a87 })
+                        // new THREE.MeshBasicMaterial({ color : 0x274a87 })
+                        new THREE.MeshBasicMaterial(
+                            {
+                                color: 0xffffff,
+                                map: new THREE.Texture(
+                                    { 
+                                        src: altspaceutil.getAbsoluteURL(skyDayURL)
+                                    }
+                                )
+                            }
+                        )
                     );
                     skyDaySphere.scale.x = -1;
 
