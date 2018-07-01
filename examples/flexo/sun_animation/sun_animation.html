@@ -29,12 +29,12 @@
                 )
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
-                var moon = TexturedSphere(6, moonTextureURL);
+                var moon = TexturedSphere(2, moonTextureURL);
                 moon.position.x = 200;
                 moon.position.y = 50;
 
                 var moonDark = new THREE.Mesh(
-                    new THREE.SphereGeometry(6, 32, 64),
+                    new THREE.SphereGeometry(2, 32, 64),
                     new THREE.MeshBasicMaterial({ color: 0x000000 })
                 );
                 moonDark.position.x = 200;
