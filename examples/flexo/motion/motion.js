@@ -24,6 +24,5 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         opacity = THREE.Math.clamp(opacity, 0, 1);
         if(opacity == 0 || opacity == 1) fade = -fade;
         this.object3d.material.opacity = opacity;
-        // console.log(opacity);
     }
 }
