@@ -81,7 +81,7 @@
 
             moons[0].position.set(-1500, 0, 0);
             moons[0].scale.set(3, 3, 3);
-            moons[0].parent = moonRoot;
+            moonRoot.add(moons[0]);
             // moonRoot.rotation.z = THREE.Math.degToRad(-45);
             moonRoot.addBehavior(new SkyRotate(-2000));
 
