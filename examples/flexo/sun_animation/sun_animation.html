@@ -17,14 +17,14 @@
             var moonDarkTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/alpha_test.png";
 
             var moonTextureDir = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/";
-            var moonTextureAURL = "moon_quarterRes-A.jpg"
-            var moonTextureBURL = "moon_quarterRes-B.jpg"
-            var moonTextureCURL = "moon_quarterRes-C.jpg"
-            var moonTextureDURL = "moon_quarterRes-D.jpg"
-            var moonTextureEURL = "moon_quarterRes-E.jpg"
-            var moonTextureFURL = "moon_quarterRes-F.jpg"
-            var moonTextureGURL = "moon_quarterRes-G.jpg"
-            var moonTextureHURL = "moon_quarterRes-H.jpg"
+            var moonTextureAURL = moonTextureDir + "moon_quarterRes-A.jpg"
+            var moonTextureBURL = moonTextureDir + "moon_quarterRes-B.jpg"
+            var moonTextureCURL = moonTextureDir + "moon_quarterRes-C.jpg"
+            var moonTextureDURL = moonTextureDir + "moon_quarterRes-D.jpg"
+            var moonTextureEURL = moonTextureDir + "moon_quarterRes-E.jpg"
+            var moonTextureFURL = moonTextureDir + "moon_quarterRes-F.jpg"
+            var moonTextureGURL = moonTextureDir + "moon_quarterRes-G.jpg"
+            var moonTextureHURL = moonTextureDir + "moon_quarterRes-H.jpg"
 
             altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
@@ -42,28 +42,28 @@
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
                 
                 var moonA = TexturedSphere(6, moonTextureAURL);
-                moonA.position.x = -8 * 3;
+                moonA.position.x = -10 * 3;
                 moonA.position.y = 8;
                 var moonB = TexturedSphere(6, moonTextureBURL);
-                moonB.position.x = -8 * 2;
+                moonB.position.x = -10 * 2;
                 moonB.position.y = 8;
                 var moonC = TexturedSphere(6, moonTextureCURL);
-                moonC.position.x = -8 * 1;
+                moonC.position.x = -10 * 1;
                 moonC.position.y = 8;
                 var moonD = TexturedSphere(6, moonTextureDURL);
                 moonD.position.y = 8;
 
                 var moonE = TexturedSphere(6, moonTextureEURL);
-                moonE.position.x = -8 * 3;
-                moonE.position.y = 16;
+                moonE.position.x = -10 * 3;
+                moonE.position.y = 20;
                 var moonF = TexturedSphere(6, moonTextureFURL);
-                moonF.position.x = -8 * 2;
-                moonF.position.y = 16;
+                moonF.position.x = -10 * 2;
+                moonF.position.y = 20;
                 var moonG = TexturedSphere(6, moonTextureGURL);
-                moonG.position.x = -8 * 1;
-                moonG.position.y = 16;
+                moonG.position.x = -10 * 1;
+                moonG.position.y = 20;
                 var moonH = TexturedSphere(6, moonTextureHURL);
-                moonH.position.y = 16;
+                moonH.position.y = 20;
 
                 sim.scene.add(moonA);
                 sim.scene.add(moonB);
