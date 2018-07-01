@@ -12,12 +12,12 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
-            altspace.getEnclosure().then(function(enclosure) {
-                enclosure.requestFullspace().then(function() {
-                    enclosure.addEventListener('fullspacechange', function() {
-                        if(!enclosure.fullspace) enclosure.requestFullspace();
-                    });
-            // altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
+            // altspace.getEnclosure().then(function(enclosure) {
+            //     enclosure.requestFullspace().then(function() {
+            //         enclosure.addEventListener('fullspacechange', function() {
+            //             if(!enclosure.fullspace) enclosure.requestFullspace();
+            //         });
+            altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
                 sim = new altspace.utilities.Simulation();
                 
@@ -32,37 +32,37 @@
                 )
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
-                // function SkySphere(size, textureURL) {
-                //     var skySphere = new THREE.Mesh(
-                //         new THREE.SphereGeometry(size, 32, 16),
-                //         new THREE.MeshBasicMaterial(
-                //         {
-                //             color: 0xffffff,
-                //             map: new THREE.Texture(
-                //                 { 
-                //                     src: altspaceutil.getAbsoluteURL(textureURL)
-                //                 }
-                //             )
-                //         }
-                //     )
-                //     );
-                //     skySphere.scale.x = -1;
-                //     return skySphere;
-                // }
+                function SkySphere(size, textureURL) {
+                    var skySphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(size, 32, 16),
+                        new THREE.MeshBasicMaterial(
+                        {
+                            color: 0xffffff,
+                            map: new THREE.Texture(
+                                { 
+                                    src: altspaceutil.getAbsoluteURL(textureURL)
+                                }
+                            )
+                        }
+                    )
+                    );
+                    skySphere.scale.x = -1;
+                    return skySphere;
+                }
 
-                // var skyDay = SkySphere(1600, skyDayURL);
-                // skyDaye.rotation.z = THREE.Math.degToRad(-45);
+                var skyDay = SkySphere(1600, skyDayURL);
+                skyDay.rotation.z = THREE.Math.degToRad(-45);
 
-                // var skyNight = SkySphere(1500, skyNightURL);
-                // skyNight.rotation.x = THREE.Math.degToRad(45);
-                // skyNight.addBehavior(new SkyRotate(-2000));
-                // skyNight.addBehavior(new SkyFade(1, 1));
+                var skyNight = SkySphere(1500, skyNightURL);
+                skyNight.rotation.x = THREE.Math.degToRad(45);
+                skyNight.addBehavior(new SkyRotate(-2000));
+                skyNight.addBehavior(new SkyFade(1, 1));
                 
                 sim.scene.add(originReference);
                 sim.scene.add(groundPlane);
-                // sim.scene.add(skyNightSphere);
-                // sim.scene.add(skyDaySphere);
-            });
+                sim.scene.add(skyNight);
+                sim.scene.add(skyDay);
+        //     });
         });
         </script>
     </body>
