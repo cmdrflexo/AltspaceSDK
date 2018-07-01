@@ -70,8 +70,10 @@
                         false
                     )
                 );
-            for(var m = 0; m < moons.length; m++)
+            for(var m = 0; m < moons.length; m++) {
+                moons[m].position.y = 13 * i + 1;
                 sim.scene.add(moons[m]);
+            }
             return moons;
         }
         
@@ -79,13 +81,13 @@
             var originReference = new THREE.Mesh(
                 new THREE.PlaneGeometry(1, 1),
                 new THREE.MeshBasicMaterial({ 
-                    color: 0x062116,
+                    color: 0xffffff,
                     map: new THREE.Texture({ 
                         src: altspaceutil.getAbsoluteURL(compassURL)
                     })
                 })
             )
-            originReference.position.y = 0.01;
+            originReference.position.y = 0.1;
             originReference.rotation.x = THREE.Math.degToRad(-90);
             sim.scene.add(originReference);
         }
