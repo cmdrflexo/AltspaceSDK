@@ -55,8 +55,8 @@
 
                 var skyNight = SkySphere(1500, skyNightURL);
                 skyNight.rotation.x = THREE.Math.degToRad(45);
-                skyNight.addBehavior(new SkyRotate(-2000));
-                skyNight.addBehavior(new SkyFade(1, 1));
+                skyNight.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
+                // skyNight.addBehavior(new SkyFade(1, 1));
                 
                 sim.scene.add(originReference);
                 sim.scene.add(groundPlane);
