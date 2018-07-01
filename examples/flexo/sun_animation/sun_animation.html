@@ -30,17 +30,18 @@
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
                 var moon = TexturedSphere(2, moonTextureURL);
+                moon.position.x = 30;
                 moon.position.y = 10;
-                moon.position.z = 10;
+                moon.position.z = -10;
                 moon.rotation.y = THREE.Math.degToRad(45);
 
                 var moonDark = new THREE.Mesh(
                     new THREE.SphereGeometry(2, 32, 64),
                     new THREE.MeshBasicMaterial({ color: 0x000000 })
                 );
-                moonDark.position.x = 0.1;
+                moonDark.position.x = 30 + 0.1;
                 moonDark.position.y = 10;
-                moonDark.position.z = 10;
+                moonDark.position.z = -10;
                 moonDark.rotation.y = THREE.Math.degToRad(45);
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
