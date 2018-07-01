@@ -31,12 +31,14 @@
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
                 var moon = TexturedSphere(6, moonTextureURL);
-                moon.position.x = 100;
-                moon.position.y = 50;
+                // moon.position.x = 100;
+                // moon.position.y = 50;
+                moon.position.y = 4;
                 
                 var moonDark = TexturedSphere(6.01, moonDarkTextureURL);
-                moonDark.position.x = 100;
-                moonDark.position.y = 50;
+                // moonDark.position.x = 100;
+                // moonDark.position.y = 50;
+                moonDark.position.y = 4;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
