@@ -14,14 +14,14 @@
     var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
     var moonTextureDir = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/";
     var moonTexturesQuarterRes = [
-        moonTexA = moonTextureDir + "moon_quarterRes-A.png",
-        moonTexB = moonTextureDir + "moon_quarterRes-B.png",
-        moonTexC = moonTextureDir + "moon_quarterRes-C.png",
-        moonTexD = moonTextureDir + "moon_quarterRes-D.png",
-        moonTexE = moonTextureDir + "moon_quarterRes-E.png",
-        moonTexF = moonTextureDir + "moon_quarterRes-F.png",
-        moonTexG = moonTextureDir + "moon_quarterRes-G.png",
-        moonTexH = moonTextureDir + "moon_quarterRes-H.png"
+        moonTextureDir + "moon_quarterRes-A.png",
+        moonTextureDir + "moon_quarterRes-B.png",
+        moonTextureDir + "moon_quarterRes-C.png",
+        moonTextureDir + "moon_quarterRes-D.png",
+        moonTextureDir + "moon_quarterRes-E.png",
+        moonTextureDir + "moon_quarterRes-F.png",
+        moonTextureDir + "moon_quarterRes-G.png",
+        moonTextureDir + "moon_quarterRes-H.png"
     ]
 
     altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
@@ -60,10 +60,16 @@
 
         function SetupMoonPhases(radius, longSegs, latSegs) {
             var moons = new Array();
-            var texURL = moonTexturesQuarterRes[i];
-            console.log(moonTexturesQuarterRes[i]);
             for(var i = 0; i < moonTexturesQuarterRes.length; i++)
-                moons.push(TexturedSphere(radius, longSegs, latSegs, texURL, false));
+                moons.push(
+                    TexturedSphere(
+                        radius, 
+                        longSegs, 
+                        latSegs, 
+                        moonTexturesQuarterRes[i], 
+                        false
+                    )
+                );
             for(var m = 0; m < moons.length; m++)
                 sim.scene.add(moons[m]);
             return moons;
