@@ -74,6 +74,9 @@
                 moons[m].position.y = 13 * m + 1;
                 sim.scene.add(moons[m]);
             }
+
+            
+
             return moons;
         }
         
@@ -90,6 +93,26 @@
             originReference.position.y = 0.1;
             originReference.rotation.x = THREE.Math.degToRad(-90);
             sim.scene.add(originReference);
+
+            var xPos = new THREE.Mesh(
+                new THREE.SphereGeometry(0.1, 16, 8),
+                new THREE.MeshBasicMaterial({
+                    color : 0xff0000
+                })
+            );
+            xPos.position.y = 0.5;
+            xPos.position.x = 1;
+            sim.scene.add(xPos);
+
+            var zPos = new THREE.Mesh(
+                new THREE.SphereGeometry(0.1, 16, 8),
+                new THREE.MeshBasicMaterial({
+                    color : 0x0000ff
+                })
+            );
+            xPos.position.y = 0.5;
+            xPos.position.z = 1;
+            sim.scene.add(zPos);
         }
     });
 
