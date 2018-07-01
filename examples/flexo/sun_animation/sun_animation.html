@@ -71,7 +71,7 @@
                     )
                 );
             for(var m = 0; m < moons.length; m++) {
-                moons[m].position.y = 13 * i + 1;
+                moons[m].position.y = 13 * m + 1;
                 sim.scene.add(moons[m]);
             }
             return moons;
