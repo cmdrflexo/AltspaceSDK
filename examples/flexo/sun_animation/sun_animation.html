@@ -30,12 +30,14 @@
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
                 var moon = TexturedSphere(2, moonTextureURL);
-                moon.position.y = 1;
+                moon.position.y = 2;
 
-                // var moonDark = new THREE.Mesh(
-                //     new THREE.SphereGeometry(2, 32, 64),
-                //     new THREE.MeshBasicMaterial({ color: 0xffffff })
-                // );
+                var moonDark = new THREE.Mesh(
+                    new THREE.SphereGeometry(2, 32, 64),
+                    new THREE.MeshBasicMaterial({ color: 0xffffff })
+                );
+                moonDark.position.y = 2;
+                moonDark.position.x = 0.01;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
@@ -50,7 +52,7 @@
                 sim.scene.add(originReference);
                 sim.scene.add(groundPlane);
                 sim.scene.add(moon);
-                // sim.scene.add(moonDark);
+                sim.scene.add(moonDark);
                 sim.scene.add(skyNight);
                 sim.scene.add(skyDay);
             
