@@ -75,7 +75,8 @@
                 sim.scene.add(moons[m]);
             }
 
-            
+            moons[0].position.set(1000, 0, 0);
+            moons[0].scale.set(100, 100, 100);
 
             return moons;
         }
@@ -91,7 +92,6 @@
                 })
             )
             originReference.position.y = 0.1;
-            // originReference.rotation.x = THREE.Math.degToRad(-90);
             originReference.rotation.x = THREE.Math.degToRad(90);
             originReference.rotation.y = THREE.Math.degToRad(180);
             sim.scene.add(originReference);
