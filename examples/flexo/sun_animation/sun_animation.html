@@ -60,9 +60,10 @@
 
         function SetupMoonPhases(radius, longSegs, latSegs) {
             var moons = new Array();
-            var tex = moonTexturesQuarterRes[i];
+            var texURL = moonTexturesQuarterRes[i];
+            console.log(moonTexturesQuarterRes[i]);
             for(var i = 0; i < moonTexturesQuarterRes.length; i++)
-                moons.push(TexturedSphere(radius, longSegs, latSegs, tex, false));
+                moons.push(TexturedSphere(radius, longSegs, latSegs, texURL, false));
             for(var m = 0; m < moons.length; m++)
                 sim.scene.add(moons[m]);
             return moons;
