@@ -12,12 +12,12 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
-            // altspace.getEnclosure().then(function(enclosure) {
-            //     enclosure.requestFullspace().then(function() {
-            //         enclosure.addEventListener('fullspacechange', function() {
-            //             if(!enclosure.fullspace) enclosure.requestFullspace();
-            //         });
-            altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
+            altspace.getEnclosure().then(function(enclosure) {
+                enclosure.requestFullspace().then(function() {
+                    enclosure.addEventListener('fullspacechange', function() {
+                        if(!enclosure.fullspace) enclosure.requestFullspace();
+                    });
+            // altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
                 sim = new altspace.utilities.Simulation();
                 
@@ -63,6 +63,7 @@
                 sim.scene.add(skyNightSphere);
                 sim.scene.add(skyDaySphere);
             });
+        });
         </script>
     </body>
 </html>
