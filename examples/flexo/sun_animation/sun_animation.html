@@ -30,9 +30,18 @@
                 )
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
-                var moon = TexturedSphere(6, moonTextureURL);
+                // var moon = TexturedSphere(6, moonTextureURL);
                 // moon.position.x = 100;
                 // moon.position.y = 50;
+                var moon = new THREE.Mesh(
+                        new THREE.SphereGeometry(6, 64, 32),
+                        new THREE.MeshBasicMaterial({
+                            color: 0xffffff,
+                            map: new THREE.Texture({ 
+                                src: altspaceutil.getAbsoluteURL(moonTextureURL)
+                            })
+                        })
+                    );
                 moon.position.y = 4;
                 
                 var moonDark = TexturedSphere(6.01, moonDarkTextureURL);
