@@ -9,6 +9,7 @@
     </head>
     <body>
         <script>
+            var compassURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/scenery_objects/compass/cardinal_01.png"
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
             var moonTextureDir = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/";
@@ -69,9 +70,16 @@
                 
                 function SetupDebugVisuals() {
                     var originReference = new THREE.Mesh(
-                        new THREE.BoxGeometry(1, 0.1, 1),
-                        new THREE.MeshBasicMaterial({ color: 0xffffff })
+                        new THREE.PlaneGeometry(1, 1),
+                        new THREE.MeshBasicMaterial({ 
+                            color: 0x062116,
+                            map: new THREE.Texture({ 
+                                src: altspaceutil.getAbsoluteURL(compassURL)
+                            })
+                        })
                     )
+                    originReference.position.y = 0.01;
+                    originReference.rotation.x = THREE.Math.degToRad(-90);
                     sim.scene.add(originReference);
                 }
         });
