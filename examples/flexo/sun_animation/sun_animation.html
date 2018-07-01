@@ -30,7 +30,7 @@
         
         SetupDebugVisuals();
 
-        // var ground = SetupGround();
+        var ground = SetupGround();
         var skies = SetupSkies(32, 16);
         var moonPhases = SetupMoonPhases(6, 32, 16);
 
@@ -72,7 +72,8 @@
                     )
                 );
             for(var m = 0; m < moons.length; m++) {
-                moons[m].position.y = 13 * m + 1;
+                // moons[m].position.y = 13 * m + 1;
+                moons[m].position.y = -1000;
                 sim.scene.add(moons[m]);
             }
 
@@ -80,7 +81,7 @@
             var moonProx = new THREE.Object3D();
             moonProx.position.set(-1500, 0, 0);
             var moonRoot = new THREE.Object3D();
-            moonRoot.add(moonProx);
+            // moonRoot.add(moonProx);
             moonRoot.rotation.z = THREE.Math.degToRad(-45);
             // moonRoot.addBehavior(new SkyRotate(-2000));
 
