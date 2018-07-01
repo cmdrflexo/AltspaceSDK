@@ -12,6 +12,8 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
+            var shuttleURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/pano_shuttle.jpg";
+
             altspace.getEnclosure().then(function(enclosure) {
                 enclosure.requestFullspace().then(function() {
                     enclosure.addEventListener('fullspacechange', function() {
@@ -30,6 +32,22 @@
                         new THREE.MeshBasicMaterial({ color: 0x062116 })
                     )
                     groundPlane.rotation.x = THREE.Math.degToRad(-90);
+
+                     var shuttleSphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(500, 32, 16),
+                        new THREE.MeshBasicMaterial(
+                            {
+                                color: 0xffffff, 
+                                transparent : true,
+                                map: new THREE.Texture(
+                                    { 
+                                        src: altspaceutil.getAbsoluteURL(shuttleURL)
+                                    }
+                                )
+                            }
+                        )
+                    );
+                    shuttleSphere.scale.x = -1;
                     
                     var skyDaySphere = new THREE.Mesh(
                         new THREE.SphereGeometry(1600, 32, 16),
@@ -71,6 +89,8 @@
                     sim.scene.add(groundPlane);
                     sim.scene.add(skyNightSphere);
                     sim.scene.add(skyDaySphere);
+
+                    sim.scene.add(shuttleSphere);
                 });
             });
         </script>
