@@ -91,7 +91,9 @@
                 })
             )
             originReference.position.y = 0.1;
-            originReference.rotation.x = THREE.Math.degToRad(-90);
+            // originReference.rotation.x = THREE.Math.degToRad(-90);
+            originReference.rotation.x = THREE.Math.degToRad(90);
+            originReference.rotation.y = THREE.Math.degToRad(180);
             sim.scene.add(originReference);
 
             var xPos = new THREE.Mesh(
@@ -110,8 +112,8 @@
                     color : 0x0000ff
                 })
             );
-            xPos.position.y = 0.5;
-            xPos.position.z = 1;
+            zPos.position.y = 0.5;
+            zPos.position.z = 1;
             sim.scene.add(zPos);
         }
     });
