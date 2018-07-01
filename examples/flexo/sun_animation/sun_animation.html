@@ -12,7 +12,8 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
-            var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon_quarterRes.jpg";
+            // var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon_quarterRes.jpg";
+            var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon.jpg";
             var moonDarkTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/alpha_test.png";
 
             altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
@@ -42,12 +43,12 @@
                             })
                         })
                     );
-                moon.position.y = 4;
+                moon.position.y = 8;
                 
                 var moonDark = TexturedSphere(6.01, moonDarkTextureURL);
                 // moonDark.position.x = 100;
                 // moonDark.position.y = 50;
-                moonDark.position.y = 4;
+                moonDark.position.y = 8;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
