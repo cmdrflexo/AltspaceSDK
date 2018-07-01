@@ -16,6 +16,16 @@
             var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon.jpg";
             var moonDarkTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/alpha_test.png";
 
+            var moonTextureDir = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/";
+            var moonTextureAURL = "moon_quarterRes-A.jpg"
+            var moonTextureBURL = "moon_quarterRes-B.jpg"
+            var moonTextureCURL = "moon_quarterRes-C.jpg"
+            var moonTextureDURL = "moon_quarterRes-D.jpg"
+            var moonTextureEURL = "moon_quarterRes-E.jpg"
+            var moonTextureFURL = "moon_quarterRes-F.jpg"
+            var moonTextureGURL = "moon_quarterRes-G.jpg"
+            var moonTextureHURL = "moon_quarterRes-H.jpg"
+
             altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
                 sim = new altspace.utilities.Simulation();
@@ -30,25 +40,58 @@
                     new THREE.MeshBasicMaterial({ color: 0x062116 })
                 )
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
+                
+                var moonA = TexturedSphere(6, moonTextureAURL);
+                moonA.position.x = -8 * 3;
+                moonA.position.y = 8;
+                var moonB = TexturedSphere(6, moonTextureBURL);
+                moonB.position.x = -8 * 2;
+                moonB.position.y = 8;
+                var moonC = TexturedSphere(6, moonTextureCURL);
+                moonC.position.x = -8 * 1;
+                moonC.position.y = 8;
+                var moonD = TexturedSphere(6, moonTextureDURL);
+                moonD.position.y = 8;
+
+                var moonE = TexturedSphere(6, moonTextureEURL);
+                moonE.position.x = -8 * 3;
+                moonE.position.y = 16;
+                var moonF = TexturedSphere(6, moonTextureFURL);
+                moonF.position.x = -8 * 2;
+                moonF.position.y = 16;
+                var moonG = TexturedSphere(6, moonTextureGURL);
+                moonG.position.x = -8 * 1;
+                moonG.position.y = 16;
+                var moonH = TexturedSphere(6, moonTextureHURL);
+                moonH.position.y = 16;
+
+                sim.scene.add(moonA);
+                sim.scene.add(moonB);
+                sim.scene.add(moonC);
+                sim.scene.add(moonD);
+                sim.scene.add(moonE);
+                sim.scene.add(moonF);
+                sim.scene.add(moonG);
+                sim.scene.add(moonH);
 
                 // var moon = TexturedSphere(6, moonTextureURL);
                 // moon.position.x = 100;
                 // moon.position.y = 50;
-                var moon = new THREE.Mesh(
-                        new THREE.SphereGeometry(6, 64, 32),
-                        new THREE.MeshBasicMaterial({
-                            color: 0xffffff,
-                            map: new THREE.Texture({ 
-                                src: altspaceutil.getAbsoluteURL(moonTextureURL)
-                            })
-                        })
-                    );
-                moon.position.y = 8;
+                // var moon = new THREE.Mesh(
+                //         new THREE.SphereGeometry(6, 64, 32),
+                //         new THREE.MeshBasicMaterial({
+                //             color: 0xffffff,
+                //             map: new THREE.Texture({ 
+                //                 src: altspaceutil.getAbsoluteURL(moonTextureURL)
+                //             })
+                //         })
+                //     );
+                // moon.position.y = 8;
                 
-                var moonDark = TexturedSphere(6.01, moonDarkTextureURL);
+                // var moonDark = TexturedSphere(6.01, moonDarkTextureURL);
                 // moonDark.position.x = 100;
                 // moonDark.position.y = 50;
-                moonDark.position.y = 8;
+                // moonDark.position.y = 8;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
@@ -62,8 +105,8 @@
                 
                 sim.scene.add(originReference);
                 sim.scene.add(groundPlane);
-                sim.scene.add(moon);
-                sim.scene.add(moonDark);
+                // sim.scene.add(moon);
+                // sim.scene.add(moonDark);
                 sim.scene.add(skyNight);
                 sim.scene.add(skyDay);
             
