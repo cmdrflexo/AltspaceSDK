@@ -4,7 +4,7 @@
         <script src = "https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
         <script src = "https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-        <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v0.9.9/js/altspaceutil.min.js"></script>
+        <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
         <script src = "../motion/motion.js"></script>
     </head>
     <body>
@@ -12,86 +12,56 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
-            // var shuttleURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/pano_shuttle.jpg";
+            // altspace.getEnclosure().then(function(enclosure) {
+            //     enclosure.requestFullspace().then(function() {
+            //         enclosure.addEventListener('fullspacechange', function() {
+            //             if(!enclosure.fullspace) enclosure.requestFullspace();
+            //         });
+            altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
-            altspace.getEnclosure().then(function(enclosure) {
-                enclosure.requestFullspace().then(function() {
-                    enclosure.addEventListener('fullspacechange', function() {
-                        if(!enclosure.fullspace) enclosure.requestFullspace();
-                    });
+                sim = new altspace.utilities.Simulation();
+                
+                var originReference = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 0.1, 1),
+                    new THREE.MeshBasicMaterial({ color: 0xffffff })
+                )
 
-                    sim = new altspace.utilities.Simulation();
-                    
-                    var originReference = new THREE.Mesh(
-                        new THREE.BoxGeometry(1, 0.1, 1),
-                        new THREE.MeshBasicMaterial({ color: 0xffffff })
-                    )
+                var groundPlane = new THREE.Mesh(
+                    new THREE.PlaneGeometry(10000, 10000),
+                    new THREE.MeshBasicMaterial({ color: 0x062116 })
+                )
+                groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
-                    var groundPlane = new THREE.Mesh(
-                        new THREE.PlaneGeometry(10000, 10000),
-                        new THREE.MeshBasicMaterial({ color: 0x062116 })
-                    )
-                    groundPlane.rotation.x = THREE.Math.degToRad(-90);
-
-                    //  var shuttleSphere = new THREE.Mesh(
-                    //     new THREE.SphereGeometry(500, 32, 16),
-                    //     new THREE.MeshBasicMaterial(
-                    //         {
-                    //             color: 0xffffff, 
-                    //             transparent : true,
-                    //             map: new THREE.Texture(
-                    //                 { 
-                    //                     src: altspaceutil.getAbsoluteURL(shuttleURL)
-                    //                 }
-                    //             )
-                    //         }
-                    //     )
-                    // );
-                    // shuttleSphere.scale.x = -1;
-                    
-                    var skyDaySphere = new THREE.Mesh(
-                        new THREE.SphereGeometry(1600, 32, 16),
-                        // new THREE.MeshBasicMaterial({ color : 0x274a87 })
+                function SkySphere(size, textureURL) {
+                    var skySphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(size, 32, 16),
                         new THREE.MeshBasicMaterial(
-                            {
-                                color: 0xffffff,
-                                map: new THREE.Texture(
-                                    { 
-                                        src: altspaceutil.getAbsoluteURL(skyDayURL)
-                                    }
-                                )
-                            }
-                        )
+                        {
+                            color: 0xffffff,
+                            map: new THREE.Texture(
+                                { 
+                                    src: altspaceutil.getAbsoluteURL(textureURL)
+                                }
+                            )
+                        }
+                    )
                     );
-                    skyDaySphere.rotation.z = THREE.Math.degToRad(-45);
-                    skyDaySphere.scale.x = -1;
+                    skySphere.scale.x = -1;
+                    return skySphere;
+                }
 
-                    var skyNightSphere = new THREE.Mesh(
-                        new THREE.SphereGeometry(1500, 32, 16),
-                        new THREE.MeshBasicMaterial(
-                            {
-                                color: 0xffffff, 
-                                transparent : true,
-                                map: new THREE.Texture(
-                                    { 
-                                        src: altspaceutil.getAbsoluteURL(skyNightURL)
-                                    }
-                                )
-                            }
-                        )
-                    );
-                    skyNightSphere.rotation.x = THREE.Math.degToRad(45);
-                    skyNightSphere.scale.x = -1;
-                    skyNightSphere.addBehavior(new SkyRotate(-2000));
-                    skyNightSphere.addBehavior(new SkyFade(1, 1));
-                    
-                    sim.scene.add(originReference);
-                    sim.scene.add(groundPlane);
-                    sim.scene.add(skyNightSphere);
-                    sim.scene.add(skyDaySphere);
+                var skyDay = SkySphere(1600, skyDayURL);
+                skyDaye.rotation.z = THREE.Math.degToRad(-45);
 
-                    // sim.scene.add(shuttleSphere);
-                });
+                var skyNight = SkySphere(1500, skyNightURL);
+                skyNight.rotation.x = THREE.Math.degToRad(45);
+                skyNight.addBehavior(new SkyRotate(-2000));
+                skyNight.addBehavior(new SkyFade(1, 1));
+                
+                sim.scene.add(originReference);
+                sim.scene.add(groundPlane);
+                sim.scene.add(skyNightSphere);
+                sim.scene.add(skyDaySphere);
             });
         </script>
     </body>
