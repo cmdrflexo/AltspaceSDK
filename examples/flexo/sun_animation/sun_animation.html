@@ -33,11 +33,11 @@
                 moon.position.y = 2;
 
                 var moonDark = new THREE.Mesh(
-                    new THREE.SphereGeometry(2, 32, 64),
+                    new THREE.SphereGeometry(2.1, 32, 64),
                     new THREE.MeshBasicMaterial({ color: 0x000000 })
                 );
                 moonDark.position.y = 2;
-                moonDark.position.x = 0.01;
+                moonDark.position.x = 0.05;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
