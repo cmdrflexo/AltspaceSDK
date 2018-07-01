@@ -76,8 +76,13 @@
                 sim.scene.add(moons[m]);
             }
 
+            var moonRoot = new Objec3D();
+            
+
             moons[0].position.set(-1500, 0, 0);
-            moons[0].scale.set(10, 10, 10);
+            moons[0].scale.set(3, 3, 3);
+            moons[0].parent.set(moonRoot);
+            moonRoot.rotation.z = THREE.Math.degToRad(-45);
 
             return moons;
         }
