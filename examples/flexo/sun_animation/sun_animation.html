@@ -39,6 +39,7 @@
                 new THREE.PlaneGeometry(10000, 10000),
                 new THREE.MeshBasicMaterial({ color: 0x062116 })
             )
+            groundPlane.position.y = -0.1;
             groundPlane.rotation.x = THREE.Math.degToRad(-90);
             sim.scene.add(groundPlane);
             return groundPlane;
@@ -75,8 +76,8 @@
                 sim.scene.add(moons[m]);
             }
 
-            moons[0].position.set(1000, 0, 0);
-            moons[0].scale.set(100, 100, 100);
+            moons[0].position.set(-1500, 0, 0);
+            moons[0].scale.set(10, 10, 10);
 
             return moons;
         }
