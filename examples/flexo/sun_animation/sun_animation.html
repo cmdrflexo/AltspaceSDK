@@ -85,8 +85,9 @@
             moonRoot.rotation.z = THREE.Math.degToRad(-45);
             // moonRoot.addBehavior(new SkyRotate(-2000));
 
-            moons[0].position = moonProx.position;
-            moons[0].scale.set(3, 3, 3);           
+            // moons[0].position = moonProx.position;
+            moons[0].position.set(-1500, 0, 0);
+            moons[0].scale.set(13, 13, 13);
 
             return moons;
         }
