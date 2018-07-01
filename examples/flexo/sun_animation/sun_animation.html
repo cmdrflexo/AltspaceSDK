@@ -12,7 +12,7 @@
             var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
             var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
-            var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon.jpg";
+            var moonTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon_quarterRes.jpg";
 
             altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
@@ -30,19 +30,16 @@
                 groundPlane.rotation.x = THREE.Math.degToRad(-90);
 
                 var moon = TexturedSphere(2, moonTextureURL);
-                moon.position.x = 30;
-                moon.position.y = 10;
-                moon.position.z = -10;
-                moon.rotation.y = THREE.Math.degToRad(45);
+                moon.position.x = 100;
+                moon.position.y = 100;
 
                 var moonDark = new THREE.Mesh(
                     new THREE.SphereGeometry(2, 32, 64),
                     new THREE.MeshBasicMaterial({ color: 0x000000 })
                 );
-                moonDark.position.x = 30 + 0.1;
-                moonDark.position.y = 10;
-                moonDark.position.z = -10;
-                moonDark.rotation.y = THREE.Math.degToRad(45);
+                moonDark.position.x = 100;
+                moonDark.position.y = 100;
+                moonDark.position.z = 0.1;
 
                 var skyDay = TexturedSphere(1600, skyDayURL);
                 skyDay.rotation.z = THREE.Math.degToRad(-45);
