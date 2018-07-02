@@ -91,18 +91,23 @@
             moons[0].material.needsUpdate = true;
             moons[0].geometry.uvsNeedUpdate = true;
 
+            moons[1].material = tiledMoonMaterial;
+            moons[1].material.map.repeat.set(2, 4);
+            moons[1].material.map.offset.set(0.5, 0.25);
+            moons[1].material.needsUpdate = true;
+            moons[1].geometry.uvsNeedUpdate = true;
+
             moons[0].position.set(-50, 10, 0);
             moons[0].scale.set(3, 3, 3);
 
-            // var moonProx = new THREE.Object3D();
-            // moonProx.position.set(-1500, 0, 0);
-            var moonRoot = new THREE.Object3D();
-            moonRoot.add(moons[0]);
-            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
-            moonRoot.addBehavior(new SkyRotate(-2000));
-            sim.scene.add(moonRoot);
+            moons[1].position.set(-50, 10, 10);
+            moons[1].scale.set(3, 3, 3);
 
-            // moons[0].position = moonProx.position;
+            // var moonRoot = new THREE.Object3D();
+            // moonRoot.add(moons[0]);
+            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            // moonRoot.addBehavior(new SkyRotate(-2000));
+            // sim.scene.add(moonRoot);
             
 
             return moons;
