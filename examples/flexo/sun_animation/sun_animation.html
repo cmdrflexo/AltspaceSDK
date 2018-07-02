@@ -88,7 +88,7 @@
             
             moons[0].material = tiledMoonMaterial;
             moons[0].material.map.repeat.set(0.5, 0.25);
-            moons[0].material.map.offset.set(0.5, 0.5);
+            moons[0].material.map.offset.set(0, 0.75);
             moons[0].material.needsUpdate = true;
             moons[0].geometry.uvsNeedUpdate = true;
 
@@ -100,6 +100,7 @@
             moons[1].geometry.uvsNeedUpdate = true;
 
             moons[0].position.set(1300, 0, 0);
+            moons[0].rotation.y = THREE.Math.degToRad(180);
             moons[0].scale.set(3, 3, 3);
 
             moons[1].position.set(-1300, 0, 0);
@@ -107,9 +108,9 @@
 
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moons[0]);
-            moonRoot.rotation.z = THREE.Math.degToRad(90);
-            moonRoot.add(moons[1]);
             moonRoot.rotation.z = THREE.Math.degToRad(45);
+            // moonRoot.add(moons[1]);
+            // moonRoot.rotation.z = THREE.Math.degToRad(45);
             // moonRoot.addBehavior(new SkyRotate(-2000));
             sim.scene.add(moonRoot);
             
