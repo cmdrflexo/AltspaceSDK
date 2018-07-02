@@ -92,19 +92,19 @@
             moons[0].material.needsUpdate = true;
             moons[0].geometry.uvsNeedUpdate = true;
 
-            moons[1].material = tiledMoonMaterial.clone();
-            moons[1].material.map = tiledMoonMaterial.map.clone();
-            moons[1].material.map.repeat.set(0.5, 0.25);
-            moons[1].material.map.offset.set(0.5, 0.25);
-            moons[1].material.needsUpdate = true;
-            moons[1].geometry.uvsNeedUpdate = true;
+            // moons[1].material = tiledMoonMaterial.clone();
+            // moons[1].material.map = tiledMoonMaterial.map.clone();
+            // moons[1].material.map.repeat.set(0.5, 0.25);
+            // moons[1].material.map.offset.set(0.5, 0.25);
+            // moons[1].material.needsUpdate = true;
+            // moons[1].geometry.uvsNeedUpdate = true;
 
             moons[0].position.set(1300, 0, 0);
             moons[0].rotation.y = THREE.Math.degToRad(180);
-            moons[0].scale.set(3, 3, 3);
+            moons[0].scale.set(5, 5, 5);
 
-            moons[1].position.set(-1300, 0, 0);
-            moons[1].scale.set(3, 3, 3);
+            // moons[1].position.set(-1300, 0, 0);
+            // moons[1].scale.set(3, 3, 3);
 
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moons[0]);
