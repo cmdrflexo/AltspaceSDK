@@ -26,3 +26,27 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d.material.opacity = opacity;
     }
 }
+
+MoonPhasesTest = function(geometry, material) {
+
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+    }
+
+    var delay = 1000;
+    var timer = 0;
+    var i = 0;
+    this.update = function(deltaTime) {
+        timer += deltaTime;
+        if(timer >= delay) {
+            timer = 0;
+            if(i < 4) {
+                material.map.offset.set(0, i * 0.25);
+                material.needsUpdate = geometry.uvsNeedUpdate = true;
+                i++;
+            } else {
+                i = 0;
+            }
+        }
+    }
+}
