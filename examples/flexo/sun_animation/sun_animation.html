@@ -57,7 +57,8 @@
             sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
             sky.moon.position.set(1300, 0, 0);
 
-            sky.root.add(sky.sun, sky.moon);
+            sky.root.add(sky.sun);
+            sky.root.add(sky.moon);
             
             sky.root.addBehavior(new SkyRotateZ(10));
             sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
