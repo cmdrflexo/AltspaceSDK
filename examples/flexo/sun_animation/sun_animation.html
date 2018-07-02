@@ -25,16 +25,22 @@
         SetupDebugVisuals();
 
         var terrain = CreateTerrain();
-        var sky = CreateSky();
+        var sky;
+        CreateSky();
+
+        sky.root.addBehavior(new SkyRotateZ(10));
+        sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
+        sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
+        
+        
 
         sim.scene.add(terrain);
-        sim.scene.add(
-            sky.root, 
-            sky.skySpheres.day, 
-            sky.skySpheres.night, 
-            sky.sun, 
-            sky.moon
-        );
+        
+        sim.scene.add(sky.root);
+        sim.scene.add(sky.skySpheres.day);
+        sim.scene.add(sky.skySpheres.night);
+        sim.scene.add(sky.sun);
+        sim.scene.add(sky.moon);
 
         function CreateTerrain() {
             var groundPlane = new THREE.Mesh(
@@ -47,7 +53,7 @@
         }
 
        function CreateSky() {
-            var sky = {
+            sky = {
                 root: new THREE.Object3D(),
                 skySpheres: CreateSkySpheres(32, 16),
                 sun: new THREE.Object3D(),//CreateMoon(6, 64, 32, 45),
@@ -57,14 +63,13 @@
             sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
             sky.moon.position.set(1300, 0, 0);
 
-            sky.root.add(sky.sun);
-            sky.root.add(sky.moon);
+            sky.root.add(sky.sun, sky.moon);
             
-            sky.root.addBehavior(new SkyRotateZ(10));
-            sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
-            sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
+            // sky.root.addBehavior(new SkyRotateZ(10));
+            // sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
+            // sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
 
-            return sky;
+            // return sky;
         }
 
         function CreateSkySpheres(longSegs, latSegs) {
