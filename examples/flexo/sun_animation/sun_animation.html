@@ -34,7 +34,7 @@
 
         var ground = SetupGround();
         var skies = SetupSkies(32, 16);
-        var moonPhases = SetupMoonPhases(6, 32, 16);
+        var moonPhases = SetupMoonPhases(6, 64, 32);
 
         function SetupGround() {
             var groundPlane = new THREE.Mesh(
@@ -99,14 +99,16 @@
             moons[1].material.needsUpdate = true;
             moons[1].geometry.uvsNeedUpdate = true;
 
-            moons[0].position.set(1500, 0, 0);
+            moons[0].position.set(1300, 0, 0);
             moons[0].scale.set(3, 3, 3);
 
-            moons[1].position.set(-50, 20, 50);
+            moons[1].position.set(-1300, 0, 0);
             moons[1].scale.set(3, 3, 3);
 
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moons[0]);
+            moonRoot.rotation.z = THREE.Math.degToRad(90);
+            moonRoot.add(moons[1]);
             moonRoot.rotation.z = THREE.Math.degToRad(45);
             // moonRoot.addBehavior(new SkyRotate(-2000));
             sim.scene.add(moonRoot);
