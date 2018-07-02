@@ -77,18 +77,19 @@
                 sim.scene.add(moons[m]);
             }
 
-            
-            var moonProx = new THREE.Object3D();
-            moonProx.position.set(-1500, 0, 0);
-            var moonRoot = new THREE.Object3D();
-            moonRoot.add(moonProx);
-            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
-            sim.scene.add(moonRoot);
-            moonRoot.addBehavior(new SkyRotate(-2000));
+            moons[0].position.set(-1500, 0, 0);
+            moons[0].scale.set(13, 13, 13);
 
-            moons[0].position = moonProx.position;
-            // moons[0].position.set(-1500, 0, 0);
-            // moons[0].scale.set(13, 13, 13);
+            // var moonProx = new THREE.Object3D();
+            // moonProx.position.set(-1500, 0, 0);
+            var moonRoot = new THREE.Object3D();
+            moonRoot.add(moon[0]);
+            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            moonRoot.addBehavior(new SkyRotate(-2000));
+            sim.scene.add(moonRoot);
+
+            // moons[0].position = moonProx.position;
+            
 
             return moons;
         }
