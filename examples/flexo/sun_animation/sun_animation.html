@@ -67,10 +67,12 @@
                 new THREE.MeshBasicMaterial({
                     color: 0xffffff,
                     map: new THREE.Texture({ 
-                        src: altspaceutil.getAbsoluteURL(texURL)
+                        src: altspaceutil.getAbsoluteURL(tiledMoonURL)
                     })
                 })
             );
+            moon.addBehavior(new MoonPhasesTest(moon.geometry, moon.material));
+            sim.scene.add(moons);
         }
 
         function SetupMoonPhases(radius, longSegs, latSegs) {
