@@ -84,8 +84,8 @@
             // moonProx.position.set(-1500, 0, 0);
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moon[0]);
-            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
-            moonRoot.addBehavior(new SkyRotate(-2000));
+            moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            // moonRoot.addBehavior(new SkyRotate(-2000));
             sim.scene.add(moonRoot);
 
             // moons[0].position = moonProx.position;
