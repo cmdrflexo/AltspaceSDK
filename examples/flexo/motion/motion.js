@@ -38,11 +38,15 @@ MoonPhasesTest = function(geometry, material) {
     var i = 0;
     this.update = function(deltaTime) {
         timer += deltaTime;
+        // console.log(timer);
         if(timer >= delay) {
+            console.log("tick");
             timer = 0;
             if(i < 4) {
+                console.log("i = " + i);
                 material.map.offset.set(0, i * 0.25);
-                material.needsUpdate = geometry.uvsNeedUpdate = true;
+                material.needsUpdate = true;
+                geometry.uvsNeedUpdate = true;
                 i++;
             } else {
                 i = 0;
