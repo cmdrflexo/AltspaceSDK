@@ -64,12 +64,12 @@
         }
 
         function CreateMoon(radius, longSegs, latSegs) {
-            var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
-                color: 0xffffff,
-                map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(tiledMoonURL)
-                })
-            });
+            // var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
+            //     color: 0xffffff,
+            //     map: new THREE.Texture({ 
+            //         src: altspaceutil.getAbsoluteURL(tiledMoonURL)
+            //     })
+            // });
 
             var moon = new THREE.Mesh(
                 new THREE.SphereGeometry(radius, longSegs, latSegs),
@@ -81,17 +81,23 @@
                 })
             );
             
-            moon.material = tiledMoonMaterial;
+            // moon.material = tiledMoonMaterial;
             moon.material.map.repeat.set(0.5, 0.25);
             moon.material.map.offset.set(0, 0.75);
             moon.material.needsUpdate = true;
             moon.geometry.uvsNeedUpdate = true;
 
-            moon.position.y = 3;
-            moon.scale.set(0.1, 0.1, 0.1);
+            moon.position.set(1300, 0, 0);
+            moon.rotation.y = THREE.Math.degToRad(180);
+            moon.scale.set(10, 10, 10);
 
             moon.addBehavior(new MoonPhasesTest(moon.geometry, moon.material));
             sim.scene.add(moon);
+
+            var moonRoot = new THREE.Object3D();
+            moonRoot.add(moon);
+            moonRoot.rotation.z = THREE.Math.degToRad(45);
+            sim.scene.add(moonRoot);
         }
 
         // function SetupMoonPhases(radius, longSegs, latSegs) {
