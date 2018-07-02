@@ -56,7 +56,7 @@
             skyNight.rotation.x = THREE.Math.degToRad(45);
             skyNight.scale.x = -1;
             skyNight.addBehavior(new SkyRotate(-2000));
-            skyNight.addBehavior(new SkyFade(1, 1));
+            // skyNight.addBehavior(new SkyFade(1, 1));
             sim.scene.add(skyNight);
             return {skyDay, skyNight};
         }
