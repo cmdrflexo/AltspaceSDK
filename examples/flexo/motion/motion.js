@@ -17,13 +17,15 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d = parent;
     }
 
-    var fade = 0.0000125;
-    var opacity = 0;
+    this.fade = 10;
+    this.opacity = 0;
     this.update = function(deltaTime) {
-        opacity += fade * deltaTime;// * 0.001;
-        opacity = THREE.Math.clamp(opacity, 0, 1);
-        if(opacity == 0 || opacity == 1) fade = -fade;
-        this.object3d.material.opacity = opacity;
+        this.opacity += deltaTime / this.fade * 0.001;
+        // this.opacity /= this.fade;
+        // console.log(this.opacity);
+        this.opacity = THREE.Math.clamp(this.opacity, 0, 1);
+        if(this.opacity == 0 || this.opacity == 1) this.fade = -this.fade;
+        this.object3d.material.opacity = this.opacity;
     }
 }
 
