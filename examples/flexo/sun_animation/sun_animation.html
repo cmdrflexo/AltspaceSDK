@@ -22,7 +22,9 @@
         moonTextureDir + "moon_quarterRes-F.png",
         moonTextureDir + "moon_quarterRes-G.png",
         moonTextureDir + "moon_quarterRes-H.png"
-    ]
+    ];
+
+    var tiledMoonURL = moonTextureDir + "moon_quarterRes-sheet.png";
 
     altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 
@@ -72,20 +74,32 @@
                     )
                 );
             for(var m = 0; m < moons.length; m++) {
-                // moons[m].position.y = 13 * m + 1;
                 moons[m].position.y = -1000;
                 sim.scene.add(moons[m]);
             }
+            
+            var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0xffffff,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(tiledMoonURL)
+                })
+            });
+            
+            moons[0].material = tiledMoonMaterial;
+            moons[0].material.map.repeat.set(2, 4);
+            moons[0].material.map.offset.set(0.5, 0.5);
+            moons[0].material.needsUpdate = true;
+            moons[0].geometry.uvsNeedUpdate = true;
 
-            moons[0].position.set(-1500, 0, 0);
-            moons[0].scale.set(13, 13, 13);
+            moons[0].position.set(-50, 10, 0);
+            moons[0].scale.set(3, 3, 3);
 
             // var moonProx = new THREE.Object3D();
             // moonProx.position.set(-1500, 0, 0);
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moons[0]);
-            moonRoot.rotation.z = THREE.Math.degToRad(-45);
-            // moonRoot.addBehavior(new SkyRotate(-2000));
+            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            moonRoot.addBehavior(new SkyRotate(-2000));
             sim.scene.add(moonRoot);
 
             // moons[0].position = moonProx.position;
