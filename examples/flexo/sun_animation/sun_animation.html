@@ -87,11 +87,11 @@
             moon.material.needsUpdate = true;
             moon.geometry.uvsNeedUpdate = true;
 
-            moon.position.y = 10;
-            moon.scale.set(2, 2, 2);
+            moon.position.y = 3;
+            moon.scale.set(1, 1, 1);
 
             moon.addBehavior(new MoonPhasesTest(moon.geometry, moon.material));
-            sim.scene.add(moons);
+            sim.scene.add(moon);
         }
 
         // function SetupMoonPhases(radius, longSegs, latSegs) {
