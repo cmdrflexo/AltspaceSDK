@@ -76,7 +76,7 @@
                 );
             for(var m = 0; m < moons.length; m++) {
                 moons[m].position.y = -1000;
-                moons[m].addBehavior(new MoonPhasesTest(moons[0].geometry, moons[0].material));
+                moons[m].addBehavior(new MoonPhasesTest(moons[m].geometry, moons[m].material));
                 sim.scene.add(moons[m]);
             }
             
