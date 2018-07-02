@@ -61,6 +61,18 @@
             return {skyDay, skyNight};
         }
 
+        function CreateMoon(radius, longSegs, latSegs) {
+            var moon = new THREE.Mesh(
+                new THREE.SphereGeometry(radius, longSegs, latSegs),
+                new THREE.MeshBasicMaterial({
+                    color: 0xffffff,
+                    map: new THREE.Texture({ 
+                        src: altspaceutil.getAbsoluteURL(texURL)
+                    })
+                })
+            );
+        }
+
         function SetupMoonPhases(radius, longSegs, latSegs) {
             var moons = new Array();
             // for(var i = 0; i < moonTexturesQuarterRes.length; i++)

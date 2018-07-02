@@ -29,27 +29,27 @@ SkyFade = function(delaySeconds, fadeSpeed) {
 
 MoonPhasesTest = function(geometry, material) {
 
+    this.geometry = geometry;
+    this.material = material;
+
     this.awake = function(parent, scene) {
         this.object3d = parent;
     }
 
-    var delay = 1000;
-    var timer = 0;
-    var i = 0;
+    this.delay = 1000;
+    this.timer = 0;
+    this.phase = 0;
     this.update = function(deltaTime) {
         timer += deltaTime;
-        // console.log(timer);
         if(timer >= delay) {
-            console.log("tick");
             timer = 0;
-            if(i < 4) {
-                console.log("i = " + i);
-                material.map.offset.set(0, i * 0.25);
+            if(phase < 4) {
+                material.map.offset.set(0, phase * 0.25);
                 material.needsUpdate = true;
                 geometry.uvsNeedUpdate = true;
-                i++;
+                phase++;
             } else {
-                i = 0;
+                phase = 0;
             }
         }
     }
