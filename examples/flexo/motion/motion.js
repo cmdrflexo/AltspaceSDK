@@ -33,7 +33,7 @@ MoonPhasesTest = function(geometry, material) {
 
     this.awake = function(parent, scene) {this.object3d = parent;}
 
-    this.delay = 100;
+    this.delay = 3000;
     this.timer = 0;
     this.phase = 0;
     this.side = 0;
