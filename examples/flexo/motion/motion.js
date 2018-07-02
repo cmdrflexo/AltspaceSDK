@@ -42,7 +42,7 @@ MoonPhasesTest = function(geometry, material) {
         if(this.timer >= this.delay) {
             this.timer = 0;
             if(this.phase < 4) {
-                this.material.map.offset.set(side * 0.5, this.phase * 0.25);
+                this.material.map.offset.set(this.side * 0.5, this.phase * 0.25);
                 this.material.needsUpdate = true;
                 this.geometry.uvsNeedUpdate = true;
                 this.phase++;
