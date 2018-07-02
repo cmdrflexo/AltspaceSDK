@@ -17,10 +17,10 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d = parent;
     }
 
-    var fade = 0.05;
+    var fade = 0.005;
     var opacity = 0;
     this.update = function(deltaTime) {
-        opacity += fade * deltaTime * 0.001;
+        opacity += fade * deltaTime;// * 0.001;
         opacity = THREE.Math.clamp(opacity, 0, 1);
         if(opacity == 0 || opacity == 1) fade = -fade;
         this.object3d.material.opacity = opacity;
