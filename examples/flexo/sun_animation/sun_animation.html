@@ -84,6 +84,7 @@
                     src: altspaceutil.getAbsoluteURL(tiledMoonURL)
                 })
             });
+            tiledMoonMaterial.map.wrapS = tiledMoonMaterial.map.wrapT = THREE.RepeatWrapping;
             
             moons[0].material = tiledMoonMaterial;
             moons[0].material.map.repeat.set(2, 4);
@@ -100,7 +101,7 @@
             moons[0].position.set(-50, 20, 0);
             moons[0].scale.set(3, 3, 3);
 
-            moons[1].position.set(-50, 20, 30);
+            moons[1].position.set(-50, 20, 50);
             moons[1].scale.set(3, 3, 3);
 
             // var moonRoot = new THREE.Object3D();
