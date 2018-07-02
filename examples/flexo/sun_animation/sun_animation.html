@@ -51,7 +51,7 @@
 
         function SetupSkies(longSegs, latSegs) {
             var skyDay = TexturedSphere(1600, longSegs, latSegs, skyDayURL, false);
-            skyDay.rotation.z = THREE.Math.degToRad(-45);
+            // skyDay.rotation.z = THREE.Math.degToRad(-45);
             skyDay.scale.x = -1;
             sim.scene.add(skyDay);
             var skyNight = TexturedSphere(1500, longSegs, latSegs, skyNightURL, true);
@@ -98,7 +98,7 @@
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moon);
             moonRoot.add(skies.skyDay);
-            moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            // moonRoot.rotation.z = THREE.Math.degToRad(-45);
             moonRoot.addBehavior(new SkyRotateZ(10));
             sim.scene.add(moonRoot);
         }

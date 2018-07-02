@@ -25,7 +25,7 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         // console.log(this.opacity);
         this.opacity = THREE.Math.clamp(this.opacity, 0, 1);
         if(this.opacity == 0 || this.opacity == 1) this.fade = -this.fade;
-        this.object3d.material.opacity = this.opacity;
+        this.object3d.material.opacity = 1 - this.opacity; // inverting
     }
 }
 
