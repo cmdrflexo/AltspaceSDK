@@ -34,7 +34,9 @@
 
         var ground = SetupGround();
         var skies = SetupSkies(32, 16);
-        var moonPhases = SetupMoonPhases(6, 16, 8);
+        // var moonPhases = SetupMoonPhases(6, 16, 8);
+
+        var moon = CreateMoon(6, 64, 32);
 
         function SetupGround() {
             var groundPlane = new THREE.Mesh(
@@ -62,6 +64,13 @@
         }
 
         function CreateMoon(radius, longSegs, latSegs) {
+            var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0xffffff,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(tiledMoonURL)
+                })
+            });
+
             var moon = new THREE.Mesh(
                 new THREE.SphereGeometry(radius, longSegs, latSegs),
                 new THREE.MeshBasicMaterial({
@@ -71,44 +80,54 @@
                     })
                 })
             );
+            
+            moon.material = tiledMoonMaterial;
+            moon.material.map.repeat.set(0.5, 0.25);
+            moon.material.map.offset.set(0, 0.75);
+            moon.material.needsUpdate = true;
+            moon.geometry.uvsNeedUpdate = true;
+
+            moon.position.y = 10;
+            moon.scale.set(2, 2, 2);
+
             moon.addBehavior(new MoonPhasesTest(moon.geometry, moon.material));
             sim.scene.add(moons);
         }
 
-        function SetupMoonPhases(radius, longSegs, latSegs) {
-            var moons = new Array();
-            // for(var i = 0; i < moonTexturesQuarterRes.length; i++)
-            for(var i = 0; i < 1; i++)
-                moons.push(
-                    TexturedSphere(
-                        radius, 
-                        longSegs, 
-                        latSegs, 
-                        moonTexturesQuarterRes[i], 
-                        false
-                    )
-                );
-            for(var m = 0; m < moons.length; m++) {
-                moons[m].position.y = -1000;
-                moons[m].addBehavior(new MoonPhasesTest(moons[m].geometry, moons[m].material));
-                sim.scene.add(moons[m]);
-            }
+        // function SetupMoonPhases(radius, longSegs, latSegs) {
+        //     var moons = new Array();
+        //     // for(var i = 0; i < moonTexturesQuarterRes.length; i++)
+        //     for(var i = 0; i < 1; i++)
+        //         moons.push(
+        //             TexturedSphere(
+        //                 radius, 
+        //                 longSegs, 
+        //                 latSegs, 
+        //                 moonTexturesQuarterRes[i], 
+        //                 false
+        //             )
+        //         );
+        //     for(var m = 0; m < moons.length; m++) {
+        //         moons[m].position.y = -1000;
+        //         moons[m].addBehavior(new MoonPhasesTest(moons[m].geometry, moons[m].material));
+        //         sim.scene.add(moons[m]);
+        //     }
             
-            var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
-                color: 0xffffff,
-                map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(tiledMoonURL)
-                })
-            });
+            // var tiledMoonMaterial = new THREE.MeshBasicMaterial({ 
+            //     color: 0xffffff,
+            //     map: new THREE.Texture({ 
+            //         src: altspaceutil.getAbsoluteURL(tiledMoonURL)
+            //     })
+            // });
             // tiledMoonMaterial.map.wrapS = tiledMoonMaterial.map.wrapT = THREE.RepeatWrapping;
             
             // moons[0].addBehavior(new MoonPhasesTest(moons[0].geometry, moons[0].material));
 
-            moons[0].material = tiledMoonMaterial;
-            moons[0].material.map.repeat.set(0.5, 0.25);
-            moons[0].material.map.offset.set(0, 0.75);
-            moons[0].material.needsUpdate = true;
-            moons[0].geometry.uvsNeedUpdate = true;
+            // moons[0].material = tiledMoonMaterial;
+            // moons[0].material.map.repeat.set(0.5, 0.25);
+            // moons[0].material.map.offset.set(0, 0.75);
+            // moons[0].material.needsUpdate = true;
+            // moons[0].geometry.uvsNeedUpdate = true;
 
             // moons[1].material = tiledMoonMaterial.clone();
             // moons[1].material.map = tiledMoonMaterial.map.clone();
@@ -117,24 +136,24 @@
             // moons[1].material.needsUpdate = true;
             // moons[1].geometry.uvsNeedUpdate = true;
 
-            moons[0].position.set(1300, 0, 0);
-            moons[0].rotation.y = THREE.Math.degToRad(180);
-            moons[0].scale.set(10, 10, 10);
+            // moons[0].position.set(1300, 0, 0);
+            // moons[0].rotation.y = THREE.Math.degToRad(180);
+            // moons[0].scale.set(10, 10, 10);
 
             // moons[1].position.set(-1300, 0, 0);
             // moons[1].scale.set(3, 3, 3);
 
-            var moonRoot = new THREE.Object3D();
-            moonRoot.add(moons[0]);
-            moonRoot.rotation.z = THREE.Math.degToRad(45);
+            // var moonRoot = new THREE.Object3D();
+            // moonRoot.add(moons[0]);
+            // moonRoot.rotation.z = THREE.Math.degToRad(45);
             // moonRoot.add(moons[1]);
             // moonRoot.rotation.z = THREE.Math.degToRad(45);
             // moonRoot.addBehavior(new SkyRotate(-2000));
-            sim.scene.add(moonRoot);
+            // sim.scene.add(moonRoot);
             
 
-            return moons;
-        }
+        //     return moons;
+        // }
         
         function SetupDebugVisuals() {
             var originReference = new THREE.Mesh(
