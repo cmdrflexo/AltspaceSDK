@@ -75,6 +75,7 @@
                 );
             for(var m = 0; m < moons.length; m++) {
                 moons[m].position.y = -1000;
+                moons[m].addBehavior(new MoonPhasesTest(moons[0].geometry, moons[0].material));
                 sim.scene.add(moons[m]);
             }
             
@@ -86,7 +87,7 @@
             });
             // tiledMoonMaterial.map.wrapS = tiledMoonMaterial.map.wrapT = THREE.RepeatWrapping;
             
-            moons[0].addBehavior(new MoonPhasesTest(moons[0].geometry, moons[0].material));
+            // moons[0].addBehavior(new MoonPhasesTest(moons[0].geometry, moons[0].material));
 
             moons[0].material = tiledMoonMaterial;
             moons[0].material.map.repeat.set(0.5, 0.25);
