@@ -17,7 +17,7 @@ SkyFade = function(delaySeconds, fadeSpeed) {
         this.object3d = parent;
     }
 
-    this.fade = 10;
+    this.fade = 50;
     this.opacity = 0;
     this.update = function(deltaTime) {
         this.opacity += deltaTime / this.fade * 0.001;
