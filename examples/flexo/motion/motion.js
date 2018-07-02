@@ -27,6 +27,19 @@ SkyFade = function(delaySeconds, fadeSpeed) {
     }
 }
 
+SkyRotateZ = function(time) {
+    this.time = time == 0 ? 1 : time;
+    this.rotationSpeed = (360 / time) * (Math.PI / 180) * 0.001;
+
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.object3d.rotation.z += deltaTime * this.rotationSpeed;
+    }
+}
+
 MoonPhasesTest = function(geometry, material) {
     this.geometry = geometry;
     this.material = material;

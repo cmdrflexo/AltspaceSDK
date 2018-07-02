@@ -59,7 +59,7 @@
             skyNight.scale.x = -1;
             skyNight.addBehavior(new SkyRotate(-2000));
             // skyNight.addBehavior(new SkyFade(1, 1));
-            sim.scene.add(skyNight);
+            // sim.scene.add(skyNight);
             return {skyDay, skyNight};
         }
 
@@ -96,7 +96,9 @@
 
             var moonRoot = new THREE.Object3D();
             moonRoot.add(moon);
-            moonRoot.rotation.z = THREE.Math.degToRad(45);
+            moonRoot.add(skies.skyDay);
+            moonRoot.rotation.z = THREE.Math.degToRad(-45);
+            moonRoot.addBehavior(new SkyRotateZ(100));
             sim.scene.add(moonRoot);
         }
 
