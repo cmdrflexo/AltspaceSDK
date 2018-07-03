@@ -1,0 +1,46 @@
+newmtl SURF-cake
+Kd 1 1 1
+Ke 1 1 1
+Ka 0 0 0
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd C:Users/jcan/Desktop/cake/cake-01.png
+
+newmtl SURF-cake2
+Kd 1 1 1
+Ke 1 1 1
+Ka 0 0 0
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd C:Users/jcan/Desktop/cake/cake-01.png
+
+newmtl SURF-cake4
+Kd 0.501961 0.501961 1
+Ke 0 0 0
+Ka 0 0 0
+Ks 0.5 0.5 0.5
+Ns 400
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
+newmtl SURF-cake5
+Kd 0.198039 5.90203e-008 0.198039
+Ke 0 0 0
+Ka 0 0 0
+Ks 0.5 0.5 0.5
+Ns 400
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
