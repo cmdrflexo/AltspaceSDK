@@ -8,7 +8,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd C:Users/jcan/Desktop/cake/cake-01.png
+map_Kd http://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake-01.png
 
 newmtl SURF-cake2
 Kd 1 1 1
@@ -20,7 +20,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd C:Users/jcan/Desktop/cake/cake-01.png
+map_Kd http://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake-01.png
 
 newmtl SURF-cake4
 Kd 0.501961 0.501961 1
