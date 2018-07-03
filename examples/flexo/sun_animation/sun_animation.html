@@ -54,6 +54,8 @@
             moon: CreateMoon(10, 64, 32, 45)
         }
         
+        sky.root = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
+
         sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
         sky.moon.position.set(1300, 0, 0);
 
