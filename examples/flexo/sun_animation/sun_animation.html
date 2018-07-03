@@ -28,7 +28,6 @@
         var sky = CreateSky();
 
         sim.scene.add(terrain);
-        // sim.scene.add(terriain, sky.root, sky.skySpheres.day, sky.skySpheres.night);
         sim.scene.add(sky.root);
         sim.scene.add(sky.skySpheres.day);
         sim.scene.add(sky.skySpheres.night);
@@ -57,7 +56,6 @@
         sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
         sky.moon.position.set(1300, 0, 0);
 
-        // sky.root.add(sky.sun, sky.moon);
         sky.root.add(sky.sun);
         sky.root.add(sky.moon);
         sky.root.add(sky.skySpheres.day);

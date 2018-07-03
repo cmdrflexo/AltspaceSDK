@@ -43,21 +43,19 @@ SkyRotateZ = function(time) {
 MoonPhasesTest = function(geometry, material) {
     this.geometry = geometry;
     this.material = material;
-
-    this.awake = function(parent, scene) {this.object3d = parent;}
-
-    this.delay = 3000;
+    this.delay = 120000;
     this.timer = 0;
     this.phase = 0;
     this.side = 0;
+
+    this.awake = function(parent, scene) {this.object3d = parent;}
+
     this.update = function(deltaTime) {
         this.timer += deltaTime;
         if(this.timer >= this.delay) {
             this.timer = 0;
             if(this.phase < 4) {
                 this.material.map.offset.set(this.side * 0.5, this.phase * 0.25);
-                // this.material.needsUpdate = true;
-                // this.geometry.uvsNeedUpdate = true;
                 this.phase++;
             } else {
                 this.phase = 0;
