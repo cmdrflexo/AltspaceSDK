@@ -27,8 +27,6 @@
         var terrain = CreateTerrain();
         var sky = CreateSky();
 
-        sky.root.add(sky.moon);
-
         sim.scene.add(terrain);
         // sim.scene.add(sky.root, sky.skySpheres.day, sky.skySpheres.night, sky.sun, sky.moon);
         sim.scene.add(sky.root);
@@ -61,25 +59,13 @@
         sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
         sky.moon.position.set(1300, 0, 0);
 
-        console.log(sky.root);
-
-        // sky.root.addBehavior(new SkyRotateZ(10));
-        // sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
-        // sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
-
         // sky.root.add(sky.sun, sky.moon);
-        // sky.root.add(sky.sun);
-        // sky.root.add(sky.moon);
-        
-        // sim.scene.add(sky.root, sky.skySpheres.day, sky.skySpheres.night, sky.sun, sky.moon);
-        // sim.scene.add(sky.root);
-        // sim.scene.add(sky.skySpheres.day);
-        // sim.scene.add(sky.skySpheres.night);
-        // sim.scene.add(sky.sun);
-        // sim.scene.add(sky.moon);
-        
+        sky.root.add(sky.sun);
+        sky.root.add(sky.moon);
+                
         sky.root.addBehavior(new SkyRotateZ(10));
-        sky.skySpheres.night.addBehavior(new SkyRotate(-2000), new SkyFade(1, 1));
+        sky.skySpheres.night.addBehavior(new SkyRotate(-2000));
+        sky.skySpheres.night.addBehavior(new SkyFade(1, 1));
         sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
 
         return sky;
