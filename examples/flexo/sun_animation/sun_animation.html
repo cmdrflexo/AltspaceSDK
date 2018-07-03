@@ -50,13 +50,13 @@
 
     function CreateSky() {
         sky = {
-            root: new THREE.Object3D(),
+            root: new THREE.Mesh(new THREE.BoxGeometry(0.5, 1, 0.5)),
             skySpheres: CreateSkySpheres(32, 16),
             sun: new THREE.Object3D(),
             moon: CreateMoon(10, 64, 32, 45)
         }
         
-        sky.root = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
+        sky.root.position.set(0, 1, 0);
 
         sky.skySpheres.night.rotation.x = THREE.Math.degToRad(45);
         sky.moon.position.set(1300, 0, 0);
