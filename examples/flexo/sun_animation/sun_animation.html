@@ -27,6 +27,8 @@
         var terrain = CreateTerrain();
         var sky = CreateSky();
 
+        sky.root.add(sky.moon);
+
         sim.scene.add(terrain);
         // sim.scene.add(sky.root, sky.skySpheres.day, sky.skySpheres.night, sky.sun, sky.moon);
         sim.scene.add(sky.root);
