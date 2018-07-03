@@ -28,12 +28,10 @@
         var sky = CreateSky();
 
         sim.scene.add(terrain);
-        // sim.scene.add(sky.root, sky.skySpheres.day, sky.skySpheres.night, sky.sun, sky.moon);
+        // sim.scene.add(terriain, sky.root, sky.skySpheres.day, sky.skySpheres.night);
         sim.scene.add(sky.root);
         sim.scene.add(sky.skySpheres.day);
         sim.scene.add(sky.skySpheres.night);
-        // sim.scene.add(sky.sun);
-        // sim.scene.add(sky.moon);
     }
 
     function CreateTerrain() {
@@ -62,10 +60,11 @@
         // sky.root.add(sky.sun, sky.moon);
         sky.root.add(sky.sun);
         sky.root.add(sky.moon);
+        sky.root.add(sky.skySpheres.day);
                 
-        sky.root.addBehavior(new SkyRotateZ(10));
+        sky.root.addBehavior(new SkyRotateZ(120));
         sky.skySpheres.night.addBehavior(new SkyRotate(-2000));
-        sky.skySpheres.night.addBehavior(new SkyFade(1, 1));
+        sky.skySpheres.night.addBehavior(new SkyFade(0, 60));
         sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
 
         return sky;

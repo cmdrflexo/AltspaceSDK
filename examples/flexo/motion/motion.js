@@ -11,18 +11,16 @@ SkyRotate = function(time) {
     }
 }
 
-SkyFade = function(delaySeconds, fadeSpeed) {
+SkyFade = function(delaySeconds, fadeTime) {
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
     }
 
-    this.fade = 5;
+    this.fade = fadeTime;
     this.opacity = 0;
     this.update = function(deltaTime) {
         this.opacity += deltaTime / this.fade * 0.001;
-        // this.opacity /= this.fade;
-        // console.log(this.opacity);
         this.opacity = THREE.Math.clamp(this.opacity, 0, 1);
         if(this.opacity == 0 || this.opacity == 1) this.fade = -this.fade;
         this.object3d.material.opacity = 1 - this.opacity; // inverting
