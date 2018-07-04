@@ -149,6 +149,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/Fly.html';
 
     new NativeComponent('n-box-collider', {type: 'hologram',size: '0.15 0.15 0.03'}, box).addTo(sim.scene);
     box.position.set(0,3,0);
+    
     box.addEventListener('cursorup', function(){
       reset();
       pads = altspace.getGamepads();

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<script src = "https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
+<script src = "https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+<script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
+<script src = "../motion/motion.js"></script>
+<script src = "world/sky.js"></script>
+</head>
+<body>
+<script>
+
+var compassURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/scenery_objects/compass/cardinal_01.png"
+var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
+var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
+var tiledMoonURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon_quarterRes-sheet.png";
+
+var testing = false;
+if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
+else start();
+
+function start() {
+    sim = new altspace.utilities.Simulation();
+    
+    SetupDebugVisuals();
+
+    var terrain = CreateTerrain();
+    var sky = CreateSky();
+
+    sim.scene.add(terrain);
+    sim.scene.add(sky.root);
+    sim.scene.add(sky.skySpheres.night);
+}
+
+</script>
+</body>
+</html>
