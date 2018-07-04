@@ -17,8 +17,10 @@
 	Demo = (
         
 		function() {
-				
-			var sim;
+            
+            var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
+            
+            var sim;
 			var connection;
 			var sceneSync;
 			var item;
@@ -31,7 +33,11 @@
 			function main(_connection) {
 				connection = _connection
 				sim = new altspace.utilities.Simulation();
-				// sim.scene.add(CreateTerrain());
+                // sim.scene.add(CreateTerrain());
+                var night = SkySphere(1500, longSegs, latSegs, skyNightURL, true);
+                night.addBehavior(new SkyRotate(-2000));
+                sim.scene.add(night);
+
 				loadItemModel(
 					"https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.obj",
 					"https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.mtl"
@@ -46,7 +52,22 @@
 				groundPlane.position.set(xPos, yPos, zPos);
 				groundPlane.rotation.x = THREE.Math.degToRad(-90);
 				return groundPlane;
-			}
+            }
+            
+            function SkySphere(radius, longSegs, latSegs, texURL, isTransparent) {
+                var skySphere = new THREE.Mesh(
+                    new THREE.SphereGeometry(radius, longSegs, latSegs),
+                    new THREE.MeshBasicMaterial({
+                        color: 0xffffff,
+                        transparent : isTransparent,
+                        map: new THREE.Texture({ 
+                            src: altspaceutil.getAbsoluteURL(texURL)
+                        })
+                    })
+                );
+                skySphere.scale.x = -1;
+                return skySphere;
+            }
 
 			function loadItemModel(objFilename, mtlFilename) {
 				var loader = new altspace.utilities.shims.OBJMTLLoader();
@@ -108,6 +129,19 @@
             }
         );
     });
+
+    SkyRotate = function(time) {
+        if(time == 0) time = 1;
+        this.rotationSpeed =  (360 / time) * (Math.PI / 180) * 0.001;
+
+        this.awake = function(parent, scene) {
+            this.object3d = parent;
+        }
+
+        this.update = function(deltaTime) {
+            this.object3d.rotation.z += deltaTime * this.rotationSpeed;
+        }
+    }
 	
 </script>
 </html>
