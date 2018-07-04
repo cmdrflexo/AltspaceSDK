@@ -31,7 +31,7 @@
 			function main(_connection) {
 				connection = _connection
 				sim = new altspace.utilities.Simulation();
-				sim.scene.add(CreateTerrain());
+				// sim.scene.add(CreateTerrain());
 				loadItemModel(
 					"https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.obj",
 					"https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.mtl"
@@ -80,9 +80,10 @@
 				);
                 item.name = "ITEM";
                 item.position.set(xPos, yPos, zPos);
-				item.scale.x = 0.1;
-				item.scale.y = 0.1;
-				item.scale.z = 0.1;
+                item.rotation.y = THREE.Math.degToRad(180);
+				item.scale.x = 1;
+				item.scale.y = 1;
+				item.scale.z = 1;
 				sim.scene.add(item);
 				return item;				
 			}
