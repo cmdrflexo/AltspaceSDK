@@ -24,7 +24,7 @@
 			var item;
             var itemModel;
             
-            var yPos = 0;
+            var yPos = 1;
 			
 			function main(_connection) {
 				connection = _connection
@@ -38,7 +38,7 @@
 
 			function CreateTerrain() {
 				var groundPlane = new THREE.Mesh(
-					new THREE.PlaneGeometry(10000, 10000),
+					new THREE.PlaneGeometry(1, 1),
 					new THREE.MeshBasicMaterial({ color: 0x062116 })
 				)
 				groundPlane.position.y = yPos;
