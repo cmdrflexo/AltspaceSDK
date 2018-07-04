@@ -54,20 +54,20 @@
 				return groundPlane;
             }
             
-            function SkySphere(radius, longSegs, latSegs, texURL, isTransparent) {
-                var skySphere = new THREE.Mesh(
-                    new THREE.SphereGeometry(radius, longSegs, latSegs),
-                    new THREE.MeshBasicMaterial({
-                        color: 0xffffff,
-                        transparent : isTransparent,
-                        map: new THREE.Texture({ 
-                            src: altspaceutil.getAbsoluteURL(texURL)
-                        })
-                    })
-                );
-                skySphere.scale.x = -1;
-                return skySphere;
-            }
+            // function SkySphere(radius, longSegs, latSegs, texURL, isTransparent) {
+            //     var skySphere = new THREE.Mesh(
+            //         new THREE.SphereGeometry(radius, longSegs, latSegs),
+            //         new THREE.MeshBasicMaterial({
+            //             color: 0xffffff,
+            //             transparent : isTransparent,
+            //             map: new THREE.Texture({ 
+            //                 src: altspaceutil.getAbsoluteURL(texURL)
+            //             })
+            //         })
+            //     );
+            //     skySphere.scale.x = -1;
+            //     return skySphere;
+            // }
 
 			function loadItemModel(objFilename, mtlFilename) {
 				var loader = new altspace.utilities.shims.OBJMTLLoader();
@@ -130,18 +130,18 @@
         );
     });
 
-    SkyRotate = function(time) {
-        if(time == 0) time = 1;
-        this.rotationSpeed =  (360 / time) * (Math.PI / 180) * 0.001;
+    // SkyRotate = function(time) {
+    //     if(time == 0) time = 1;
+    //     this.rotationSpeed =  (360 / time) * (Math.PI / 180) * 0.001;
 
-        this.awake = function(parent, scene) {
-            this.object3d = parent;
-        }
+    //     this.awake = function(parent, scene) {
+    //         this.object3d = parent;
+    //     }
 
-        this.update = function(deltaTime) {
-            this.object3d.rotation.z += deltaTime * this.rotationSpeed;
-        }
-    }
+    //     this.update = function(deltaTime) {
+    //         this.object3d.rotation.z += deltaTime * this.rotationSpeed;
+    //     }
+    // }
 	
 </script>
 </html>
