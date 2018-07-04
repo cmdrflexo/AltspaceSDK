@@ -29,7 +29,6 @@
 
         sim.scene.add(terrain);
         sim.scene.add(sky.root);
-        // sim.scene.add(sky.skySpheres.day);
         sim.scene.add(sky.skySpheres.night);
     }
 
@@ -45,7 +44,7 @@
 
     function CreateSky() {
         sky = {
-            root: new THREE.Mesh(new THREE.BoxGeometry(0.5, 1, 0.5)),
+            root: new THREE.Mesh(new THREE.BoxGeometry(1, 0.1, 0.1)),
             skySpheres: CreateSkySpheres(32, 16),
             sun: new THREE.Object3D(),
             moon: CreateMoon(10, 64, 32, 45)
