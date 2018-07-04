@@ -38,8 +38,8 @@
 
 			function CreateTerrain() {
 				var groundPlane = new THREE.Mesh(
-					new THREE.PlaneGeometry(1, 1),
-					new THREE.MeshBasicMaterial({ color: 0x062116 })
+					new THREE.PlaneGeometry(10, 10),
+					new THREE.MeshBasicMaterial({ color: 0xffffff })
 				)
 				groundPlane.position.y = yPos;
 				groundPlane.rotation.x = THREE.Math.degToRad(-90);
