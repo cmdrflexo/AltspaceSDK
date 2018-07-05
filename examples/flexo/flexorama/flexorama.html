@@ -25,8 +25,13 @@ function start() {
     
     SetupDebugVisuals();
 
-    var skeleton = altspace.getThreeJSTrackingSkeleton();
-    console.log(skeleton.getJoint("Head"));
+    // var skeleton = 
+    // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+    //     skeleton = _skeleton;
+    //     scene.add(skeleton);
+
+    // });
+    // console.log(skeleton.getJoint("Head"));
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
@@ -34,6 +39,13 @@ function start() {
     // sim.scene.add(terrain);
     sim.scene.add(sky.root);
     sim.scene.add(sky.skySpheres.night);
+}
+
+function waitForJoint(part, side) {
+    var promise = new Promise(function(resolve) {
+        var waitIntervalId
+    });
+    return promise;
 }
 
 </script>
