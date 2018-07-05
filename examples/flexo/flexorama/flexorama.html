@@ -29,6 +29,8 @@ function start() {
         console.log(user.displayName);
     });
 
+    var box = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.1));
+
     var skeleton;
     var head;
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
@@ -36,6 +38,8 @@ function start() {
         scene.add(skeleton);
         head = skeleton.getJoint("Head");
         console.log(head.position);
+        box.position.copy(head.position);
+        head.add(box);
         // waitForJoint("Head").then(function() {
         //     head = skeleton.getJoint("Head");
         // });
