@@ -35,7 +35,7 @@ function start() {
     var head;
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
         skeleton = _skeleton;
-        scene.add(skeleton);
+        sim.scene.add(skeleton);
         head = skeleton.getJoint("Head");
         console.log(head.position);
         box.position.copy(head.position);
