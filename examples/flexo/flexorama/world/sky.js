@@ -96,7 +96,7 @@ function SetupDebugVisuals() {
     );
     zPos.position.set(0, 0.5, 1);
     
-    sim.scene.add(originReference, xPos, zPos);
+    sim.scene.add(originReference, xLine, zLine, xPos, zPos);
 }
 
 function SkySphere(radius, longSegs, latSegs, texURL, isTransparent) {
