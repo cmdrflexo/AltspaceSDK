@@ -13,7 +13,7 @@ function CreateSky() {
         root: new THREE.Mesh(new THREE.BoxGeometry(1, 0.1, 0.1)),
         skySpheres: CreateSkySpheres(32, 16),
         sun: new THREE.Object3D(),
-        moon: CreateMoon(10, 64, 32, 45)
+        moon: CreateMoon(100, 64, 32, 45)
     }
     
     sky.root.position.set(0, 1, 0);
