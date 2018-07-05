@@ -43,10 +43,6 @@
 					modelURL + "flexo_house-01.mtl"
                 );
                 
-                ///
-                console.log("111");
-                ///
-
                 var xPosBox = new THREE.Mesh(
                     new THREE.BoxGeometry(1, 10, 10),
 					new THREE.MeshBasicMaterial({ transparent : true, opacity : 0, color: 0xff0000 })
@@ -102,7 +98,23 @@
                     )
                 );
 
-                sim.scene.add(xPosBox, xNegBox, zPosBox, zNegBox);
+                var corner = new THREE.Mesh(
+                    new THREE.BoxGeometry(4, 10, 6),
+					new THREE.MeshBasicMaterial({ transparent : true, opacity : 0.5, color: 0x00007f })
+                );
+                corner.position.set(2, 1, 4);
+                corner.rotation.y = THREE.Math.degToRad(29);
+                corner.scale.set(0.85, 0.85, 0.85);
+                zNegBox.addBehavior(
+                    new altspaceutil.behaviors.NativeComponent(
+                        "n-mesh-collider", {
+                            type : "environment",
+                            convex : "true"
+                        }
+                    )
+                );
+
+                sim.scene.add(xPosBox, xNegBox, zPosBox, zNegBox, corner);
 			}
 
 			function CreateTerrain() {
