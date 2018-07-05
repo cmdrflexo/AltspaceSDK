@@ -25,13 +25,16 @@ function start() {
     
     SetupDebugVisuals();
 
+    altspace.getUser().then(function(user) {
+        console.log(user);
+    });
+
     // var skeleton = 
     // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
     //     skeleton = _skeleton;
     //     scene.add(skeleton);
-
+        
     // });
-    // console.log(skeleton.getJoint("Head"));
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
@@ -41,12 +44,17 @@ function start() {
     sim.scene.add(sky.skySpheres.night);
 }
 
-function waitForJoint(part, side) {
-    var promise = new Promise(function(resolve) {
-        var waitIntervalId
-    });
-    return promise;
-}
+// function waitForJoint(part, side) {
+//     var promise = new Promise(function(resolve) {
+//         var waitIntervalId = setInterval(function() {
+//             if(skeleton.getJoint(part, side)) {
+//                 clearInterval(waitIntervalId);
+//                 resolve();
+//             }
+//         }, 10);
+//     });
+//     return promise;
+// }
 
 </script>
 </body>
