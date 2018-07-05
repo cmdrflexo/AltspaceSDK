@@ -7,7 +7,7 @@
 <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
 <script src = "../motion/motion.js"></script>
 <script src = "world/sky.js"></script>
-<script src = "../console//Console.html"></script>
+<!-- <script src = "../console/Console.html"></script> -->
 </head>
 <body>
 <script>
@@ -26,10 +26,10 @@ else start();
 function start() {
     sim = new altspace.utilities.Simulation();
     
-    con = new THREE.Object3D();
-    con.addBehavior(altspaceutil.behaviors.Console);
-    sim.scene.add(con);
-    console.log("Console started");
+    // con = new THREE.Object3D();
+    // con.addBehavior(altspaceutil.behaviors.Console);
+    // sim.scene.add(con);
+    // console.log("Console started");
     
     SetupDebugVisuals();
 
