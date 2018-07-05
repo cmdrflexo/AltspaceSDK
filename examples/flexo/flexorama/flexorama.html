@@ -36,7 +36,7 @@ function start() {
     SetupDebugVisuals();
 
     altspace.getUser().then(function(user) {
-        console.log(user.displayName);
+        console.log("User: " + user.displayName);
     });
 
     var box = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.3));
@@ -47,7 +47,12 @@ function start() {
         skeleton = _skeleton;
         sim.scene.add(skeleton);
         head = skeleton.getJoint("Head");
-        console.log(head.position);
+        console.log(
+            "Head position: " + 
+            head.position.x + ", " +
+            head.position.y + ", " +
+            head.position.z
+        );
         head.add(box);
     });
 
