@@ -29,12 +29,17 @@ function start() {
         console.log(user.displayName);
     });
 
-    // var skeleton = 
-    // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-    //     skeleton = _skeleton;
-    //     scene.add(skeleton);
-        
-    // });
+    var skeleton;
+    var head;
+    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+        skeleton = _skeleton;
+        scene.add(skeleton);
+        head = skeleton.getJoint("Head");
+        console.log(head.position);
+        // waitForJoint("Head").then(function() {
+        //     head = skeleton.getJoint("Head");
+        // });
+    });
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
@@ -44,17 +49,17 @@ function start() {
     sim.scene.add(sky.skySpheres.night);
 }
 
-// function waitForJoint(part, side) {
-//     var promise = new Promise(function(resolve) {
-//         var waitIntervalId = setInterval(function() {
-//             if(skeleton.getJoint(part, side)) {
-//                 clearInterval(waitIntervalId);
-//                 resolve();
-//             }
-//         }, 10);
-//     });
-//     return promise;
-// }
+function waitForJoint(part, side) {
+    var promise = new Promise(function(resolve) {
+        var waitIntervalId = setInterval(function() {
+            if(skeleton.getJoint(part, side)) {
+                clearInterval(waitIntervalId);
+                resolve();
+            }
+        }, 10);
+    });
+    return promise;
+}
 
 </script>
 </body>
