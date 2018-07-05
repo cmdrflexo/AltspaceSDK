@@ -38,11 +38,8 @@ function start() {
         sim.scene.add(skeleton);
         head = skeleton.getJoint("Head");
         console.log(head.position);
-        box.position.copy(head.position);
+        // box.position.copy(head.position);
         head.add(box);
-        // waitForJoint("Head").then(function() {
-        //     head = skeleton.getJoint("Head");
-        // });
     });
 
     // var terrain = CreateTerrain();
