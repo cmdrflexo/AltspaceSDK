@@ -8,6 +8,7 @@
 <script src = "../console/Console.js"></script>
 <script src = "../motion/motion.js"></script>
 <script src = "world/sky.js"></script>
+<script src = "plots/plots.js"></script>
 </head>
 <body>
 <script>
@@ -55,6 +56,8 @@ function start() {
         );
         head.add(box);
     });
+
+    head.addBehavior(PlotUserInfo);
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
