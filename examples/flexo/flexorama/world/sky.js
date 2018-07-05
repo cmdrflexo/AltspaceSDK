@@ -79,7 +79,7 @@ function SetupDebugVisuals() {
         new THREE.PlaneGeometry(1, 10000),
         new THREE.MeshBasicMaterial({ color: 0x00007f })
     )
-    zLine.position.y = -1;
+    zLine.position.y = -1.05;
     zLine.rotation.set(
         THREE.Math.degToRad(90), THREE.Math.degToRad(180), 0
     );
