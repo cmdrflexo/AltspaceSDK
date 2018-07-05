@@ -55,9 +55,8 @@ function start() {
             head.position.z
         );
         head.add(box);
+        head.addBehavior(new PlotUserInfo(head));
     });
-
-    head.addBehavior(PlotUserInfo);
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
