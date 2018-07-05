@@ -26,7 +26,7 @@ function start() {
     SetupDebugVisuals();
 
     var skeleton = altspace.getThreeJSTrackingSkeleton();
-    console.log(skeleton);
+    console.log(skeleton.getJoint("Head"));
 
     // var terrain = CreateTerrain();
     var sky = CreateSky();
