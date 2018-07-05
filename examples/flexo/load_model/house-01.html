@@ -41,14 +41,43 @@
 				loadItemModel(
 					modelURL + "flexo_house-01.obj",
 					modelURL + "flexo_house-01.mtl"
-				);
+                );
+                
+                var xPosBox = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 10, 10),
+					new THREE.MeshBasicMaterial({ color: 0xff0000 })
+                );
+                xPosBox.position.z = 2.77;
+                xPosBox.addBehavior(
+                    new atlspaceutil.behaviors.NativeComponent(
+                        "n-mesh-collider", {
+                            type : "environment",
+                            convex : "true"
+                        }
+                    )
+                );
+                var xNegBox = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 10, 10),
+					new THREE.MeshBasicMaterial({ color: 0x7f0000 })
+                );
+                xNegBox.position.z = -2.77;
+                var zPosBox = new THREE.Mesh(
+                    new THREE.BoxGeometry(10, 10, 1),
+					new THREE.MeshBasicMaterial({ color: 0x0000ff })
+                );
+                zPosBox.position.z = 4.86;
+                var zNegBox = new THREE.Mesh(
+                    new THREE.BoxGeometry(10, 10, 1),
+					new THREE.MeshBasicMaterial({ color: 0x00007f })
+                );
+                zNegBox.position.z = -4.86;
 			}
 
 			function CreateTerrain() {
 				var groundPlane = new THREE.Mesh(
 					new THREE.PlaneGeometry(3, 3),
 					new THREE.MeshBasicMaterial({ color: 0xffffff })
-				)
+				);
 				groundPlane.position.set(xPos, yPos, zPos);
 				groundPlane.rotation.x = THREE.Math.degToRad(-90);
 				return groundPlane;
