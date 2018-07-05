@@ -66,6 +66,23 @@ function SetupDebugVisuals() {
     originReference.rotation.set(
         THREE.Math.degToRad(90), THREE.Math.degToRad(180), 0
     );
+
+    var xLine = new THREE.Mesh(
+        new THREE.PlaneGeometry(10000, 1),
+        new THREE.MeshBasicMaterial({ color: 0x7f0000 })
+    )
+    xLine.position.y = -1;
+    xLine.rotation.set(
+        THREE.Math.degToRad(90), THREE.Math.degToRad(180), 0
+    );
+    var zLine = new THREE.Mesh(
+        new THREE.PlaneGeometry(1, 10000),
+        new THREE.MeshBasicMaterial({ color: 0x00007f })
+    )
+    zLine.position.y = -1;
+    zLine.rotation.set(
+        THREE.Math.degToRad(90), THREE.Math.degToRad(180), 0
+    );
     
     var xPos = new THREE.Mesh(
         new THREE.SphereGeometry(0.1, 16, 8),
