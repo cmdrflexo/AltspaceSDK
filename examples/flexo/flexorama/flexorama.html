@@ -7,9 +7,12 @@
 <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
 <script src = "../motion/motion.js"></script>
 <script src = "world/sky.js"></script>
+<script src = "../console//Console.html"></script>
 </head>
 <body>
 <script>
+
+var con;
 
 var compassURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/scenery_objects/compass/cardinal_01.png"
 var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
@@ -22,6 +25,8 @@ else start();
 
 function start() {
     sim = new altspace.utilities.Simulation();
+    
+    con = 
     
     SetupDebugVisuals();
 
