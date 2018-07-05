@@ -22,6 +22,19 @@ else start();
 
 function start() {
     sim = new altspace.utilities.Simulation();
+
+    /////
+    var con = new THREE.Object3D();
+    con.scale.setScalar(0.1);
+    con.position.y = 1;
+    con.addBehavior(new altspaceutil.behaviors.Console({ maxlines: 20, passive: false, spacing: 0.6 }));
+    sim.scene.add(con);
+    sim.scene.updateAllBehaviors();
+
+    for(var i = 0; i < 10; ++i) console.log('info', 'stuff', 'things', 'blargl', 'spoon', i);
+    for(var i = 0; i < 7; ++i) console.error('error', 'stuff', 'things', 'blargl', 'spoon', i);
+    for(var i = 0; i < 10; ++i) console.warn('warning', 'stuff', 'things', 'blargl', 'spoon', i);
+    /////
     
     SetupDebugVisuals();
 
