@@ -25,7 +25,7 @@ function CreateSky() {
     sky.root.add(sky.moon);
     sky.root.add(sky.skySpheres.day);
             
-    sky.root.addBehavior(new SkyRotateZ(600));
+    sky.root.addBehavior(new SkyRotateZ(-600));
     sky.skySpheres.night.addBehavior(new SkyRotate(-2000));
     sky.skySpheres.night.addBehavior(new SkyFade(0, 300));
     sky.moon.addBehavior(new MoonPhasesTest(sky.moon.geometry, sky.moon.material));
