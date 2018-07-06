@@ -35,6 +35,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                     0.25, 
                     moveDir.z * this.moveSpeed * deltaTime
                 );
+
+                console.log("this.object3d.position: " + this.object3d.position);
             }
         }
 
