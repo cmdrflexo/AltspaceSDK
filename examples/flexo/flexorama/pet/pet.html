@@ -22,7 +22,7 @@ var sceneConsole;
 
 function start() {
     sim = new altspace.utilities.Simulation();
-    
+
     // sceneConsole = SetupConsole(20, 0.6);
 
     //
@@ -45,6 +45,8 @@ function start() {
         // // head.addBehavior(new PlotUserInfo(head));
     });
 
+    console.log("head: " + head);
+
     // var followTarget = new THREE.Object3D();
     // followTarget.position.y = 10;
     // sim.scene.add(followTarget);
@@ -59,9 +61,8 @@ function start() {
         })
     );
     follower.position.y = 0.5;
-    follower.addBehavior(new Follower(head, 1, 5));
-    
     sim.scene.add(follower);
+    follower.addBehavior(new Follower(head, 1, 5));
 }
 
 function SetupConsole(maxLines, spacing) {

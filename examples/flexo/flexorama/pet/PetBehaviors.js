@@ -1,6 +1,6 @@
-Follower = function(followTarget, minDistance, maxDistance) {
+Follower = function(_followTarget, minDistance, maxDistance) {
 
-    this.followTarget = followTarget;
+    this.followTarget = _followTarget;
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
@@ -11,8 +11,9 @@ Follower = function(followTarget, minDistance, maxDistance) {
         // if target distance > maxdistance
         // var f = GetDistance(this.object3d.position, this.followTarget.position);
         // console.log("Distance" + f);
-        console.log("follower: " + this.object3d.position);
-        // console.log("target: " + this.followTarget.position);
+        // console.log("follower: " + this.object3d.position);
+        if(_followTarget)
+            console.log("target: " + _followTarget.position);
         // this.object3d.position.set(
         //     this.followTarget.position.x, 0.25, this.followTarget.position.z
         // );
