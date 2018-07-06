@@ -43,7 +43,7 @@ function start() {
             new THREE.MeshBasicMaterial({
                 color: 0xffffff,
                 map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(grassTextureURL)
+                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
                 })
             })
         );
@@ -67,12 +67,12 @@ function CreateTerrain() {
         new THREE.MeshBasicMaterial({ 
             color: 0xffffff,
             map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                    src: altspaceutil.getAbsoluteURL(grassTextureURL)
                 })
         })
     )
-    groundPlane.material.map.repeat.set(0.0001, 0.0001);
-    groundPlane.position.y = -0.1;
+    groundPlane.material.map.repeat.set(10000, 10000);
+    // groundPlane.position.y = -0.1;
     groundPlane.rotation.x = THREE.Math.degToRad(-90);
     return groundPlane;
 }
