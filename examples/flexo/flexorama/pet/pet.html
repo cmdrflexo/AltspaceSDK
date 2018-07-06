@@ -11,9 +11,9 @@
 <body>
 <script>
 
-var ballTextureURL = "";
+var ballTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb.png";
 
-var testing = true;
+var testing = false;
 if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
 else start();
 
@@ -33,7 +33,7 @@ function start() {
     sim.scene.add(followTarget);
 
     var follower = new THREE.Mesh(
-        new THREE.SphereGeometry(0.25, 16, 8),
+        new THREE.SphereGeometry(0.125, 16, 8),
         new THREE.MeshBasicMaterial({
             color: 0xffffff,
             map: new THREE.Texture({ 
@@ -41,6 +41,7 @@ function start() {
             })
         })
     );
+    follower.position.y = 
     follower.addBehavior(new Follower(followTarget, 1, 5));
     
     sim.scene.add(follower);
