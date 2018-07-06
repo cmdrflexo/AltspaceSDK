@@ -49,7 +49,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     }
 
     function GetMoveDirection(v1, v2) {
-        return v2 - v1;
+        return new THREE.Vector3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
     }
 
 }

@@ -45,7 +45,7 @@ function start() {
         // );
         // head.add(box);
         // // head.addBehavior(new PlotUserInfo(head));
-        
+
         follower = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 16),
             new THREE.MeshBasicMaterial({
@@ -56,7 +56,7 @@ function start() {
             })
         );
         follower.position.y = 0.5;
-        follower.addBehavior(new Follower(head, 1, 5));
+        follower.addBehavior(new Follower(head, 1, 5, 1));
         sim.scene.add(follower);
     });
 
