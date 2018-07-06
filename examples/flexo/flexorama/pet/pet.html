@@ -28,12 +28,28 @@ function start() {
     // spin out js to pet.js
     //
 
-    var followTarget = new THREE.Object3D();
-    followTarget.position.y = 10;
-    sim.scene.add(followTarget);
+    var skeleton;
+    var head;
+    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+        skeleton = _skeleton;
+        sim.scene.add(skeleton);
+        head = skeleton.getJoint("Head");
+        // console.log(
+        //     "Head position: " + 
+        //     head.position.x + ", " +
+        //     head.position.y + ", " +
+        //     head.position.z
+        // );
+        // head.add(box);
+        // // head.addBehavior(new PlotUserInfo(head));
+    });
+
+    // var followTarget = new THREE.Object3D();
+    // followTarget.position.y = 10;
+    // sim.scene.add(followTarget);
 
     var follower = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 16, 8),
+        new THREE.SphereGeometry(0.5, 32, 16),
         new THREE.MeshBasicMaterial({
             color: 0xffffff,
             map: new THREE.Texture({ 
@@ -42,7 +58,7 @@ function start() {
         })
     );
     follower.position.y = 0.5;
-    follower.addBehavior(new Follower(followTarget, 1, 5));
+    follower.addBehavior(new Follower(head, 1, 5));
     
     sim.scene.add(follower);
 }

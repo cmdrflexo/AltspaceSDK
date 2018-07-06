@@ -10,6 +10,11 @@ Follower = function(followTarget, minDistance, maxDistance) {
         // get distance to target
         // if target distance > maxdistance
         var f = GetDistance(this.object3d.position, this.followTarget.position);
+        this.object3d.position.set(
+            this.followTarget.position.x,
+            0.25,
+            this.followTarget.position.z
+        );
     }
 
     function GetDistance(v1, v2) {
