@@ -9,8 +9,8 @@ Follower = function(followTarget, minDistance, maxDistance) {
     this.update = function(deltaTime) {
         // get distance to target
         // if target distance > maxdistance
-        var f = GetDistance(this.object3d.position, this.followTarget.position);
-        console.log("Distance" + f);
+        // var f = GetDistance(this.object3d.position, this.followTarget.position);
+        // console.log("Distance" + f);
         console.log("follower: " + this.object3d.position);
         console.log("target: " + this.followTarget.position);
         // this.object3d.position.set(
