@@ -29,17 +29,14 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                     this.followTarget.position
                 );
                 
-                this.object3d.position.set(
-                    this.moveDir.x * this.moveSpeed * deltaTime * 0.001, 
-                    0.25, 
-                    this.moveDir.z * this.moveSpeed * deltaTime * 0.001
-                );
+                this.object3d.position.x = this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
+                this.object3d.position.z = this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
 
                 console.log(
                     "max: " + maxDistance +
                     ", min: " + minDistance
                 );
-                
+
                 console.log(
                     "this.object3d.position: " + 
                     this.object3d.position.x + ", " +
@@ -59,7 +56,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     }
 
     function GetMoveDirection(v1, v2) {
-        return new THREE.Vector3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+        return new THREE.Vector3(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z);
     }
 
 }
