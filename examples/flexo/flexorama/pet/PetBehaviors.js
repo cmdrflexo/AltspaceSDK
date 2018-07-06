@@ -12,11 +12,15 @@ Follower = function(_followTarget, minDistance, maxDistance) {
         // var f = GetDistance(this.object3d.position, this.followTarget.position);
         // console.log("Distance" + f);
         // console.log("follower: " + this.object3d.position);
+        if(this.followTarget)
+            console.log("this.followTarget: " + this.followTarget.position);
+
         if(_followTarget)
-            console.log("target: " + _followTarget.position);
-        // this.object3d.position.set(
-        //     this.followTarget.position.x, 0.25, this.followTarget.position.z
-        // );
+            this.object3d.position.set(
+                _followTarget.position.x, 
+                0.25, 
+                _followTarget.position.z
+            );
     }
 
     function GetDistance(v1, v2) {
