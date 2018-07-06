@@ -13,23 +13,25 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
 
     this.update = function(deltaTime) {
         if(this.followTarget) {
-            var dist = GetDistance(
+            this.dist = GetDistance(
                 this.object3d.position,
                 this.followTarget.position
             );
 
-            if(dist > maxDistance)
+            if(this.dist > this.maxDistance)
                 this.move = true;
-            if(dist <= minDistance)
+            if(this.dist <= this.minDistance)
                 this.move = false;
 
             if(this.move) {
-                var moveDir = GetMoveDirection(
+                this.moveDir = GetMoveDirection(
                     this.object3d.position,
                     this.followTarget.position
                 );
-                this.object3d.position.x = moveDir.x * this.moveSpeed * deltaTime;
-                this.object3d.position.z = moveDir.z * this.moveSpeed * deltaTime;
+                console.log("this.dist: " + this.dist);
+                console.log("this.moveDir: " + this.moveDir);
+                // this.object3d.position.x = moveDir.x * this.moveSpeed * deltaTime;
+                // this.object3d.position.z = moveDir.z * this.moveSpeed * deltaTime;
             }
         }
 
