@@ -5,7 +5,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     this.maxDistance = maxDistance;
     this.moveSpeed = moveSpeed;
 
-    this.move = false;
+    this.moveTowards = false;
+    this.moveAway = false;
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
@@ -19,18 +20,26 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
             );
 
             if(this.dist > this.maxDistance)
-                this.move = true;
+                this.moveTowards = true;
             if(this.dist <= this.minDistance)
-                this.move = false;
+                this.moveTowards = false;
 
-            if(this.move) {
-                this.moveDir = GetMoveDirection(
-                    this.object3d.position,
-                    this.followTarget.position
-                );
-                
+            this.moveAway = this.dist < this.minDistance / 2;
+
+            this.moveDir = GetMoveDirection(
+                this.object3d.position,
+                this.followTarget.position
+            );
+
+            if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
                 this.object3d.position.z += this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
+                this.object3d.rotation.x += THREE.Math.degToRad(0.01 * deltaTime);
+            }
+            if(this.moveAway) {
+                this.object3d.position.x -= this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
+                this.object3d.position.z -= this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
+                this.object3d.rotation.x -= THREE.Math.degToRad(0.01 * deltaTime);
             }
         }
 
