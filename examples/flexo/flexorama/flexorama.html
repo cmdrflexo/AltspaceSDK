@@ -22,17 +22,13 @@ var testing = false;
 if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
 else start();
 
+var sim;
+var sceneConsole;
+
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    /////
-    var con = new THREE.Object3D();
-    con.scale.setScalar(0.1);
-    con.position.y = 1;
-    con.addBehavior(new altspaceutil.behaviors.Console({ maxlines: 20, passive: false, spacing: 0.6 }));
-    sim.scene.add(con);
-    sim.scene.updateAllBehaviors();
-    /////
+    sceneConsole = SetupConsole(20, 0.6);
     
     SetupDebugVisuals();
 
@@ -64,6 +60,14 @@ function start() {
     // sim.scene.add(terrain);
     sim.scene.add(sky.root);
     sim.scene.add(sky.skySpheres.night);
+}
+
+function SetupSceneConsole(maxLines, spacing) {
+    con = new THREE.Object3D();
+    con.addBehavior(new altspaceutil.behaviors.Console({ maxlines: maxLines, passive: false, spacing: spacing }));
+    sim.scene.add(con);
+    sim.scene.updateAllBehaviors();
+    return con;
 }
 
 // function waitForJoint(part, side) {
