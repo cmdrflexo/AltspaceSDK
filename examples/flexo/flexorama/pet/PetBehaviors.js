@@ -28,13 +28,13 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                     this.object3d.position,
                     this.followTarget.position
                 );
-                console.log("this.dist: " + this.dist);
-                console.log("this.moveDir: " + this.moveDir);
-                // this.object3d.position.set(
-                //     moveDir.x * this.moveSpeed * deltaTime, 
-                //     0.25, 
-                //     moveDir.z * this.moveSpeed * deltaTime
-                // );
+                // console.log("this.dist: " + this.dist);
+                // console.log("this.moveDir: " + this.moveDir);
+                this.object3d.position.set(
+                    moveDir.x * this.moveSpeed * deltaTime, 
+                    0.25, 
+                    moveDir.z * this.moveSpeed * deltaTime
+                );
             }
         }
 
