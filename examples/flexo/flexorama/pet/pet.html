@@ -63,7 +63,7 @@ function SetupConsole(maxLines, spacing) {
 
 function CreateTerrain() {
     var plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(10000, 10000),
+        new THREE.PlaneGeometry(1000, 1000),
         new THREE.MeshBasicMaterial({ 
             color: 0xffffff,
             map: new THREE.Texture({ 
@@ -71,7 +71,7 @@ function CreateTerrain() {
             })
         })
     )
-    plane.material.map.repeat.set(10000, 10000);
+    plane.material.map.repeat.set(1000, 1000);
     plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
     plane.rotation.x = THREE.Math.degToRad(-90);
     return plane;
