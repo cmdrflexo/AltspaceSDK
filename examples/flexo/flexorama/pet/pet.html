@@ -12,6 +12,7 @@
 <script>
 
 var ballTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb.png";
+var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
 
 var testing = false;
 if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
@@ -42,7 +43,7 @@ function start() {
             new THREE.MeshBasicMaterial({
                 color: 0xffffff,
                 map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                    src: altspaceutil.getAbsoluteURL(grassTextureURL)
                 })
             })
         );
@@ -63,8 +64,14 @@ function SetupConsole(maxLines, spacing) {
 function CreateTerrain() {
     var groundPlane = new THREE.Mesh(
         new THREE.PlaneGeometry(10000, 10000),
-        new THREE.MeshBasicMaterial({ color: 0x062116 })
+        new THREE.MeshBasicMaterial({ 
+            color: 0xffffff,
+            map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                })
+        })
     )
+    groundPlane.material.map.repeat.set(0.0001, 0.0001);
     groundPlane.position.y = -0.1;
     groundPlane.rotation.x = THREE.Math.degToRad(-90);
     return groundPlane;
