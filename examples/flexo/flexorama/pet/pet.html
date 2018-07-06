@@ -25,9 +25,7 @@ function start() {
 
     // sceneConsole = SetupConsole(20, 0.6);
 
-    //
-    // spin out js to pet.js
-    //
+    sim.scene.add(CreateTerrain());
 
     var follower;
 
@@ -36,18 +34,11 @@ function start() {
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
         skeleton = _skeleton;
         sim.scene.add(skeleton);
-        head = skeleton.getJoint("Head");
-        // console.log(
-        //     "Head position: " + 
-        //     head.position.x + ", " +
-        //     head.position.y + ", " +
-        //     head.position.z
-        // );
-        // head.add(box);
-        // // head.addBehavior(new PlotUserInfo(head));
 
+        head = skeleton.getJoint("Head");
+        
         follower = new THREE.Mesh(
-            new THREE.SphereGeometry(0.5, 32, 16),
+            new THREE.SphereGeometry(0.25, 32, 16),
             new THREE.MeshBasicMaterial({
                 color: 0xffffff,
                 map: new THREE.Texture({ 
@@ -55,14 +46,10 @@ function start() {
                 })
             })
         );
-        // follower.position.y = 0.25;
-        follower.addBehavior(new Follower(head, 1, 5, 1));
+        follower.position.y = 0.25;
+        follower.addBehavior(new Follower(head, 2, 4, 0.25));
         sim.scene.add(follower);
     });
-
-    // var followTarget = new THREE.Object3D();
-    // followTarget.position.y = 10;
-    // sim.scene.add(followTarget);
 }
 
 function SetupConsole(maxLines, spacing) {
@@ -71,6 +58,16 @@ function SetupConsole(maxLines, spacing) {
     sim.scene.add(con);
     sim.scene.updateAllBehaviors();
     return con;
+}
+
+function CreateTerrain() {
+    var groundPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10000, 10000),
+        new THREE.MeshBasicMaterial({ color: 0x062116 })
+    )
+    groundPlane.position.y = -0.1;
+    groundPlane.rotation.x = THREE.Math.degToRad(-90);
+    return groundPlane;
 }
 
 </script>
