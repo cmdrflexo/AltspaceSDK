@@ -73,6 +73,8 @@ function CreateTerrain() {
         })
     )
     groundPlane.material.map.repeat.set(2, 2);
+    groundPlane.material.map.wrapS = THREE.RepeatWrapping;
+    groundPlane.material.map.wrapT = THREE.RepeatWrapping;
     // groundPlane.material.map.repeat.set(10000, 10000);
     // groundPlane.position.y = -0.1;
     groundPlane.rotation.x = THREE.Math.degToRad(-90);
