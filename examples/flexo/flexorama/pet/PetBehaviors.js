@@ -31,9 +31,9 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 // console.log("this.dist: " + this.dist);
                 // console.log("this.moveDir: " + this.moveDir);
                 this.object3d.position.set(
-                    this.moveDir.x * this.moveSpeed * deltaTime, 
+                    this.moveDir.x * this.moveSpeed * deltaTime * 0.001, 
                     0.25, 
-                    this.moveDir.z * this.moveSpeed * deltaTime
+                    this.moveDir.z * this.moveSpeed * deltaTime * 0.001
                 );
 
                 console.log("this.object3d.position: " + this.object3d.position);
