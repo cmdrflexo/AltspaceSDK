@@ -62,23 +62,19 @@ function SetupConsole(maxLines, spacing) {
 }
 
 function CreateTerrain() {
-    var groundPlane = new THREE.Mesh(
-        // new THREE.PlaneGeometry(10000, 10000),
-        new THREE.PlaneGeometry(1, 1),
+    var plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10000, 10000),
         new THREE.MeshBasicMaterial({ 
             color: 0xffffff,
             map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(grassTextureURL)
-                })
+                src: altspaceutil.getAbsoluteURL(grassTextureURL)
+            })
         })
     )
-    groundPlane.material.map.repeat.set(2, 2);
-    groundPlane.material.map.wrapS = THREE.RepeatWrapping;
-    groundPlane.material.map.wrapT = THREE.RepeatWrapping;
-    // groundPlane.material.map.repeat.set(10000, 10000);
-    // groundPlane.position.y = -0.1;
-    groundPlane.rotation.x = THREE.Math.degToRad(-90);
-    return groundPlane;
+    plane.material.map.repeat.set(10000, 10000);
+    plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
+    plane.rotation.x = THREE.Math.degToRad(-90);
+    return plane;
 }
 
 </script>
