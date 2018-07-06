@@ -63,7 +63,8 @@ function SetupConsole(maxLines, spacing) {
 
 function CreateTerrain() {
     var groundPlane = new THREE.Mesh(
-        new THREE.PlaneGeometry(10000, 10000),
+        // new THREE.PlaneGeometry(10000, 10000),
+        new THREE.PlaneGeometry(1, 1),
         new THREE.MeshBasicMaterial({ 
             color: 0xffffff,
             map: new THREE.Texture({ 
@@ -71,7 +72,8 @@ function CreateTerrain() {
                 })
         })
     )
-    groundPlane.material.map.repeat.set(10000, 10000);
+    groundPlane.material.map.repeat.set(2, 2);
+    // groundPlane.material.map.repeat.set(10000, 10000);
     // groundPlane.position.y = -0.1;
     groundPlane.rotation.x = THREE.Math.degToRad(-90);
     return groundPlane;
