@@ -33,7 +33,7 @@ function start() {
     sim.scene.add(followTarget);
 
     var follower = new THREE.Mesh(
-        new THREE.SphereGeometry(0.125, 16, 8),
+        new THREE.SphereGeometry(1, 16, 8),
         new THREE.MeshBasicMaterial({
             color: 0xffffff,
             map: new THREE.Texture({ 
@@ -41,7 +41,7 @@ function start() {
             })
         })
     );
-    follower.position.y = 
+    follower.position.y = 0.5;
     follower.addBehavior(new Follower(followTarget, 1, 5));
     
     sim.scene.add(follower);
