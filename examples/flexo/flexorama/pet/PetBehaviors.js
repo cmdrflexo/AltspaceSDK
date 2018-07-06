@@ -30,16 +30,15 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 );
                 console.log("this.dist: " + this.dist);
                 console.log("this.moveDir: " + this.moveDir);
-                // this.object3d.position.x = moveDir.x * this.moveSpeed * deltaTime;
-                // this.object3d.position.z = moveDir.z * this.moveSpeed * deltaTime;
+                // this.object3d.position.set(
+                //     moveDir.x * this.moveSpeed * deltaTime, 
+                //     0.25, 
+                //     moveDir.z * this.moveSpeed * deltaTime
+                // );
             }
         }
 
-        // this.object3d.position.set(
-        //     this.followTarget.position.x, 
-        //     0.25, 
-        //     this.followTarget.position.z
-        // );
+        
     }
 
     function GetDistance(v1, v2) {
