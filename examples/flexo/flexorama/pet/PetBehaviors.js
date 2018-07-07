@@ -33,14 +33,14 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 this.followTarget.position
             );
 
-            // this.rotation += deltaTime * 0.01;
-            // this.object3d.rotateOnAxis(
-            //     GetRotateAxis(this.moveDir.normalize()),
-            //     this.rotation
-            // );
+            this.rotation += deltaTime * 0.01;
+            this.object3d.rotateOnAxis(
+                GetRotateAxis(this.moveDir.normalize()).normalize(),
+                this.rotation
+            );
 
-            console.log("GetRotateAxis(this.moveDir.normalize()) length: " + GetRotateAxis(this.moveDir.normalize()).length());
-            console.log("GetRotateAxis(this.moveDir.normalize()).normalize() length: " + GetRotateAxis(this.moveDir.normalize()).normalize().length());
+            // console.log("GetRotateAxis(this.moveDir.normalize()) length: " + GetRotateAxis(this.moveDir.normalize()).length());
+            // console.log("GetRotateAxis(this.moveDir.normalize()).normalize() length: " + GetRotateAxis(this.moveDir.normalize()).normalize().length());
 
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
@@ -71,14 +71,4 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
             travelVector.x * Math.sin(rads) - travelVector.y * Math.cos(rads)
         );
     }
-
-    /*
-    static double[] RotateVector2d(double x, double y, double degrees) {
-        double[] result = new double[2];
-        result[0] = x * Math.Cos(degrees) - y * Math.Sin(degrees);
-        result[1] = x * Math.Sin(degrees) + y * Math.Cos(degrees);
-        return result;
-    }
-    */
-
 }
