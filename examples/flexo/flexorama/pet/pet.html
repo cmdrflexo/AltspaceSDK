@@ -41,7 +41,7 @@ function start() {
         follower = new THREE.Mesh(
             new THREE.SphereGeometry(0.25, 32, 16),
             new THREE.MeshBasicMaterial({
-                color: 0xffffff,
+                color: 0x007f7f,
                 map: new THREE.Texture({ 
                     src: altspaceutil.getAbsoluteURL(ballTextureURL)
                 })
@@ -65,7 +65,7 @@ function CreateTerrain() {
     var plane = new THREE.Mesh(
         new THREE.PlaneGeometry(1000, 1000),
         new THREE.MeshBasicMaterial({ 
-            color: 0x007f7f,
+            color: 0xffffff,
             map: new THREE.Texture({ 
                 src: altspaceutil.getAbsoluteURL(grassTextureURL)
             })
