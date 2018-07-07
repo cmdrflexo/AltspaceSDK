@@ -45,7 +45,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             if(this.moveTowards || this.moveAway)
                 this.object3d.rotateOnWorldAxis(
                     this.axis,
-                    this.moveTowards ? rotate : -rotate
+                    this.moveTowards ? this.rotate : -this.rotate
                 );
 
             if(this.moveTowards) {
