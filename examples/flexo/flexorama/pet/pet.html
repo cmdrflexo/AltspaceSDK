@@ -72,7 +72,7 @@ function CreateDogFollower(userHead, scale) {
     dog.add(parts.legBackL);
     dog.add(parts.legBackR);
 
-    parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
+    parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 45));
     parts.tailRoot.addBehavior(new TESTTailWag());
 
     dog.position.y = 10 * scale;
