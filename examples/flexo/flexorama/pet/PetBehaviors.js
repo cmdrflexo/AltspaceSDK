@@ -73,8 +73,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
         var rads = THREE.Math.degToRad(-90);
         // return new THREE.Vector3(1, 0, 0);
         return new THREE.Vector3(
-            travelVector.x * Math.cos(rads) - travelVector.y * Math.sin(rads), 0,
-            travelVector.x * Math.sin(rads) - travelVector.y * Math.cos(rads)
+            travelVector.x * Math.cos(rads) - travelVector.z * Math.sin(rads), 0,
+            travelVector.x * Math.sin(rads) - travelVector.z * Math.cos(rads)
         );
     }
 }
