@@ -45,12 +45,12 @@ function start() {
         
         // CreateBBFollower(head);
 
-        CreateDogFollower();
+        CreateDogFollower(head);
 
     });
 }
 
-function CreateDogFollower() {
+function CreateDogFollower(head) {
     var parts = DogParts();
     var dog = new THREE.Object3D();
     dog.add(parts.bodyRoot);
@@ -66,7 +66,7 @@ function CreateDogFollower() {
 
     dog.position.y = 0.625;
     dog.scale.set(0.0625, 0.0625, 0.0625);
-    
+
     sim.scene.add(dog);
 }
 
