@@ -33,10 +33,11 @@ TESTTailWag = function() {
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.rotateOnAxis(
-            new THREE.Vector3(0, 1, 0), 
-            THREE.Math.degToRad(Math.sin(timer))
-        );
+        this.object3d.rotation.y = THREE.Math.degToRad(180 * Math.sin(timer));
+        // this.object3d.rotateOnAxis(
+        //     new THREE.Vector3(0, 1, 0), 
+        //     THREE.Math.degToRad(Math.sin(timer))
+        // );
     }
 }
 
