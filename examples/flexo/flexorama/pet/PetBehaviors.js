@@ -31,15 +31,22 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 this.followTarget.position
             );
 
+            // this.rotateAxis = GetRotateAxis(this.moveDir);
+
+            this.object3d.rotateOnAxis(
+                new THREE.Vector3(0, 1, 0),
+                deltaTime * 0.01
+            );
+
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
                 this.object3d.position.z += this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
-                this.object3d.rotation.x += THREE.Math.degToRad(0.01 * deltaTime);
+                // this.object3d.rotation.x += THREE.Math.degToRad(0.01 * deltaTime);
             }
             if(this.moveAway) {
                 this.object3d.position.x -= this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
                 this.object3d.position.z -= this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
-                this.object3d.rotation.x -= THREE.Math.degToRad(0.01 * deltaTime);
+                // this.object3d.rotation.x -= THREE.Math.degToRad(0.01 * deltaTime);
             }
         }
 
@@ -54,6 +61,10 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
 
     function GetMoveDirection(v1, v2) {
         return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
+    }
+
+    function GetRotateAxis(travelVector) {
+        //
     }
 
 }
