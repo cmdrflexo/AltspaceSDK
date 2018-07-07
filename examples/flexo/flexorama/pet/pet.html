@@ -50,7 +50,7 @@ function start() {
     });
 }
 
-function CreateDogFollower(head) {
+function CreateDogFollower(userHead) {
     var parts = DogParts();
     var dog = new THREE.Object3D();
     dog.add(parts.bodyRoot);
@@ -62,7 +62,7 @@ function CreateDogFollower(head) {
     dog.add(parts.legBackL);
     dog.add(parts.legBackR);
 
-    parts.headRoot.addBehavior(new AttentionLook(head, 0, 10, 0));
+    parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
 
     dog.position.y = 0.625;
     dog.scale.set(0.0625, 0.0625, 0.0625);
@@ -91,7 +91,7 @@ function DogParts() {
     var head = DogHead();
     head.position.z = 1.5;
     parts.headRoot.add(head);
-    parts.headRoot.position.z = 4;
+    // parts.headRoot.position.z = 4;
 
     var tail = BoxObject(2, 2, 10);
     tail.position.z = -5;
