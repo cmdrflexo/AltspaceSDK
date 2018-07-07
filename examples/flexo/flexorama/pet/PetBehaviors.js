@@ -36,17 +36,16 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
             this.moveDirNorm = this.moveDir.clone().normalize();
 
             this.axis = GetRotateAxis(this.moveDir).normalize();
-
-            // this.object3d.rotateOnWorldAxis(
-            //     this.axis,
-            //     THREE.Math.degToRad(0.36 * deltaTime)
-            // );
             
             if(this.moveTowards || this.moveAway)
-                this.object3d.rotateOnAxis(
+                this.object3d.rotateOnWorldAxis(
                     this.axis,
                     THREE.Math.degToRad(0.36 * deltaTime)
                 );
+                // this.object3d.rotateOnAxis(
+                //     this.axis,
+                //     THREE.Math.degToRad(0.36 * deltaTime)
+                // );
 
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
