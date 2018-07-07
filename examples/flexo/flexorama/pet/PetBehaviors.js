@@ -23,7 +23,7 @@ AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
     }
 
     this.update = function(deltaTime) {
-        if(this.zPos < 1) this.zPos += deltaTime * 0.001;
+        if(this.zPos < 3) this.zPos += deltaTime * 0.001;
         else this.zPos = 0;
         this.object3d.position.z = this.zPos;
         
