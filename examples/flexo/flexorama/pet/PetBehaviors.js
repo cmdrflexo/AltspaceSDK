@@ -25,7 +25,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             this.fhead.lookAt(this.followTarget.position);
             this.fhead.rotateOnAxis(
                 new THREE.Vector3(1, 0, 0), 
-                THREE.Math.degToRad(45)
+                THREE.Math.degToRad(22.5)
             );
 
             this.dist = GetDistance(
