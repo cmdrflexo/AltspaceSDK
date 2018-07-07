@@ -12,7 +12,8 @@
 <body>
 <script>
 
-var ballTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb.png";
+var bbBallTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb.png";
+var bbHeadTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb-head.png";
 var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
 
 var testing = false;
@@ -44,7 +45,7 @@ function start() {
             new THREE.MeshBasicMaterial({
                 color: 0x7f7f7f,
                 map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                    src: altspaceutil.getAbsoluteURL(bbHeadTextureURL)
                 })
             })
         );
@@ -54,9 +55,9 @@ function start() {
         follower = new THREE.Mesh(
             new THREE.SphereGeometry(0.25, 32, 16),
             new THREE.MeshBasicMaterial({
-                color: 0x7fff7f,
+                color: 0xffffff,
                 map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                    src: altspaceutil.getAbsoluteURL(bbBallTextureURL)
                 })
             })
         );
