@@ -62,8 +62,11 @@ function CreateDogFollower() {
     dog.add(parts.legBackL);
     dog.add(parts.legBackR);
 
+    parts.headRoot.addBehavior(new AttentionLook(head, 0, 10, 0));
+
     dog.position.y = 0.625;
     dog.scale.set(0.0625, 0.0625, 0.0625);
+    
     sim.scene.add(dog);
 }
 
