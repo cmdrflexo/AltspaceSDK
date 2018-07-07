@@ -1,9 +1,11 @@
-Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
+Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
     this.followTarget = followTarget;
     this.minDistance = minDistance;
     this.maxDistance = maxDistance;
     this.moveSpeed = moveSpeed;
+
+    this.fhead = fhead;
 
     this.moveTowards = false;
     this.moveAway = false;
@@ -16,6 +18,11 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
 
     this.update = function(deltaTime) {
         if(this.followTarget) {
+
+            this.fhead.position.set(
+                this.object3d.position.x, 0.5, this.object3d.z
+            );
+
             this.dist = GetDistance(
                 this.object3d.position,
                 this.followTarget.position
@@ -33,19 +40,13 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 this.followTarget.position
             );
 
-            this.moveDirNorm = this.moveDir.clone().normalize();
-
             this.axis = GetRotateAxis(this.moveDir).normalize();
-            
+            this.rotate = THREE.Math.degToRad(0.36 * deltaTime);
             if(this.moveTowards || this.moveAway)
                 this.object3d.rotateOnWorldAxis(
                     this.axis,
-                    THREE.Math.degToRad(0.36 * deltaTime)
+                    this.moveTowards ? rotate : -rotate
                 );
-                // this.object3d.rotateOnAxis(
-                //     this.axis,
-                //     THREE.Math.degToRad(0.36 * deltaTime)
-                // );
 
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;

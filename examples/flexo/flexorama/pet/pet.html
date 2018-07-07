@@ -38,6 +38,18 @@ function start() {
         sim.scene.add(skeleton);
 
         head = skeleton.getJoint("Head");
+
+        followerHead = new THREE.Mesh(
+            new THREE.SphereGeometry(0.083, 32, 16),
+            new THREE.MeshBasicMaterial({
+                color: 0x7f7f7f,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(ballTextureURL)
+                })
+            })
+        );
+        follower.position.y = 0.5;
+        sim.scene.add(followerHead);
         
         follower = new THREE.Mesh(
             new THREE.SphereGeometry(0.25, 32, 16),
@@ -49,7 +61,7 @@ function start() {
             })
         );
         follower.position.y = 0.25;
-        follower.addBehavior(new Follower(head, 2, 4, 0.25));
+        follower.addBehavior(new Follower(head, 2, 4, 0.25, followerHead));
         sim.scene.add(follower);
     });
 }
