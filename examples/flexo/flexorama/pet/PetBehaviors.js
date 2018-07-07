@@ -20,8 +20,9 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
         if(this.followTarget) {
 
             this.fhead.position.set(
-                this.object3d.position.x, 0.5, this.object3d.position.z
+                this.object3d.position.x, 0.25, this.object3d.position.z
             );
+            this.fhead.lookAt(this.followTarget.position);
 
             this.dist = GetDistance(
                 this.object3d.position,
