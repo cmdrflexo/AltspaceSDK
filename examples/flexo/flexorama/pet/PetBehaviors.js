@@ -33,12 +33,14 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 this.followTarget.position
             );
 
-            // this.axis = GetRotateAxis(this.moveDir.normalize()).normalize();
-            // this.rotation += deltaTime * 0.001;
-            // this.object3d.rotateOnAxis(
-            //     this.axis,
-            //     this.rotation
-            // );
+            this.moveDirNorm = this.moveDir.clone().normalize();
+
+            this.axis = GetRotateAxis(this.moveDir).normalize();
+            this.rotation += deltaTime * 0.001;
+            this.object3d.rotateOnAxis(
+                this.axis,
+                this.rotation
+            );
 
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
@@ -63,7 +65,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     }
 
     function GetRotateAxis(travelVector) {
-        var rads = THREE.Math.degToRad(270);
+        var rads = THREE.Math.degToRad(90);
         return new THREE.Vector3(
             travelVector.x * Math.cos(rads) - travelVector.y * Math.sin(rads), 0,
             travelVector.x * Math.sin(rads) - travelVector.y * Math.cos(rads)
