@@ -71,7 +71,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     }
 
     function GetRotateAxis(travelVector) {
-        var rads = THREE.Math.degToRad(-90);
+        var rads = THREE.Math.degToRad(270);
         return new THREE.Vector3(
             travelVector.x * Math.cos(rads) - travelVector.y * Math.sin(rads), 0,
             travelVector.x * Math.sin(rads) - travelVector.y * Math.cos(rads)
