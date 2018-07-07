@@ -34,8 +34,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
             // this.rotateAxis = GetRotateAxis(this.moveDir);
 
             this.object3d.rotateOnAxis(
-                new THREE.Vector3(0, 1, 0),
-                deltaTime * 0.01
+                GetRotateAxis(this.moveDir),
+                deltaTime * 0.001
             );
 
             if(this.moveTowards) {
@@ -64,7 +64,20 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
     }
 
     function GetRotateAxis(travelVector) {
-        //
+        var rads = THREE.Math.degToRad(90);
+        return new THREE.Vector3(
+            travelVector.x * Math.cos(rads) - travelVector.y * Math.sin(rads), 0,
+            travelVector.x * Math.sin(rads) - travelVector.y * Math.cos(rads)
+        );
     }
+
+    /*
+    static double[] RotateVector2d(double x, double y, double degrees) {
+        double[] result = new double[2];
+        result[0] = x * Math.Cos(degrees) - y * Math.Sin(degrees);
+        result[1] = x * Math.Sin(degrees) + y * Math.Cos(degrees);
+        return result;
+    }
+    */
 
 }
