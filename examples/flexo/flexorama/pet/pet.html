@@ -15,6 +15,7 @@
 var bbBallTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb.png";
 var bbHeadTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/pet/bb-head.png";
 var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
+var gradTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grad.png";
 
 var testing = false;
 if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
@@ -119,7 +120,10 @@ function BoxObject(width, height, depth) {
     return new THREE.Mesh(
         new THREE.BoxGeometry(width, height, depth),
         new THREE.MeshBasicMaterial({
-            color : 0xffffff
+            color : 0xffffff,
+            map : new THREE.Texture({ 
+                src: altspaceutil.getAbsoluteURL(gradTextureURL)
+            })
         })
     );
 }
