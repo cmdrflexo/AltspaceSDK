@@ -1,3 +1,14 @@
+TESTRotations = function() {
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        
+    }
+}
+
 AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
 
     this.lookTarget = lookTarget;
@@ -5,11 +16,17 @@ AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
     this.maxLook = maxLook;
     this.tiltX = tiltX;
 
+    this.zPos = 0;
+
     this.awake = function(parent) {
         this.object3d = parent;
     }
 
     this.update = function(deltaTime) {
+        if(this.zPos < 1) this.zPos += deltaTime * 0.001;
+        else this.zPos = 0;
+        this.object3d.position.z = this.zPos;
+        
         if(this.lookTarget) {
             this.object3d.lookAt(this.lookTarget.position);
             this.object3d.rotateOnAxis(

@@ -72,11 +72,11 @@ function CreateDogFollower(userHead) {
     dog.add(parts.legBackL);
     dog.add(parts.legBackR);
 
-    // parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
-    parts.headRoot.position.z = 4;
+    parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
+    // parts.headRoot.addBehavior(new TESTRotations());
 
-    dog.position.y = 0.625;
-    dog.scale.set(0.0625, 0.0625, 0.0625);
+    dog.position.y = 0.4125
+    dog.scale.set(0.04125, 0.04125, 0.04125);
 
     sim.scene.add(dog);
     return dog;
@@ -103,7 +103,7 @@ function DogParts() {
     var head = DogHead();
     head.position.z = 1.5;
     parts.headRoot.add(head);
-    // parts.headRoot.position.z = 4;
+    parts.headRoot.position.z = 4;
 
     var tail = BoxObject(2, 2, 10);
     tail.position.z = -5;
