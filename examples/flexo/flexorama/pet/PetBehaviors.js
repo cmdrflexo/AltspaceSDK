@@ -38,7 +38,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
             this.axis = GetRotateAxis(this.moveDir).normalize();
             this.rotation += deltaTime * 0.001;
             this.object3d.rotateOnAxis(
-                this.axis,
+                // this.axis,
+                this.moveDirNorm,
                 this.rotation
             );
 
