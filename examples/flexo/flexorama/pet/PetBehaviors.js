@@ -12,10 +12,10 @@ AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
     this.update = function(deltaTime) {
         if(this.lookTarget) {
             this.object3d.lookAt(this.lookTarget.position);
-            this.object3d.rotateOnAxis(
-                new THREE.Vector3(1, 0, 0), 
-                THREE.Math.degToRad(this.tiltX)
-            );
+            // this.object3d.rotateOnAxis(
+            //     new THREE.Vector3(1, 0, 0), 
+            //     THREE.Math.degToRad(this.tiltX)
+            // );
         }
     }
 }
