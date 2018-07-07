@@ -12,9 +12,9 @@ AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
     }
 
     this.update = function(deltaTime) {
-        if(this.zPos < 3) this.zPos += deltaTime * 0.001;
-        else this.zPos = 0;
-        this.object3d.position.z = this.zPos;
+        // if(this.zPos < 3) this.zPos += deltaTime * 0.001;
+        // else this.zPos = 0;
+        // this.object3d.position.z = this.zPos;
         
         if(this.lookTarget) {
             this.object3d.lookAt(this.lookTarget.position);
@@ -23,6 +23,20 @@ AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
                 THREE.Math.degToRad(this.tiltX)
             );
         }
+    }
+}
+
+TESTTailWag = function() {
+    this.timer = 0;
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+    this.update = function(deltaTime) {
+        this.timer += deltaTime * 0.001;
+        this.object3d.rotateOnAxis(
+            new THREE.Vector3(0, 1, 0), 
+            THREE.Math.degToRad(Math.sin(timer))
+        );
     }
 }
 

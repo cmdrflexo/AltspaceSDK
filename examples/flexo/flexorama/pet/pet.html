@@ -73,6 +73,7 @@ function CreateDogFollower(userHead, scale) {
     dog.add(parts.legBackR);
 
     parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
+    parts.tailRoot.addBehavior(new TESTTailWag());
 
     dog.position.y = 10 * scale;
 
@@ -84,8 +85,8 @@ function DogParts(scale) {
     var parts =  {
         bodyRoot  : new THREE.Object3D(),
         neck      : BoxObject(8, 8, 6, scale, boxTextureURL),
-        // headRoot: new THREE.Object3D(),
-        headRoot  : BoxObject(100, 1, 1, scale, boxTextureURL),
+        headRoot: new THREE.Object3D(),
+        // headRoot  : BoxObject(100, 1, 1, scale, boxTextureURL),
         tailRoot  : new THREE.Object3D(),
         legFrontL : BoxObject(2, 8, 2, scale, boxTextureURL),
         legFrontR : BoxObject(2, 8, 2, scale, boxTextureURL),
