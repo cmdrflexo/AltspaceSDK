@@ -63,6 +63,7 @@ function CreateDogFollower(userHead) {
     dog.add(parts.legBackR);
 
     parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
+    parts.headRoot.position.z = 4;
 
     dog.position.y = 0.625;
     dog.scale.set(0.0625, 0.0625, 0.0625);
