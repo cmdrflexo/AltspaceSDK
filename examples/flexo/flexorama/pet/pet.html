@@ -45,23 +45,23 @@ function start() {
         
         // CreateBBFollower(head);
 
-        var dog = CreateDogFollower(head);
+        var dog = CreateDogFollower(head, 0.04125);
         
-        var dog2 = CreateDogFollower(head);
-        dog2.position.x = 1;
-        dog2.position.y = 0.625 * 0.5;
-        dog2.scale.set(0.0625 * 0.5, 0.0625 * 0.5, 0.0625 * 0.5);
+        // var dog2 = CreateDogFollower(head);
+        // dog2.position.x = 1;
+        // dog2.position.y = 0.625 * 0.5;
+        // dog2.scale.set(0.0625 * 0.5, 0.0625 * 0.5, 0.0625 * 0.5);
 
-        var dog3 = CreateDogFollower(head);
-        dog3.position.x = 2;
-        dog3.position.y = 0.625 * 0.66;
-        dog3.scale.set(0.0625 * 0.66, 0.0625 * 0.66, 0.0625 * 0.66);
+        // var dog3 = CreateDogFollower(head);
+        // dog3.position.x = 2;
+        // dog3.position.y = 0.625 * 0.66;
+        // dog3.scale.set(0.0625 * 0.66, 0.0625 * 0.66, 0.0625 * 0.66);
 
     });
 }
 
-function CreateDogFollower(userHead) {
-    var parts = DogParts();
+function CreateDogFollower(userHead, scale) {
+    var parts = DogParts(scale);
     var dog = new THREE.Object3D();
     dog.add(parts.bodyRoot);
     dog.add(parts.neck);
@@ -73,74 +73,72 @@ function CreateDogFollower(userHead) {
     dog.add(parts.legBackR);
 
     parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 0));
-    // parts.headRoot.addBehavior(new TESTRotations());
 
-    dog.position.y = 0.4125
-    dog.scale.set(0.04125, 0.04125, 0.04125);
+    dog.position.y = 10 * scale;
 
     sim.scene.add(dog);
     return dog;
 }
 
-function DogParts() {
+function DogParts(scale) {
     var parts =  {
         bodyRoot  : new THREE.Object3D(),
-        neck      : BoxObject(8, 8, 6),
+        neck      : BoxObject(8, 8, 6, scale, boxTextureURL),
         // headRoot: new THREE.Object3D(),
-        headRoot  : BoxObject(100, 1, 1),
+        headRoot  : BoxObject(100, 1, 1, scale, boxTextureURL),
         tailRoot  : new THREE.Object3D(),
-        legFrontL : BoxObject(2, 8, 2),
-        legFrontR : BoxObject(2, 8, 2),
-        legBackL  : BoxObject(2, 8, 2),
-        legBackR  : BoxObject(2, 8, 2)
+        legFrontL : BoxObject(2, 8, 2, scale, boxTextureURL),
+        legFrontR : BoxObject(2, 8, 2, scale, boxTextureURL),
+        legBackL  : BoxObject(2, 8, 2, scale, boxTextureURL),
+        legBackR  : BoxObject(2, 8, 2, scale, boxTextureURL)
     }
 
-    var body = BoxObject(6, 6, 12);
-    body.position.z = -6;
+    var body = BoxObject(6, 6, 12, scale, boxTextureURL);
+    body.position.z = -6 * scale;
     parts.bodyRoot.add(body);
 
-    parts.neck.position.z = 1;
+    parts.neck.position.z = 1 * scale;
 
-    var head = DogHead();
-    head.position.z = 1.5;
+    var head = DogHead(scale);
+    head.position.z = 1.5 * scale;
     parts.headRoot.add(head);
-    parts.headRoot.position.z = 4;
+    parts.headRoot.position.z = 4 * scale;
 
-    var tail = BoxObject(2, 2, 10);
-    tail.position.z = -5;
+    var tail = BoxObject(2, 2, 10, scale, boxTextureURL);
+    tail.position.z = -5 * scale;
     parts.tailRoot.add(tail);
-    parts.tailRoot.position.set(0, 2, -11);
+    parts.tailRoot.position.set(0, 2 * scale, -11 * scale);
     parts.tailRoot.rotation.x = THREE.Math.degToRad(15);
     
-    parts.legFrontL.position.set(-1.5, -6, 2.5);
-    parts.legFrontR.position.set(1.5, -6, 2.5);
-    parts.legBackL.position.set(-1.5, -6, -10.5);
-    parts.legBackR.position.set(1.5, -6, -10.5);
+    parts.legFrontL.position.set(-1.5 * scale, -6 * scale,   2.5 * scale);
+    parts.legFrontR.position.set( 1.5 * scale, -6 * scale,   2.5 * scale);
+    parts.legBackL.position.set( -1.5 * scale, -6 * scale, -10.5 * scale);
+    parts.legBackR.position.set(  1.5 * scale, -6 * scale, -10.5 * scale);
 
     return parts;
 }
 
-function DogHead() {
-    var dogHead = BoxObject(6, 6, 3);
-    var snout = BoxObject(3, 3, 3);
-    snout.position.set(0, -1.5, 3);
-    var earL = BoxObject(2, 2, 1);
-    earL.position.set(-2, 4, -1);
-    var earR = BoxObject(2, 2, 1);
-    earR.position.set(2, 4, -1);
+function DogHead(scale) {
+    var dogHead = BoxObject(6, 6, 3, scale, boxTextureURL);
+    var snout = BoxObject(3, 3, 3, scale, boxTextureURL);
+    snout.position.set(0, -1.5 * scale, 3 * scale);
+    var earL = BoxObject(2, 2, 1, scale, boxTextureURL);
+    earL.position.set(-2 * scale, 4 * scale, -1 * scale);
+    var earR = BoxObject(2, 2, 1, scale, boxTextureURL);
+    earR.position.set(2 * scale, 4 * scale, -1 * scale);
     dogHead.add(snout);
     dogHead.add(earL);
     dogHead.add(earR);
     return dogHead;
 }
 
-function BoxObject(width, height, depth) {
+function BoxObject(width, height, depth, scale, textureURL) {
     return new THREE.Mesh(
-        new THREE.BoxGeometry(width, height, depth),
+        new THREE.BoxGeometry(width * scale, height * scale, depth * scale),
         new THREE.MeshBasicMaterial({
             color : 0xffffff,
             map : new THREE.Texture({ 
-                src: altspaceutil.getAbsoluteURL(boxTextureURL)
+                src: altspaceutil.getAbsoluteURL(textureURL)
             })
         })
     );

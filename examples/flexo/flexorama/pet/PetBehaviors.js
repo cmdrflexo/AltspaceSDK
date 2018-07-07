@@ -1,14 +1,3 @@
-TESTRotations = function() {
-
-    this.awake = function(parent) {
-        this.object3d = parent;
-    }
-
-    this.update = function(deltaTime) {
-        
-    }
-}
-
 AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
 
     this.lookTarget = lookTarget;
