@@ -23,7 +23,10 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
                 this.object3d.position.x, 0.25, this.object3d.position.z
             );
             this.fhead.lookAt(this.followTarget.position);
-            this.fhead.rotation.x += 45;
+            this.fhead.rotateOnAxis(
+                new THREE.Vector3(1, 0, 0), 
+                THREE.Math.degToRad(45)
+            );
 
             this.dist = GetDistance(
                 this.object3d.position,
