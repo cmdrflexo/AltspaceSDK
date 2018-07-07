@@ -42,11 +42,94 @@ function start() {
 
         head = skeleton.getJoint("Head");
         
-        followerHead = new THREE.Mesh(
-            new THREE.SphereGeometry(0.12, 32, 16),
+        // CreateBBFollower(head);
+
+        CreateDogFollower();
+
+    });
+}
+
+function CreateDogFollower() {
+    var parts = DogParts();
+    var dog = new THREE.Object3D();
+    dog.add(parts.bodyRoot);
+    dog.add(parts.neck);
+    dog.add(parts.headRoot);
+    dog.add(parts.tailRoot);
+    dog.add(parts.legFrontL);
+    dog.add(parts.legFrontR);
+    dog.add(parts.legBackL);
+    dog.add(parts.legBackR);
+
+    dog.position.y = 0.625;
+    dog.scale.set(0.0625, 0.0625, 0.0625);
+    sim.scene.add(dog);
+}
+
+function DogParts() {
+    var parts =  {
+        bodyRoot: new THREE.Object3D(),
+        neck: BoxObject(8, 8, 6),
+        headRoot: new THREE.Object3D(),
+        tailRoot: new THREE.Object3D(),
+        legFrontL: BoxObject(2, 8, 2),
+        legFrontR: BoxObject(2, 8, 2),
+        legBackL: BoxObject(2, 8, 2),
+        legBackR: BoxObject(2, 8, 2)
+    }
+
+    var body = BoxObject(6, 6, 12);
+    body.position.z = -6;
+    parts.bodyRoot.add(body);
+
+    parts.neck.position.z = 1;
+
+    var head = DogHead();
+    head.position.z = 5.5;
+    parts.headRoot.add(head);
+
+    var tail = BoxObject(2, 2, 10);
+    tail.position.z = -4;
+    parts.tailRoot.add(tail);
+    parts.tailRoot.position.set(0, 2, -15);
+    
+    parts.legFrontL.position.set(-1.5, -6, 2.5);
+    parts.legFrontR.position.set(1.5, -6, 2.5);
+    parts.legBackL.position.set(-1.5, -6, -10.5);
+    parts.legBackR.position.set(1.5, -6, -10.5);
+
+    return parts;
+}
+
+function DogHead() {
+    var dogHead = BoxObject(6, 6, 3);
+    var snout = BoxObject(3, 3, 3);
+    snout.position.set(0, -1.5, 3);
+    var earL = BoxObject(2, 2, 1);
+    earL.position.set(-2, 4, -1);
+    var earR = BoxObject(2, 2, 1);
+    earR.position.set(2, 4, -1);
+    dogHead.add(snout);
+    dogHead.add(earL);
+    dogHead.add(earR);
+    return dogHead;
+}
+
+function BoxObject(width, height, depth) {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(width, height, depth),
+        new THREE.MeshBasicMaterial({
+            color : 0xffffff
+        })
+    );
+}
+
+function CreateBBFollower(head) {
+    followerHead = new THREE.Mesh(
+            new THREE.SphereGeometry(0.15, 32, 16),
             new THREE.MeshBasicMaterial({
-                color: 0xffffff,
-                map: new THREE.Texture({ 
+                color : 0xffffff,
+                map : new THREE.Texture({ 
                     src: altspaceutil.getAbsoluteURL(bbHeadTextureURL)
                 })
             })
@@ -54,10 +137,10 @@ function start() {
         followerHead.position.y = 0.24;
         followerHead.rotation.y = THREE.Math.degToRad(-90);
         
-
         followerHeadRoot = new THREE.Object3D();
         followerHeadRoot.position.y = 0.25;
         followerHeadRoot.add(followerHead);
+        followerHeadRoot.addBehavior(new AttentionLook(head, 0, 10, 22.5));
         sim.scene.add(followerHeadRoot);
         
         follower = new THREE.Mesh(
@@ -72,7 +155,6 @@ function start() {
         follower.position.y = 0.25;
         follower.addBehavior(new Follower(head, 2, 4, 0.25, followerHeadRoot));
         sim.scene.add(follower);
-    });
 }
 
 function SetupConsole(maxLines, spacing) {

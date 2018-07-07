@@ -1,3 +1,25 @@
+AttentionLook = function(lookTarget, minLook, maxLook, tiltX) {
+
+    this.lookTarget = lookTarget;
+    this.minLook = minLook;
+    this.maxLook = maxLook;
+    this.tiltX = tiltX;
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        if(this.lookTarget) {
+            this.object3d.lookAt(this.lookTarget.position);
+            this.object3d.rotateOnAxis(
+                new THREE.Vector3(1, 0, 0), 
+                THREE.Math.degToRad(this.tiltX)
+            );
+        }
+    }
+}
+
 Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
     this.followTarget = followTarget;
@@ -22,12 +44,7 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             this.fhead.position.set(
                 this.object3d.position.x, 0.25, this.object3d.position.z
             );
-            this.fhead.lookAt(this.followTarget.position);
-            this.fhead.rotateOnAxis(
-                new THREE.Vector3(1, 0, 0), 
-                THREE.Math.degToRad(22.5)
-            );
-
+            
             this.dist = GetDistance(
                 this.object3d.position,
                 this.followTarget.position
