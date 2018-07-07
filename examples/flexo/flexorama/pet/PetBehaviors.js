@@ -33,18 +33,18 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed) {
                 this.followTarget.position
             );
 
-            this.rotation += deltaTime * 0.001;
-            this.axis = GetRotateAxis(this.moveDir.normalize()).normalize();
-            this.object3d.rotateOnAxis(
-                // this.axis,
-                this.moveDir.normalize(),
-                this.rotation
-            );
+            // this.rotation += deltaTime * 0.001;
+            // this.axis = GetRotateAxis(this.moveDir.normalize()).normalize();
+            // this.object3d.rotateOnAxis(
+            //     // this.axis,
+            //     this.moveDir.normalize(),
+            //     this.rotation
+            // );
 
-            console.log(
-                "moveDir: " + this.moveDir.x + "," + this.moveDir.z +
-                "\nthis.axis: " + this.axis.x + "," + this.axis.z
-            );
+            // console.log(
+            //     "moveDir: " + this.moveDir.x + "," + this.moveDir.z +
+            //     "\nthis.axis: " + this.axis.x + "," + this.axis.z
+            // );
 
             // console.log("GetRotateAxis(this.moveDir.normalize()) length: " + GetRotateAxis(this.moveDir.normalize()).length());
             // console.log("GetRotateAxis(this.moveDir.normalize()).normalize() length: " + GetRotateAxis(this.moveDir.normalize()).normalize().length());
