@@ -89,8 +89,9 @@ function DogParts() {
     parts.neck.position.z = 1;
 
     var head = DogHead();
-    head.position.z = 5.5;
+    head.position.z = 1.5;
     parts.headRoot.add(head);
+    parts.headRoot.position.z = 4;
 
     var tail = BoxObject(2, 2, 10);
     tail.position.z = -5;
