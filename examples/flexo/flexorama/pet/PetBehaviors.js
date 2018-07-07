@@ -54,8 +54,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;
                 this.object3d.position.z += this.moveDir.z * this.moveSpeed * deltaTime * 0.001;
             } else if(this.moveAway) {
-                this.object3d.position.x -= this.moveDirNorm.x * this.moveSpeed * deltaTime * 0.001;
-                this.object3d.position.z -= this.moveDirNorm.z * this.moveSpeed * deltaTime * 0.001;
+                this.object3d.position.x -= this.moveDirNorm.x * this.moveSpeed * deltaTime * 0.003;
+                this.object3d.position.z -= this.moveDirNorm.z * this.moveSpeed * deltaTime * 0.003;
             }
         }
 
