@@ -13,7 +13,7 @@ function CreateDogFollower(userHead, scale) {
     // parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 45));
     parts.tailRoot.addBehavior(new TESTTailWag());
     // dog.addBehavior(new Follower(userHead, 2, 4, 0.25, new THREE.Object3D()));
-    dog.addBehavior(new TESTTurning(userHead));
+    // dog.addBehavior(new TESTTurning(userHead));
 
     dog.position.y = 10 * scale;
 

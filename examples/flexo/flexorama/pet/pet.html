@@ -80,12 +80,12 @@ function start() {
         (1 / 16) * 0.66
     );
 
-    // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-    //     var skeleton = _skeleton;
-    //     sim.scene.add(skeleton);
-    //     var head = skeleton.getJoint("Head");
-    //     var dog = CreateDogFollower(head, 0.04125);
-    // });
+    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+        var skeleton = _skeleton;
+        sim.scene.add(skeleton);
+        var head = skeleton.getJoint("Head");
+        var dog = CreateDogFollower(head, 0.04125);
+    });
 }
 
 // var connection;
@@ -105,7 +105,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             sim.scene.add(obj);
 
-            obj.position.y += 1;
+            obj.position.y += 2;
             // console.log(obj.position);
         }
     );
