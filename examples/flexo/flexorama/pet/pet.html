@@ -47,30 +47,9 @@ function start() {
     loadModel(
         dogModelURL + "box_head.obj",
         dogModelURL + "box_head.mtl",
-        new THREE.Vector3(0, 3, 0)
+        new THREE.Vector3(0, 3, 0),
+        (1/16) * 0.66
     );
-
-    // var modelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/lambo/"
-    // loadModel(
-    //     modelURL + "lambo_altvr-01.obj",
-    //     modelURL + "lambo_altvr-01.mtl"
-    // );
-    // loadModel(
-    //     modelURL + "lambo_altvr-tire_front_left.obj",
-    //     modelURL + "lambo_altvr-tire_front_left.mtl"
-    // );
-    // loadModel(
-    //     modelURL + "lambo_altvr-tire_front_right.obj",
-    //     modelURL + "lambo_altvr-tire_front_right.mtl"
-    // );
-    // loadModel(
-    //     modelURL + "lambo_altvr-tire_back_left.obj",
-    //     modelURL + "lambo_altvr-tire_back_left.mtl"
-    // );
-    // loadModel(
-    //     modelURL + "lambo_altvr-tire_back_right.obj",
-    //     modelURL + "lambo_altvr-tire_back_right.mtl"
-    // );
 
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
         var skeleton = _skeleton;
@@ -85,12 +64,15 @@ function start() {
 var item;
 var itemModel;
 
-function loadModel(objFilename, mtlFilename, position) {
+function loadModel(objFilename, mtlFilename, position, scale) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objFilename, mtlFilename, 
         function(obj) {
+            obj.position.x = position.x;
             obj.position.y = position.y;
+            obj.position.z = position.z;
+            obj.scale.set(scale, scale, scale);
             sim.scene.add(obj);
         }
     );
