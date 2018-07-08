@@ -69,7 +69,8 @@ function start() {
         squidURL + "squid.mtl",
         new THREE.Vector3(32, 0, -32),
         new THREE.Vector3(1, 1, 1),
-        (1 / 16)
+        (1 / 16),
+        true
     );
 
 
@@ -175,7 +176,7 @@ function start() {
 var item;
 var itemModel;
 
-function loadModel(objFilename, mtlFilename, position, size, scale) {
+function loadModel(objFilename, mtlFilename, position, size, scale, follow = false) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objFilename, mtlFilename, 
@@ -193,7 +194,8 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
                 var head = skeleton.getJoint("Head");
                 // var dog = CreateDogFollower(head, 0.04125);
                 // var bb8 = CreateBBFollower(head);
-                obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
+                if(follow)
+                    obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
             });
         }
     );
