@@ -96,8 +96,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             }
 
             if(this.isDog) {
-                // console.log(this.object3d.pos.angleTo(this.followTarget));
-                if(this.object3d.pos.angleTo(this.followTarget) > THREE.Math.degToRad(1))
+                // console.log(this.object3d.position.angleTo(this.followTarget.position));
+                if(this.object3d.position.angleTo(this.followTarget.position) < 0.3)// THREE.Math.degToRad(1))
                     this.object3d.rotateOnAxis(
                         new THREE.Vector3(0, 1, 0), 
                         THREE.Math.degToRad(1)
