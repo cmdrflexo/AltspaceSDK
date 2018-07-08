@@ -43,9 +43,10 @@ function start() {
 
     sim.scene.add(CreateTerrain());
 
+    var modelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/lambo"
     loadModel(
-        "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.obj",
-        "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.mtl"
+        modelURL + "lambo_altvr-body.obj",
+        modelURL + "lambo_altvr-body.mtl"
     );
 
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
