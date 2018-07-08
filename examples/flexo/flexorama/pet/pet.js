@@ -137,7 +137,7 @@ function CreateTerrain() {
     )
     plane.material.map.repeat.set(1000, 1000);
     plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
-    plane.position.y = -0.01;
+    plane.position.y = -0.001;
     plane.rotation.x = THREE.Math.degToRad(-90);
     return plane;
 }
