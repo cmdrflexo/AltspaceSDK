@@ -86,15 +86,13 @@ function start() {
 var item;
 var itemModel;
 
-function loadModel(objFilename, mtlFilename) {
+function loadModel(objFilename, mtlFilename, position) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objFilename, mtlFilename, 
         function(obj) {
-            obj.position.x = 10;
+            obj.position = position;
             sim.scene.add(obj);
-            // itemModel = obj;
-            // onModelReady();
         }
     );
 }
