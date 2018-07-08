@@ -48,6 +48,30 @@ function start() {
         modelURL + "lambo_altvr-body.obj",
         modelURL + "lambo_altvr-body.mtl"
     );
+    loadModel(
+        modelURL + "lambo_altvr-windows.obj",
+        modelURL + "lambo_altvr-windows.mtl"
+    );
+    loadModel(
+        modelURL + "lambo_altvr-headlights.obj",
+        modelURL + "lambo_altvr-headlights.mtl"
+    );
+    loadModel(
+        modelURL + "lambo_altvr-tire_front_left.obj",
+        modelURL + "lambo_altvr-tire_front_left.mtl"
+    );
+    loadModel(
+        modelURL + "lambo_altvr-tire_front_right.obj",
+        modelURL + "lambo_altvr-tire_front_right.mtl"
+    );
+    loadModel(
+        modelURL + "lambo_altvr-tire_back_left.obj",
+        modelURL + "lambo_altvr-tire_back_left.mtl"
+    );
+    loadModel(
+        modelURL + "lambo_altvr-tire_back_right.obj",
+        modelURL + "lambo_altvr-tire_back_right.mtl"
+    );
 
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
         var skeleton = _skeleton;
@@ -75,8 +99,8 @@ function loadModel(objFilename, mtlFilename) {
 }
 
 function onModelReady() {
-    console.log("Model loaded");
-    console.log(itemModel);
+    // console.log("Model loaded");
+    // console.log(itemModel);
 	// sceneSync = new altspace.utilities.behaviors.SceneSync(
 	// 	connection.instance, 
 	// 	{

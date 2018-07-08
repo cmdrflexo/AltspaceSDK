@@ -8,7 +8,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/Unity/UXO/Assets/Textures/UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
 
 newmtl bulb
 Kd 1 1 1
@@ -75,7 +75,7 @@ Tr 0
 d 1
 Ni 1
 Tf 1 1 1
-map_Kd E:Projects/Unity/UXO/Assets/Textures/UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
 
 newmtl inner
 Kd 0.254902 0.254902 0.254902

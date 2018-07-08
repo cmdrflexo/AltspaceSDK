@@ -8,7 +8,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/Unity/UXO/Assets/Textures/UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
 
 newmtl SURF-lambo_wheel
 Kd 0.502 0.502 0.502
@@ -20,7 +20,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/Unity/UXO/Assets/Textures/UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
 
 newmtl SURF-lambo_wheel_light
 Kd 0.945098 0.952941 0.623529
@@ -32,5 +32,5 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-map_Kd E:Projects/Unity/UXO/Assets/Textures/UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
 
