@@ -47,7 +47,7 @@ TESTHover = function() {
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.position.y = this.yPos + Math.sin(timer);
+        this.object3d.position.y = this.yPos + Math.sin(this.timer);
     }
 }
 
