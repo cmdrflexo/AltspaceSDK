@@ -76,8 +76,6 @@ function start() {
         new THREE.Vector3(2, 2, 1),
         (1 / 16) * 0.66
     );
-
-    // BODY
     // body
     loadModel(
         dogModelURL + "uv_box.obj",
@@ -94,8 +92,6 @@ function start() {
         new THREE.Vector3(8, 8, 6),
         (1 / 16) * 0.66
     );
-
-    // LEGS
     // front left
     loadModel(
         dogModelURL + "uv_box.obj",
@@ -126,6 +122,14 @@ function start() {
         dogModelURL + "box_leg.mtl",
         new THREE.Vector3(-1.5, -6, -10.5),
         new THREE.Vector3(2, 8, 2),
+        (1 / 16) * 0.66
+    );
+    // tail
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_tail.mtl",
+        new THREE.Vector3(0, 2, -15),
+        new THREE.Vector3(2, 2, 10),
         (1 / 16) * 0.66
     );
 
