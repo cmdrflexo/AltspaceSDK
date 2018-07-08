@@ -101,7 +101,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             obj.position.x = position.x * scale;
             obj.position.y = position.y * scale;
             obj.position.z = position.z * scale;
-            obj.rotation.y = THREE.Math.deg2Rad(180);
+            obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             sim.scene.add(obj);
 
