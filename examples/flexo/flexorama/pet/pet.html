@@ -44,11 +44,39 @@ function start() {
     sim.scene.add(CreateTerrain());
 
     var dogModelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/dog/"
+    // head
     loadModel(
-        dogModelURL + "box_head.obj",
-        dogModelURL + "box_body.mtl",
-        new THREE.Vector3(0, 1, 0),
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_head.mtl",
+        new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(6, 6, 4),
+        (1 / 16) * 0.66
+    );
+    // snout
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        // dogModelURL + "box_head_snout.mtl",
+        dogModelURL + "box_head.mtl",
+        new THREE.Vector3(-1, 0, 2),
+        new THREE.Vector3(3, 3, 3),
+        (1 / 16) * 0.66
+    );
+    // ear L
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        // dogModelURL + "box_head_ear_l.mtl",
+        dogModelURL + "box_head.mtl",
+        new THREE.Vector3(-1.5, 2.5, -1),
+        new THREE.Vector3(2, 2, 1),
+        (1 / 16) * 0.66
+    );
+    // ear R
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        // dogModelURL + "box_head_ear_r.mtl",
+        dogModelURL + "box_head.mtl",
+        new THREE.Vector3(1.5, 2.5, -1),
+        new THREE.Vector3(2, 2, 1),
         (1 / 16) * 0.66
     );
 
@@ -70,9 +98,9 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
     loader.load(
         objFilename, mtlFilename, 
         function(obj) {
-            obj.position.x = position.x;
-            obj.position.y = position.y;
-            obj.position.z = position.z;
+            obj.position.x = position.x * scale;
+            obj.position.y = 1 + (position.y * scale);
+            obj.position.z = position.z * scale;
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             sim.scene.add(obj);
         }
