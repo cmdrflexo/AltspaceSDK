@@ -24,29 +24,33 @@ else start();
 var sim;
 var sceneConsole;
 
-///
-function GetTurnAngle(o3d, tPos) {
-    var forward = o3d.getWorldDirection();
-    var h = GetDistance(o3d.position, tPos);
-    var p = o3d.position.clone().add(forward.clone().multiplyScalar(h));
-    var o = GetDistance(tPos, p) * 0.5;
-    return THREE.Math.radToDeg(Math.asin(o / h) * 2);
-}
+// ///
+// function GetTurnAngle(o3d, tPos) {
+//     var forward = o3d.getWorldDirection();
+//     var h = GetDistance(o3d.position, tPos);
+//     var p = o3d.position.clone().add(forward.clone().multiplyScalar(h));
+//     var o = GetDistance(tPos, p) * 0.5;
+//     return THREE.Math.radToDeg(Math.asin(o / h) * 2);
+// }
 
-function GetDistance(v1, v2) {
-    var dx = v1.x - v2.x;
-    var dz = v1.z - v2.z;
-    return Math.sqrt(dx * dx + dz * dz);
-}
+// function GetDistance(v1, v2) {
+//     var dx = v1.x - v2.x;
+//     var dz = v1.z - v2.z;
+//     return Math.sqrt(dx * dx + dz * dz);
+// }
 
-function GetMoveDirection(v1, v2) {
-    return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
-}
-///
+// function GetMoveDirection(v1, v2) {
+//     return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
+// }
+// ///
 
 function start() {
     sim = new altspace.utilities.Simulation();
 
+    loadItemModel(
+        "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.obj",
+        "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/cake/cake.mtl"
+    );
 
     var agent = new THREE.Object3D();
     var target = new THREE.Object3D();
@@ -233,6 +237,49 @@ function CreateTerrain() {
     plane.position.y = -0.01;
     plane.rotation.x = THREE.Math.degToRad(-90);
     return plane;
+}
+
+// ///
+
+var sceneSync;
+var item;
+var itemModel;
+
+function loadModel(objFilename, mtlFilename) {
+    var loader = new altspace.utilities.shims.OBJMTLLoader();
+    loader.load(
+        objFilename, mtlFilename, 
+        function(obj) {
+            itemModel = obj;
+            onModelReady();
+        }
+    );
+}
+
+function onModelReady() {
+	sceneSync = new altspace.utilities.behaviors.SceneSync(
+		connection.instance, 
+		{
+			instantiators: { "Model" : createModelObject },
+			ready : ready
+		}
+	);
+	sim.scene.addBehavior(sceneSync);
+}
+
+function ready() {
+	sceneSync.instantiate("Model");
+}
+
+function createModelObject(initData) {
+	item = itemModel.clone();
+	item.addBehaviors(
+		new altspace.utilities.behaviors.Object3DSync(
+			{ position : true, rotation : true, scale : true }					
+		)
+	);
+	sim.scene.add(item);
+	return item;				
 }
 
 </script>
