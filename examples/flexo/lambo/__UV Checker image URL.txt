@@ -1,1 +1,1 @@
-map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo\examples\flexo\textures\UV_Checker.png
+https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/textures/UV_Checker.png
