@@ -38,10 +38,20 @@ altspaceutil.getFullspaceEnclosure().then(function(enclosure) {
 var sim;
 var sceneConsole;
 
+var creeperURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/creeper/";
+
 function start() {
     sim = new altspace.utilities.Simulation();
 
     sim.scene.add(CreateTerrain());
+
+    loadModel(
+        creeperURL + "creeper.obj",
+        creeperURL + "creeper.mtl",
+        new THREE.Vector3(1, 1, 1),
+        new THREE.Vector3(1, 1, 1),
+        (1 / 16)
+    );
 
     var dogModelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/dog/"
     // head
