@@ -24,8 +24,36 @@ else start();
 var sim;
 var sceneConsole;
 
+///
+function GetTurnAngle(o3d, tPos) {
+    var forward = o3d.getWorldDirection();
+    var h = GetDistance(o3d.position, tPos);
+    var p = o3d.position.clone().add(forward.clone().multiplyScalar(h));
+    var o = GetDistance(tPos, p) * 0.5;
+    return THREE.Math.radToDeg(Math.asin(o / h) * 2);
+}
+
+function GetDistance(v1, v2) {
+    var dx = v1.x - v2.x;
+    var dz = v1.z - v2.z;
+    return Math.sqrt(dx * dx + dz * dz);
+}
+
+function GetMoveDirection(v1, v2) {
+    return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
+}
+///
+
 function start() {
     sim = new altspace.utilities.Simulation();
+
+
+    var agent = new THREE.Object3D();
+    var target = new THREE.Object3D();
+    target.position.set(0, 0, 1);
+    var root = new THREE.Object3D();
+    root.add(target);
+    agent.addBehavior(new TESTTurning(target));
 
     // sceneConsole = SetupConsole(20, 0.6);
 
@@ -37,27 +65,30 @@ function start() {
 
     var skeleton;
     var head;
-    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-        skeleton = _skeleton;
-        sim.scene.add(skeleton);
 
-        head = skeleton.getJoint("Head");
-        
-        // CreateBBFollower(head);
+    if(!testing) {
+        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            skeleton = _skeleton;
+            sim.scene.add(skeleton);
 
-        var dog = CreateDogFollower(head, 0.04125);
-        
-        // var dog2 = CreateDogFollower(head);
-        // dog2.position.x = 1;
-        // dog2.position.y = 0.625 * 0.5;
-        // dog2.scale.set(0.0625 * 0.5, 0.0625 * 0.5, 0.0625 * 0.5);
+            head = skeleton.getJoint("Head");
+            
+            // CreateBBFollower(head);
 
-        // var dog3 = CreateDogFollower(head);
-        // dog3.position.x = 2;
-        // dog3.position.y = 0.625 * 0.66;
-        // dog3.scale.set(0.0625 * 0.66, 0.0625 * 0.66, 0.0625 * 0.66);
+            var dog = CreateDogFollower(head, 0.04125);
+            
+            // var dog2 = CreateDogFollower(head);
+            // dog2.position.x = 1;
+            // dog2.position.y = 0.625 * 0.5;
+            // dog2.scale.set(0.0625 * 0.5, 0.0625 * 0.5, 0.0625 * 0.5);
 
-    });
+            // var dog3 = CreateDogFollower(head);
+            // dog3.position.x = 2;
+            // dog3.position.y = 0.625 * 0.66;
+            // dog3.scale.set(0.0625 * 0.66, 0.0625 * 0.66, 0.0625 * 0.66);
+
+        });
+    }
 }
 
 function CreateDogFollower(userHead, scale) {
@@ -72,9 +103,10 @@ function CreateDogFollower(userHead, scale) {
     dog.add(parts.legBackL);
     dog.add(parts.legBackR);
 
-    parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 45));
+    // parts.headRoot.addBehavior(new AttentionLook(userHead, 0, 10, 45));
     parts.tailRoot.addBehavior(new TESTTailWag());
-    dog.addBehavior(new Follower(userHead, 2, 4, 0.25, new THREE.Object3D()));
+    // dog.addBehavior(new Follower(userHead, 2, 4, 0.25, new THREE.Object3D()));
+    dog.addBehavior(new TESTTurning(userHead));
 
     dog.position.y = 10 * scale;
 

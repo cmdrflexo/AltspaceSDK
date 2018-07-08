@@ -38,6 +38,53 @@ TESTTailWag = function() {
     }
 }
 
+TESTTurning = function(target) {
+    this.timer = 0;
+
+    // this.root = root;
+    this.target = target;
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.timer = this.timer < 250 ? this.timer + deltaTime : 0;
+
+        // this.root.rotateOnAxis(new THREE.Vector3(0, 1, 0), deltaTime * 0.001);
+
+        this.targetWorldPos = this.target.getWorldPosition(this.targetWorldPos);
+        
+        this.heading;
+        this.heading = this.object3d.getWorldDirection(this.heading);
+        
+        this.targetDir = GetMoveDirection(
+            this.object3d.position, 
+            this.targetWorldPos
+        ).normalize();
+
+        this.cross = this.heading.clone().cross(this.targetDir);
+
+        if(this.cross)
+            this.object3d.rotateOnAxis(this.cross, deltaTime * 0.001);
+
+        if(this.timer == 0) 
+            console.log(this.cross);
+            // console.log(this.targetWorldPos);
+
+    }
+
+    function GetDistance(v1, v2) {
+        var dx = v1.x - v2.x;
+        var dz = v1.z - v2.z;
+        return Math.sqrt(dx * dx + dz * dz);
+    }
+
+    function GetMoveDirection(v1, v2) {
+        return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
+    }
+}
+
 Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
     this.followTarget = followTarget;
@@ -89,7 +136,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             // this.worldPos = this.object3d.getWorldPosition(this.worldPos);
             this.object3d.lookAt(this.followTarget.position);
 
-            if(this.timer == 0) console.log(this.object3d.rotation.y);
+            if(this.timer == 0) 
+                console.log(THREE.Math.radToDeg(this.object3d.rotation.y));
 
             this.moveDir = GetMoveDirection(
                 this.object3d.position,
@@ -132,6 +180,14 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
         }
 
         
+    }
+
+    function GetTurnAngle(o3d, tPos) {
+        var forward = o3d.getWorldDirection(forward);
+        var h = GetDistance(o3d.position, tPos);
+        var p = o3d.position + (forward * h);
+        var o = GetDistance(tPos, p) * 0.5;
+        return Math.arcsin(o / h) * 0.5;
     }
 
     function GetDistance(v1, v2) {
