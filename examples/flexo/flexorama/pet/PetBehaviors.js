@@ -40,9 +40,10 @@ TESTTailWag = function() {
 
 TESTHover = function() {
     this.timer = 0;
-    this.yPos = this.object3d.position.y;
+    this.yPos;
     this.awake = function(parent) {
         this.object3d = parent;
+        this.yPos = this.object3d.position.y;
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
