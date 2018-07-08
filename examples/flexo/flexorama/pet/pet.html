@@ -177,7 +177,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             obj.position.x = position.x * scale + 1;
             obj.position.y = position.y * scale + 0.4125;
             obj.position.z = position.z * scale;
-            obj.rotation.y = THREE.Math.degToRad(180);
+            obj.rotation.y = THREE.Math.degToRad(180 + 45);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             obj.addBehavior(new TESTHover());
             sim.scene.add(obj);
