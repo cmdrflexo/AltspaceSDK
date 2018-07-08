@@ -138,6 +138,7 @@ function start() {
         sim.scene.add(skeleton);
         var head = skeleton.getJoint("Head");
         var dog = CreateDogFollower(head, 0.04125);
+        var bb8 = CreateBBFollower(head);
     });
 }
 

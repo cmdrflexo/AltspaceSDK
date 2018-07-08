@@ -101,8 +101,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
     this.timer = 0;
 
-    this.isBall = false;
-    this.isDog = true;
+    this.isBall = true;
+    this.isDog = false;
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
