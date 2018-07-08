@@ -40,6 +40,7 @@ var sceneConsole;
 
 var creeperURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/creeper/";
 var endermanURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/enderman/";
+var ghastURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/";
 
 function start() {
     sim = new altspace.utilities.Simulation();
@@ -55,10 +56,10 @@ function start() {
     // );
 
     loadModel(
-        endermanURL + "enderman.obj",
-        endermanURL + "enderman.mtl",
-        new THREE.Vector3(-32, -0.4125, 160),
-        new THREE.Vector3(1, 1, 1),
+        dogModelURL + "uv_box.obj",
+        ghast + "ghast.mtl",
+        new THREE.Vector3(0, 160, 0),
+        new THREE.Vector3(64, 64, 64),
         (1 / 16)
     );
 
