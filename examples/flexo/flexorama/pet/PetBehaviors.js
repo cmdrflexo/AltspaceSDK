@@ -136,8 +136,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             // this.worldPos = this.object3d.getWorldPosition(this.worldPos);
             this.object3d.lookAt(this.followTarget.position);
 
-            if(this.timer == 0) 
-                console.log(THREE.Math.radToDeg(this.object3d.rotation.y));
+            // if(this.timer == 0) 
+            //     console.log(THREE.Math.radToDeg(this.object3d.rotation.y));
 
             this.moveDir = GetMoveDirection(
                 this.object3d.position,
@@ -146,15 +146,15 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
             this.moveDirNorm = this.moveDir.clone().normalize();
             
-            if(this.isBall) {
-                this.axis = GetRotateAxis(this.moveDir).normalize();
-                this.rotate = THREE.Math.degToRad(0.36 * deltaTime);
-                if(this.moveTowards || this.moveAway)
-                    this.object3d.rotateOnWorldAxis(
-                        this.axis,
-                        this.moveTowards ? this.rotate : -this.rotate
-                    );
-            }
+            // if(this.isBall) {
+            this.axis = GetRotateAxis(this.moveDir).normalize();
+            this.rotate = THREE.Math.degToRad(0.36 * deltaTime);
+            if(this.moveTowards || this.moveAway)
+                this.object3d.rotateOnWorldAxis(
+                    this.axis,
+                    this.moveTowards ? this.rotate : -this.rotate
+                );
+            // }
 
             if(this.isDog) {
                 // console.log(this.object3d.position.angleTo(this.followTarget.position));
