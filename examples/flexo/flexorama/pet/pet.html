@@ -69,112 +69,110 @@ function start() {
     loadModel(
         squidURL + "squid.obj",
         squidURL + "squid.mtl",
-        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(32, 0, -32),
         new THREE.Vector3(1, 1, 1),
         (1 / 16)
     );
 
     
-    // // head
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_head.mtl",
-    //     new THREE.Vector3(0, 0, 6),
-    //     new THREE.Vector3(6, 6, 4),
-    //     (1 / 16) * 0.66
-    // );
-    // // snout
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_head_snout.mtl",
-    //     new THREE.Vector3(0, -1.5, 9.5),
-    //     new THREE.Vector3(3, 3, 3),
-    //     (1 / 16) * 0.66
-    // );
-    // // ear L
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_head_ear.mtl",
-    //     new THREE.Vector3(-2, 4, 4.5),
-    //     new THREE.Vector3(2, 2, 1),
-    //     (1 / 16) * 0.66
-    // );
-    // // ear R
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_head_ear.mtl",
-    //     new THREE.Vector3(2, 4, 4.5),
-    //     new THREE.Vector3(2, 2, 1),
-    //     (1 / 16) * 0.66
-    // );
-    // // body
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_body.mtl",
-    //     new THREE.Vector3(0, 0, -8),
-    //     new THREE.Vector3(6, 6, 12),
-    //     (1 / 16) * 0.66
-    // );
-    // // neck
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_neck.mtl",
-    //     new THREE.Vector3(0, 0, 1),
-    //     new THREE.Vector3(8, 8, 6),
-    //     (1 / 16) * 0.66
-    // );
-    // // front left
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_leg.mtl",
-    //     new THREE.Vector3(1.5, -6, 2.5),
-    //     new THREE.Vector3(2, 8, 2),
-    //     (1 / 16) * 0.66
-    // );
-    // // front right
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_leg.mtl",
-    //     new THREE.Vector3(-1.5, -6, 2.5),
-    //     new THREE.Vector3(2, 8, 2),
-    //     (1 / 16) * 0.66
-    // );
-    // // back left
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_leg.mtl",
-    //     new THREE.Vector3(1.5, -6, -10.5),
-    //     new THREE.Vector3(2, 8, 2),
-    //     (1 / 16) * 0.66
-    // );
-    // // back right
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_leg.mtl",
-    //     new THREE.Vector3(-1.5, -6, -10.5),
-    //     new THREE.Vector3(2, 8, 2),
-    //     (1 / 16) * 0.66
-    // );
-    // // tail
-    // loadModel(
-    //     dogModelURL + "uv_box.obj",
-    //     dogModelURL + "box_tail.mtl",
-    //     new THREE.Vector3(0, 2, -15),
-    //     new THREE.Vector3(2, 2, 10),
-    //     (1 / 16) * 0.66
-    // );
+    // head
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_head.mtl",
+        new THREE.Vector3(0, 0, 6),
+        new THREE.Vector3(6, 6, 4),
+        (1 / 16) * 0.66
+    );
+    // snout
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_head_snout.mtl",
+        new THREE.Vector3(0, -1.5, 9.5),
+        new THREE.Vector3(3, 3, 3),
+        (1 / 16) * 0.66
+    );
+    // ear L
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_head_ear.mtl",
+        new THREE.Vector3(-2, 4, 4.5),
+        new THREE.Vector3(2, 2, 1),
+        (1 / 16) * 0.66
+    );
+    // ear R
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_head_ear.mtl",
+        new THREE.Vector3(2, 4, 4.5),
+        new THREE.Vector3(2, 2, 1),
+        (1 / 16) * 0.66
+    );
+    // body
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_body.mtl",
+        new THREE.Vector3(0, 0, -8),
+        new THREE.Vector3(6, 6, 12),
+        (1 / 16) * 0.66
+    );
+    // neck
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_neck.mtl",
+        new THREE.Vector3(0, 0, 1),
+        new THREE.Vector3(8, 8, 6),
+        (1 / 16) * 0.66
+    );
+    // front left
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_leg.mtl",
+        new THREE.Vector3(1.5, -6, 2.5),
+        new THREE.Vector3(2, 8, 2),
+        (1 / 16) * 0.66
+    );
+    // front right
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_leg.mtl",
+        new THREE.Vector3(-1.5, -6, 2.5),
+        new THREE.Vector3(2, 8, 2),
+        (1 / 16) * 0.66
+    );
+    // back left
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_leg.mtl",
+        new THREE.Vector3(1.5, -6, -10.5),
+        new THREE.Vector3(2, 8, 2),
+        (1 / 16) * 0.66
+    );
+    // back right
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_leg.mtl",
+        new THREE.Vector3(-1.5, -6, -10.5),
+        new THREE.Vector3(2, 8, 2),
+        (1 / 16) * 0.66
+    );
+    // tail
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_tail.mtl",
+        new THREE.Vector3(0, 2, -15),
+        new THREE.Vector3(2, 2, 10),
+        (1 / 16) * 0.66
+    );
 
     // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
     //     var skeleton = _skeleton;
     //     sim.scene.add(skeleton);
     //     var head = skeleton.getJoint("Head");
-    //     var dog = CreateDogFollower(head, 0.04125);
+    //     // var dog = CreateDogFollower(head, 0.04125);
     //     var bb8 = CreateBBFollower(head);
     // });
 }
 
-// var connection;
-// var sceneSync;
 var item;
 var itemModel;
 
@@ -186,18 +184,18 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             obj.position.x = position.x * scale + 1;
             obj.position.y = position.y * scale + 0.4125;
             obj.position.z = position.z * scale;
-            // obj.rotation.y = THREE.Math.degToRad(180 - 45);
+            obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             // obj.addBehavior(new TESTHover());
             sim.scene.add(obj);
-            // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-            //     var skeleton = _skeleton;
-            //     sim.scene.add(skeleton);
-            //     var head = skeleton.getJoint("Head");
-            //     // var dog = CreateDogFollower(head, 0.04125);
-            //     // var bb8 = CreateBBFollower(head);
-            //     obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
-            // });
+            altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+                var skeleton = _skeleton;
+                sim.scene.add(skeleton);
+                var head = skeleton.getJoint("Head");
+                // var dog = CreateDogFollower(head, 0.04125);
+                // var bb8 = CreateBBFollower(head);
+                obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
+            });
         }
     );
 }
