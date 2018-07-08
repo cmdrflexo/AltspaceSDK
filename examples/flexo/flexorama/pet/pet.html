@@ -47,7 +47,7 @@ function start() {
     loadModel(
         dogModelURL + "box_head.obj",
         dogModelURL + "box_head.mtl",
-        new THREE.Vector3(0, 1, 0)
+        new THREE.Vector3(0, 3, 0)
     );
 
     // var modelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/lambo/"
@@ -90,7 +90,7 @@ function loadModel(objFilename, mtlFilename, position) {
     loader.load(
         objFilename, mtlFilename, 
         function(obj) {
-            obj.position = position;
+            obj.position.y = position.y;
             sim.scene.add(obj);
         }
     );
