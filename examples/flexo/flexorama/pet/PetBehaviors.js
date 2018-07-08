@@ -38,6 +38,18 @@ TESTTailWag = function() {
     }
 }
 
+TESTHover = function() {
+    this.timer = 0;
+    this.yPos = this.object3d.position.y;
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+    this.update = function(deltaTime) {
+        this.timer += deltaTime * 0.001;
+        this.object3d.position.y = this.yPos + Math.sin(timer);
+    }
+}
+
 TESTTurning = function(target) {
     this.timer = 0;
 
@@ -145,6 +157,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
             );
 
             this.moveDirNorm = this.moveDir.clone().normalize();
+
+
             
             // if(this.isBall) {
             this.axis = GetRotateAxis(this.moveDir).normalize();

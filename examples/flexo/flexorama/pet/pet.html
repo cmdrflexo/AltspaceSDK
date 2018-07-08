@@ -179,6 +179,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             obj.position.z = position.z * scale;
             // obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
+            obj.addBehavior(new TESTHover());
             sim.scene.add(obj);
             // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
             //     var skeleton = _skeleton;
