@@ -78,6 +78,14 @@ function start() {
     );
 
     // BODY
+    // body
+    loadModel(
+        dogModelURL + "uv_box.obj",
+        dogModelURL + "box_body.mtl",
+        new THREE.Vector3(0, 0, -8),
+        new THREE.Vector3(6, 6, 12),
+        (1 / 16) * 0.66
+    );
     // neck
     loadModel(
         dogModelURL + "uv_box.obj",
