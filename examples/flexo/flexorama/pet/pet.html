@@ -66,8 +66,9 @@ function loadModel(objFilename, mtlFilename) {
     loader.load(
         objFilename, mtlFilename, 
         function(obj) {
-            itemModel = obj;
-            onModelReady();
+            sim.scene.add(obj);
+            // itemModel = obj;
+            // onModelReady();
         }
     );
 }
