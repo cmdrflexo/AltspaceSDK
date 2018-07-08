@@ -48,6 +48,7 @@ function start() {
         dogModelURL + "box_head.obj",
         dogModelURL + "box_head.mtl",
         new THREE.Vector3(0, 3, 0),
+        new THREE.Vector3(6, 6, 4),
         (1/16) * 0.66
     );
 
@@ -64,7 +65,7 @@ function start() {
 var item;
 var itemModel;
 
-function loadModel(objFilename, mtlFilename, position, scale) {
+function loadModel(objFilename, mtlFilename, position, size, scale) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objFilename, mtlFilename, 
@@ -72,7 +73,7 @@ function loadModel(objFilename, mtlFilename, position, scale) {
             obj.position.x = position.x;
             obj.position.y = position.y;
             obj.position.z = position.z;
-            obj.scale.set(scale, scale, scale);
+            obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             sim.scene.add(obj);
         }
     );
