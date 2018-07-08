@@ -180,14 +180,14 @@ function loadModel(objFilename, mtlFilename, position, size, scale) {
             // obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             sim.scene.add(obj);
-            altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-                var skeleton = _skeleton;
-                sim.scene.add(skeleton);
-                var head = skeleton.getJoint("Head");
-                // var dog = CreateDogFollower(head, 0.04125);
-                // var bb8 = CreateBBFollower(head);
-                obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
-            });
+            // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            //     var skeleton = _skeleton;
+            //     sim.scene.add(skeleton);
+            //     var head = skeleton.getJoint("Head");
+            //     // var dog = CreateDogFollower(head, 0.04125);
+            //     // var bb8 = CreateBBFollower(head);
+            //     obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
+            // });
         }
     );
 }
