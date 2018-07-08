@@ -52,6 +52,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
     this.rotation = 0;
 
+    this.timer = 0;
+
     this.isBall = false;
     this.isDog = true;
 
@@ -59,7 +61,13 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
         this.object3d = parent;
     }
 
+    
+
     this.update = function(deltaTime) {
+        
+        this.timer += deltaTime * 0.001;
+        if(this.timer > 1) this.timer = 0;
+
         if(this.followTarget) {
 
             this.fhead.position.set(
@@ -80,6 +88,8 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
             // this.worldPos = this.object3d.getWorldPosition(this.worldPos);
             this.object3d.lookAt(this.followTarget.position);
+
+            if(this.timer == 0) console.log(this.object3d.rotation.y);
 
             this.moveDir = GetMoveDirection(
                 this.object3d.position,
