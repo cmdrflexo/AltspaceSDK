@@ -68,9 +68,9 @@ TESTTurning = function(target) {
         if(this.cross)
             this.object3d.rotateOnAxis(this.cross, deltaTime * 0.001);
 
-        if(this.timer == 0) 
-            console.log(this.cross);
-            // console.log(this.targetWorldPos);
+        // if(this.timer == 0) 
+        //     console.log(this.cross);
+        //     console.log(this.targetWorldPos);
 
     }
 
