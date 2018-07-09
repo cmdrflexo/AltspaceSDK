@@ -1,0 +1,13 @@
+newmtl SURF-creeper
+Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/creeper/creeper_jayw.jpg
+
+
