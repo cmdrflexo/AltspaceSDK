@@ -193,7 +193,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
                 sim.scene.add(skeleton);
                 var head = skeleton.getJoint("Head");
                 var dog = CreateDogFollower(head, 0.04125);
-                // var bb8 = CreateBBFollower(head);
+                var bb8 = CreateBBFollower(head);
                 if(follow)
                     obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
             });
