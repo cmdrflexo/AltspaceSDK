@@ -7,26 +7,26 @@ var boxURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    for(var z = 0; z < 10 ; z++) {
-        for(var x = 0; x < 10 ; x++) {
-            loadModel(
-                boxURL + "uv_box.obj",
-                boxURL + "uv_box.mtl",
-                new THREE.Vector3((x - 5) * 10, -0.05, (z - 5) * 10),
-                new THREE.Vector3(10, 0.1, 10),
-                1
-            );
-        }
-    }
+    var plots = new Array();
 
-    // loadModel(
-    //     boxURL + "uv_box.obj",
-    //     boxURL + "uv_box.mtl",
-    //     new THREE.Vector3(0, 2, 0),
-    //     new THREE.Vector3(1, 1, 1),
-    //     1//(1 / 16) * 0.66
-    // );
+    // for(var z = 0; z < 10 ; z++) {
+    //     for(var x = 0; x < 10 ; x++) {
+    //         plots.push(new Plot("plot["+x+","+z+"]", x, z));
+    //     }
+    // }
 
+    plots.push(new Plot("Flexo", 0, 0));
+    plots.push(new Plot("Holly", 0, 0));
+    plots.push(new Plot("Nicole", 0, 0));
+    plots.push(new Plot("Bender", 0, 0));
+    plots.push(new Plot("Kenny", 0, 0));
+
+    // for each(var plot in plots) {
+    //     console.log(plot.name);
+    // }
+    console.log("Plot Owners: ");
+    for(var i = 0; i < plots.length; i++)
+        console.log(plots[i].owner);
 }
 
 function loadModel(objFilename, mtlFilename, position, size, scale, follow = false) {

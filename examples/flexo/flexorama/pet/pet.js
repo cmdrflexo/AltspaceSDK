@@ -25,7 +25,7 @@ function DogParts(scale) {
     var parts =  {
         bodyRoot  : new THREE.Object3D(),
         neck      : BoxObject(8, 8, 6, scale, boxTextureURL),
-        headRoot: new THREE.Object3D(),
+        headRoot  : new THREE.Object3D(),
         tailRoot  : new THREE.Object3D(),
         legFrontL : BoxObject(2, 8, 2, scale, boxTextureURL),
         legFrontR : BoxObject(2, 8, 2, scale, boxTextureURL),
