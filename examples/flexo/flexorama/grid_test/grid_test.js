@@ -35,7 +35,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
         objFilename, mtlFilename, 
         function(obj) {
             obj.position.x = position.x * scale + 1;
-            obj.position.y = position.y * scale + 0.4125;
+            obj.position.y = position.y * scale;
             obj.position.z = position.z * scale;
             obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
