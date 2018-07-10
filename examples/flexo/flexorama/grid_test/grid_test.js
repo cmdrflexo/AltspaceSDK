@@ -7,13 +7,25 @@ var boxURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    loadModel(
-        boxURL + "uv_box.obj",
-        boxURL + "uv_box.mtl",
-        new THREE.Vector3(0, 2, 0),
-        new THREE.Vector3(1, 1, 1),
-        1//(1 / 16) * 0.66
-    );
+    for(var z = 0; z < 10 ; z++) {
+        for(var x = 0; x < 10 ; x++) {
+            loadModel(
+                boxURL + "uv_box.obj",
+                boxURL + "uv_box.mtl",
+                new THREE.Vector3(x, -0.5, z),
+                new THREE.Vector3(1, 1, 1),
+                1
+            );
+        }
+    }
+
+    // loadModel(
+    //     boxURL + "uv_box.obj",
+    //     boxURL + "uv_box.mtl",
+    //     new THREE.Vector3(0, 2, 0),
+    //     new THREE.Vector3(1, 1, 1),
+    //     1//(1 / 16) * 0.66
+    // );
 
 }
 
