@@ -12,8 +12,8 @@ function start() {
             loadModel(
                 boxURL + "uv_box.obj",
                 boxURL + "uv_box.mtl",
-                new THREE.Vector3(x, -0.5, z),
-                new THREE.Vector3(1, 1, 1),
+                new THREE.Vector3((x - 5) * 10, -0.05, (z - 5) * 10),
+                new THREE.Vector3(10, 0.1, 10),
                 1
             );
         }
