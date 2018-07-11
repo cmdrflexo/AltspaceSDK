@@ -11,14 +11,25 @@ function start() {
 
     for(var z = 0; z < 10 ; z++) {
         for(var x = 0; x < 10 ; x++) {
-            plots.push(new Plot("plot["+x+","+z+"]", x, z));
-            loadModel(
-                boxURL + "uv_box.obj",
-                boxURL + "uv_box.mtl",
-                new THREE.Vector3(x * 10, -10 + ((z + x) * 0.5), z * 10),
-                new THREE.Vector3(10, 0.5, 10),
-                1
-            );
+            if(x == 5 && z == 5) {
+                loadModel(
+                    boxURL + "uv_box.obj",
+                    "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/ghast.mtl",
+                    new THREE.Vector3(50, 160, 50),
+                    new THREE.Vector3(64, 64, 64),
+                    (1 / 16),
+                    true
+                );
+            } else {
+                plots.push(new Plot("plot["+x+","+z+"]", x, z));
+                loadModel(
+                    boxURL + "uv_box.obj",
+                    boxURL + "uv_box.mtl",
+                    new THREE.Vector3(x * 10, -10 + ((z + x) * 0.5), z * 10),
+                    new THREE.Vector3(10, 0.5, 10),
+                    1
+                );
+            }
         }
     }
 }
@@ -35,6 +46,8 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
             obj.addBehavior(new Hover());
             sim.scene.add(obj);
+            if(follow)
+                obj.rotation.y = THREE.Math.degToRad(90 - 45);
         }
     );
 }
