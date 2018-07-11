@@ -94,8 +94,8 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.position.y = position.y * scale;
             obj.position.z = position.z * scale;
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
-            // obj.addBehavior(new Hover(userHead));
-            obj.addBehavior(new Fall());
+            obj.addBehavior(new Hover(userHead));
+            // obj.addBehavior(new Fall());
             sim.scene.add(obj);
         }
     );
