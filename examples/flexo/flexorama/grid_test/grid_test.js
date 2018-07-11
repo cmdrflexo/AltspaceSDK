@@ -26,7 +26,7 @@ function start() {
         var head = skeleton.getJoint("Head");
 
         var size = 20;
-        var blockSize = 10;
+        var blockSize = 3;
         var blockHeight = 3000;
 
         // loadModel(
