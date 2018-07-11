@@ -21,16 +21,6 @@ function start() {
             );
         }
     }
-
-    // plots.push(new Plot("Flexo", 0, 0));
-    // plots.push(new Plot("Holly", 0, 0));
-    // plots.push(new Plot("Nicole", 0, 0));
-    // plots.push(new Plot("Bender", 0, 0));
-    // plots.push(new Plot("Kenny", 0, 0));
-    
-    // console.log("Plot Owners: ");
-    // for(var i = 0; i < plots.length; i++)
-    //     console.log(plots[i].owner);
 }
 
 function loadModel(objFilename, mtlFilename, position, size, scale, follow = false) {
