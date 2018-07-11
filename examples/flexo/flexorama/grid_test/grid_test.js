@@ -29,56 +29,56 @@ function start() {
         var blockSize = 10;
         var blockHeight = 3000;
 
-        loadModel(
-            boxURL + "uv_box.obj",
-            boxURL + "uv_box_grass.mtl",
-            new THREE.Vector3(blockSize, -blockHeight/2, 0),
-            new THREE.Vector3(blockSize, blockHeight, blockSize),
-            1,
-            false,
-            head
-        );
-        loadModel(
-            boxURL + "uv_box.obj",
-            boxURL + "uv_box_grass.mtl",
-            new THREE.Vector3(-blockSize, -blockHeight/2, 0),
-            new THREE.Vector3(blockSize, blockHeight, blockSize),
-            1,
-            false,
-            head
-        );
-        loadModel(
-            boxURL + "uv_box.obj",
-            boxURL + "uv_box_grass.mtl",
-            new THREE.Vector3(0, -blockHeight/2, blockSize),
-            new THREE.Vector3(blockSize, blockHeight, blockSize),
-            1,
-            false,
-            head
-        );
-        loadModel(
-            boxURL + "uv_box.obj",
-            boxURL + "uv_box_grass.mtl",
-            new THREE.Vector3(0, -blockHeight/2, -blockSize),
-            new THREE.Vector3(blockSize, blockHeight, blockSize),
-            1,
-            false,
-            head
-        );
+        // loadModel(
+        //     boxURL + "uv_box.obj",
+        //     boxURL + "uv_box_grass.mtl",
+        //     new THREE.Vector3(blockSize, -blockHeight/2, 0),
+        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
+        //     1,
+        //     false,
+        //     head
+        // );
+        // loadModel(
+        //     boxURL + "uv_box.obj",
+        //     boxURL + "uv_box_grass.mtl",
+        //     new THREE.Vector3(-blockSize, -blockHeight/2, 0),
+        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
+        //     1,
+        //     false,
+        //     head
+        // );
+        // loadModel(
+        //     boxURL + "uv_box.obj",
+        //     boxURL + "uv_box_grass.mtl",
+        //     new THREE.Vector3(0, -blockHeight/2, blockSize),
+        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
+        //     1,
+        //     false,
+        //     head
+        // );
+        // loadModel(
+        //     boxURL + "uv_box.obj",
+        //     boxURL + "uv_box_grass.mtl",
+        //     new THREE.Vector3(0, -blockHeight/2, -blockSize),
+        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
+        //     1,
+        //     false,
+        //     head
+        // );
 
-        // for(var z = 0; z < size; z++) {
-        //     for(var x = 0; x < size; x++) {
-        //         loadModel(
-        //             boxURL + "uv_box.obj",
-        //             boxURL + "uv_box_grass.mtl",
-        //             new THREE.Vector3((x - (size/2)) * blockSize, -blockSize, (z - (size/2)) * blockSize),
-        //             new THREE.Vector3(blockSize, blockSize/10, blockSize),
-        //             1,
-        //             false,
-        //             head
-        //         );
-        //     }
-        // }
+        for(var z = 0; z < size; z++) {
+            for(var x = 0; x < size; x++) {
+                loadModel(
+                    boxURL + "uv_box.obj",
+                    boxURL + "uv_box_grass.mtl",
+                    new THREE.Vector3((x - (size/2)) * blockSize, -blockSize, (z - (size/2)) * blockSize),
+                    new THREE.Vector3(blockSize, blockSize/10, blockSize),
+                    1,
+                    false,
+                    head
+                );
+            }
+        }
 
     });
 
