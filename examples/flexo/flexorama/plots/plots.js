@@ -28,6 +28,6 @@ Hover = function() {
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.position.y = this.yPos + Math.sin(this.timer) * (10 * this.ran);
+        this.object3d.position.y = this.yPos + 0.1 + Math.sin(this.timer) * (10 * this.ran);
     }
 }
