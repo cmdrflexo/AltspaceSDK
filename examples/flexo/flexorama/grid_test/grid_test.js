@@ -15,7 +15,7 @@ function start() {
             loadModel(
                 boxURL + "uv_box.obj",
                 boxURL + "uv_box.mtl",
-                new THREE.Vector3(x * 10, -0.25 + ((z + x) * 0.5), z * 10),
+                new THREE.Vector3(x * 10, -10 + ((z + x) * 0.5), z * 10),
                 new THREE.Vector3(10, 0.5, 10),
                 1
             );
@@ -43,6 +43,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.position.z = position.z * scale;
             obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
+            obj.addBehavior(new Hover());
             sim.scene.add(obj);
         }
     );
