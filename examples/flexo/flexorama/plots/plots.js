@@ -42,3 +42,15 @@ Hover = function(userHead) {
         return Math.sqrt(dx * dx + dz * dz);
     }
 }
+
+Fall = function() {
+    this.speed = 0;
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.speed += 0.98 * deltaTime * 0.001;
+        this.object3d.position.y += this.speed;
+    }
+}
