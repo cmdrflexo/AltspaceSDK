@@ -15,7 +15,7 @@ function start() {
                 loadModel(
                     boxURL + "uv_box.obj",
                     "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/ghast.mtl",
-                    new THREE.Vector3(100, 160, 100),
+                    new THREE.Vector3(1600, 160, 1600),
                     new THREE.Vector3(64, 64, 64),
                     (1 / 16),
                     true
