@@ -25,15 +25,15 @@ function start() {
         sim.scene.add(skeleton);
         var head = skeleton.getJoint("Head");
 
-        var size = 30;
-        var blockSize = 1;
+        var size = 20;
+        var blockSize = 3;
         for(var z = 0; z < size; z++) {
             for(var x = 0; x < size; x++) {
                 loadModel(
                     boxURL + "uv_box.obj",
                     boxURL + "uv_box_grass.mtl",
                     new THREE.Vector3((x - (size/2)) * blockSize, -0.1, (z - (size/2)) * blockSize),
-                    new THREE.Vector3(blockSize, 1, blockSize),
+                    new THREE.Vector3(blockSize, blockSize * 2, blockSize),
                     1,
                     false,
                     head
