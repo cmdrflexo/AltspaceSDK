@@ -31,7 +31,7 @@ function start() {
             for(var x = 0; x < size; x++) {
                 loadModel(
                     boxURL + "uv_box.obj",
-                    boxURL + "uv_box.mtl",
+                    boxURL + "uv_box_grass.mtl",
                     new THREE.Vector3((x - (size/2)) * blockSize, -0.1, (z - (size/2)) * blockSize),
                     new THREE.Vector3(blockSize, 1, blockSize),
                     1,
