@@ -17,20 +17,29 @@ PlotUserInfo = function(head) {
     }
 }
 
-Hover = function(position) {
+Hover = function(userHead) {
     this.timer = 0;
     this.yPos;
     this.ran = Math.random();
-    this.position = position;
+    this.userHead = userHead;
+    // this.position = position;
     // this.ran = 1;
     this.awake = function(parent) {
         this.object3d = parent;
         this.yPos = this.object3d.position.y;
     }
+
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.position.y = this.yPos + 0.1 + 
+        this.object3d.position.y = this.yPos + 
+        0.021 * GetDistance(this.object3d.position, this.userHead.position) * GetDistance(this.object3d.position, this.userHead.position);
             // Math.sin(this.timer) * (10 * this.ran);
-            Math.sin(this.timer) * (this.position.z * 0.1);
+            // Math.sin(this.timer) * 0.001 * GetDistance(this.object3d.position, this.userHead.position) * GetDistance(this.object3d.position, this.userHead.position);//(this.position.z * 0.1);
+    }
+
+    function GetDistance(v1, v2) {
+        var dx = v1.x - v2.x;
+        var dz = v1.z - v2.z;
+        return Math.sqrt(dx * dx + dz * dz);
     }
 }

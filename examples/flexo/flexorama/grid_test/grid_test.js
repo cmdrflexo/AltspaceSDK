@@ -4,36 +4,49 @@ else start();
 
 var boxURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/";
 
+// if(x == 5 && z == 5) {
+//     loadModel(
+//         boxURL + "uv_box.obj",
+//         "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/ghast.mtl",
+//         new THREE.Vector3(1600, 160, 1600),
+//         new THREE.Vector3(1024, 1024, 1024),
+//         (1 / 16),
+//         true
+//     );
+// }
+
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    var plots = new Array();
+    // var plots = new Array();
 
-    for(var z = 0; z < 10 ; z++) {
-        for(var x = 0; x < 10 ; x++) {
-            if(x == 5 && z == 5) {
+    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+        var skeleton = _skeleton;
+        sim.scene.add(skeleton);
+        var head = skeleton.getJoint("Head");
+
+        var size = 30;
+        var blockSize = 1;
+        for(var z = 0; z < size; z++) {
+            for(var x = 0; x < size; x++) {
                 loadModel(
                     boxURL + "uv_box.obj",
-                    "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/ghast.mtl",
-                    new THREE.Vector3(1600, 160, 1600),
-                    new THREE.Vector3(1024, 1024, 1024),
-                    (1 / 16),
-                    true
+                    boxURL + "uv_box.mtl",
+                    new THREE.Vector3((x - (size/2)) * blockSize, -0.1, (z - (size/2)) * blockSize),
+                    new THREE.Vector3(blockSize, 1, blockSize),
+                    1,
+                    false,
+                    head
                 );
             }
-            plots.push(new Plot("plot["+x+","+z+"]", x, z));
-            loadModel(
-                boxURL + "uv_box.obj",
-                boxURL + "uv_box.mtl",
-                new THREE.Vector3(x * 10, -10, z * 10),
-                new THREE.Vector3(10, 0.5, 10),
-                1
-            );
         }
-    }
+
+    });
+
+    
 }
 
-function loadModel(objFilename, mtlFilename, position, size, scale, follow = false) {
+function loadModel(objFilename, mtlFilename, position, size, scale, follow = false, userHead) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objFilename, mtlFilename, 
@@ -43,10 +56,8 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.position.z = position.z * scale;
             obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
-            obj.addBehavior(new Hover(position));
+            obj.addBehavior(new Hover(userHead));
             sim.scene.add(obj);
-            if(follow)
-                obj.rotation.y = THREE.Math.degToRad(90 - 45);
         }
     );
 }
