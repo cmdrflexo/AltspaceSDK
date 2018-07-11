@@ -16,7 +16,7 @@ function start() {
                     boxURL + "uv_box.obj",
                     "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/ghast/ghast.mtl",
                     new THREE.Vector3(1600, 160, 1600),
-                    new THREE.Vector3(64, 64, 64),
+                    new THREE.Vector3(1024, 1024, 1024),
                     (1 / 16),
                     true
                 );
@@ -43,7 +43,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.position.z = position.z * scale;
             obj.rotation.y = THREE.Math.degToRad(180);
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
-            obj.addBehavior(new Hover());
+            obj.addBehavior(new Hover(position));
             sim.scene.add(obj);
             if(follow)
                 obj.rotation.y = THREE.Math.degToRad(90 - 45);

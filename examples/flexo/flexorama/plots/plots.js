@@ -17,10 +17,11 @@ PlotUserInfo = function(head) {
     }
 }
 
-Hover = function() {
+Hover = function(position) {
     this.timer = 0;
     this.yPos;
     this.ran = Math.random();
+    this.position = position;
     // this.ran = 1;
     this.awake = function(parent) {
         this.object3d = parent;
@@ -28,6 +29,8 @@ Hover = function() {
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.position.y = this.yPos + 0.1 + Math.sin(this.timer) * (10 * this.ran);
+        this.object3d.position.y = this.yPos + 0.1 + 
+            // Math.sin(this.timer) * (10 * this.ran);
+            Math.sin(this.timer) * (this.position.z * 0.1);
     }
 }
