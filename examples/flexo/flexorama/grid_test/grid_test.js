@@ -15,6 +15,8 @@ var boxURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 //     );
 // }
 
+var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
+
 function start() {
     sim = new altspace.utilities.Simulation();
 
@@ -29,8 +31,20 @@ function start() {
 
     // Test();
 
-
     // var plots = new Array();
+
+    var sky = new THREE.Mesh(
+        new THREE.SphereGeometry(1500, 32, 16),
+        new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            map: new THREE.Texture({
+                src: altspaceutil.getAbsoluteURL(skyNightURL)
+            })
+        })
+    );
+    sky.scale.x = -1;
+    sim.scene.add(sky);
+
 
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
         var skeleton = _skeleton;
