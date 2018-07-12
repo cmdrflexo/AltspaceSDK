@@ -31,7 +31,7 @@ Hover = function(userHead) {
 
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
-        this.object3d.position.y = this.yPos - 0.005 
+        this.object3d.position.y = this.yPos - 0.0025 
             * GetDistance(this.object3d.position, this.userHead.position) 
             * GetDistance(this.object3d.position, this.userHead.position);
     }
