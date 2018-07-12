@@ -18,6 +18,18 @@ var boxURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 function start() {
     sim = new altspace.utilities.Simulation();
 
+    // function Test() {
+    //     var url = "https://jcanuet.000webhostapp.com/flexo/flexorama/database/ajax/name.php";
+    //     var testOutput = "Flexo";
+
+    //     $.post(url, {name: testOutput}, function(data) {
+    //         console.log(data);
+    //     });
+    // }
+
+    // Test();
+
+
     // var plots = new Array();
 
     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
@@ -27,45 +39,6 @@ function start() {
 
         var size = 20;
         var blockSize = 3;
-        var blockHeight = 3000;
-
-        // loadModel(
-        //     boxURL + "uv_box.obj",
-        //     boxURL + "uv_box_grass.mtl",
-        //     new THREE.Vector3(blockSize, -blockHeight/2, 0),
-        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
-        //     1,
-        //     false,
-        //     head
-        // );
-        // loadModel(
-        //     boxURL + "uv_box.obj",
-        //     boxURL + "uv_box_grass.mtl",
-        //     new THREE.Vector3(-blockSize, -blockHeight/2, 0),
-        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
-        //     1,
-        //     false,
-        //     head
-        // );
-        // loadModel(
-        //     boxURL + "uv_box.obj",
-        //     boxURL + "uv_box_grass.mtl",
-        //     new THREE.Vector3(0, -blockHeight/2, blockSize),
-        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
-        //     1,
-        //     false,
-        //     head
-        // );
-        // loadModel(
-        //     boxURL + "uv_box.obj",
-        //     boxURL + "uv_box_grass.mtl",
-        //     new THREE.Vector3(0, -blockHeight/2, -blockSize),
-        //     new THREE.Vector3(blockSize, blockHeight, blockSize),
-        //     1,
-        //     false,
-        //     head
-        // );
-
         for(var z = 0; z < size; z++) {
             for(var x = 0; x < size; x++) {
                 loadModel(
