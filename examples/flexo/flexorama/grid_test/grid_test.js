@@ -58,7 +58,7 @@ function start() {
                 loadModel(
                     boxURL + "uv_box.obj",
                     boxURL + "uv_box_grass.mtl",
-                    new THREE.Vector3((x - (size/2)) * blockSize, -blockSize/2, (z - (size/2)) * blockSize),
+                    new THREE.Vector3((x - (size/2)) * blockSize, -blockSize/6, (z - (size/2)) * blockSize),
                     new THREE.Vector3(blockSize, blockSize/3, blockSize),
                     1,
                     false,
