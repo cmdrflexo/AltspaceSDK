@@ -44,7 +44,7 @@ function start() {
         new THREE.MeshBasicMaterial({
             color: 0xffffff,
             map: new THREE.Texture({
-                src: altspaceutil.getAbsoluteURL(skyDayURL)
+                src: altspaceutil.getAbsoluteURL(skyNightURL)
             })
         })
     );
@@ -115,26 +115,27 @@ function start() {
         head
     );
 
-    loadModel(
-        centralURL + "central_test-interior.obj",
-        centralURL + "central_test-interior.mtl",
-        // new THREE.Vector3(0, 250, -300),
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(1, 1, 1),
-        1,
-        false,
-        head
-    );
+    // loadModel(
+    //     centralURL + "central_test-interior.obj",
+    //     centralURL + "central_test-interior.mtl",
+    //     // new THREE.Vector3(0, 250, -300),
+    //     new THREE.Vector3(0, 0, 0),
+    //     new THREE.Vector3(1, 1, 1),
+    //     1,
+    //     false,
+    //     head
+    // );
 
     // var testPortal = new THREE.Mesh(
     //     new THREE.BoxGeometry(1, 1, 1),
     //     new THREE.MeshBasicMaterial({ color: 0xffffff })
-    // );
+    // );?__, browser cashe busting
+    // ?v=1.0
     for(var i = 0; i < 25; i++) {
-        var testPortal = new THREE.Object3D();
-        testPortal.position.x = 25 - (i * 2);
-        testPortal.position.y = 0.5;
-        testPortal.addBehavior(
+        var portal = new THREE.Object3D();
+        portal.position.x = 25 - (i * 2);
+        portal.position.y = 0.5;
+        portal.addBehavior(
             new altspaceutil.behaviors.NativeComponent(
                 "n-portal", {
                     data: {
