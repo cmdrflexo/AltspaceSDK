@@ -48,13 +48,13 @@ function start() {
 
     sim.scene.add(CreateTerrain());
 
-    loadModel(
-        creeperURL + "creeper.obj",
-        creeperURL + "creeper_jayw.mtl",
-        new THREE.Vector3(0, -0.4125, 160),
-        new THREE.Vector3(1, 1, 1),
-        (1 / 16)
-    );
+    // loadModel(
+    //     creeperURL + "creeper.obj",
+    //     creeperURL + "creeper_jayw.mtl",
+    //     new THREE.Vector3(0, -0.4125, 160),
+    //     new THREE.Vector3(1, 1, 1),
+    //     (1 / 16)
+    // );
 
     // loadModel(
     //     dogModelURL + "uv_box.obj",
@@ -64,14 +64,14 @@ function start() {
     //     (1 / 16)
     // );
 
-    loadModel(
-        squidURL + "squid.obj",
-        squidURL + "squid.mtl",
-        new THREE.Vector3(32, 0, -32),
-        new THREE.Vector3(1, 1, 1),
-        (1 / 16),
-        false// true
-    );
+    // loadModel(
+    //     squidURL + "squid.obj",
+    //     squidURL + "squid.mtl",
+    //     new THREE.Vector3(32, 0, -32),
+    //     new THREE.Vector3(1, 1, 1),
+    //     (1 / 16),
+    //     false// true
+    // );
 
 
     var dogModelURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/dog/"
@@ -192,7 +192,7 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
                 var skeleton = _skeleton;
                 sim.scene.add(skeleton);
                 var head = skeleton.getJoint("Head");
-                var dog = CreateDogFollower(head, 0.04125);
+                // var dog = CreateDogFollower(head, 0.04125);
                 var bb8 = CreateBBFollower(head);
                 if(follow)
                     obj.addBehavior(new Follower(head, 2, 4, 0.25, new THREE.Object3D()));
