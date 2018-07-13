@@ -89,12 +89,24 @@ function start() {
         var skeleton = _skeleton;
         sim.scene.add(skeleton);
         head = skeleton.getJoint("Head");
-        var icon = new THREE.Mesh(
+        
+        var smallIcon = new THREE.Mesh(
             new THREE.BoxGeometry(0.002, 0.005, 0.002),
             new THREE.MeshBasicMaterial({ color: 0xff0000 })
         );
-        icon.addBehavior(new MiniIcon(head));
-        sim.scene.add(icon);
+        smallIcon.addBehavior(new Icon(head));
+        sim.scene.add(smallIcon);
+
+        // var largeScale = 500;
+        // var largeIcon = new THREE.Mesh(
+        //     new THREE.BoxGeometry(
+        //         10,//0.25 * largeScale, 
+        //         1.75 * largeScale, 
+        //         10),//0.25 * largeScale),
+        //     new THREE.MeshBasicMaterial({ color: 0x00ffff })
+        // );
+        // largeIcon.addBehavior(new Icon(head, true));
+        // sim.scene.add(largeIcon);
 
     });
 

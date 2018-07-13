@@ -55,22 +55,26 @@ Fall = function() {
     }
 }
 
-MiniIcon = function(head) {
+Icon = function(head, large = false) {
     this.timer = 0;
     this.userHead = head;
+    this.large = large;
     this.awake = function(parent, scene) {
         this.object3d = parent;
     }
     this.update = function(deltaTime) {
         this.timer += deltaTime;
+        this.scale = this.large ? 500 : 0.002;
+        this.height = this.large ? -550 : 550;
         this.object3d.position.set(
-            this.userHead.position.x * 0.002 + 1, 
-            ((this.userHead.position.y + 550) * 0.002) + 0.7, 
-            this.userHead.position.z * 0.002 + 10
+            this.userHead.position.x * this.scale + 1, 
+            ((this.userHead.position.y + this.height) * this.scale) + 0.7, 
+            this.userHead.position.z * this.scale + 10
         );
         // if(this.timer >= 1000 && this.userHead) {
         //     this.timer = 0;
-        //     console.log(this.object3d.position);
+        //     if(large)
+        //         console.log(this.object3d.position);
         // }
     }
 }
