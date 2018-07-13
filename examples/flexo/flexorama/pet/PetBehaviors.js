@@ -159,31 +159,33 @@ Follower = function(followTarget, minDistance, maxDistance, moveSpeed, fhead) {
 
             this.moveDirNorm = this.moveDir.clone().normalize();
 
-
+            // console.log(this.moveTowards);
             
-            // if(this.isBall) {
-            this.axis = GetRotateAxis(this.moveDir).normalize();
-            this.rotate = THREE.Math.degToRad(0.36 * deltaTime);
-            if(this.moveTowards || this.moveAway)
-                this.object3d.rotateOnWorldAxis(
-                    this.axis,
-                    this.moveTowards ? this.rotate : -this.rotate
-                );
-            // }
+            if(this.isBall) {
+                // console.log("test");
+                this.axis = GetRotateAxis(this.moveDir).normalize();
+                this.rotate = THREE.Math.degToRad(0.36 * deltaTime);
+                if(this.moveTowards || this.moveAway) {
+                    this.object3d.rotateOnWorldAxis(
+                        this.axis,
+                        this.moveTowards ? this.rotate : -this.rotate
+                    );
+                }
+            }
 
-            if(this.isDog) {
-                // console.log(this.object3d.position.angleTo(this.followTarget.position));
-                this.dogWorldPos = this.object3d.getWorldPosition(this.dogWorldPos);
-                // this.userWorldPos = this.followTarget.getWorldPosition(this.userWorldPos);
+            // if(this.isDog) {
+            //     // console.log(this.object3d.position.angleTo(this.followTarget.position));
+            //     this.dogWorldPos = this.object3d.getWorldPosition(this.dogWorldPos);
+            //     // this.userWorldPos = this.followTarget.getWorldPosition(this.userWorldPos);
 
 
                 
-                if(this.object3d.position.angleTo(this.followTarget.position) < 0.3)// THREE.Math.degToRad(1))
-                    this.object3d.rotateOnAxis(
-                        new THREE.Vector3(0, 1, 0), 
-                        THREE.Math.degToRad(1)
-                    );
-            }
+            //     if(this.object3d.position.angleTo(this.followTarget.position) < 0.3)// THREE.Math.degToRad(1))
+            //         this.object3d.rotateOnAxis(
+            //             new THREE.Vector3(0, 1, 0), 
+            //             THREE.Math.degToRad(1)
+            //         );
+            // }
 
             if(this.moveTowards) {
                 this.object3d.position.x += this.moveDir.x * this.moveSpeed * deltaTime * 0.001;

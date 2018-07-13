@@ -22,7 +22,7 @@ function start() {
     sim = new altspace.utilities.Simulation();
 
     var terrain = CreateTerrain();
-    terrain.position.y = -550;
+    // terrain.position.y = -550;
     sim.scene.add(terrain);
 
     // function Test() {
@@ -104,7 +104,8 @@ function start() {
     loadModel(
         centralURL + "central_test-ext.obj",
         centralURL + "central_test-ext.mtl",
-        new THREE.Vector3(0, -550, 0),
+        // new THREE.Vector3(0, -550, 0),
+        new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(1, 1, 1),
         1,
         false,
