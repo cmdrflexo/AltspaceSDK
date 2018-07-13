@@ -29,7 +29,7 @@ function start() {
     sim.scene.add(terrain);
 
     // var smallTerrain = CreateTerrain(0.002, boxTextureURL);
-    var smallTerrain = CreateTerrain(0.002, grassTextureURL);
+    var smallTerrain = CreateTerrain(0.002, boxTextureURL);
     smallTerrain.position.set(1, 0.7, 10);
     sim.scene.add(smallTerrain);
 
