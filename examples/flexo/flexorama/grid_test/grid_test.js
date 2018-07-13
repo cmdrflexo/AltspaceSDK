@@ -16,6 +16,7 @@ var centralURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/f
 //     );
 // }
 
+var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
 var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 
 function start() {
@@ -38,17 +39,17 @@ function start() {
 
     // var plots = new Array();
 
-    // var sky = new THREE.Mesh(
-    //     new THREE.SphereGeometry(1500, 32, 16),
-    //     new THREE.MeshBasicMaterial({
-    //         color: 0xffffff,
-    //         map: new THREE.Texture({
-    //             src: altspaceutil.getAbsoluteURL(skyNightURL)
-    //         })
-    //     })
-    // );
-    // sky.scale.x = -1;
-    // sim.scene.add(sky);
+    var sky = new THREE.Mesh(
+        new THREE.SphereGeometry(1500, 32, 16),
+        new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            map: new THREE.Texture({
+                src: altspaceutil.getAbsoluteURL(skyDayURL)
+            })
+        })
+    );
+    sky.scale.x = -1;
+    sim.scene.add(sky);
 
 
     // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
