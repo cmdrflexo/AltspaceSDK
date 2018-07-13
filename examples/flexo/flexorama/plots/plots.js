@@ -54,3 +54,23 @@ Fall = function() {
         this.object3d.position.y += this.speed;
     }
 }
+
+MiniIcon = function(head) {
+    this.timer = 0;
+    this.userHead = head;
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+    }
+    this.update = function(deltaTime) {
+        this.timer += deltaTime;
+        this.object3d.position.set(
+            this.userHead.position.x * 0.002 + 1, 
+            ((this.userHead.position.y + 550) * 0.002) + 0.7, 
+            this.userHead.position.z * 0.002 + 10
+        );
+        // if(this.timer >= 1000 && this.userHead) {
+        //     this.timer = 0;
+        //     console.log(this.object3d.position);
+        // }
+    }
+}
