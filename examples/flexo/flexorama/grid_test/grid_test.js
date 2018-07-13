@@ -23,7 +23,7 @@ function start() {
     sim = new altspace.utilities.Simulation();
 
     var terrain = CreateTerrain();
-    // terrain.position.y = -550;
+    terrain.position.y = -550;
     sim.scene.add(terrain);
 
     // function Test() {
@@ -50,6 +50,7 @@ function start() {
     );
     sky.rotation.z = THREE.Math.degToRad(-45);
     sky.scale.x = -1;
+    sky.position.y = - 500;
     sim.scene.add(sky);
 
 
@@ -106,8 +107,8 @@ function start() {
     loadModel(
         centralURL + "central_test-ext.obj",
         centralURL + "central_test-ext.mtl",
-        // new THREE.Vector3(0, -550, 0),
-        new THREE.Vector3(0, 0, -300),
+        new THREE.Vector3(0, -550, 0),
+        // new THREE.Vector3(0, 0, -300),
         new THREE.Vector3(1, 1, 1),
         1,
         false,
@@ -117,8 +118,8 @@ function start() {
     loadModel(
         centralURL + "central_test-interior.obj",
         centralURL + "central_test-interior.mtl",
-        new THREE.Vector3(0, 250, -300),
-        // new THREE.Vector3(0, 250, 0),
+        // new THREE.Vector3(0, 250, -300),
+        new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(1, 1, 1),
         1,
         false,
