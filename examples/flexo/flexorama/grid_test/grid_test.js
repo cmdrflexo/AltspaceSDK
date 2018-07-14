@@ -25,12 +25,12 @@ function start() {
     sim = new altspace.utilities.Simulation();
 
     var terrain = CreateTerrain(1, grassTextureURL);
-    terrain.position.y = -550;
+    terrain.position.y = -552;
     sim.scene.add(terrain);
 
     // var smallTerrain = CreateTerrain(0.002, boxTextureURL);
     var smallTerrain = CreateTerrain(0.002, grassTextureURL);
-    smallTerrain.position.set(1, 0.7, 10);
+    smallTerrain.position.set(1, 0.699, 10);
     sim.scene.add(smallTerrain);
 
     // function Test() {
@@ -190,14 +190,7 @@ function start() {
         true
     );
 
-    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
-    for(var i = 0; i < 100; i++) {
-        DualObject(
-            modelsURL + "road_center.obj",
-            modelsURL + "road_center.mtl",
-            new THREE.Vector3(-495 + i * 10, -546, -395)
-        );
-    }
+    MakeRoads();
 
     Flexo(modelsURL);
 
@@ -285,12 +278,13 @@ function start() {
     
 }
 
-function DualObject(objURL, mtlURL, pos) {
+function DualObject(objURL, mtlURL, pos, rotation = 0) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objURL, mtlURL, 
         function(obj) {
             obj.position.set(pos.x, pos.y, pos.z);
+            obj.rotation.y = THREE.Math.degToRad(rotation);
             sim.scene.add(obj);
 
             var smallObj = obj.clone();
@@ -342,4 +336,95 @@ function CreateTerrain(scale, textureURL) {
     plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
     plane.rotation.x = THREE.Math.degToRad(-90);
     return plane;
+}
+
+function MakeRoads() {
+    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
+    for(var i = 0; i < 96; i++) {
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-475 + i * 10, -550, -495),
+            -90
+        );
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-475 + i * 10, -550, -485),
+            90
+        );
+
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-475 + i * 10, -550, 485),
+            -90
+        );
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-475 + i * 10, -550, 495),
+            90
+        );
+
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(485, -550, -475 + i * 10),
+            0
+        );
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(495, -550, -475 + i * 10),
+            180
+        );
+
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-495, -550, -475 + i * 10),
+            0
+        );
+        DualObject(
+            modelsURL + "road_edge.obj",
+            modelsURL + "road_edge.mtl",
+            new THREE.Vector3(-485, -550, -475 + i * 10),
+            180
+        );
+    }
+    for(var i = 0; i < 4; i++) {
+        DualObject(
+            modelsURL + "road_center.obj",
+            modelsURL + "road_center.mtl",
+            i == 0 ? new THREE.Vector3( 495, -550, 495) :
+            i == 1 ? new THREE.Vector3(-485, -550, 495) :
+            i == 2 ? new THREE.Vector3( 495, -550, -495) :
+                     new THREE.Vector3(-485, -550, -495)
+        );
+        DualObject(
+            modelsURL + "road_center.obj",
+            modelsURL + "road_center.mtl",
+            i == 0 ? new THREE.Vector3( 485, -550, 495) :
+            i == 1 ? new THREE.Vector3(-495, -550, 495) :
+            i == 2 ? new THREE.Vector3( 485, -550, -495) :
+                     new THREE.Vector3(-495, -550, -495)
+        );
+        DualObject(
+            modelsURL + "road_center.obj",
+            modelsURL + "road_center.mtl",
+            i == 0 ? new THREE.Vector3( 495, -550, 485) :
+            i == 1 ? new THREE.Vector3(-485, -550, 485) :
+            i == 2 ? new THREE.Vector3( 495, -550, -485) :
+                     new THREE.Vector3(-485, -550, -485)
+        );
+        DualObject(
+            modelsURL + "road_center.obj",
+            modelsURL + "road_center.mtl",
+            i == 0 ? new THREE.Vector3( 485, -550, 485) :
+            i == 1 ? new THREE.Vector3(-495, -550, 485) :
+            i == 2 ? new THREE.Vector3( 485, -550, -485) :
+                     new THREE.Vector3(-495, -550, -485)
+        );
+    }
 }
