@@ -268,7 +268,8 @@ function DualObject(objURL, mtlURL, pos) {
     loader.load(
         objURL, mtlURL, 
         function(obj) {
-            obj.position.set(pos.x, pos.y, pos.z);
+            // obj.position.set(pos.x, pos.y, pos.z);
+            obj.position.set(0, 0.01, 0);
             sim.scene.add(obj);
             for(var i = 0; i < 100; i++) {
                 var smallObj = obj.clone();
