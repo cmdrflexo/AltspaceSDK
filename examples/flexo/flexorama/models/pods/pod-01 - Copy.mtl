@@ -1,5 +1,63 @@
 newmtl Default
 Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
+newmtl Default
+Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/textures/pod-01_AO.png
+
+newmtl Default
+Kd 0.501961 0.501961 0.501961
+Ke 0 0 0
+Ka 0 0 0
+Ks 0.5 0.5 0.5
+Ns 400
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
+newmtl Default
+Kd 1 1 1
+Ke 1 1 1
+Ka 0 0 0
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/textures/pod-01_AO.png
+
+newmtl Default
+Kd 1 1 1
+Ke 1 1 1
+Ka 0 0 0
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/textures/pod-01_AO.png
+
+newmtl Default
+Kd 1 1 1
 Ke 1 1 1
 Ka 0 0 0
 Ks 0 0 0
