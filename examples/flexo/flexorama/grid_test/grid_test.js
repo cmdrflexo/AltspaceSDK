@@ -182,6 +182,14 @@ function start() {
         true
     );
 
+    var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
+    DualObject(
+        modelsURL + "road_center.obj",
+	    modelsURL + "road_center.mtl",
+        new THREE.Vector3(-495, 0, -395)
+    );
+    
+
     // var testPortal = new THREE.Mesh(
     //     new THREE.BoxGeometry(1, 1, 1),
     //     new THREE.MeshBasicMaterial({ color: 0xffffff })
@@ -254,6 +262,26 @@ function start() {
     
 }
 
+function DualObject(objURL, mtlURL, pos) {
+    
+    var loader = new altspace.utilities.shims.OBJMTLLoader();
+    loader.load(
+        objURL, mtlURL, 
+        function(obj) {
+            obj.position.set(pos.x, pos.y, pos.z);
+            sim.scene.add(obj);
+            for(var i = 0; i < 100; i++) {
+                var smallObj = obj.clone();
+                smallObj.position.set(1, 0.701, 10);
+                smallObj.position.x += (pos.x + i * 10) * 0.002;
+                smallObj.position.z += pos.z * 0.002;
+                smallObj.scale.set(0.002, 0.002, 0.002);
+                sim.scene.add(smallObj);
+            }
+        }
+    );
+};
+
 function loadModel(objFilename, mtlFilename, position, size, scale, follow = false, userHead, clone = false) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
@@ -286,7 +314,7 @@ function CreateTerrain(scale, textureURL) {
                 src: altspaceutil.getAbsoluteURL(textureURL)
             })
         })
-    )
+    );
     plane.material.map.repeat.set(100, 100);
     plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
     plane.rotation.x = THREE.Math.degToRad(-90);
