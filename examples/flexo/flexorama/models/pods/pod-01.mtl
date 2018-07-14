@@ -1,0 +1,12 @@
+newmtl Default
+Kd 1 1 1
+Ke 1 1 1
+Ka 0 0 0
+Ks 0 0 0
+Ns 500
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/pod-01_AO.png
+
