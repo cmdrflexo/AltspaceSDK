@@ -7,6 +7,7 @@ var boxTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flex
 var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
 var centralURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/buildings/central-test-01/";
 
+var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/";
 // if(x == 5 && z == 5) {
 //     loadModel(
 //         boxURL + "uv_box.obj",
@@ -144,6 +145,16 @@ function start() {
     //     false,
     //     head
     // );
+
+    loadModel(
+        podURL + "pod-01.obj",
+        podURL + "pod-01.mtl",
+        new THREE.Vector3(0, 550, 0),
+        new THREE.Vector3(1, 1, 1),
+        1,
+        false,
+        head
+    );
 
     loadModel(
         centralURL + "central_test-ext.obj",
