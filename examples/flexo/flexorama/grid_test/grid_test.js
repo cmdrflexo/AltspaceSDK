@@ -183,11 +183,24 @@ function start() {
     );
 
     var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/grid_objects/roads/";
-    DualObject(
-        modelsURL + "road_center.obj",
-	    modelsURL + "road_center.mtl",
-        new THREE.Vector3(-495, 0, -395)
-    );
+    for(var i = 0; i < 100; i++) {
+        DualObject(
+            modelsURL + "road_center.obj",
+            modelsURL + "road_center.mtl",
+            new THREE.Vector3(-495 + i * 10, -546, -395)
+        );
+    }
+
+    /*
+    for(var i = 0; i < 100; i++) {
+                var smallObj = obj.clone();
+                smallObj.position.set(1, 0.701, 10);
+                smallObj.position.x += (pos.x + i * 10) * 0.002;
+                smallObj.position.z += pos.z * 0.002;
+                smallObj.scale.set(0.002, 0.002, 0.002);
+                sim.scene.add(smallObj);
+            }
+    */
     
 
     // var testPortal = new THREE.Mesh(
@@ -263,22 +276,21 @@ function start() {
 }
 
 function DualObject(objURL, mtlURL, pos) {
-    
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objURL, mtlURL, 
         function(obj) {
-            // obj.position.set(pos.x, pos.y, pos.z);
-            obj.position.set(0, 0.01, 0);
+            obj.position.set(pos.x, pos.y, pos.z);
             sim.scene.add(obj);
-            for(var i = 0; i < 100; i++) {
-                var smallObj = obj.clone();
-                smallObj.position.set(1, 0.701, 10);
-                smallObj.position.x += (pos.x + i * 10) * 0.002;
-                smallObj.position.z += pos.z * 0.002;
-                smallObj.scale.set(0.002, 0.002, 0.002);
-                sim.scene.add(smallObj);
-            }
+
+            var smallObj = obj.clone();
+            smallObj.position.set(
+                1 + pos.x * 0.002, 
+                0.7 + (pos.y + 550) * 0.002, 
+                10 + pos.z * 0.002
+            );
+            smallObj.scale.set(0.002, 0.002, 0.002);
+            sim.scene.add(smallObj);
         }
     );
 };
