@@ -191,6 +191,8 @@ function start() {
         );
     }
 
+    Flexo(modelsURL);
+
     /*
     for(var i = 0; i < 100; i++) {
                 var smallObj = obj.clone();
