@@ -167,16 +167,16 @@ function start() {
         head
     );
 
-    // loadModel(
-    //     centralURL + "central_test-interior.obj",
-    //     centralURL + "central_test-interior.mtl",
-    //     // new THREE.Vector3(0, 250, -300),
-    //     new THREE.Vector3(0, 0, 0),
-    //     new THREE.Vector3(1, 1, 1),
-    //     1,
-    //     false,
-    //     head
-    // );
+    loadModel(
+        centralURL + "central_test-interior.obj",
+        centralURL + "central_test-interior.mtl",
+        // new THREE.Vector3(0, 250, -300),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(1, 1, 1),
+        1,
+        false,
+        head
+    );
 
     var obj = loadModel(
         centralURL + "central_test-interior.obj",
