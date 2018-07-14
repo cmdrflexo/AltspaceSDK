@@ -55,10 +55,11 @@ Fall = function() {
     }
 }
 
-Icon = function(head, large = false) {
+Icon = function(head, large = false, isHead = false) {
     this.timer = 0;
     this.userHead = head;
     this.large = large;
+    this.isHead = isHead;
     this.awake = function(parent, scene) {
         this.object3d = parent;
     }
@@ -66,10 +67,19 @@ Icon = function(head, large = false) {
         this.timer += deltaTime;
         this.scale = this.large ? 500 : 0.002;
         this.height = this.large ? -550 : 550;
+        if(this.isHead) {
+            this.object3d.rotation.set(
+                this.userHead.rotation.x,
+                this.userHead.rotation.y,
+                this.userHead.rotation.z,
+                this.userHead.rotation.w
+            );
+            
+        }
         if(large) {
             this.object3d.position.set(
                 (this.userHead.position.x - 1) * this.scale,
-                0.5 * this.scale / 2 - 550,
+                isHead ? 100 : 0.5 * this.scale / 2 - 550,
                 (this.userHead.position.z - 10) * this.scale
             );
         } else {
@@ -82,7 +92,7 @@ Icon = function(head, large = false) {
         // if(this.timer >= 1000 && this.userHead) {
         //     this.timer = 0;
         //     if(large)
-        //         console.log(this.object3d.position);
+        //         console.log(this.object3d.rotation.y);
         // }
     }
 }

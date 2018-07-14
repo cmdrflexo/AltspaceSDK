@@ -100,9 +100,9 @@ function start() {
         var largeScale = 500;
         var largeIcon = new THREE.Mesh(
             new THREE.BoxGeometry(
-                1 * largeScale, 
+                0.5 * largeScale, 
                 1.5 * largeScale, 
-                1 * largeScale),
+                0.5 * largeScale),
             new THREE.MeshBasicMaterial({ color: 0xff0000 })
         );
         var largeIconHead = new THREE.Mesh(
@@ -110,7 +110,9 @@ function start() {
             new THREE.MeshBasicMaterial({ color: 0xff0000 })
         );
         largeIconHead.position.y += 1 * largeScale;
-        largeIcon.add(largeIconHead);
+        // largeIcon.add(largeIconHead);
+        largeIconHead.addBehavior(new Icon(head, true, true));
+        sim.scene.add(largeIconHead);
         largeIcon.addBehavior(new Icon(head, true));
         sim.scene.add(largeIcon);
 
