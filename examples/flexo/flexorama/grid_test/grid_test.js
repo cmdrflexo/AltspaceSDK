@@ -47,7 +47,7 @@ function start() {
     // var plots = new Array();
 
     var sky = new THREE.Mesh(
-        new THREE.SphereGeometry(1500, 32, 16),
+        new THREE.SphereGeometry(2500, 32, 16),
         new THREE.MeshBasicMaterial({
             color: 0xffffff,
             map: new THREE.Texture({
@@ -97,16 +97,22 @@ function start() {
         smallIcon.addBehavior(new Icon(head));
         sim.scene.add(smallIcon);
 
-        // var largeScale = 500;
-        // var largeIcon = new THREE.Mesh(
-        //     new THREE.BoxGeometry(
-        //         10,//0.25 * largeScale, 
-        //         1.75 * largeScale, 
-        //         10),//0.25 * largeScale),
-        //     new THREE.MeshBasicMaterial({ color: 0x00ffff })
-        // );
-        // largeIcon.addBehavior(new Icon(head, true));
-        // sim.scene.add(largeIcon);
+        var largeScale = 500;
+        var largeIcon = new THREE.Mesh(
+            new THREE.BoxGeometry(
+                1 * largeScale, 
+                1.5 * largeScale, 
+                1 * largeScale),
+            new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        );
+        var largeIconHead = new THREE.Mesh(
+            new THREE.SphereGeometry(0.5 * largeScale, 16, 32),
+            new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        );
+        largeIconHead.position.y += 1 * largeScale;
+        largeIcon.add(largeIconHead);
+        largeIcon.addBehavior(new Icon(head, true));
+        sim.scene.add(largeIcon);
 
     });
 

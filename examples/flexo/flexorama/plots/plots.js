@@ -66,11 +66,19 @@ Icon = function(head, large = false) {
         this.timer += deltaTime;
         this.scale = this.large ? 500 : 0.002;
         this.height = this.large ? -550 : 550;
-        this.object3d.position.set(
-            this.userHead.position.x * this.scale + 1, 
-            ((this.userHead.position.y + this.height) * this.scale) + 0.7, 
-            this.userHead.position.z * this.scale + 10
-        );
+        if(large) {
+            this.object3d.position.set(
+                (this.userHead.position.x - 1) * this.scale,
+                0.5 * this.scale / 2 - 550,
+                (this.userHead.position.z - 10) * this.scale
+            );
+        } else {
+            this.object3d.position.set(
+                this.userHead.position.x * this.scale + 1, 
+                ((this.userHead.position.y + this.height) * this.scale) + 0.7, 
+                this.userHead.position.z * this.scale + 10
+            );
+        }
         // if(this.timer >= 1000 && this.userHead) {
         //     this.timer = 0;
         //     if(large)
