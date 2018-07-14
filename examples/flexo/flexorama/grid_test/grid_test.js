@@ -192,7 +192,7 @@ function start() {
 
     MakeRoads();
 
-    Flexo(modelsURL);
+    // Flexo(modelsURL);
 
     /*
     for(var i = 0; i < 100; i++) {
