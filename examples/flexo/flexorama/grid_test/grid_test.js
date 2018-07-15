@@ -290,7 +290,7 @@ function start() {
                 }
             )
         );
-        sim.scene.add(testPortal);
+        sim.scene.add(portal);
     }
 
     /*
