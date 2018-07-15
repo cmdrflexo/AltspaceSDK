@@ -171,8 +171,8 @@ function start() {
         if(i == 0) {
             DualObject(
                 flexoAvatarURL + "s-series-m01_flexo_01.obj",
-                // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
-                flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
+                flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+                // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
                 new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
             );
         }
