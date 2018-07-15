@@ -260,38 +260,38 @@ function start() {
     //     new THREE.MeshBasicMaterial({ color: 0xffffff })
     // );?__, browser cashe busting
     // ?v=1.0
-    // for(var i = 0; i < 25; i++) {
-    //     var portal = new THREE.Object3D();
-    //     portal.position.x = 25 - (i * 2);
-    //     portal.position.y = 0.5;
-    //     portal.addBehavior(
-    //         new altspaceutil.behaviors.NativeComponent(
-    //             "n-portal", {
-    //                 data: {
-    //                     targetSpace: null,
-    //                     targetEvent: null,
-    //                     targetPosition:   { x: 10, y:  0, z: 10 },
-    //                     targetQuaternion: { x:  0, y:  0, z:  0, w: 0 }
-    //                 }
-    //                 // },
-    //                 // update: function() {
-    //                 //     if(this.config.targetEntity) {
-    //                 //         console.log(this.config.targetEntity);
-    //                 //         this.scene.updateMatrixWorld(true);
-    //                 //         this.data.targetPosition = this.config.targetEntity.getWorldPosition(new THREE.Vector3());
-    //                 //         var quaternion = this.config.targetEntity.getWorldQuaternion(new THREE.Quaternion());
-    //                 //         this.data.targetQuaternion = { x: quaternion.x, y: quaternion.y, z: quaternion.z, w: quaternion.w };
-    //                 //     }
-    //                 //     if(this.initialized) {
-    //                 //         console.log("test");
-    //                 //         altspace.updateNativeComponent(this.component, this.type, this.data);
-    //                 //     }
-    //                 // }
-    //             }
-    //         )
-    //     );
-    //     sim.scene.add(testPortal);
-    // }
+    for(var i = 0; i < 25; i++) {
+        var portal = new THREE.Object3D();
+        portal.position.x = 25 - (i * 2);
+        portal.position.y = 0.5;
+        portal.addBehavior(
+            new altspaceutil.behaviors.NativeComponent(
+                "n-portal", {
+                    data: {
+                        targetSpace: null,
+                        targetEvent: null,
+                        targetPosition:   { x: 10, y:  0, z: 10 },
+                        targetQuaternion: { x:  0, y:  0, z:  0, w: 0 }
+                    }
+                    // },
+                    // update: function() {
+                    //     if(this.config.targetEntity) {
+                    //         console.log(this.config.targetEntity);
+                    //         this.scene.updateMatrixWorld(true);
+                    //         this.data.targetPosition = this.config.targetEntity.getWorldPosition(new THREE.Vector3());
+                    //         var quaternion = this.config.targetEntity.getWorldQuaternion(new THREE.Quaternion());
+                    //         this.data.targetQuaternion = { x: quaternion.x, y: quaternion.y, z: quaternion.z, w: quaternion.w };
+                    //     }
+                    //     if(this.initialized) {
+                    //         console.log("test");
+                    //         altspace.updateNativeComponent(this.component, this.type, this.data);
+                    //     }
+                    // }
+                }
+            )
+        );
+        sim.scene.add(testPortal);
+    }
 
     /*
     'n-portal': {
