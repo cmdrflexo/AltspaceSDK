@@ -4,8 +4,6 @@
 #	LightWave3D OBJ Export v2.3
 #
 ####
-o s-series-m01_flexo_01.obj
-mtllib s-series-m01_flexo_01.mtl
 g default
 v 0 1.68067 0.148304
 v -0.000567 1.6821 0.152746
