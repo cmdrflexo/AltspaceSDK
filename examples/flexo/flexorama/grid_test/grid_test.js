@@ -183,16 +183,17 @@ function start() {
         }
         if(i == 1) {
             DualObject(
-                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
-                nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
-                // nicole1AvatarURL + "pod-classic_nicole.obj",
-                // nicole1AvatarURL + "pod-classic_nicole.mtl",
+                // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                // nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
+                nicole1AvatarURL + "pod-classic_nicole.obj",
+                nicole1AvatarURL + "pod-classic_nicole.mtl",
                 new THREE.Vector3(7.5 + 2 * i, 0.1, -3.5)
             );
         }
         if(i == 2) {
             DualObject(
-                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                nicole1AvatarURL + "pod-classic_nicole.obj",
                 donAvatarURL + "pod-classic_don.mtl",
                 new THREE.Vector3(6.5 + 2 * i, 0.1, -3.5)
             );
