@@ -178,8 +178,10 @@ function start() {
         }
         if(i == 1) {
             DualObject(
-                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
-                nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
+                // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                // nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
+                nicole1AvatarURL + "pod-classic_nicole.obj",
+                nicole1AvatarURL + "pod-classic_nicole.mtl",
                 new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
             );
         }
