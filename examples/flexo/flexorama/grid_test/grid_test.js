@@ -156,12 +156,13 @@ function start() {
     //     head
     // );
 
-    var flexoAvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
+    var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
     var nicole2AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/pod-classic_nicole_big-head/";
-    var chaysAvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
+    var donAvatarURL     = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_don/";
+    var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
 
-    for(var i = 0; i < 3; i++) {
+    for(var i = 0; i < 4; i++) {
         DualObject(
             podURL + "pod-01.obj",
             podURL + "pod-01.mtl",
@@ -178,14 +179,21 @@ function start() {
         }
         if(i == 1) {
             DualObject(
-                // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
-                // nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
-                nicole1AvatarURL + "pod-classic_nicole.obj",
-                nicole1AvatarURL + "pod-classic_nicole.mtl",
+                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
+                // nicole1AvatarURL + "pod-classic_nicole.obj",
+                // nicole1AvatarURL + "pod-classic_nicole.mtl",
                 new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
             );
         }
         if(i == 2) {
+            DualObject(
+                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                donAvatarURL + "pod-classic_don.mtl",
+                new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+            );
+        }
+        if(i == 3) {
             DualObject(
                 chaysAvatarURL + "rubenoid-male-01_chays.obj",
                 chaysAvatarURL + "rubenoid-male-01_chays.mtl",
