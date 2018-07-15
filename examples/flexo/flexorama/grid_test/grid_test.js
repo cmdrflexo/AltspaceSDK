@@ -163,7 +163,7 @@ function start() {
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
 
     for(var i = 0; i < 4; i++) {
-        if(i == 0 || i == 2) {
+        if(i == 0 || i == 3) {
             DualObject(
                 podURL + "pod-01.obj",
                 podURL + "pod-01.mtl",
