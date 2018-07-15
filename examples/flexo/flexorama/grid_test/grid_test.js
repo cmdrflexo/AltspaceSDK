@@ -162,6 +162,7 @@ function start() {
     var donAvatarURL     = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_don/";
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
     var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/robothead-roundguy-01_jayw/";
+    var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
 
     for(var i = 0; i < 5; i++) {
         // if(i == 0 || i == 3) {
@@ -207,6 +208,11 @@ function start() {
             DualObject(
                 jaywAvatarURL + "robothead-roundguy-01_jayw.obj",
                 jaywAvatarURL + "robothead-roundguy-01_jayw.mtl",
+                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+            );
+            DualObject(
+                mrHandyURL + "mr_handy-altvr-01.obj",
+                mrHandyURL + "mr_handy-altvr-01.mtl",
                 new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
             );
         }
