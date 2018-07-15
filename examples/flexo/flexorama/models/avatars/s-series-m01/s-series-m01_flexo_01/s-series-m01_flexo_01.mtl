@@ -8,7 +8,7 @@ Tr 0
 d 1
 Ni 0
 Tf 1 1 1
-map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/tex-flexo-01.png
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/s-series-m01_flexo_01.png
 
 newmtl Default
 Kd 1 1 1
@@ -20,7 +20,7 @@ Tr 0
 d 1
 Ni 0
 Tf 1 1 1
-map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/tex-flexo-01.png
+map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/s-series-m01_flexo_01.png
 
 newmtl Default
 Kd 0.2 0.2 0.2
@@ -32,4 +32,3 @@ Tr 0
 d 1
 Ni 0
 Tf 1 1 1
-
