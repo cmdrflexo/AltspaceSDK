@@ -260,7 +260,7 @@ function start() {
     //     new THREE.MeshBasicMaterial({ color: 0xffffff })
     // );?__, browser cashe busting
     // ?v=1.0
-    for(var i = 0; i < 25; i++) {
+    for(var i = 0; i < 1; i++) {
         var portal = new THREE.Object3D();
         portal.position.x = 25 - (i * 2);
         portal.position.y = 0.5;
