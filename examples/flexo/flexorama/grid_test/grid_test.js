@@ -146,14 +146,20 @@ function start() {
     //     head
     // );
 
-    loadModel(
+    // loadModel(
+    //     podURL + "pod-01.obj",
+    //     podURL + "pod-01.mtl",
+    //     new THREE.Vector3(11.5, 0.1, -3.5),
+    //     new THREE.Vector3(1, 1, 1),
+    //     1,
+    //     false,
+    //     head
+    // );
+
+    DualObject(
         podURL + "pod-01.obj",
         podURL + "pod-01.mtl",
-        new THREE.Vector3(11.5, 0.1, -3.5),
-        new THREE.Vector3(1, 1, 1),
-        1,
-        false,
-        head
+        new THREE.Vector3(12.5, 0.1, -3.5)
     );
 
     loadModel(
