@@ -1,11 +1,11 @@
-newmtl SURF-primary
-Kd 1 1 1
+newmtl Default
+Kd 0.2 0.2 0.2
 Ke 1 1 1
 Ka 0 0 0
 Ks 0 0 0
-Ns 500
+Ns 0
 Tr 0
 d 1
-Ni 1.5
+Ni 0
 Tf 1 1 1
 map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/tax-chays.png
