@@ -156,20 +156,22 @@ function start() {
     //     head
     // );
 
-    DualObject(
-        podURL + "pod-01.obj",
-        podURL + "pod-01.mtl",
-        new THREE.Vector3(12.5, 0.1, -3.5)
-    );
-
     var flexoAvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
-    
-    DualObject(
-        flexoAvatarURL + "s-series-m01_flexo_01.obj",
-        // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
-        flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
-        new THREE.Vector3(12.5, 0.1, -3.5)
-    );
+
+    for(var i = 0; i < 3; i++) {
+        DualObject(
+            podURL + "pod-01.obj",
+            podURL + "pod-01.mtl",
+            new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+        );
+        
+        DualObject(
+            flexoAvatarURL + "s-series-m01_flexo_01.obj",
+            // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+            flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
+            new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+        );
+    }
 
     loadModel(
         centralURL + "central_test-ext.obj",
