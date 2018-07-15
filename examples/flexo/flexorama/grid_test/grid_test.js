@@ -161,8 +161,9 @@ function start() {
     var nicole2AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/pod-classic_nicole_big-head/";
     var donAvatarURL     = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_don/";
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
+    var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/robothead-roundguy-01_jayw/";
 
-    for(var i = 0; i < 4; i++) {
+    for(var i = 0; i < 5; i++) {
         // if(i == 0 || i == 3) {
         //     DualObject(
         //         podURL + "pod-01.obj",
@@ -171,38 +172,44 @@ function start() {
         //     );
         // }
 
-        // if(i == 0) {
-        //     DualObject(
-        //         flexoAvatarURL + "s-series-m01_flexo_01.obj",
-        //         flexoAvatarURL + "s-series-m01_flexo_01.mtl",
-        //         // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
-        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-        //     );
-        // }
+        if(i == 0) {
+            DualObject(
+                flexoAvatarURL + "s-series-m01_flexo_01.obj",
+                flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+                // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
+                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+            );
+        }
         if(i == 1) {
             DualObject(
                 nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
                 nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
                 // nicole1AvatarURL + "pod-classic_nicole.obj",
                 // nicole1AvatarURL + "pod-classic_nicole.mtl",
-                new THREE.Vector3(11 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(7.5 + 2 * i, 0.1, -3.5)
             );
         }
         if(i == 2) {
             DualObject(
                 nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
                 donAvatarURL + "pod-classic_don.mtl",
-                new THREE.Vector3(10 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(6.5 + 2 * i, 0.1, -3.5)
             );
         }
-        //rm
-        // if(i == 3) {
-        //     DualObject(
-        //         chaysAvatarURL + "rubenoid-male-01_chays.obj",
-        //         chaysAvatarURL + "rubenoid-male-01_chays.mtl",
-        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-        //     );
-        // }
+        if(i == 3) {
+            DualObject(
+                chaysAvatarURL + "rubenoid-male-01_chays.obj",
+                chaysAvatarURL + "rubenoid-male-01_chays.mtl",
+                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+            );
+        }
+        if(i == 4) {
+            DualObject(
+                jaywAvatarURL + "robothead-roundguy-01_jayw.obj",
+                jaywAvatarURL + "robothead-roundguy-01_jayw.mtl",
+                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+            );
+        }
     }
 
     loadModel(
