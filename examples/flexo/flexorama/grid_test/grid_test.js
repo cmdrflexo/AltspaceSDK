@@ -163,22 +163,22 @@ function start() {
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
 
     for(var i = 0; i < 4; i++) {
-        if(i == 0 || i == 3) {
-            DualObject(
-                podURL + "pod-01.obj",
-                podURL + "pod-01.mtl",
-                new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-            );
-        }
+        // if(i == 0 || i == 3) {
+        //     DualObject(
+        //         podURL + "pod-01.obj",
+        //         podURL + "pod-01.mtl",
+        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+        //     );
+        // }
 
-        if(i == 0) {
-            DualObject(
-                flexoAvatarURL + "s-series-m01_flexo_01.obj",
-                flexoAvatarURL + "s-series-m01_flexo_01.mtl",
-                // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
-                new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-            );
-        }
+        // if(i == 0) {
+        //     DualObject(
+        //         flexoAvatarURL + "s-series-m01_flexo_01.obj",
+        //         flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+        //         // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
+        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+        //     );
+        // }
         if(i == 1) {
             DualObject(
                 nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
@@ -195,13 +195,14 @@ function start() {
                 new THREE.Vector3(10 + 2 * i, 0.1, -3.5)
             );
         }
-        if(i == 3) {
-            DualObject(
-                chaysAvatarURL + "rubenoid-male-01_chays.obj",
-                chaysAvatarURL + "rubenoid-male-01_chays.mtl",
-                new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-            );
-        }
+        //rm
+        // if(i == 3) {
+        //     DualObject(
+        //         chaysAvatarURL + "rubenoid-male-01_chays.obj",
+        //         chaysAvatarURL + "rubenoid-male-01_chays.mtl",
+        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+        //     );
+        // }
     }
 
     loadModel(
