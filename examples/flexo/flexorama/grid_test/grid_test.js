@@ -162,6 +162,13 @@ function start() {
         new THREE.Vector3(12.5, 0.1, -3.5)
     );
 
+    var flexoAvatarURL = "map_Kd https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/";
+    DualObject(
+        flexoAvatarURL + "s-series-m01_flexo_01.obj",
+        flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+        new THREE.Vector3(12.5, 0.1, -3.5)
+    );
+
     loadModel(
         centralURL + "central_test-ext.obj",
         centralURL + "central_test-ext.mtl",
