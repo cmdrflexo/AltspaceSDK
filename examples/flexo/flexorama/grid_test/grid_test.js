@@ -149,7 +149,7 @@ function start() {
     loadModel(
         podURL + "pod-01.obj",
         podURL + "pod-01.mtl",
-        new THREE.Vector3(0, 550, 0),
+        new THREE.Vector3(11.5, 0.1, -3.5),
         new THREE.Vector3(1, 1, 1),
         1,
         false,
