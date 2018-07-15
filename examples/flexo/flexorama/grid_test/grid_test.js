@@ -166,7 +166,8 @@ function start() {
     
     DualObject(
         flexoAvatarURL + "s-series-m01_flexo_01.obj",
-        flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+        // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+        flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
         new THREE.Vector3(12.5, 0.1, -3.5)
     );
 
