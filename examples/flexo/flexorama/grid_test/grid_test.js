@@ -159,7 +159,7 @@ function start() {
     // Spawners();
 
     // Rock
-    var rockPos = new THREE.Vector3(0, 1.5, 0);
+    var rockPos = new THREE.Vector3(0, 1.6, 0);
 
     let gemSpawner = new THREE.Object3D();
     gemSpawner.position.set(rockPos.x, rockPos.y, rockPos.z);
@@ -167,12 +167,14 @@ function start() {
     gemSpawner.addBehaviors(
         new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/gem' })
     );
+    gemSpawner.scale.set(0.1, 0.1, 0.1);
     let ringSpawner = new THREE.Object3D();
-    ringSpawner.position.set(rockPos.x, rockPos.y - 0.15, rockPos.z);
+    ringSpawner.position.set(rockPos.x, rockPos.y - 0.015, rockPos.z);
     sim.scene.add(ringSpawner);
     ringSpawner.addBehaviors(
         new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' })
     );
+    ringSpawner.scale.set(0.15, 0.15, 0.15);
 
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
