@@ -159,22 +159,28 @@ function start() {
     // Spawners();
 
     // Rock
-    var rockPos = new THREE.Vector3(1, 1.6, 1);
-
-    let gemSpawner = new THREE.Object3D();
-    gemSpawner.position.set(rockPos.x, rockPos.y, rockPos.z);
-    sim.scene.add(gemSpawner);
-    gemSpawner.addBehaviors(
-        new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/gem' })
-    );
-    gemSpawner.scale.set(0.1, 0.1, 0.1);
-    let ringSpawner = new THREE.Object3D();
-    ringSpawner.position.set(rockPos.x, rockPos.y - 0.015, rockPos.z);
-    sim.scene.add(ringSpawner);
-    ringSpawner.addBehaviors(
-        new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' })
-    );
-    ringSpawner.scale.set(0.15, 0.15, 0.15);
+    // var rockPos = new THREE.Vector3(1, 1.6, 1);
+    var rockPos = new THREE.Vector3(0, 1.5, 0);
+    
+    for(var x = 0; x < 15; x++) {
+        for(var z = 0; z < 15; z++) {
+            rockPos = new THREE.Vector3((rockPos.x + x) * 0.1, rockPos.y, (rockPos.x + z) * 0.1);
+            let gemSpawner = new THREE.Object3D();
+            gemSpawner.position.set(rockPos.x, rockPos.y, rockPos.z);
+            sim.scene.add(gemSpawner);
+            gemSpawner.addBehaviors(
+                new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/gem' })
+            );
+            gemSpawner.scale.set(0.1, 0.1, 0.1);
+            let ringSpawner = new THREE.Object3D();
+            ringSpawner.position.set(rockPos.x, rockPos.y - 0.015, rockPos.z);
+            sim.scene.add(ringSpawner);
+            ringSpawner.addBehaviors(
+                new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' })
+            );
+            ringSpawner.scale.set(0.15, 0.15, 0.15);
+        }
+    }
 
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
@@ -183,7 +189,7 @@ function start() {
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
     var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/robothead-roundguy-01_jayw/";
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
-
+    
     for(var i = 0; i < 5; i++) {
         // if(i == 0 || i == 3) {
         //     DualObject(
