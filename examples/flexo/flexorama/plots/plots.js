@@ -32,6 +32,11 @@ Floaty = function(x, z) {
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
         this.object3d.position.y = this.yPos + (Math.sin(this.timer) * 0.1 * (this.x % 2 + 0.5) * (this.z % 2 + 0.5) * this.ran);
+        this.object3d.rotation.y = this.timer * this.ran;
+        // if(this.timer >= 03) {
+        //     this.ran = Math.random();
+        //     this.timer = 0;
+        // }
     }
 }
 
