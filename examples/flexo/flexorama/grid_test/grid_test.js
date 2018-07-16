@@ -159,7 +159,7 @@ function start() {
     // Spawners();
 
     // Rock
-    var rockPos = new THREE.Vector3(0, 1.6, 0);
+    var rockPos = new THREE.Vector3(1, 1.6, 1);
 
     let gemSpawner = new THREE.Object3D();
     gemSpawner.position.set(rockPos.x, rockPos.y, rockPos.z);
