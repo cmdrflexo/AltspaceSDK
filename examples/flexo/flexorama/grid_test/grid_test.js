@@ -160,10 +160,10 @@ function start() {
 
     // Rock
     // var rockPos = new THREE.Vector3(1, 1.6, 1);
-    var rockPos = new THREE.Vector3(0, 1.5, 0);
+    var rockPos = new THREE.Vector3(0, 2.5, 0);
     
-    for(var x = 0; x < 10; x++) {
-        for(var z = 0; z < 10; z++) {
+    for(var x = 0; x < 3; x++) {
+        for(var z = 0; z < 1; z++) {
             rockPos = new THREE.Vector3((rockPos.x + x) * 0.1, rockPos.y, (rockPos.x + z) * 0.1);
             let gemSpawner = new THREE.Object3D();
             gemSpawner.position.set(0, 0.1, 0);
@@ -193,6 +193,8 @@ function start() {
     var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/robothead-roundguy-01_jayw/";
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
     
+    var avatarPos = new THREE.Vector3(-20, 0.6, -14);
+
     for(var i = 0; i < 5; i++) {
         // if(i == 0 || i == 3) {
         //     DualObject(
@@ -209,7 +211,13 @@ function start() {
                 // flexoAvatarURL + "s-series-m01_flexo_01.obj",
                 // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
                 // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
-                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+                // new THREE.Vector3(
+                //     avatarPos.x + 7 + 2 * i, 
+                //     avatarPos.y + 0.1, 
+                //     avatarPos.z + -3.5
+                // )
+                new THREE.Vector3(0, -1600, -250),
+                1000
             );
         }
         if(i == 1) {
@@ -218,7 +226,11 @@ function start() {
                 nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
                 // nicole1AvatarURL + "pod-classic_nicole.obj",
                 // nicole1AvatarURL + "pod-classic_nicole.mtl",
-                new THREE.Vector3(7.5 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(
+                    avatarPos.x + 7.5 + 2 * i, 
+                    avatarPos.y + 0.1, 
+                    avatarPos.z + -3.5
+                )
             );
         }
         if(i == 2) {
@@ -226,26 +238,42 @@ function start() {
                 // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
                 nicole1AvatarURL + "pod-classic_nicole.obj",
                 donAvatarURL + "pod-classic_don.mtl",
-                new THREE.Vector3(6.5 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(
+                    avatarPos.x + 6.5 + 2 * i, 
+                    avatarPos.y + 0.1, 
+                    avatarPos.z + -3.5
+                )
             );
         }
         if(i == 3) {
             DualObject(
                 chaysAvatarURL + "rubenoid-male-01_chays.obj",
                 chaysAvatarURL + "rubenoid-male-01_chays.mtl",
-                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(
+                    avatarPos.x + 7 + 2 * i, 
+                    avatarPos.y + 0.1, 
+                    avatarPos.z + -3.5
+                )
             );
         }
         if(i == 4) {
             DualObject(
                 jaywAvatarURL + "robothead-roundguy-01_jayw.obj",
                 jaywAvatarURL + "robothead-roundguy-01_jayw.mtl",
-                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(
+                    avatarPos.x + 7 + 2 * i, 
+                    avatarPos.y + 0.1, 
+                    avatarPos.z + -3.5
+                )
             );
             DualObject(
                 mrHandyURL + "mr_handy-altvr-01.obj",
                 mrHandyURL + "mr_handy-altvr-01.mtl",
-                new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
+                new THREE.Vector3(
+                    avatarPos.x + 7 + 2 * i, 
+                    avatarPos.y + 0.1, 
+                    avatarPos.z + -3.5
+                )
             );
         }
     }
@@ -383,13 +411,14 @@ function start() {
     
 }
 
-function DualObject(objURL, mtlURL, pos, rotation = 0) {
+function DualObject(objURL, mtlURL, pos, scale = 1, rotation = 0) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         objURL, mtlURL, 
         function(obj) {
             obj.position.set(pos.x, pos.y, pos.z);
             obj.rotation.y = THREE.Math.degToRad(rotation);
+            obj.scale.set(scale, scale, scale);
             sim.scene.add(obj);
 
             var smallObj = obj.clone();
@@ -398,7 +427,7 @@ function DualObject(objURL, mtlURL, pos, rotation = 0) {
                 0.7 + (pos.y + 550) * 0.002, 
                 10 + pos.z * 0.002
             );
-            smallObj.scale.set(0.002, 0.002, 0.002);
+            smallObj.scale.set(scale * 0.002, scale * 0.002, scale * 0.002);
             sim.scene.add(smallObj);
         }
     );
