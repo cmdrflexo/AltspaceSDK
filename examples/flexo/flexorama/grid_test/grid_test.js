@@ -25,14 +25,14 @@ var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    var terrain = CreateTerrain(1, grassTextureURL);
-    terrain.position.y = -552;
-    sim.scene.add(terrain);
+    // var terrain = CreateTerrain(1, grassTextureURL);
+    // terrain.position.y = -552;
+    // sim.scene.add(terrain);
 
     // var smallTerrain = CreateTerrain(0.002, boxTextureURL);
-    var smallTerrain = CreateTerrain(0.002, grassTextureURL);
-    smallTerrain.position.set(1, 0.699, 10);
-    sim.scene.add(smallTerrain);
+    // var smallTerrain = CreateTerrain(0.002, grassTextureURL);
+    // smallTerrain.position.set(1, 0.699, 10);
+    // sim.scene.add(smallTerrain);
 
     // function Test() {
     //     var url = "https://jcanuet.000webhostapp.com/flexo/flexorama/database/ajax/name.php";
@@ -250,50 +250,50 @@ function start() {
         }
     }
 
-    loadModel(
-        centralURL + "central_test-ext.obj",
-        centralURL + "central_test-ext.mtl",
-        new THREE.Vector3(0, -550, 0),
-        // new THREE.Vector3(0, 0, -300),
-        new THREE.Vector3(1, 1, 1),
-        1,
-        false,
-        head
-    );
+    // loadModel(
+    //     centralURL + "central_test-ext.obj",
+    //     centralURL + "central_test-ext.mtl",
+    //     new THREE.Vector3(0, -550, 0),
+    //     // new THREE.Vector3(0, 0, -300),
+    //     new THREE.Vector3(1, 1, 1),
+    //     1,
+    //     false,
+    //     head
+    // );
 
-    loadModel(
-        centralURL + "central_test-ext.obj",
-        centralURL + "central_test-ext.mtl",
-        new THREE.Vector3(0, 0.7, 10),
-        // new THREE.Vector3(0, 0, -300),
-        new THREE.Vector3(-0.002, 0.002, 0.002),
-        1,
-        false,
-        head
-    );
+    // loadModel(
+    //     centralURL + "central_test-ext.obj",
+    //     centralURL + "central_test-ext.mtl",
+    //     new THREE.Vector3(0, 0.7, 10),
+    //     // new THREE.Vector3(0, 0, -300),
+    //     new THREE.Vector3(-0.002, 0.002, 0.002),
+    //     1,
+    //     false,
+    //     head
+    // );
 
-    loadModel(
-        centralURL + "central_test-interior.obj",
-        centralURL + "central_test-interior.mtl",
-        // new THREE.Vector3(0, 250, -300),
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(1, 1, 1),
-        1,
-        false,
-        head
-    );
+    // loadModel(
+    //     centralURL + "central_test-interior.obj",
+    //     centralURL + "central_test-interior.mtl",
+    //     // new THREE.Vector3(0, 250, -300),
+    //     new THREE.Vector3(0, 0, 0),
+    //     new THREE.Vector3(1, 1, 1),
+    //     1,
+    //     false,
+    //     head
+    // );
 
-    var obj = loadModel(
-        centralURL + "central_test-interior.obj",
-        centralURL + "central_test-interior.mtl",
-        // new THREE.Vector3(0, 250, -300),
-        new THREE.Vector3(0, 1.8, 10),
-        new THREE.Vector3(0.002, 0.002, 0.002),
-        1,
-        false,
-        head,
-        true
-    );
+    // var obj = loadModel(
+    //     centralURL + "central_test-interior.obj",
+    //     centralURL + "central_test-interior.mtl",
+    //     // new THREE.Vector3(0, 250, -300),
+    //     new THREE.Vector3(0, 1.8, 10),
+    //     new THREE.Vector3(0.002, 0.002, 0.002),
+    //     1,
+    //     false,
+    //     head,
+    //     true
+    // );
 
     // MakeRoads();
 
@@ -316,38 +316,38 @@ function start() {
     //     new THREE.MeshBasicMaterial({ color: 0xffffff })
     // );?__, browser cashe busting
     // ?v=1.0
-    for(var i = 0; i < 1; i++) {
-        var portal = new THREE.Object3D();
-        portal.position.x = 25 - (i * 2);
-        portal.position.y = 0.5;
-        portal.addBehavior(
-            new altspaceutil.behaviors.NativeComponent(
-                "n-portal", {
-                    data: {
-                        targetSpace: null,
-                        targetEvent: null,
-                        targetPosition:   { x: 10, y:  0, z: 10 },
-                        targetQuaternion: { x:  0, y:  0, z:  0, w: 0 }
-                    }
-                    // },
-                    // update: function() {
-                    //     if(this.config.targetEntity) {
-                    //         console.log(this.config.targetEntity);
-                    //         this.scene.updateMatrixWorld(true);
-                    //         this.data.targetPosition = this.config.targetEntity.getWorldPosition(new THREE.Vector3());
-                    //         var quaternion = this.config.targetEntity.getWorldQuaternion(new THREE.Quaternion());
-                    //         this.data.targetQuaternion = { x: quaternion.x, y: quaternion.y, z: quaternion.z, w: quaternion.w };
-                    //     }
-                    //     if(this.initialized) {
-                    //         console.log("test");
-                    //         altspace.updateNativeComponent(this.component, this.type, this.data);
-                    //     }
-                    // }
-                }
-            )
-        );
-        sim.scene.add(portal);
-    }
+    // for(var i = 0; i < 1; i++) {
+    //     var portal = new THREE.Object3D();
+    //     portal.position.x = 25 - (i * 2);
+    //     portal.position.y = 0.5;
+    //     portal.addBehavior(
+    //         new altspaceutil.behaviors.NativeComponent(
+    //             "n-portal", {
+    //                 data: {
+    //                     targetSpace: null,
+    //                     targetEvent: null,
+    //                     targetPosition:   { x: 10, y:  0, z: 10 },
+    //                     targetQuaternion: { x:  0, y:  0, z:  0, w: 0 }
+    //                 }
+    //                 // },
+    //                 // update: function() {
+    //                 //     if(this.config.targetEntity) {
+    //                 //         console.log(this.config.targetEntity);
+    //                 //         this.scene.updateMatrixWorld(true);
+    //                 //         this.data.targetPosition = this.config.targetEntity.getWorldPosition(new THREE.Vector3());
+    //                 //         var quaternion = this.config.targetEntity.getWorldQuaternion(new THREE.Quaternion());
+    //                 //         this.data.targetQuaternion = { x: quaternion.x, y: quaternion.y, z: quaternion.z, w: quaternion.w };
+    //                 //     }
+    //                 //     if(this.initialized) {
+    //                 //         console.log("test");
+    //                 //         altspace.updateNativeComponent(this.component, this.type, this.data);
+    //                 //     }
+    //                 // }
+    //             }
+    //         )
+    //     );
+    //     sim.scene.add(portal);
+    // }
 
     /*
     'n-portal': {
