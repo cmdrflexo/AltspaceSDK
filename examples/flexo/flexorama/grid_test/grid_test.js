@@ -190,7 +190,7 @@ function start() {
     var nicole2AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/pod-classic_nicole_big-head/";
     var donAvatarURL     = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_don/";
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
-    var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/robothead-roundguy-01_jayw/";
+    var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/";
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
     
     var avatarPos = new THREE.Vector3(-20, 0.6, -14);
@@ -258,23 +258,24 @@ function start() {
         }
         if(i == 4) {
             DualObject(
-                jaywAvatarURL + "robothead-roundguy-01_jayw.obj",
-                jaywAvatarURL + "robothead-roundguy-01_jayw.mtl",
+                jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.obj",
+                // jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.mtl",
+                jaywAvatarURL + "robothead-roundguy-01.mtl",
                 new THREE.Vector3(
                     avatarPos.x + 7 + 2 * i, 
                     avatarPos.y + 0.1, 
                     avatarPos.z + -3.5
                 )
             );
-            DualObject(
-                mrHandyURL + "mr_handy-altvr-01.obj",
-                mrHandyURL + "mr_handy-altvr-01.mtl",
-                new THREE.Vector3(
-                    avatarPos.x + 7 + 2 * i, 
-                    avatarPos.y + 0.1, 
-                    avatarPos.z + -3.5
-                )
-            );
+            // DualObject(
+            //     mrHandyURL + "mr_handy-altvr-01.obj",
+            //     mrHandyURL + "mr_handy-altvr-01.mtl",
+            //     new THREE.Vector3(
+            //         avatarPos.x + 7 + 2 * i, 
+            //         avatarPos.y + 0.1, 
+            //         avatarPos.z + -3.5
+            //     )
+            // );
         }
     }
 
