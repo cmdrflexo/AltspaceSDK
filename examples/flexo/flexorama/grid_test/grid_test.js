@@ -172,7 +172,7 @@ function start() {
                 );
 
                 let ringSpawner = new THREE.Object3D();
-                ringSpawner.position.set(0, 0, 0.05);
+                ringSpawner.position.set(0, 0, -0.1);
                 ringSpawner.add(gemSpawner);
                 ringSpawner.addBehaviors(
                     new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' }),
