@@ -156,7 +156,7 @@ function start() {
     //     head
     // );
 
-    Spawners();
+    // Spawners();
 
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
@@ -177,8 +177,10 @@ function start() {
 
         if(i == 0) {
             DualObject(
-                flexoAvatarURL + "s-series-m01_flexo_01.obj",
-                flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+                flexoAvatarURL + "s-series-m01_flexo_02.obj",
+                flexoAvatarURL + "s-series-m01_flexo_02.mtl",
+                // flexoAvatarURL + "s-series-m01_flexo_01.obj",
+                // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
                 // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
                 new THREE.Vector3(7 + 2 * i, 0.1, -3.5)
             );
