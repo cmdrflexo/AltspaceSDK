@@ -158,6 +158,14 @@ function start() {
 
     // Spawners();
 
+    // Rock
+    let gemSpawner = new THREE.Object3D();
+    gemSpawner.position.set(0, 10, 0);
+    sim.scene.add(gemSpawner);
+    gemSpawner.addBehaviors(
+        new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/gem' })
+    );
+
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
     var nicole2AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/pod-classic_nicole_big-head/";
