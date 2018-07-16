@@ -159,11 +159,19 @@ function start() {
     // Spawners();
 
     // Rock
+    var rockPos = new THREE.Vector3(0, 1.5, 0);
+
     let gemSpawner = new THREE.Object3D();
-    gemSpawner.position.set(0, 10, 0);
+    gemSpawner.position.set(rockPos.x, rockPos.y, rockPos.z);
     sim.scene.add(gemSpawner);
     gemSpawner.addBehaviors(
         new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/gem' })
+    );
+    let ringSpawner = new THREE.Object3D();
+    ringSpawner.position.set(rockPos.x, rockPos.y - 0.15, rockPos.z);
+    sim.scene.add(ringSpawner);
+    ringSpawner.addBehaviors(
+        new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' })
     );
 
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
