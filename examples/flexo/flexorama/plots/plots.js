@@ -17,6 +17,24 @@ PlotUserInfo = function(head) {
     }
 }
 
+Floaty = function(x, z) {
+    this.x = x;
+    this.z = z;
+    this.timer = 0;
+    this.yPos;
+    this.ran = Math.random();
+    
+    this.awake = function(parent) {
+        this.object3d = parent;
+        this.yPos = this.object3d.position.y;
+    }
+
+    this.update = function(deltaTime) {
+        this.timer += deltaTime * 0.001;
+        this.object3d.position.y = this.yPos + (Math.sin(this.timer) * 0.1 * (this.x % 2 + 0.5) * (this.z % 2 + 0.5) * this.ran);
+    }
+}
+
 Hover = function(userHead) {
     this.timer = 0;
     this.yPos;
