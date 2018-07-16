@@ -176,7 +176,7 @@ function start() {
                 ringSpawner.add(gemSpawner);
                 ringSpawner.addBehaviors(
                     new altspaceutil.behaviors.NativeComponent('n-spawner', { res: 'interactables/ring' }),
-                    new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'ring', side: 'right' })
+                    new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'ring', side: 'left' })
                 );
                 ringSpawner.scale.set(0.15, 0.15, 0.15);
                 sim.scene.add(ringSpawner);

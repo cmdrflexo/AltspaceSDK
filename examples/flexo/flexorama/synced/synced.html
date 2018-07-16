@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<title>Synced</title>
+<script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
+<script src="https://sdk.altvr.com/libs/altspace.js/2.4.0/altspace.min.js"></script>
+</head>
+<body>
+<a-scene altspace='fullspace: true' sync-system='author: Flexo; app: Synched; refUrl: https://altvr-apps.firebaseio.com/'>
+    <a-assets>
+        <!-- <a-asset-item id = "" -->
+    </a-assets>
+</a-scene>
+<script>
+
+function loadModel(objURL, mtlURL) {
+    var loader = new altspace.utilities.shims.OBJMTLLoader();
+    loader.load(
+        objURL, mtlURL,
+        function(obj) {
+            var loadedObject = document.createElement('a-entity');
+            loadedObject.setAttribute("position", obj.position);
+            loadedObject.setAttribute("rotation", obj.rotation);
+            document.querySelector("a-scene").appendChild(loadedObject);
+        }
+    );
+}
+
+</script>
+</body>
+</html>
