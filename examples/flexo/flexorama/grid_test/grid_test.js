@@ -103,8 +103,8 @@ function start() {
             new THREE.BoxGeometry(
                 0.5 * largeScale, 
                 1.5 * largeScale, 
-                0.5 * largeScale),
-            new THREE.MeshBasicMaterial({ color: 0xff0000 })
+                0.5 * largeScale
+            ), new THREE.MeshBasicMaterial({ color: 0xff0000 })
         );
         var largeIconHead = new THREE.Mesh(
             new THREE.SphereGeometry(0.5 * largeScale, 16, 32),
@@ -116,7 +116,6 @@ function start() {
         sim.scene.add(largeIconHead);
         largeIcon.addBehavior(new Icon(head, true));
         sim.scene.add(largeIcon);
-
     });
 
 
