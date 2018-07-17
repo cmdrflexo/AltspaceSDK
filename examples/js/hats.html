@@ -126,6 +126,7 @@
 
 			function createHat(initData) {
 				var name = initData.name;
+				console.log(name);
 				var objTemplate = objTemplateByName[name];
 				if (!objTemplate) throw Error('Error creating hat ' + name);
 				var obj = objTemplate.clone();
