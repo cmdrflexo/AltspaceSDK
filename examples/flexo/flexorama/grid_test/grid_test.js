@@ -211,8 +211,6 @@ function start() {
     );
     */
 
-
-
     var flexoAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/s-series-m01/s-series-m01_flexo_01/";
     var nicole1AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/";
     var nicole2AvatarURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/pod-classic/pod-classic_nicole/pod-classic_nicole_big-head/";
@@ -221,89 +219,116 @@ function start() {
     var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/";
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
     
-    var avatarPos = new THREE.Vector3(-20, 0.6, -14);
+    var avatarPos = new THREE.Vector3(-20, 0, -14);
+    var armyPos = new THREE.Vector3(0, 0, -20);
 
-    for(var i = 0; i < 5; i++) {
-        // if(i == 0 || i == 3) {
-        //     DualObject(
-        //         podURL + "pod-01.obj",
-        //         podURL + "pod-01.mtl",
-        //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
-        //     );
-        // }
+    var w = 50;
+    var d = 12;
+    var loader = new altspace.utilities.shims.OBJMTLLoader();
+    loader.load(
+        flexoAvatarURL + "s-series-m01_flexo_02.obj",
+        flexoAvatarURL + "s-series-m01_flexo_02.mtl",
+        function(obj) {
+            sim.scene.add(obj);
+            for(var z = 0; z < d; z++) {
+                for(var x = 0; x < w; x++) {
+                    var newobj = obj.clone();
+                    newobj.position.set(
+                        armyPos.clone().x - (w/2) + x, 
+                        armyPos.clone().y + (z * 0.5), 
+                        armyPos.clone().z - z
+                    );
+                    sim.scene.add(newobj);
+                }
+            }
+        }
+    );
 
-        if(i == 0) {
-            DualObject(
-                flexoAvatarURL + "s-series-m01_flexo_02.obj",
-                flexoAvatarURL + "s-series-m01_flexo_02.mtl",
-                // flexoAvatarURL + "s-series-m01_flexo_01.obj",
-                // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
-                // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
-                // new THREE.Vector3(
-                //     avatarPos.x + 7 + 2 * i, 
-                //     avatarPos.y + 0.1, 
-                //     avatarPos.z + -3.5
-                // )
-                new THREE.Vector3(0, -1600, -250),
-                1000
-            );
-        }
-        if(i == 1) {
-            DualObject(
-                nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
-                nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
-                // nicole1AvatarURL + "pod-classic_nicole.obj",
-                // nicole1AvatarURL + "pod-classic_nicole.mtl",
-                new THREE.Vector3(
-                    avatarPos.x + 7.5 + 2 * i, 
-                    avatarPos.y + 0.1, 
-                    avatarPos.z + -3.5
-                )
-            );
-        }
-        if(i == 2) {
-            DualObject(
-                // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
-                nicole1AvatarURL + "pod-classic_nicole.obj",
-                donAvatarURL + "pod-classic_don.mtl",
-                new THREE.Vector3(
-                    avatarPos.x + 6.5 + 2 * i, 
-                    avatarPos.y + 0.1, 
-                    avatarPos.z + -3.5
-                )
-            );
-        }
-        if(i == 3) {
-            DualObject(
-                chaysAvatarURL + "rubenoid-male-01_chays.obj",
-                chaysAvatarURL + "rubenoid-male-01_chays.mtl",
-                new THREE.Vector3(
-                    avatarPos.x + 7 + 2 * i, 
-                    avatarPos.y + 0.1, 
-                    avatarPos.z + -3.5
-                )
-            );
-        }
-        if(i == 4) {
-            DualObject(
-                jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.obj",
-                // jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.mtl",
-                jaywAvatarURL + "robothead-roundguy-01.mtl",
-                new THREE.Vector3(
-                    avatarPos.x + 7 + 2 * i, 
-                    avatarPos.y + 0.1, 
-                    avatarPos.z + -3.5
-                )
-            );
-            // DualObject(
-            //     mrHandyURL + "mr_handy-altvr-01.obj",
-            //     mrHandyURL + "mr_handy-altvr-01.mtl",
-            //     new THREE.Vector3(
-            //         avatarPos.x + 7 + 2 * i, 
-            //         avatarPos.y + 0.1, 
-            //         avatarPos.z + -3.5
-            //     )
-            // );
+    // DrawAvatars();
+
+    function DrawAvatars() {
+        for(var i = 0; i < 5; i++) {
+            // if(i == 0 || i == 3) {
+            //     DualObject(
+            //         podURL + "pod-01.obj",
+            //         podURL + "pod-01.mtl",
+            //         new THREE.Vector3(10.5 + 2 * i, 0.1, -3.5)
+            //     );
+            // }
+
+            // if(i == 0) {
+            //     DualObject(
+            //         flexoAvatarURL + "s-series-m01_flexo_02.obj",
+            //         flexoAvatarURL + "s-series-m01_flexo_02.mtl",
+            //         // flexoAvatarURL + "s-series-m01_flexo_01.obj",
+            //         // flexoAvatarURL + "s-series-m01_flexo_01.mtl",
+            //         // flexoAvatarURL + "s-series-m01_flexo_01_lights-out.mtl",
+            //         // new THREE.Vector3(
+            //         //     avatarPos.x + 7 + 2 * i, 
+            //         //     avatarPos.y + 0.1, 
+            //         //     avatarPos.z + -3.5
+            //         // )
+            //         new THREE.Vector3(0, -1600, -250),
+            //         1000
+            //     );
+            // }
+            if(i == 1) {
+                DualObject(
+                    nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                    nicole2AvatarURL + "pod-classic_nicole_big-head.mtl",
+                    // nicole1AvatarURL + "pod-classic_nicole.obj",
+                    // nicole1AvatarURL + "pod-classic_nicole.mtl",
+                    new THREE.Vector3(
+                        avatarPos.x + 7.5 + 2 * i, 
+                        avatarPos.y + 0.1, 
+                        avatarPos.z + -3.5
+                    )
+                );
+            }
+            if(i == 2) {
+                DualObject(
+                    // nicole2AvatarURL + "pod-classic_nicole_big-head.obj",
+                    nicole1AvatarURL + "pod-classic_nicole.obj",
+                    donAvatarURL + "pod-classic_don.mtl",
+                    new THREE.Vector3(
+                        avatarPos.x + 6.5 + 2 * i, 
+                        avatarPos.y + 0.1, 
+                        avatarPos.z + -3.5
+                    )
+                );
+            }
+            if(i == 3) {
+                DualObject(
+                    chaysAvatarURL + "rubenoid-male-01_chays.obj",
+                    chaysAvatarURL + "rubenoid-male-01_chays.mtl",
+                    new THREE.Vector3(
+                        avatarPos.x + 7 + 2 * i, 
+                        avatarPos.y + 0.1, 
+                        avatarPos.z + -3.5
+                    )
+                );
+            }
+            if(i == 4) {
+                DualObject(
+                    jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.obj",
+                    // jaywAvatarURL + "robothead-roundguy-01_jayw/robothead-roundguy-01_jayw.mtl",
+                    jaywAvatarURL + "robothead-roundguy-01.mtl",
+                    new THREE.Vector3(
+                        avatarPos.x + 7 + 2 * i, 
+                        avatarPos.y + 0.1, 
+                        avatarPos.z + -3.5
+                    )
+                );
+                // DualObject(
+                //     mrHandyURL + "mr_handy-altvr-01.obj",
+                //     mrHandyURL + "mr_handy-altvr-01.mtl",
+                //     new THREE.Vector3(
+                //         avatarPos.x + 7 + 2 * i, 
+                //         avatarPos.y + 0.1, 
+                //         avatarPos.z + -3.5
+                //     )
+                // );
+            }
         }
     }
 
