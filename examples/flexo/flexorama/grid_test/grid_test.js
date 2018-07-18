@@ -222,8 +222,8 @@ function start() {
     var avatarPos = new THREE.Vector3(-20, 0, -14);
     var armyPos = new THREE.Vector3(0, 0, -20);
 
-    var w = 50;
-    var d = 12;
+    var w = 100;//50;
+    var d = 10;//12;
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     loader.load(
         flexoAvatarURL + "s-series-m01_flexo_02.obj",
