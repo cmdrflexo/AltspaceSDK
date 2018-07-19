@@ -137,20 +137,54 @@ function start() {
 
     Glowsticks();
     function Glowsticks() {
-        for(var z = 0; z < 10; z++) {
-            for(var x = 0; x < 15; x++) {
-                let glowstick = new THREE.Object3D();
-                // glowstick.position.set(x, 1, z);
-                glowstick.rotation.z = THREE.Math.degToRad(90);
-                glowstick.addBehaviors(
-                    new altspaceutil.behaviors.NativeComponent(
-                        "n-spawner", 
-                        { res: 'interactables/glowstick-magenta' }
-                    ),
-                    new Floaty(x, z, 3)
-                );
-                sim.scene.add(glowstick);
+        if(false) {
+            for(var z = 0; z < 10; z++) {
+                for(var x = 0; x < 15; x++) {
+                    let glowstick = new THREE.Object3D();
+                    // glowstick.position.set(x, 1, z);
+                    glowstick.rotation.z = THREE.Math.degToRad(90);
+                    glowstick.addBehaviors(
+                        new altspaceutil.behaviors.NativeComponent(
+                            "n-spawner", 
+                            { res: 'interactables/glowstick-magenta' }
+                        ),
+                        new Floaty(x, z, 3)
+                    );
+                    sim.scene.add(glowstick);
+                }
             }
+        }
+        if(true) {
+            // var leftArm, rightArm;
+            // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            //     var skeleton = _skeleton;
+            //     sim.scene.add(skeleton);
+            //     leftArm = skeleton.getJoint("Head");
+
+            // });
+
+            let glowstick = new THREE.Object3D();
+            // glowstick.rotation.z = THREE.Math.degToRad(90);
+            glowstick.addBehaviors(
+                new altspaceutil.behaviors.NativeComponent(
+                    "n-spawner", 
+                    { res: 'interactables/glowstick-orange' }
+                ),
+                new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'left' })
+            );
+            glowstick.scale.set(0.001, 0.001, 0.001);
+            sim.scene.add(glowstick);
+            
+            let glowstick2 = new THREE.Object3D();
+            glowstick2.addBehaviors(
+                new altspaceutil.behaviors.NativeComponent(
+                    "n-spawner", 
+                    { res: 'interactables/glowstick-blue' }
+                ),
+                new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'right' })
+            );
+            glowstick2.scale.set(0.001, 0.001, 0.001);
+            sim.scene.add(glowstick2);
         }
     }
 
