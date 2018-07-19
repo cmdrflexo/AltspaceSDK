@@ -7,8 +7,6 @@ var boxTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flex
 var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
 var centralURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/buildings/central-test-01/";
 
-var retroGridTex = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/retro_grid-01.png";
-
 var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/";
 // if(x == 5 && z == 5) {
 //     loadModel(
@@ -27,9 +25,9 @@ var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    var terrain = CreateTerrain(1, grassTextureURL);
-    terrain.position.y = 0;
-    sim.scene.add(terrain);
+    // var terrain = CreateTerrain(1, grassTextureURL);
+    // terrain.position.y = 0;
+    // sim.scene.add(terrain);
 
     // var smallTerrain = CreateTerrain(0.002, boxTextureURL);
     // var smallTerrain = CreateTerrain(0.002, grassTextureURL);
@@ -219,17 +217,51 @@ function start() {
         sim.scene.add(patty);
     }
 
-    // var retroBox = new THREE.Mesh(
-    //     new THREE.BoxGeometry(1, 1, 1),
-    //     new THREE.MeshBasicMaterial({ 
-    //         color: 0xffffff,
-    //         map: new THREE.Texture({ 
-    //             src: altspaceutil.getAbsoluteURL(retroGridTex)
-    //         })
-    //     })
-    // );
-    // retroBox.position.y = -0.99;
-    // sim.scene.add(retroBox);
+    var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro";
+    Retro();
+    function Retro() {
+        
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        loader.load(
+            retroURL + "retro_mountains.obj",
+            retroURL + "retro_mountains.mtl",
+            function(obj) {
+                sim.scene.add(obj);
+                // for(var z = 0; z < d; z++) {
+                //     for(var x = 0; x < w; x++) {
+                //         var newobj = obj.clone();
+                //         newobj.addBehavior(new Floaty(x, z));
+                //         newobj.position.set(
+                //             armyPos.clone().x - (w/2) + x*2, 
+                //             armyPos.clone().y,// + (z * 0.5), 
+                //             armyPos.clone().z - z*2
+                //         );
+                //         var r = 0.5 + Math.random();
+                //         newobj.scale.set(r, r, r);
+                //         sim.scene.add(newobj);
+                //     }
+                // }
+            }
+        );
+
+        for(var z = 0; z < 10; z++) {
+            for(var x = 0; x < 10; x++) {
+                var retroBox = new THREE.Mesh(
+                    new THREE.BoxGeometry(10, 1, 10),
+                    new THREE.MeshBasicMaterial({ 
+                        color: 0xffffff,
+                        map: new THREE.Texture({ 
+                            src: altspaceutil.getAbsoluteURL(
+                                retroURL + "retro_grid-01.png"
+                            )
+                        })
+                    })
+                );
+                retroBox.position.set(x * 10, -0.49, z * 10);
+                sim.scene.add(retroBox);
+            }
+        }
+    }
 
 
     // GlowstickCube();
