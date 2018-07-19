@@ -144,12 +144,12 @@ function start() {
                         ran < 0.3 ?
                         new altspaceutil.behaviors.NativeComponent(
                             "n-spawner", 
-                            { res: 'interactables/glowstick-red' }
+                            { res: 'interactables/glowstick-purple' }
                         ) : 
                         ran > 0.3 && ran < 0.6 ?
                         new altspaceutil.behaviors.NativeComponent(
                             "n-spawner", 
-                            { res: 'interactables/glowstick-green' }
+                            { res: 'interactables/glowstick-purple' }
                         ) : 
                         new altspaceutil.behaviors.NativeComponent(
                             "n-spawner", 
@@ -186,13 +186,6 @@ function start() {
         }
     }
 
-    // glowstick-green
-    // glowstick-purple
-    // glowstick-red
-    // glowstick-orange
-    // glowstick-blue
-    // glowstick-magenta
-
     // Burgers();
     function Burgers() {
         var bun = new THREE.Object3D();
@@ -218,14 +211,14 @@ function start() {
     }
 
     var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
-    // Retro();
+    Retro();
     function Retro() {
-        
         var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
             retroURL + "retro_mountains.obj",
             retroURL + "retro_mountains.mtl",
             function(obj) {
+                obj.position.y = 5;
                 sim.scene.add(obj);
                 // for(var z = 0; z < d; z++) {
                 //     for(var x = 0; x < w; x++) {
@@ -255,17 +248,22 @@ function start() {
                 })
             })
         );
-        for(var z = 0; z < 100; z++) {
-            for(var x = 0; x < 100; x++) {
+        retroBox.position.y = -1;
+        retroBox.scale.set(100, 1, 100);
+        sim.scene.add(retroBox);
+        for(var z = 0; z < 20; z++) {
+            for(var x = 0; x < 20; x++) {
                 var boxclone = retroBox.clone();
-                boxclone.position.set(-500 + x * 10, -0.49, -500 + z * 10);
+                // boxclone.position.set(x * 10, -0.49, z * 10);
+                boxclone.position.set(-100 + x * 10, -0.49, -100 + z * 10);
+                boxclone.scale.set(1, 1, 1);
                 sim.scene.add(boxclone);
             }
         }
     }
 
 
-    // GlowstickCube();
+    GlowstickCube();
     GlowstickCube();
 
     function GlowstickCube() {
@@ -274,12 +272,12 @@ function start() {
             new THREE.MeshBasicMaterial({ 
                 color: 0xffffff,
                 map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(retroGridTex)
+                    src: altspaceutil.getAbsoluteURL(retroURL + "retro_grid-01.png")
                 })
             })
         );
         glows.position.y = 0.1;
-        glows.scale.set(0.1, 0.1, 0.1);
+        glows.scale.set(0.2, 0.2, 0.2);
         glows.addBehaviors(new CubeRotate(3), new BasicFloat(2));
         sim.scene.add(glows);
 
@@ -291,7 +289,7 @@ function start() {
         glowStrings.push("interactables/glowstick-blue");
         glowStrings.push("interactables/glowstick-magenta");
 
-        var dist = 3;
+        var dist = 1.5;
         var rot = THREE.Math.degToRad(90);
         for(var i = 0; i < 6; i++) {
             var g = new THREE.Object3D();    
@@ -319,8 +317,8 @@ function start() {
                     g.rotation.x = rot;
                     break;
             }
-            // g.scale.set(0.001, 0.001, 0.001);
-            g.scale.set(1, 10, 1);
+            g.scale.set(0.001, 0.001, 0.001);
+            // g.scale.set(1, 5, 1);
             g.addBehavior(new altspaceutil.behaviors.NativeComponent(
                 "n-spawner", { res: glowStrings[i] }
             ));
