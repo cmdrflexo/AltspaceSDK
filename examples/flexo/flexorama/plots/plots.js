@@ -83,12 +83,13 @@ BasicFloat = function(movementScale = 1) {
     }
 }
 
-Meteor = function() {
+Meteor = function(speed) {
 
     this.timer = 0;
     this.dist = 100;
     this.target = new THREE.Vector3(0, 0, 0);
     this.moveDir;
+    this.speed = 1 / speed;
 
     this.awake = function(parent, scene) {
         this.object3d = parent;
@@ -99,11 +100,11 @@ Meteor = function() {
         if(this.timer < 1000) {
             this.timer += deltaTime;
             this.object3d.position.x += 
-                this.moveDir.x * deltaTime * 0.001;
+                this.moveDir.x * deltaTime * this.speed;
             this.object3d.position.y += 
-                this.moveDir.y * deltaTime * 0.001;
+                this.moveDir.y * deltaTime * this.speed;
             this.object3d.position.z += 
-                this.moveDir.z * deltaTime * 0.001;
+                this.moveDir.z * deltaTime * this.speed;
         } else {
             this.timer = 0;
             this.moveDir = RandomDirection(this.object3d);
