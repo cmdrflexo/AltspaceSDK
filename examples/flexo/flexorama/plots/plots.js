@@ -4,6 +4,54 @@ function Plot(owner, x, z) {
     this.position = {x: x, z: z};
 }
 
+CubeRotate = function(maxSpeed) {
+    this.maxSpeed = maxSpeed;
+    this.currentSpeed = 0;
+    this.timer = 0;
+    this.ranX;
+    this.ranY;
+    this.ranZ;
+    this.spinForward = true;
+
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+        this.randomRotations();
+    }
+
+    this.update = function(deltaTime) {
+        this.timer += deltaTime;
+        if(this.timer > 10000) {
+            this.timer = 0;
+            this.randomRotations();
+        }
+
+        // if(this.currentSpeed < this.maxSpeed)
+        //     this.currentSpeed += deltaTime * 0.01;
+
+        if(this.spinForward) {
+            if(this.currentSpeed < this.maxSpeed)
+                this.currentSpeed += deltaTime * 0.001;
+            else
+                this.spinForward = false;
+        } else {
+            if(this.currentSpeed > 0)
+                this.currentSpeed -= deltaTime * 0.001;
+            else
+                this.spinForward = true;
+        }
+            
+        
+        this.object3d.rotation.x += 0.001 * deltaTime * this.ranX * this.currentSpeed;
+        this.object3d.rotation.y += 0.001 * deltaTime * this.ranY * this.currentSpeed;
+        this.object3d.rotation.z += 0.001 * deltaTime * this.ranZ * this.currentSpeed;
+    }
+
+    this.randomRotations = function() {
+        this.ranX = Math.random();
+        this.ranY = Math.random();
+        this.ranZ = Math.random();
+    }
+}
 
 // BEHAVIORS
 PlotUserInfo = function(head) {

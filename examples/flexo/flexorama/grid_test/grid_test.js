@@ -7,6 +7,8 @@ var boxTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flex
 var grassTextureURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/16x16_grass.png";
 var centralURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/buildings/central-test-01/";
 
+var retroGridTex = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/textures/retro_grid-01.png";
+
 var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/pods/";
 // if(x == 5 && z == 5) {
 //     loadModel(
@@ -128,7 +130,7 @@ function start() {
     //     sim.scene.add(largeIcon);
     // });
 
-    Glowsticks();
+    // Glowsticks();
     function Glowsticks() {
         if(true) {
             for(var z = 0; z < 20; z++) {
@@ -193,7 +195,7 @@ function start() {
     // glowstick-blue
     // glowstick-magenta
 
-    Burgers();
+    // Burgers();
     function Burgers() {
         var bun = new THREE.Object3D();
         bun.addBehaviors(
@@ -217,9 +219,21 @@ function start() {
         sim.scene.add(patty);
     }
 
-    // GlowstickCube();
+    GlowstickCube();
     function GlowstickCube() {
-        var glows  = new Array();
+        var glows = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({ 
+                color: 0xffffff,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(retroGridTex)
+                })
+            })
+        );
+        glows.position.y = 2;
+        glows.scale.set(0.1, 0.1, 0.1);
+        glows.addBehavior(new CubeRotate(3));
+        sim.scene.add(glows);
 
         var glowStrings = new Array();
         glowStrings.push("interactables/glowstick-green");
@@ -229,14 +243,40 @@ function start() {
         glowStrings.push("interactables/glowstick-blue");
         glowStrings.push("interactables/glowstick-magenta");
 
+        var dist = 3;
+        var rot = THREE.Math.degToRad(90);
         for(var i = 0; i < 6; i++) {
-            var g = new THREE.Object3D();
+            var g = new THREE.Object3D();    
+            switch(i) {
+                case 0:
+                    g.position.x = + dist;
+                    g.rotation.z = rot;
+                    break;
+                case 1:
+                    g.position.x = - dist;
+                    g.rotation.z = rot;
+                    break;
+                case 2:
+                    g.position.y = + dist;
+                    break;
+                case 3:
+                    g.position.y = - dist;
+                    break;
+                case 4:
+                    g.position.z = + dist;
+                    g.rotation.x = rot;
+                    break;
+                case 5:
+                    g.position.z = - dist;
+                    g.rotation.x = rot;
+                    break;
+            }
+            // g.scale.set(0.001, 0.001, 0.001);
+            g.scale.set(1, 10, 1);
             g.addBehavior(new altspaceutil.behaviors.NativeComponent(
                 "n-spawner", { res: glowStrings[i] }
             ));
-            glows.push(g);
-            g.position.y = i;
-            sim.scene.add(g);
+            glows.add(g);
         }
     }
 
