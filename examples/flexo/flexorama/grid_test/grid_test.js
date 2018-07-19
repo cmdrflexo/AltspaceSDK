@@ -128,7 +128,7 @@ function start() {
     //     sim.scene.add(largeIcon);
     // });
 
-    // Glowsticks();
+    Glowsticks();
     function Glowsticks() {
         if(true) {
             for(var z = 0; z < 20; z++) {
@@ -217,8 +217,8 @@ function start() {
         sim.scene.add(patty);
     }
 
-    var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro";
-    Retro();
+    var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
+    // Retro();
     function Retro() {
         
         var loader = new altspace.utilities.shims.OBJMTLLoader();
@@ -244,21 +244,22 @@ function start() {
             }
         );
 
-        for(var z = 0; z < 10; z++) {
-            for(var x = 0; x < 10; x++) {
-                var retroBox = new THREE.Mesh(
-                    new THREE.BoxGeometry(10, 1, 10),
-                    new THREE.MeshBasicMaterial({ 
-                        color: 0xffffff,
-                        map: new THREE.Texture({ 
-                            src: altspaceutil.getAbsoluteURL(
-                                retroURL + "retro_grid-01.png"
-                            )
-                        })
-                    })
-                );
-                retroBox.position.set(x * 10, -0.49, z * 10);
-                sim.scene.add(retroBox);
+        var retroBox = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 1, 10),
+            new THREE.MeshBasicMaterial({ 
+                color: 0xffffff,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(
+                        retroURL + "retro_grid-01.png"
+                    )
+                })
+            })
+        );
+        for(var z = 0; z < 100; z++) {
+            for(var x = 0; x < 100; x++) {
+                var boxclone = retroBox.clone();
+                boxclone.position.set(-500 + x * 10, -0.49, -500 + z * 10);
+                sim.scene.add(boxclone);
             }
         }
     }
