@@ -65,6 +65,24 @@ PlotUserInfo = function(head) {
     }
 }
 
+BasicFloat = function(movementScale = 1) {
+    this.scale = movementScale;
+    this.timer = 0;
+    this.yPos;
+    
+    this.awake = function(parent) {
+        this.object3d = parent;
+        this.yPos = this.object3d.position.y;
+    }
+
+    this.update = function(deltaTime) {
+        this.timer += deltaTime * 0.001;
+        this.object3d.position.y = this.yPos + Math.abs(
+            Math.sin(this.timer) * this.scale
+        );
+    }
+}
+
 Floaty = function(x, z, movementScale = 1) {
     this.x = x;
     this.z = z;

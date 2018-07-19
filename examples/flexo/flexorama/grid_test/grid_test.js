@@ -232,7 +232,7 @@ function start() {
     // sim.scene.add(retroBox);
 
 
-    GlowstickCube();
+    // GlowstickCube();
     GlowstickCube();
 
     function GlowstickCube() {
@@ -245,9 +245,9 @@ function start() {
                 })
             })
         );
-        glows.position.y = 2;
+        glows.position.y = 0.1;
         glows.scale.set(0.1, 0.1, 0.1);
-        glows.addBehavior(new CubeRotate(3));
+        glows.addBehaviors(new CubeRotate(3), new BasicFloat(2));
         sim.scene.add(glows);
 
         var glowStrings = new Array();
