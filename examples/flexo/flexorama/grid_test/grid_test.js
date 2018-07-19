@@ -188,6 +188,29 @@ function start() {
         }
     }
 
+    Meteors();
+    function Meteors() {
+        var meteor = new THREE.Object3D();
+        meteor.position.set(100, 100, 100);
+        // meteor.scale.set(100, 100, 100);
+        meteor.addBehaviors(
+            new altspaceutil.behaviors.NativeComponent(
+                "n-spawner", 
+                { res: 'interactables/glowstick-red' }
+            ),
+            // new altspaceutil.behaviors.NativeComponent(
+            //     "n-spawner", 
+            //     { res: 'interactables/glowstick-green' }
+            // ),
+            new altspaceutil.behaviors.NativeComponent(
+                "n-spawner", 
+                { res: 'interactables/glowstick-blue' }
+            ),
+            new Meteor()
+        );
+        sim.scene.add(meteor);
+    }
+
     // Burgers();
     function Burgers() {
         var bun = new THREE.Object3D();

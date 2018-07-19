@@ -83,6 +83,52 @@ BasicFloat = function(movementScale = 1) {
     }
 }
 
+Meteor = function() {
+
+    this.timer = 0;
+    this.dist = 100;
+    this.target = new THREE.Vector3(0, 0, 0);
+    this.moveDir;
+
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+        this.moveDir = RandomDirection(this.object3d);
+    }
+
+    this.update = function(deltaTime) {
+        if(this.timer < 1000) {
+            this.timer += deltaTime;
+            this.object3d.position.x += 
+                this.moveDir.x * deltaTime * 0.001;
+            this.object3d.position.y += 
+                this.moveDir.y * deltaTime * 0.001;
+            this.object3d.position.z += 
+                this.moveDir.z * deltaTime * 0.001;
+        } else {
+            this.timer = 0;
+            this.moveDir = RandomDirection(this.object3d);
+            this.object3d.position.set(this.dist, this.dist, this.dist);
+        }
+    }
+
+    function RandomDirection(object3d) {
+        this.target = new THREE.Vector3(
+            Math.random() * 100, Math.random() * 200, Math.random() * 100
+        );
+        return GetMoveDirection(object3d.position, this.target);
+    }
+
+    // function GetDistance(v1, v2) {
+    //     var dx = v1.x - v2.x;
+    //     var dz = v1.z - v2.z;
+    //     return Math.sqrt(dx * dx + dz * dz);
+    // }
+
+    function GetMoveDirection(v1, v2) {
+        return new THREE.Vector3(v2.x - v1.x, 0, v2.z - v1.z);
+    }
+}
+
 Floaty = function(x, z, movementScale = 1) {
     this.x = x;
     this.z = z;
