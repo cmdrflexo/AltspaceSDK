@@ -138,26 +138,31 @@ function start() {
     Glowsticks();
     function Glowsticks() {
         if(true) {
-            for(var z = 0; z < 10; z++) {
-                for(var x = 0; x < 10; x++) {
+            for(var z = 0; z < 20; z++) {
+                for(var x = 0; x < 20; x++) {
                     let glowstick = new THREE.Object3D();
                     glowstick.position.set(
-                        (-50) + x * 10, 
+                        (-50) + x * 5, 
                         1, 
-                        (-50) + z * 10
+                        (-50) + z * 5
                     );
                     glowstick.rotation.z = THREE.Math.degToRad(90);
                     glowstick.scale.set(0.001, 0.001, 0.001);
                     var ran = Math.random();
                     glowstick.addBehaviors(
-                        ran < 0.5 ?
+                        ran < 0.3 ?
                         new altspaceutil.behaviors.NativeComponent(
                             "n-spawner", 
-                            { res: 'interactables/glowstick-magenta' }
+                            { res: 'interactables/glowstick-red' }
                         ) : 
+                        ran > 0.3 && ran < 0.6 ?
                         new altspaceutil.behaviors.NativeComponent(
                             "n-spawner", 
                             { res: 'interactables/glowstick-green' }
+                        ) : 
+                        new altspaceutil.behaviors.NativeComponent(
+                            "n-spawner", 
+                            { res: 'interactables/glowstick-blue' }
                         ),
                         new Floaty(0, 0, 100)
                     );
@@ -196,6 +201,20 @@ function start() {
             glowstick2.scale.set(0.001, 0.001, 0.001);
             sim.scene.add(glowstick2);
         }
+    }
+
+    GlowstickCube();
+    function GlowstickCube() {
+            var glows  = new Array();
+        // var glowRed = new THREE.Object3D();
+        // var glowGreen = new THREE.Object3D();
+        // var glowBlue = new THREE.Object3D();
+        for(var i = 0; i < 4; i++) {
+            glows.push(new THREE.Object3D());
+        }
+
+
+
     }
 
     // var size = 30;
