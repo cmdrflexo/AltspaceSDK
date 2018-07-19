@@ -130,7 +130,7 @@ function start() {
 
     Glowsticks();
     function Glowsticks() {
-        if(true) {
+        if(false) {
             for(var z = 0; z < 20; z++) {
                 for(var x = 0; x < 20; x++) {
                     let glowstick = new THREE.Object3D();
