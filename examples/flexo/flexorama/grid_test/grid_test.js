@@ -128,13 +128,6 @@ function start() {
     //     sim.scene.add(largeIcon);
     // });
 
-    // glowstick-green
-    // glowstick-purple
-    // glowstick-red
-    // glowstick-orange
-    // glowstick-blue
-    // glowstick-magenta
-
     Glowsticks();
     function Glowsticks() {
         if(true) {
@@ -142,9 +135,7 @@ function start() {
                 for(var x = 0; x < 20; x++) {
                     let glowstick = new THREE.Object3D();
                     glowstick.position.set(
-                        (-50) + x * 5, 
-                        1, 
-                        (-50) + z * 5
+                        (-50) + x * 5, 1, (-50) + z * 5
                     );
                     glowstick.rotation.z = THREE.Math.degToRad(90);
                     glowstick.scale.set(0.001, 0.001, 0.001);
@@ -171,15 +162,7 @@ function start() {
             }
         }
         if(true) {
-            // var leftArm, rightArm;
-            // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-            //     var skeleton = _skeleton;
-            //     sim.scene.add(skeleton);
-            //     leftArm = skeleton.getJoint("Head");
-            // });
-
             let armGlowstick = new THREE.Object3D();
-            // glowstick.rotation.z = THREE.Math.degToRad(90);
             armGlowstick.addBehaviors(
                 new altspaceutil.behaviors.NativeComponent(
                     "n-spawner", 
@@ -203,18 +186,58 @@ function start() {
         }
     }
 
-    GlowstickCube();
+    // glowstick-green
+    // glowstick-purple
+    // glowstick-red
+    // glowstick-orange
+    // glowstick-blue
+    // glowstick-magenta
+
+    Burgers();
+    function Burgers() {
+        var bun = new THREE.Object3D();
+        bun.addBehaviors(
+            new altspaceutil.behaviors.NativeComponent(
+                "n-spawner", 
+                { res: 'interactables/burger-sandwich' }
+            ),
+            new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'right' })
+        );
+        // glowstick2.scale.set(0.001, 0.001, 0.001);
+        sim.scene.add(bun);
+        var patty = new THREE.Object3D();
+        patty.addBehaviors(
+            new altspaceutil.behaviors.NativeComponent(
+                "n-spawner", 
+                { res: 'interactables/burger-patty' }
+            ),
+            new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'left' })
+        );
+        // glowstick2.scale.set(0.001, 0.001, 0.001);
+        sim.scene.add(patty);
+    }
+
+    // GlowstickCube();
     function GlowstickCube() {
-            var glows  = new Array();
-        // var glowRed = new THREE.Object3D();
-        // var glowGreen = new THREE.Object3D();
-        // var glowBlue = new THREE.Object3D();
-        for(var i = 0; i < 4; i++) {
-            glows.push(new THREE.Object3D());
+        var glows  = new Array();
+
+        var glowStrings = new Array();
+        glowStrings.push("interactables/glowstick-green");
+        glowStrings.push("interactables/glowstick-purple");
+        glowStrings.push("interactables/glowstick-red");
+        glowStrings.push("interactables/glowstick-orange");
+        glowStrings.push("interactables/glowstick-blue");
+        glowStrings.push("interactables/glowstick-magenta");
+
+        for(var i = 0; i < 6; i++) {
+            var g = new THREE.Object3D();
+            g.addBehavior(new altspaceutil.behaviors.NativeComponent(
+                "n-spawner", { res: glowStrings[i] }
+            ));
+            glows.push(g);
+            g.position.y = i;
+            sim.scene.add(g);
         }
-
-
-
     }
 
     // var size = 30;
