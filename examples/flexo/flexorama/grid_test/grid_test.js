@@ -166,7 +166,7 @@ function start() {
             armGlowstick.addBehaviors(
                 new altspaceutil.behaviors.NativeComponent(
                     "n-spawner", 
-                    { res: 'interactables/glowstick-orange' }
+                    { res: 'interactables/glowstick-purple' }
                 ),
                 new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'left' })
             );
@@ -248,13 +248,13 @@ function start() {
                 })
             })
         );
+
         retroBox.position.y = -1;
         retroBox.scale.set(100, 1, 100);
         sim.scene.add(retroBox);
         for(var z = 0; z < 20; z++) {
             for(var x = 0; x < 20; x++) {
                 var boxclone = retroBox.clone();
-                // boxclone.position.set(x * 10, -0.49, z * 10);
                 boxclone.position.set(-100 + x * 10, -0.49, -100 + z * 10);
                 boxclone.scale.set(1, 1, 1);
                 sim.scene.add(boxclone);
@@ -318,7 +318,6 @@ function start() {
                     break;
             }
             g.scale.set(0.001, 0.001, 0.001);
-            // g.scale.set(1, 5, 1);
             g.addBehavior(new altspaceutil.behaviors.NativeComponent(
                 "n-spawner", { res: glowStrings[i] }
             ));
