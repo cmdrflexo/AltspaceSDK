@@ -219,7 +219,22 @@ function start() {
         sim.scene.add(patty);
     }
 
+    // var retroBox = new THREE.Mesh(
+    //     new THREE.BoxGeometry(1, 1, 1),
+    //     new THREE.MeshBasicMaterial({ 
+    //         color: 0xffffff,
+    //         map: new THREE.Texture({ 
+    //             src: altspaceutil.getAbsoluteURL(retroGridTex)
+    //         })
+    //     })
+    // );
+    // retroBox.position.y = -0.99;
+    // sim.scene.add(retroBox);
+
+
     GlowstickCube();
+    GlowstickCube();
+
     function GlowstickCube() {
         var glows = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
