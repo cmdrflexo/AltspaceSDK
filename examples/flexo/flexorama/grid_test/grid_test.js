@@ -85,39 +85,74 @@ function start() {
 
     // });
 
-    var head;
-    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-        var skeleton = _skeleton;
-        sim.scene.add(skeleton);
-        head = skeleton.getJoint("Head");
+    // var box = new THREE.Mesh(
+    //     new THREE.BoxGeometry(1, 1, 1),
+    //     new THREE.MeshBasicMaterial({ 
+    //         color: 0x000000,
+    //         map: new THREE.Texture({ 
+    //             src: altspaceutil.getAbsoluteURL(textureURL)
+    //         })
+    //     })
+    // );
+
+    // var head;
+    // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+    //     var skeleton = _skeleton;
+    //     sim.scene.add(skeleton);
+    //     head = skeleton.getJoint("Head");
         
-        var smallIcon = new THREE.Mesh(
-            new THREE.BoxGeometry(0.002, 0.005, 0.002),
-            new THREE.MeshBasicMaterial({ color: 0xff0000 })
-        );
-        smallIcon.addBehavior(new Icon(head));
-        sim.scene.add(smallIcon);
+    //     var smallIcon = new THREE.Mesh(
+    //         new THREE.BoxGeometry(0.002, 0.005, 0.002),
+    //         new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    //     );
+    //     smallIcon.addBehavior(new Icon(head));
+    //     sim.scene.add(smallIcon);
 
-        var largeScale = 500;
-        var largeIcon = new THREE.Mesh(
-            new THREE.BoxGeometry(
-                0.5 * largeScale, 
-                1.5 * largeScale, 
-                0.5 * largeScale
-            ), new THREE.MeshBasicMaterial({ color: 0xff0000 })
-        );
-        var largeIconHead = new THREE.Mesh(
-            new THREE.SphereGeometry(0.5 * largeScale, 16, 32),
-            new THREE.MeshBasicMaterial({ color: 0xff0000 })
-        );
-        largeIconHead.position.y += 1 * largeScale;
-        // largeIcon.add(largeIconHead);
-        largeIconHead.addBehavior(new Icon(head, true, true));
-        sim.scene.add(largeIconHead);
-        largeIcon.addBehavior(new Icon(head, true));
-        sim.scene.add(largeIcon);
-    });
+    //     var largeScale = 500;
+    //     var largeIcon = new THREE.Mesh(
+    //         new THREE.BoxGeometry(
+    //             0.5 * largeScale, 
+    //             1.5 * largeScale, 
+    //             0.5 * largeScale
+    //         ), new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    //     );
+    //     var largeIconHead = new THREE.Mesh(
+    //         new THREE.SphereGeometry(0.5 * largeScale, 16, 32),
+    //         new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    //     );
+    //     largeIconHead.position.y += 1 * largeScale;
+    //     // largeIcon.add(largeIconHead);
+    //     largeIconHead.addBehavior(new Icon(head, true, true));
+    //     sim.scene.add(largeIconHead);
+    //     largeIcon.addBehavior(new Icon(head, true));
+    //     sim.scene.add(largeIcon);
+    // });
 
+    // glowstick-green
+    // glowstick-purple
+    // glowstick-red
+    // glowstick-orange
+    // glowstick-blue
+    // glowstick-magenta
+
+    Glowsticks();
+    function Glowsticks() {
+        for(var z = 0; z < 10; z++) {
+            for(var x = 0; x < 15; x++) {
+                let glowstick = new THREE.Object3D();
+                // glowstick.position.set(x, 1, z);
+                glowstick.rotation.z = THREE.Math.degToRad(90);
+                glowstick.addBehaviors(
+                    new altspaceutil.behaviors.NativeComponent(
+                        "n-spawner", 
+                        { res: 'interactables/glowstick-magenta' }
+                    ),
+                    new Floaty(x, z, 3)
+                );
+                sim.scene.add(glowstick);
+            }
+        }
+    }
 
     // var size = 30;
     // var blockSize = 10;
@@ -220,32 +255,34 @@ function start() {
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
     
     var avatarPos = new THREE.Vector3(-20, 0, -14);
-    var armyPos = new THREE.Vector3(0, 0, 0);
-
-    var w = 15;//50;
-    var d = 15;//12;
-    var loader = new altspace.utilities.shims.OBJMTLLoader();
-    loader.load(
-        flexoAvatarURL + "s-series-m01_flexo_02.obj",
-        flexoAvatarURL + "s-series-m01_flexo_02.mtl",
-        function(obj) {
-            // sim.scene.add(obj);
-            for(var z = 0; z < d; z++) {
-                for(var x = 0; x < w; x++) {
-                    var newobj = obj.clone();
-                    newobj.addBehavior(new Floaty(x, z));
-                    newobj.position.set(
-                        armyPos.clone().x - (w/2) + x*2, 
-                        armyPos.clone().y,// + (z * 0.5), 
-                        armyPos.clone().z - z*2
-                    );
-                    var r = 0.5 + Math.random();
-                    newobj.scale.set(r, r, r);
-                    sim.scene.add(newobj);
+    
+    function FlexoArmy() {
+        var armyPos = new THREE.Vector3(0, 0, 0);
+        var w = 15;
+        var d = 15;
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        loader.load(
+            flexoAvatarURL + "s-series-m01_flexo_02.obj",
+            flexoAvatarURL + "s-series-m01_flexo_02.mtl",
+            function(obj) {
+                // sim.scene.add(obj);
+                for(var z = 0; z < d; z++) {
+                    for(var x = 0; x < w; x++) {
+                        var newobj = obj.clone();
+                        newobj.addBehavior(new Floaty(x, z));
+                        newobj.position.set(
+                            armyPos.clone().x - (w/2) + x*2, 
+                            armyPos.clone().y,// + (z * 0.5), 
+                            armyPos.clone().z - z*2
+                        );
+                        var r = 0.5 + Math.random();
+                        newobj.scale.set(r, r, r);
+                        sim.scene.add(newobj);
+                    }
                 }
             }
-        }
-    );
+        );
+    }
 
     // DrawAvatars();
 

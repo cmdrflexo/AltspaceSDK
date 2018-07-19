@@ -17,12 +17,13 @@ PlotUserInfo = function(head) {
     }
 }
 
-Floaty = function(x, z) {
+Floaty = function(x, z, movementScale = 1) {
     this.x = x;
     this.z = z;
     this.timer = 0;
     this.yPos;
     this.ran = Math.random();
+    this.scale = movementScale;
     
     this.awake = function(parent) {
         this.object3d = parent;
@@ -32,11 +33,11 @@ Floaty = function(x, z) {
     this.update = function(deltaTime) {
         this.timer += deltaTime * 0.001;
         this.object3d.position.y = this.yPos + Math.abs(
-            Math.sin(this.timer) *
+            Math.sin(this.timer) * this.scale *
             // 0.3 * (this.x % 2 + 0.5) * (this.z % 2 + 0.5) * 
             this.ran + 0.05
         );
-        this.object3d.rotation.y = this.timer * this.ran * 2;
+        this.object3d.rotation.y = this.timer * (1 - this.ran) * 2;
         // if(this.timer >= 03) {
         //     this.ran = Math.random();
         //     this.timer = 0;
