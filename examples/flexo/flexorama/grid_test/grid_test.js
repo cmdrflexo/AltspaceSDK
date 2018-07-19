@@ -138,13 +138,13 @@ function start() {
     Glowsticks();
     function Glowsticks() {
         if(true) {
-            for(var z = 0; z < 5; z++) {
-                for(var x = 0; x < 5; x++) {
+            for(var z = 0; z < 10; z++) {
+                for(var x = 0; x < 10; x++) {
                     let glowstick = new THREE.Object3D();
                     glowstick.position.set(
-                        (-25) + x * 10, 
+                        (-50) + x * 10, 
                         1, 
-                        (-25) + z * 10
+                        (-50) + z * 10
                     );
                     glowstick.rotation.z = THREE.Math.degToRad(90);
                     glowstick.scale.set(0.001, 0.001, 0.001);
