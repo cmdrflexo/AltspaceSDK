@@ -135,7 +135,7 @@ function start() {
                 for(var x = 0; x < 20; x++) {
                     let glowstick = new THREE.Object3D();
                     glowstick.position.set(
-                        (-50) + x * 5, 1, (-50) + z * 5
+                        (-50) + x * 5, 10, (-50) + z * 5
                     );
                     glowstick.rotation.z = THREE.Math.degToRad(90);
                     glowstick.scale.set(0.001, 0.001, 0.001);
@@ -170,6 +170,7 @@ function start() {
                 ),
                 new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'left' })
             );
+            armGlowstick.rotation.x = THREE.Math.degToRad(90);
             armGlowstick.scale.set(0.001, 0.001, 0.001);
             sim.scene.add(armGlowstick);
             
@@ -181,6 +182,7 @@ function start() {
                 ),
                 new altspaceutil.behaviors.NativeComponent('n-skeleton-parent', { part: 'hand', side: 'right' })
             );
+            glowstick2.rotation.x = THREE.Math.degToRad(90);
             glowstick2.scale.set(0.001, 0.001, 0.001);
             sim.scene.add(glowstick2);
         }
