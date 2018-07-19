@@ -1,87 +1,16 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-<script src = "https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.js"></script>
-<script src = "https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-<script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
-<script src = "../console/Console.js"></script>
-<script src = "../motion/motion.js"></script>
-<script src = "world/sky.js"></script>
-<!-- <script src = "plots/plots.js"></script> -->
-</head>
-<body>
-<script>
-
-var compassURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/scenery_objects/compass/cardinal_01.png"
-var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
-var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
-var tiledMoonURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/moon_quarterRes-sheet.png";
-
-var testing = false;
-if(!testing) altspaceutil.getFullspaceEnclosure().then(function(enclosure) { start(); });
-else start();
-
-var sim;
-var sceneConsole;
-
-function start() {
-    sim = new altspace.utilities.Simulation();
-
-    sceneConsole = SetupConsole(20, 0.6);
-    
-    SetupDebugVisuals();
-
-    altspace.getUser().then(function(user) {
-        console.log("User: " + user.displayName);
-    });
-
-    var box = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.3));
-
-    var skeleton;
-    var head;
-    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-        skeleton = _skeleton;
-        sim.scene.add(skeleton);
-        head = skeleton.getJoint("Head");
-        console.log(
-            "Head position: " + 
-            head.position.x + ", " +
-            head.position.y + ", " +
-            head.position.z
-        );
-        head.add(box);
-        // head.addBehavior(new PlotUserInfo(head));
-    });
-
-    // var terrain = CreateTerrain();
-    var sky = CreateSky();
-
-    // sim.scene.add(terrain);
-    sim.scene.add(sky.root);
-    sim.scene.add(sky.skySpheres.night);
-}
-
-function SetupSceneConsole(maxLines, spacing) {
-    con = new THREE.Object3D();
-    con.addBehavior(new altspaceutil.behaviors.Console({ maxlines: maxLines, passive: false, spacing: spacing }));
-    sim.scene.add(con);
-    sim.scene.updateAllBehaviors();
-    return con;
-}
-
-// function waitForJoint(part, side) {
-//     var promise = new Promise(function(resolve) {
-//         var waitIntervalId = setInterval(function() {
-//             if(skeleton.getJoint(part, side)) {
-//                 clearInterval(waitIntervalId);
-//                 resolve();
-//             }
-//         }, 10);
-//     });
-//     return promise;
-// }
-
-</script>
-</body>
+<html>
+	<head>
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+		<script src = "https://altspacevr.github.io/AltspaceSDK/dist/altspace.js"></script>        
+	</head>
+	<body>
+	<a-scene altspace="fullspace: true">
+        <a-entity position="0 1 -5" rotation="0 45 0" scale="5 5 5"
+			n-layout-browser="url:https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/grid_test/grid_test.html; isEnclosure:true">
+		</a-entity>
+		<a-entity position="0 1 -5" rotation="0 45 0" scale="5 5 5"
+			n-layout-browser="url:https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/js/hats.html; isEnclosure:true">
+        </a-entity>
+	</a-scene>
+	</body>
 </html>
