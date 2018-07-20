@@ -285,7 +285,7 @@ function start() {
         for(var z = 0; z < 20; z++) {
             for(var x = 0; x < 20; x++) {
                 var boxclone = retroBox.clone();
-                boxclone.position.set(-100 + x * 10, -0.51, -100 + z * 10);
+                boxclone.position.set(-95 + x * 10, -0.51, -95 + z * 10);
                 boxclone.scale.set(1, 1, 1);
                 sim.scene.add(boxclone);
             }
