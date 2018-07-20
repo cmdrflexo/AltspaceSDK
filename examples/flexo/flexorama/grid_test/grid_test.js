@@ -292,34 +292,26 @@ function start() {
             }
         }
 
-        // var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
             retroURL + "TSR.obj",
             retroURL + "TSR.mtl",
             function(obj) {
                 obj.position.set(0, 500, 500);
-                obj.rotation.y = THREE.Math.degToRad(90);
+                obj.rotation.y = THREE.Math.degToRad(180);
                 obj.rotation.x = THREE.Math.degToRad(-15);
-                // obj.lookAt(new THREE.Vector3(0, 0, 0));
                 obj.scale.set(80, 80, 80);
                 sim.scene.add(obj);
-                // for(var z = 0; z < d; z++) {
-                //     for(var x = 0; x < w; x++) {
-                //         var newobj = obj.clone();
-                //         newobj.addBehavior(new Floaty(x, z));
-                //         newobj.position.set(
-                //             armyPos.clone().x - (w/2) + x*2, 
-                //             armyPos.clone().y,// + (z * 0.5), 
-                //             armyPos.clone().z - z*2
-                //         );
-                //         var r = 0.5 + Math.random();
-                //         newobj.scale.set(r, r, r);
-                //         sim.scene.add(newobj);
-                //     }
-                // }
             }
         );
 
+        var apo = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 30, 0.1),
+            new THREE.MeshBasicMaterial({ color: 0xfb05af })
+        );
+        apo.position.set(-455, 550, 500);
+        // apo.rotation.x = THREE.Math.degToRad(-35);
+        apo.rotation.z = THREE.Math.degToRad(35);
+        sim.scene.add(apo);
     }
 
 
