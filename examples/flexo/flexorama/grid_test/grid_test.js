@@ -284,7 +284,7 @@ function start() {
         for(var z = 0; z < 20; z++) {
             for(var x = 0; x < 20; x++) {
                 var boxclone = retroBox.clone();
-                boxclone.position.set(-100 + x * 10, -0.49, -100 + z * 10);
+                boxclone.position.set(-100 + x * 10, -0.51, -100 + z * 10);
                 boxclone.scale.set(1, 1, 1);
                 sim.scene.add(boxclone);
             }
@@ -292,10 +292,19 @@ function start() {
     }
 
 
-    GlowstickCube();
-    GlowstickCube();
+    GlowstickCube(new THREE.Vector3(10, 0.1, 10));
+    GlowstickCube(new THREE.Vector3(10, 0.1, 10));
 
-    function GlowstickCube() {
+    GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
+    GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
+
+    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+
+    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+
+    function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshBasicMaterial({ 
@@ -305,7 +314,7 @@ function start() {
                 })
             })
         );
-        glows.position.y = 0.1;
+        glows.position.set(pos.x, pos.y, pos.z);
         glows.scale.set(0.2, 0.2, 0.2);
         glows.addBehaviors(new CubeRotate(3), new BasicFloat(2));
         sim.scene.add(glows);
