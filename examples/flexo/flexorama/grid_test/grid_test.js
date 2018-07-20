@@ -290,11 +290,36 @@ function start() {
                 sim.scene.add(boxclone);
             }
         }
+
+        // var loader = new altspace.utilities.shims.OBJMTLLoader();
+        loader.load(
+            retroURL + "TSR.obj",
+            retroURL + "TSR.mtl",
+            function(obj) {
+                obj.position.y = 10;
+                sim.scene.add(obj);
+                // for(var z = 0; z < d; z++) {
+                //     for(var x = 0; x < w; x++) {
+                //         var newobj = obj.clone();
+                //         newobj.addBehavior(new Floaty(x, z));
+                //         newobj.position.set(
+                //             armyPos.clone().x - (w/2) + x*2, 
+                //             armyPos.clone().y,// + (z * 0.5), 
+                //             armyPos.clone().z - z*2
+                //         );
+                //         var r = 0.5 + Math.random();
+                //         newobj.scale.set(r, r, r);
+                //         sim.scene.add(newobj);
+                //     }
+                // }
+            }
+        );
+
     }
 
 
-    // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
-    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
 
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
