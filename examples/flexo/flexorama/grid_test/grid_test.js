@@ -293,16 +293,16 @@ function start() {
 
 
     GlowstickCube(new THREE.Vector3(10, 0.1, 10));
-    GlowstickCube(new THREE.Vector3(10, 0.1, 10));
+    // GlowstickCube(new THREE.Vector3(10, 0.1, 10));
 
     GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
-    GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
+    // GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
 
     GlowstickCube(new THREE.Vector3(10, 0.1, -10));
-    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
 
     GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
-    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
 
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
