@@ -189,7 +189,7 @@ function start() {
         }
     }
 
-    Meteors();
+    // Meteors();
     function Meteors() {
         for(var i = 0; i < 5; i++) {
             setTimeout(function() {
@@ -293,17 +293,8 @@ function start() {
     }
 
 
-    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
-    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
-
-    // GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
-    // GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
-
-    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
-    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
-
     // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
-    // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
 
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
