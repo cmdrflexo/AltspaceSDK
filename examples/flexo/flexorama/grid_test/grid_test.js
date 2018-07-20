@@ -296,7 +296,10 @@ function start() {
             retroURL + "TSR.obj",
             retroURL + "TSR.mtl",
             function(obj) {
-                obj.position.y = 10;
+                obj.position.set(0, 500, 500);
+                obj.rotation.y = THREE.Math.degToRad(90);
+                obj.lookAt(new THREE.Vector3(0, 0, 0));
+                obj.scale.set(80, 80, 80);
                 sim.scene.add(obj);
                 // for(var z = 0; z < d; z++) {
                 //     for(var x = 0; x < w; x++) {
