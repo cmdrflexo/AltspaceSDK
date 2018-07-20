@@ -19,8 +19,9 @@ var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 //     );
 // }
 
-var skyDayURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
-var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
+var skyDayURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
+// var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
+var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/purple_galaxy.png";
 
 function start() {
     sim = new altspace.utilities.Simulation();
@@ -56,7 +57,7 @@ function start() {
             })
         })
     );
-    sky.rotation.z = THREE.Math.degToRad(-45);
+    // sky.rotation.z = THREE.Math.degToRad(-45);
     sky.scale.x = -1;
     sky.position.y = - 500;
     sim.scene.add(sky);
