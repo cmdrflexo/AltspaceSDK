@@ -25,9 +25,6 @@ CubeRotate = function(maxSpeed) {
             this.randomRotations();
         }
 
-        // if(this.currentSpeed < this.maxSpeed)
-        //     this.currentSpeed += deltaTime * 0.01;
-
         if(this.spinForward) {
             if(this.currentSpeed < this.maxSpeed)
                 this.currentSpeed += deltaTime * 0.001;
@@ -53,7 +50,20 @@ CubeRotate = function(maxSpeed) {
     }
 }
 
-// BEHAVIORS
+RotateY = function(rate) {
+
+    this.rate = rate * 1000;
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.object3d.rotation.y += deltaTime / this.rate;
+    }
+}
+
+
 PlotUserInfo = function(head) {
 
     this.awake = function(parent, scene) {

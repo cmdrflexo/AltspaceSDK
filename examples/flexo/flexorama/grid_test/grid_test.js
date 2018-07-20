@@ -58,8 +58,9 @@ function start() {
         })
     );
     // sky.rotation.z = THREE.Math.degToRad(-45);
-    sky.scale.x = -1;
     sky.position.y = - 500;
+    sky.scale.x = -1;
+    sky.addBehavior(new RotateY(600));
     sim.scene.add(sky);
 
 
@@ -298,7 +299,8 @@ function start() {
             function(obj) {
                 obj.position.set(0, 500, 500);
                 obj.rotation.y = THREE.Math.degToRad(90);
-                obj.lookAt(new THREE.Vector3(0, 0, 0));
+                obj.rotation.x = THREE.Math.degToRad(-15);
+                // obj.lookAt(new THREE.Vector3(0, 0, 0));
                 obj.scale.set(80, 80, 80);
                 sim.scene.add(obj);
                 // for(var z = 0; z < d; z++) {
