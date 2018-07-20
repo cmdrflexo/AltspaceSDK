@@ -280,7 +280,7 @@ function start() {
 
         retroBox.position.y = -1;
         retroBox.scale.set(100, 1, 100);
-        // sim.scene.add(retroBox);
+        sim.scene.add(retroBox);
         for(var z = 0; z < 20; z++) {
             for(var x = 0; x < 20; x++) {
                 var boxclone = retroBox.clone();
@@ -293,15 +293,15 @@ function start() {
 
 
     GlowstickCube(new THREE.Vector3(10, 0.1, 10));
-    // GlowstickCube(new THREE.Vector3(10, 0.1, 10));
+    GlowstickCube(new THREE.Vector3(10, 0.1, 10));
 
-    GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
+    // GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
     // GlowstickCube(new THREE.Vector3(-10, 0.1, 10));
 
-    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
     // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
 
-    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
     // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
 
     function GlowstickCube(pos) {
