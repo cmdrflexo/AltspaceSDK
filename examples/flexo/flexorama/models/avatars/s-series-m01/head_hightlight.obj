@@ -4,8 +4,6 @@
 #	LightWave3D OBJ Export v2.3
 #
 ####
-o head_detail.obj
-mtllib head_detail.mtl
 g default
 v -0.090471 0.023682 0.0439915
 v -0.083972 0.051322 0.0388195
