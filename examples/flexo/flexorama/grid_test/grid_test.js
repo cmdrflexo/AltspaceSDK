@@ -559,21 +559,48 @@ function start() {
             head = skeleton.getJoint("Head");
             spine = skeleton.getJoint("Spine");
             loader.load(
-                flexoAvatarURL + "just_body.obj",
-                flexoAvatarURL + "just_body.mtl",
-                function(obj) {
-                    head.add(obj);
-                }
-            );
-            loader.load(
                 flexoAvatarURL + "just_head.obj",
                 flexoAvatarURL + "just_head.mtl",
                 function(obj) {
-                    spine.add(obj);
+                    obj.addBehavior(new MirrorPart(head, 0.025));
+                    sim.scene.add(obj);
+                }
+            );
+            loader.load(
+                flexoAvatarURL + "just_body.obj",
+                flexoAvatarURL + "just_body.mtl",
+                function(obj) { 
+                    obj.addBehavior(new MirrorPart(spine, -0.17));
+                    sim.scene.add(obj);
                 }
             );
         });
     }
+
+    MirrorPart = function(target, yOffset) {
+        this.target = target;
+        this.yOffset = yOffset;
+
+        this.awake = function(parent) {
+            this.object3d = parent;
+            console.log(this.object3d.rotation);
+        }
+
+        this.update = function(deltaTime) {
+            this.object3d.position.set(
+                 target.position.x,
+                 target.position.y + yOffset,
+                -target.position.z,
+            );
+            // this.object3d.rotation.y = this.target.rotation.y - THREE.Math.degToRad(180);
+            this.object3d.rotation.set(
+                -this.target.rotation.x,
+                -this.target.rotation.y - THREE.Math.degToRad(180),
+                -this.target.rotation.z,
+            );
+        }
+    }
+
 
     // DrawAvatars();
 
