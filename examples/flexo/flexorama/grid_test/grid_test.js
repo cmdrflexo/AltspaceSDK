@@ -278,29 +278,28 @@ function start() {
             }
         );
 
-        var retroBox = new THREE.Mesh(
-            new THREE.BoxGeometry(10, 1, 10),
-            new THREE.MeshBasicMaterial({ 
-                color: 0xffffff,
-                map: new THREE.Texture({ 
-                    src: altspaceutil.getAbsoluteURL(
-                        retroURL + "retro_grid-01.png"
-                    )
-                })
-            })
-        );
-
-        retroBox.position.y = -1;
-        retroBox.scale.set(100, 1, 100);
-        sim.scene.add(retroBox);
-        for(var z = 0; z < 20; z++) {
-            for(var x = 0; x < 20; x++) {
-                var boxclone = retroBox.clone();
-                boxclone.position.set(-95 + x * 10, -0.51, -95 + z * 10);
-                boxclone.scale.set(1, 1, 1);
-                sim.scene.add(boxclone);
-            }
-        }
+        // var retroBox = new THREE.Mesh(
+        //     new THREE.BoxGeometry(10, 1, 10),
+        //     new THREE.MeshBasicMaterial({ 
+        //         color: 0xffffff,
+        //         map: new THREE.Texture({ 
+        //             src: altspaceutil.getAbsoluteURL(
+        //                 retroURL + "retro_grid-01.png"
+        //             )
+        //         })
+        //     })
+        // );
+        // retroBox.position.y = -1;
+        // retroBox.scale.set(100, 1, 100);
+        // sim.scene.add(retroBox);
+        // for(var z = 0; z < 20; z++) {
+        //     for(var x = 0; x < 20; x++) {
+        //         var boxclone = retroBox.clone();
+        //         boxclone.position.set(-95 + x * 10, -0.51, -95 + z * 10);
+        //         boxclone.scale.set(1, 1, 1);
+        //         sim.scene.add(boxclone);
+        //     }
+        // }
 
         loader.load(
             retroURL + "TSR.obj",
@@ -322,6 +321,25 @@ function start() {
         // apo.rotation.x = THREE.Math.degToRad(-35);
         apo.rotation.z = THREE.Math.degToRad(35);
         sim.scene.add(apo);
+    }
+
+    var grid = CreateGrid();
+    sim.scene.add(grid);
+    function CreateGrid() {
+        var plane = new THREE.Mesh(
+            new THREE.PlaneGeometry(1000, 1000),
+            new THREE.MeshBasicMaterial({ 
+                color: 0xffffff,
+                map: new THREE.Texture({ 
+                    src: altspaceutil.getAbsoluteURL(retroURL + "retro_grid-01.png")
+                })
+            })
+        );
+        plane.material.map.repeat.set(100, 100);
+        plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
+        plane.position.set(0, -0.01, 0);
+        plane.rotation.x = THREE.Math.degToRad(-90);
+        return plane;
     }
 
 
