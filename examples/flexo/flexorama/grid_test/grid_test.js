@@ -570,32 +570,40 @@ function start() {
     function MirrorSelf() {
         var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
         altspace.getUser().then(function(user){
-            var primaryColor = user.avatarInfo.primaryColor;
-            // primaryColor = primaryColor.match(/\d+/g).map(Number);
-            var highlightColor = user.avatarInfo.highlightColor;
-            highlightColor = highlightColor.match(/\d+/g).map(Number);
-            // var customURL = avatarModelsURL + "s-series-m01";
 
-            if (primaryColor == 'white') {
-                primaryColor = [255,255,255];
-            } else if (primaryColor == 'lightgrey') {
-                primaryColor = [255,255,255];
-            } else if (primaryColor == 'grey') {
-                primaryColor = [191,191,191];
-            } else if (primaryColor == 'darkgrey') {
-                primaryColor = [77,77,77];
-            } else if (primaryColor == 'black') {
-                primaryColor = [26,26,26];
+            var hasColors = true;
+            var hasHighlight = true;
+            var hasBody = true;
+            if(user.avatarInfo.sid == "robothead-roundguy-01") {
+                hasColors = false;
+                hasHighlight = false;
+                hasBody = false;
             } else {
-                primaryColor = primaryColor.match(/\d+/g).map(Number);  
-                var highP = Math.max(primaryColor[0], primaryColor[1], primaryColor[2]);
-                var highH = Math.max(highlightColor[0], highlightColor[1], highlightColor[2]);
-                if(highP > 255)
-                    for(var i = 0; i < 3; i++)
-                        primaryColor[i] = Math.floor(primaryColor[i] / highP * 255);
-                if(highH > 255)
-                    for(var i = 0; i < 3; i++)
-                        highlightColor[i] = Math.floor(highlightColor[i] / highH * 255);
+                var primaryColor = user.avatarInfo.primaryColor;
+                var highlightColor = user.avatarInfo.highlightColor;
+                highlightColor = highlightColor.match(/\d+/g).map(Number);
+
+                if (primaryColor == 'white') {
+                    primaryColor = [255,255,255];
+                } else if (primaryColor == 'lightgrey') {
+                    primaryColor = [255,255,255];
+                } else if (primaryColor == 'grey') {
+                    primaryColor = [191,191,191];
+                } else if (primaryColor == 'darkgrey') {
+                    primaryColor = [77,77,77];
+                } else if (primaryColor == 'black') {
+                    primaryColor = [26,26,26];
+                } else {
+                    primaryColor = primaryColor.match(/\d+/g).map(Number);  
+                    var highP = Math.max(primaryColor[0], primaryColor[1], primaryColor[2]);
+                    var highH = Math.max(highlightColor[0], highlightColor[1], highlightColor[2]);
+                    if(highP > 255)
+                        for(var i = 0; i < 3; i++)
+                            primaryColor[i] = Math.floor(primaryColor[i] / highP * 255);
+                    if(highH > 255)
+                        for(var i = 0; i < 3; i++)
+                            highlightColor[i] = Math.floor(highlightColor[i] / highH * 255);
+                }
             }
 
             var customURL = avatarModelsURL + user.avatarInfo.sid;
@@ -606,58 +614,64 @@ function start() {
                 var skeleton = _skeleton;
                 sim.scene.add(skeleton);
                 head = skeleton.getJoint("Head");
-                spine = skeleton.getJoint("Spine");
+                if(hasBody) spine = skeleton.getJoint("Spine");
                 loader.load(
                     customURL + "/head.obj",
                     customURL + "/head.mtl",
-                    function(obj) { // div by 2
+                    function(obj) {
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
                         obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(head, 0.025));
                         sim.scene.add(obj);
-                        loader.load(
-                            customURL + "/head_highlight.obj",
-                            customURL + "/head_highlight.mtl",
-                            function(highlight) {
-                                highlight.children[0].material.color.r = (1/256) * highlightColor[0];
-                                highlight.children[0].material.color.g = (1/256) * highlightColor[1];
-                                highlight.children[0].material.color.b = (1/256) * highlightColor[2];
-                                obj.add(highlight);
-                            }
-                        );
+                        if(hasHighlight) {
+                            loader.load(
+                                customURL + "/head_highlight.obj",
+                                customURL + "/head_highlight.mtl",
+                                function(highlight) {
+                                    highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                                    highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                                    highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                                    obj.add(highlight);
+                                }
+                            );
+                        }
                     }
                 );
-                loader.load(
-                    customURL + "/body.obj",
-                    customURL + "/body.mtl",
-                    function(obj) { 
-                        obj.children[0].material.color.r = (1/256) * primaryColor[0];
-                        obj.children[0].material.color.g = (1/256) * primaryColor[1];
-                        obj.children[0].material.color.b = (1/256) * primaryColor[2];
-                        obj.addBehavior(new MirrorPart(spine, -0.17));
-                        sim.scene.add(obj);
-                        loader.load(
-                            customURL + "/body_highlight.obj",
-                            customURL + "/body_highlight.mtl",
-                            function(highlight) {
-                                highlight.children[0].material.color.r = (1/256) * highlightColor[0];
-                                highlight.children[0].material.color.g = (1/256) * highlightColor[1];
-                                highlight.children[0].material.color.b = (1/256) * highlightColor[2];
-                                obj.add(highlight);
+                if(hasBody) {
+                    loader.load(
+                        customURL + "/body.obj",
+                        customURL + "/body.mtl",
+                        function(obj) { 
+                            obj.children[0].material.color.r = (1/256) * primaryColor[0];
+                            obj.children[0].material.color.g = (1/256) * primaryColor[1];
+                            obj.children[0].material.color.b = (1/256) * primaryColor[2];
+                            obj.addBehavior(new MirrorPart(spine, -0.17));
+                            sim.scene.add(obj);
+                            if(hasHighlight) {
+                                loader.load(
+                                    customURL + "/body_highlight.obj",
+                                    customURL + "/body_highlight.mtl",
+                                    function(highlight) {
+                                        highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                                        highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                                        highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                                        obj.add(highlight);
+                                    }
+                                );
                             }
-                        );
-                    }
-                );
-                function Highlight(objURL, mtlURL, color) {
-                    objURL, mtlURL,
-                    function(highlight) {
-                        highlight.children[0].material.color.r = (1/256) * highlightColor[0];
-                        highlight.children[0].material.color.g = (1/256) * highlightColor[1];
-                        highlight.children[0].material.color.b = (1/256) * highlightColor[2];
-                        obj.add(highlight);
-                    }
+                        }
+                    );
                 }
+                // function Highlight(objURL, mtlURL, color) {
+                //     objURL, mtlURL,
+                //     function(highlight) {
+                //         highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                //         highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                //         highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                //         obj.add(highlight);
+                //     }
+                // }
             });
         });
     }
