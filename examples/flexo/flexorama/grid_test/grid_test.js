@@ -568,10 +568,10 @@ function start() {
                 head = skeleton.getJoint("Head");
                 spine = skeleton.getJoint("Spine");
                 loader.load(
-                    flexoAvatarURL + "just_head.obj",
-                    flexoAvatarURL + "just_head.mtl",
-                    // customHeadURL + "/head.obj",
-                    // customHeadURL + "/head.mtl",
+                    // flexoAvatarURL + "just_head.obj",
+                    // flexoAvatarURL + "just_head.mtl",
+                    customHeadURL + "/head.obj",
+                    customHeadURL + "/head.mtl",
                     function(obj) {
                         console.log(obj.children[0]);
                         // console.log(obj.mesh);
@@ -583,10 +583,10 @@ function start() {
                     }
                 );
                 loader.load(
-                    flexoAvatarURL + "just_body.obj",
-                    flexoAvatarURL + "just_body.mtl",
-                    // customHeadURL + "/body.obj",
-                    // customHeadURL + "/body.mtl",
+                    // flexoAvatarURL + "just_body.obj",
+                    // flexoAvatarURL + "just_body.mtl",
+                    customHeadURL + "/body.obj",
+                    customHeadURL + "/body.mtl",
                     function(obj) { 
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
