@@ -63,15 +63,14 @@ function start() {
     sky.addBehavior(new RotateY(600));
     sim.scene.add(sky);
 
-    JointInfo();
-    function JointInfo() {
-        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-            var skeleton = _skeleton;
-            sim.scene.add(skeleton);
-            var head = skeleton.getJoint("Head");
-            console.log(head);
-        });
-    }
+    // JointInfo();
+    // function JointInfo() {
+    //     altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+    //         var skeleton = _skeleton;
+    //         sim.scene.add(skeleton);
+    //         var head = skeleton.getJoint("Head");
+    //     });
+    // }
 
 
     // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
@@ -550,30 +549,38 @@ function start() {
 
     MirrorSelf();
     function MirrorSelf() {
-        var head;
-        var spine;
-        var loader = new altspace.utilities.shims.OBJMTLLoader();
-        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-            var skeleton = _skeleton;
-            sim.scene.add(skeleton);
-            head = skeleton.getJoint("Head");
-            spine = skeleton.getJoint("Spine");
-            loader.load(
-                flexoAvatarURL + "just_head.obj",
-                flexoAvatarURL + "just_head.mtl",
-                function(obj) {
-                    obj.addBehavior(new MirrorPart(head, 0.025));
-                    sim.scene.add(obj);
-                }
-            );
-            loader.load(
-                flexoAvatarURL + "just_body.obj",
-                flexoAvatarURL + "just_body.mtl",
-                function(obj) { 
-                    obj.addBehavior(new MirrorPart(spine, -0.17));
-                    sim.scene.add(obj);
-                }
-            );
+        var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
+        altspace.getUser().then(function(user){
+            console.log(user);
+            var primaryColor = user.avatarInfo.primaryColor;            
+            var customHeadURL = avatarModelsURL + user.avatarInfo.sid;
+            var head;
+            var spine;
+            var loader = new altspace.utilities.shims.OBJMTLLoader();
+            altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+                var skeleton = _skeleton;
+                sim.scene.add(skeleton);
+                head = skeleton.getJoint("Head");
+                spine = skeleton.getJoint("Spine");
+                loader.load(
+                    // flexoAvatarURL + "just_head.obj",
+                    // flexoAvatarURL + "just_head.mtl",
+                    customHeadURL + "/obj.obj",
+                    // customHeadURL + "/.mtl",
+                    function(obj) {
+                        obj.addBehavior(new MirrorPart(head, 0.025));
+                        sim.scene.add(obj);
+                    }
+                );
+                loader.load(
+                    flexoAvatarURL + "just_body.obj",
+                    flexoAvatarURL + "just_body.mtl",
+                    function(obj) { 
+                        obj.addBehavior(new MirrorPart(spine, -0.17));
+                        sim.scene.add(obj);
+                    }
+                );
+            });
         });
     }
 
@@ -583,7 +590,6 @@ function start() {
 
         this.awake = function(parent) {
             this.object3d = parent;
-            console.log(this.object3d.rotation);
         }
 
         this.update = function(deltaTime) {
@@ -592,7 +598,6 @@ function start() {
                  target.position.y + yOffset,
                 -target.position.z,
             );
-            // this.object3d.rotation.y = this.target.rotation.y - THREE.Math.degToRad(180);
             this.object3d.rotation.set(
                 -this.target.rotation.x,
                 -this.target.rotation.y - THREE.Math.degToRad(180),
