@@ -182,10 +182,11 @@ function start() {
                 ),
                 new altspaceutil.behaviors.NativeComponent(
                     'n-skeleton-parent', { part: 'hand', side: 'left' }
-                ),
-                new altspace.utilities.behaviors.Object3DSync(
-                    { position: true, rotation: true }
                 )
+                // ,
+                // new altspace.utilities.behaviors.Object3DSync(
+                //     { position: true, rotation: true }
+                // )
             );
             armGlowstick.rotation.x = THREE.Math.degToRad(90);
             armGlowstick.scale.set(0.001, 0.001, 0.001);
@@ -199,10 +200,11 @@ function start() {
                 ),
                 new altspaceutil.behaviors.NativeComponent(
                     'n-skeleton-parent', { part: 'hand', side: 'right' }
-                ),
-                new altspace.utilities.behaviors.Object3DSync(
-                    { position: true, rotation: true }
                 )
+                // ,
+                // new altspace.utilities.behaviors.Object3DSync(
+                //     { position: true, rotation: true }
+                // )
             );
             glowstick2.rotation.x = THREE.Math.degToRad(90);
             glowstick2.scale.set(0.001, 0.001, 0.001);
