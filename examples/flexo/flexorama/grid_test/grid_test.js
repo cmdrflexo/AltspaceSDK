@@ -588,6 +588,14 @@ function start() {
                 primaryColor = [26,26,26];
             } else {
                 primaryColor = primaryColor.match(/\d+/g).map(Number);  
+                var highP = Math.max(primaryColor[0], primaryColor[1], primaryColor[2]);
+                var highH = Math.max(highlightColor[0], highlightColor[1], highlightColor[2]);
+                if(highP > 255)
+                    for(var i = 0; i < 3; i++)
+                        primaryColor[i] = Math.floor(primaryColor[i] / highP * 255);
+                if(highP > 255)
+                    for(var i = 0; i < 3; i++)
+                        highlightColor[i] = Math.floor(highlightColor[i] / highH * 255);
             }
 
             var customURL = avatarModelsURL + user.avatarInfo.sid;
