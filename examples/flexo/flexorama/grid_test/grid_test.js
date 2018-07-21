@@ -554,39 +554,44 @@ function start() {
             console.log(user);
             var primaryColor = user.avatarInfo.primaryColor;
             primaryColor = primaryColor.match(/\d+/g).map(Number);
-            // var secondaryColor = user.avatarInfo.secondaryColor;
-            // secondaryColor = secondaryColor.match(/\d+/g).map(Number);
+            var highlightColor = user.avatarInfo.highlightColor;
+            highlightColor = highlightColor.match(/\d+/g).map(Number);
             console.log(primaryColor);
-            var customHeadURL = avatarModelsURL + user.avatarInfo.sid;
+            var customURL = avatarModelsURL + user.avatarInfo.sid;
             var head;
             var spine;
             var loader = new altspace.utilities.shims.OBJMTLLoader();
             altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
                 var skeleton = _skeleton;
                 sim.scene.add(skeleton);
-                // 1 / 255 / color
                 head = skeleton.getJoint("Head");
                 spine = skeleton.getJoint("Spine");
+                var headObj;
                 loader.load(
-                    // flexoAvatarURL + "just_head.obj",
-                    // flexoAvatarURL + "just_head.mtl",
-                    customHeadURL + "/head.obj",
-                    customHeadURL + "/head.mtl",
+                    customURL + "/head.obj",
+                    customURL + "/head.mtl",
                     function(obj) {
-                        console.log(obj.children[0]);
-                        // console.log(obj.mesh);
+                        headObj = obj;
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
                         obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(head, 0.025));
                         sim.scene.add(obj);
+                        // loader.load(
+                        //     customURL + "/head_detail.obj",
+                        //     customURL + "/head_detail.mtl",
+                        //     function(obj2) {
+                        //         obj2.children[0].material.color.r = (1/256) * highlightColor[0];
+                        //         obj2.children[0].material.color.g = (1/256) * highlightColor[1];
+                        //         obj2.children[0].material.color.b = (1/256) * highlightColor[2];
+                        //         headObj.add(obj2);
+                        //     }
+                        // );
                     }
                 );
                 loader.load(
-                    // flexoAvatarURL + "just_body.obj",
-                    // flexoAvatarURL + "just_body.mtl",
-                    customHeadURL + "/body.obj",
-                    customHeadURL + "/body.mtl",
+                    customURL + "/body.obj",
+                    customURL + "/body.mtl",
                     function(obj) { 
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
