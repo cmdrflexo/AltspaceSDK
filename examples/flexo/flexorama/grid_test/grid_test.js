@@ -57,8 +57,8 @@ function start() {
             })
         })
     );
-    // sky.rotation.z = THREE.Math.degToRad(-45);
-    // sky.position.y = - 500;
+    sky.rotation.z = THREE.Math.degToRad(5);
+    sky.position.y = -250;
     sky.scale.x = -1;
     sky.addBehavior(new RotateY(600));
     sim.scene.add(sky);
