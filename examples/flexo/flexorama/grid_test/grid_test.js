@@ -325,8 +325,9 @@ function start() {
     }
 
 
-    GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
-    GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
+    // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
+    GlowstickCube(new THREE.Vector3(0, 0.1, 0));
 
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
