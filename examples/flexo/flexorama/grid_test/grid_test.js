@@ -547,7 +547,6 @@ function start() {
     }
 
     MirrorSelf();
-    var testAvatarSID = "s-series-m01";
     /*
     var highP = Math.max(pColor[0], pColor[1], pColor[2]);
     var highH = Math.max(hColor[0], hColor[1], hColor[2]);
@@ -575,7 +574,8 @@ function start() {
             primaryColor = primaryColor.match(/\d+/g).map(Number);
             var highlightColor = user.avatarInfo.highlightColor;
             highlightColor = highlightColor.match(/\d+/g).map(Number);
-            var customURL = avatarModelsURL + testAvatarSID;//user.avatarInfo.sid;
+            // var customURL = avatarModelsURL + "s-series-m01";
+            var customURL = avatarModelsURL + user.avatarInfo.sid;
             var head;
             var spine;
             var loader = new altspace.utilities.shims.OBJMTLLoader();
