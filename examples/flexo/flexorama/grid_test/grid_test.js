@@ -584,15 +584,15 @@ function start() {
                 highlightColor = highlightColor.match(/\d+/g).map(Number);
 
                 if (primaryColor == 'white') {
-                    primaryColor = [255,255,255];
+                    primaryColor = [255, 255, 255];
                 } else if (primaryColor == 'lightgrey') {
-                    primaryColor = [255,255,255];
+                    primaryColor = [255, 255, 255];
                 } else if (primaryColor == 'grey') {
-                    primaryColor = [191,191,191];
+                    primaryColor = [191, 191, 191];
                 } else if (primaryColor == 'darkgrey') {
-                    primaryColor = [77,77,77];
+                    primaryColor = [ 77,  77,  77];
                 } else if (primaryColor == 'black') {
-                    primaryColor = [26,26,26];
+                    primaryColor = [ 26,  26,  26];
                 } else {
                     primaryColor = primaryColor.match(/\d+/g).map(Number);  
                     var highP = Math.max(primaryColor[0], primaryColor[1], primaryColor[2]);
