@@ -20,7 +20,6 @@ var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 // }
 
 var skyDayURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
-// var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/galaxy.jpg";
 var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/purple_galaxy.png";
 
 function start() {
@@ -549,6 +548,26 @@ function start() {
 
     MirrorSelf();
     var testAvatarSID = "s-series-m01";
+    /*
+    var highP = Math.max(pColor[0], pColor[1], pColor[2]);
+    var highH = Math.max(hColor[0], hColor[1], hColor[2]);
+    if (highP > 255) {
+        for (var i = 0; i < 3; i++) {
+        pColor[i] = Math.floor(pColor[i] / highP * 255);
+        }
+        if (sid == 's-series-m01') {
+        var tex = new THREE.TextureLoader().load('https://bengarfield.github.io/AltVR/avatar/s-series-m01_diff_bright.png');  
+        prim.map = tex;
+        prim.needsUpdate = true;
+        }
+    }
+    if (highH > 255) {
+        high.map = null;
+        for (var i = 0; i < 3; i++) {
+        hColor[i] = Math.floor(hColor[i] / highH * 255);
+        }
+    }
+    */
     function MirrorSelf() {
         var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
         altspace.getUser().then(function(user){
@@ -568,7 +587,7 @@ function start() {
                 loader.load(
                     customURL + "/head.obj",
                     customURL + "/head.mtl",
-                    function(obj) {
+                    function(obj) { // div by 2
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
                         obj.children[0].material.color.b = (1/256) * primaryColor[2];
