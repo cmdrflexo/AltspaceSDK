@@ -63,6 +63,16 @@ function start() {
     sky.addBehavior(new RotateY(600));
     sim.scene.add(sky);
 
+    JointInfo();
+    function JointInfo() {
+        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            var skeleton = _skeleton;
+            sim.scene.add(skeleton);
+            var head = skeleton.getJoint("Head");
+            console.log(head.position);
+        });
+    }
+
 
     // altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
     //     var skeleton = _skeleton;
