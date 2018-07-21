@@ -548,16 +548,15 @@ function start() {
     }
 
     MirrorSelf();
+    var testAvatarSID = "s-series-m01";
     function MirrorSelf() {
         var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
         altspace.getUser().then(function(user){
-            console.log(user);
             var primaryColor = user.avatarInfo.primaryColor;
             primaryColor = primaryColor.match(/\d+/g).map(Number);
             var highlightColor = user.avatarInfo.highlightColor;
             highlightColor = highlightColor.match(/\d+/g).map(Number);
-            console.log(primaryColor);
-            var customURL = avatarModelsURL + user.avatarInfo.sid;
+            var customURL = avatarModelsURL + testAvatarSID;//user.avatarInfo.sid;
             var head;
             var spine;
             var loader = new altspace.utilities.shims.OBJMTLLoader();
@@ -566,27 +565,25 @@ function start() {
                 sim.scene.add(skeleton);
                 head = skeleton.getJoint("Head");
                 spine = skeleton.getJoint("Spine");
-                var headObj;
                 loader.load(
                     customURL + "/head.obj",
                     customURL + "/head.mtl",
                     function(obj) {
-                        headObj = obj;
                         obj.children[0].material.color.r = (1/256) * primaryColor[0];
                         obj.children[0].material.color.g = (1/256) * primaryColor[1];
                         obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(head, 0.025));
                         sim.scene.add(obj);
-                        // loader.load(
-                        //     customURL + "/head_detail.obj",
-                        //     customURL + "/head_detail.mtl",
-                        //     function(obj2) {
-                        //         obj2.children[0].material.color.r = (1/256) * highlightColor[0];
-                        //         obj2.children[0].material.color.g = (1/256) * highlightColor[1];
-                        //         obj2.children[0].material.color.b = (1/256) * highlightColor[2];
-                        //         headObj.add(obj2);
-                        //     }
-                        // );
+                        loader.load(
+                            customURL + "/head_highlight.obj",
+                            customURL + "/head_highlight.mtl",
+                            function(highlight) {
+                                highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                                highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                                highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                                obj.add(highlight);
+                            }
+                        );
                     }
                 );
                 loader.load(
@@ -598,8 +595,27 @@ function start() {
                         obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(spine, -0.17));
                         sim.scene.add(obj);
+                        loader.load(
+                            customURL + "/body_highlight.obj",
+                            customURL + "/body_highlight.mtl",
+                            function(highlight) {
+                                highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                                highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                                highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                                obj.add(highlight);
+                            }
+                        );
                     }
                 );
+                function Highlight(objURL, mtlURL, color) {
+                    objURL, mtlURL,
+                    function(highlight) {
+                        highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                        highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                        highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                        obj.add(highlight);
+                    }
+                }
             });
         });
     }
