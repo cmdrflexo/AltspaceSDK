@@ -552,7 +552,9 @@ function start() {
         var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
         altspace.getUser().then(function(user){
             console.log(user);
-            var primaryColor = user.avatarInfo.primaryColor;            
+            var primaryColor = user.avatarInfo.primaryColor;
+            primaryColor = primaryColor.match(/\d+/g).map(Number);
+            console.log(primaryColor);
             var customHeadURL = avatarModelsURL + user.avatarInfo.sid;
             var head;
             var spine;
@@ -563,11 +565,16 @@ function start() {
                 head = skeleton.getJoint("Head");
                 spine = skeleton.getJoint("Spine");
                 loader.load(
-                    // flexoAvatarURL + "just_head.obj",
-                    // flexoAvatarURL + "just_head.mtl",
-                    customHeadURL + "/obj.obj",
-                    // customHeadURL + "/.mtl",
+                    flexoAvatarURL + "just_head.obj",
+                    flexoAvatarURL + "just_head.mtl",
+                    // customHeadURL + "/head.obj",
+                    // customHeadURL + "/head.mtl",
                     function(obj) {
+                        console.log(obj.children[0]);
+                        // console.log(obj.mesh);
+                        obj.children[0].material.color.r = primaryColor[0];
+                        obj.children[0].material.color.g = primaryColor[1];
+                        obj.children[0].material.color.b = primaryColor[2];
                         obj.addBehavior(new MirrorPart(head, 0.025));
                         sim.scene.add(obj);
                     }
@@ -575,6 +582,8 @@ function start() {
                 loader.load(
                     flexoAvatarURL + "just_body.obj",
                     flexoAvatarURL + "just_body.mtl",
+                    // customHeadURL + "/body.obj",
+                    // customHeadURL + "/body.mtl",
                     function(obj) { 
                         obj.addBehavior(new MirrorPart(spine, -0.17));
                         sim.scene.add(obj);
