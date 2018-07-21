@@ -554,6 +554,8 @@ function start() {
             console.log(user);
             var primaryColor = user.avatarInfo.primaryColor;
             primaryColor = primaryColor.match(/\d+/g).map(Number);
+            // var secondaryColor = user.avatarInfo.secondaryColor;
+            // secondaryColor = secondaryColor.match(/\d+/g).map(Number);
             console.log(primaryColor);
             var customHeadURL = avatarModelsURL + user.avatarInfo.sid;
             var head;
@@ -562,6 +564,7 @@ function start() {
             altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
                 var skeleton = _skeleton;
                 sim.scene.add(skeleton);
+                // 1 / 255 / color
                 head = skeleton.getJoint("Head");
                 spine = skeleton.getJoint("Spine");
                 loader.load(
@@ -572,9 +575,9 @@ function start() {
                     function(obj) {
                         console.log(obj.children[0]);
                         // console.log(obj.mesh);
-                        obj.children[0].material.color.r = primaryColor[0];
-                        obj.children[0].material.color.g = primaryColor[1];
-                        obj.children[0].material.color.b = primaryColor[2];
+                        obj.children[0].material.color.r = (1/256) * primaryColor[0];
+                        obj.children[0].material.color.g = (1/256) * primaryColor[1];
+                        obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(head, 0.025));
                         sim.scene.add(obj);
                     }
@@ -585,6 +588,9 @@ function start() {
                     // customHeadURL + "/body.obj",
                     // customHeadURL + "/body.mtl",
                     function(obj) { 
+                        obj.children[0].material.color.r = (1/256) * primaryColor[0];
+                        obj.children[0].material.color.g = (1/256) * primaryColor[1];
+                        obj.children[0].material.color.b = (1/256) * primaryColor[2];
                         obj.addBehavior(new MirrorPart(spine, -0.17));
                         sim.scene.add(obj);
                     }
