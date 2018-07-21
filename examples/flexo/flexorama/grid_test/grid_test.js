@@ -69,7 +69,7 @@ function start() {
             var skeleton = _skeleton;
             sim.scene.add(skeleton);
             var head = skeleton.getJoint("Head");
-            console.log(head.position);
+            console.log(head);
         });
     }
 
@@ -546,6 +546,33 @@ function start() {
                 }
             }
         );
+    }
+
+    MirrorSelf();
+    function MirrorSelf() {
+        var head;
+        var spine;
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            var skeleton = _skeleton;
+            sim.scene.add(skeleton);
+            head = skeleton.getJoint("Head");
+            spine = skeleton.getJoint("Spine");
+            loader.load(
+                flexoAvatarURL + "just_body.obj",
+                flexoAvatarURL + "just_body.mtl",
+                function(obj) {
+                    head.add(obj);
+                }
+            );
+            loader.load(
+                flexoAvatarURL + "just_head.obj",
+                flexoAvatarURL + "just_head.mtl",
+                function(obj) {
+                    spine.add(obj);
+                }
+            );
+        });
     }
 
     // DrawAvatars();
