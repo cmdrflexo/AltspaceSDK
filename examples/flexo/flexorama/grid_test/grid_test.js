@@ -593,7 +593,7 @@ function start() {
                 if(highP > 255)
                     for(var i = 0; i < 3; i++)
                         primaryColor[i] = Math.floor(primaryColor[i] / highP * 255);
-                if(highP > 255)
+                if(highH > 255)
                     for(var i = 0; i < 3; i++)
                         highlightColor[i] = Math.floor(highlightColor[i] / highH * 255);
             }
