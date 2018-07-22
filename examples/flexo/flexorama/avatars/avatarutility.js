@@ -131,10 +131,14 @@ function GetAvatarModel() {
 }
 
 function AvatarModelLoaded() {
-    avatar.head.position.y = 6;
-    avatar.head.rotation.y = THREE.Math.degToRad(180);
-    scene.add(avatar.head);
-    avatar.body.position.y = 6;
+    avatar.body.position.set(0, 2.6, -3);
     avatar.body.rotation.y = THREE.Math.degToRad(180);
-    scene.add(avatar.body);
+    altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+        var skeleton = _skeleton;
+        scene.add(skeleton);
+        head = skeleton.getJoint("Head");
+        avatar.body.add(avatar.head);
+        avatar.body.addBehavior(new LookAtUser(head));
+        scene.add(avatar.body);
+    });
 }

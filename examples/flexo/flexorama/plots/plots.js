@@ -247,3 +247,14 @@ Icon = function(head, large = false, isHead = false) {
         // }
     }
 }
+
+LookAtUser = function(head) {
+
+    this.awake = function(parent, scene) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.object3d.lookAt(head.position);
+    }
+}
