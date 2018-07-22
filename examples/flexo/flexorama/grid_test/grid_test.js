@@ -704,7 +704,7 @@ function start() {
             this.object3d.position.set(
                  target.position.x,
                  target.position.y + yOffset,
-                -target.position.z,
+                -target.position.z - 15,
             );
             this.object3d.rotation.set(
                 -this.target.rotation.x,
