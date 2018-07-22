@@ -578,20 +578,23 @@ function start() {
 
             var rube = false;
 
-            // GetAvatar(user.avatarInfo);
-            GetAvatar(sim.scene);
-            let text = new THREE.Object3D();
-            text.position.set(0, 3, -3);
-            text.addBehaviors(
-                new altspaceutil.behaviors.NativeComponent('n-text', { text: 'JayDubbz v1.8', fontSize: 1, width: 100 }),
-                new altspaceutil.behaviors.NativeComponent('n-billboard'),
-                new class NativeTextUpdate {
-                    get type() { return 'NativeTextUpdate'; }
-                    awake(o) { this.nTextComponent = o.getBehaviorByType('n-text'); }
-                    update() { this.nTextComponent.data.text = 'JayDubbz v1.8'; }
-                }
-            );
-            sim.scene.add(text);
+            var testing = false;
+            if(testing) {
+                // GetAvatar(user.avatarInfo);
+                GetAvatar(sim.scene);
+                let text = new THREE.Object3D();
+                text.position.set(0, 3, -3);
+                text.addBehaviors(
+                    new altspaceutil.behaviors.NativeComponent('n-text', { text: 'JayDubbz v1.8', fontSize: 1, width: 100 }),
+                    new altspaceutil.behaviors.NativeComponent('n-billboard'),
+                    new class NativeTextUpdate {
+                        get type() { return 'NativeTextUpdate'; }
+                        awake(o) { this.nTextComponent = o.getBehaviorByType('n-text'); }
+                        update() { this.nTextComponent.data.text = 'JayDubbz v1.8'; }
+                    }
+                );
+                sim.scene.add(text);
+            }
 
             if(
                 user.avatarInfo.sid == "rubenoid-male-01" ||
