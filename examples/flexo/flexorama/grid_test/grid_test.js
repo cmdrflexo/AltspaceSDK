@@ -518,6 +518,7 @@ function start() {
     
     var avatarPos = new THREE.Vector3(-20, 0, -14);
     
+    FlexoArmy();
     function FlexoArmy() {
         var armyPos = new THREE.Vector3(0, 0, 0);
         var w = 15;
