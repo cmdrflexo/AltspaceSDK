@@ -576,10 +576,13 @@ function start() {
             var hasHighlight = true;
             var hasBody = true;
 
-            var rubeM = false;
+            var rube = false;
 
-            if(user.avatarInfo.sid == "rubenoid-male-01") {
-                rubeM = true;
+            if(
+                user.avatarInfo.sid == "rubenoid-male-01" ||
+                user.avatarInfo.sid == "rubenoid-female-01"
+            ) {
+                rube = true;
             } else if(user.avatarInfo.sid == "robothead-roundguy-01") {
                 hasColors = false;
                 hasHighlight = false;
@@ -621,7 +624,7 @@ function start() {
                 sim.scene.add(skeleton);
                 head = skeleton.getJoint("Head");
                 if(hasBody) spine = skeleton.getJoint("Spine");
-                if(!rubeM) {
+                if(!rube) {
                     loader.load(
                         customURL + "/head.obj",
                         customURL + "/head.mtl",
