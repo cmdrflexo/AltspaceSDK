@@ -672,8 +672,16 @@ function start() {
                     }
                 } else {
                     loader.load(
-                        chaysAvatarURL + "rubenoid-male-01_chays.obj",
-                        chaysAvatarURL + "rubenoid-male-01_chays.mtl",
+                        customURL + "/head.obj",
+                        customURL + "/head.mtl",
+                        function(obj) {
+                            obj.addBehavior(new MirrorPart(head, 0));
+                            sim.scene.add(obj);
+                        }
+                    );
+                    loader.load(
+                        customURL + "/body.obj",
+                        customURL + "/body.mtl",
                         function(obj) {
                             obj.addBehavior(new MirrorPart(spine, 0));
                             sim.scene.add(obj);
