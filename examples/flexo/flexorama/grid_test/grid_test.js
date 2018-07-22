@@ -578,6 +578,9 @@ function start() {
 
             var rube = false;
 
+            console.log("JAYW WHAT DOES THIS NEXT LINE SAY:");
+            console.log(user.avatarInfo.sid);
+
             if(
                 user.avatarInfo.sid == "rubenoid-male-01" ||
                 user.avatarInfo.sid == "rubenoid-female-01"
