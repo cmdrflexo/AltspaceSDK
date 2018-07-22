@@ -584,9 +584,10 @@ function start() {
             ) {
                 rube = true;
             } else if(user.avatarInfo.sid == "robothead-roundguy-01") {
-                hasColors = false;
-                hasHighlight = false;
-                hasBody = false;
+                // hasColors = false;
+                // hasHighlight = false;
+                // hasBody = false;
+                rube = true;
             } else {
                 var primaryColor = user.avatarInfo.primaryColor;
                 var highlightColor = user.avatarInfo.highlightColor;
