@@ -575,7 +575,12 @@ function start() {
             var hasColors = true;
             var hasHighlight = true;
             var hasBody = true;
-            if(user.avatarInfo.sid == "robothead-roundguy-01") {
+
+            var rubeM = false;
+
+            if(user.avatarInfo.sid == "rubenoid-male-01") {
+                rubeM = true;
+            } else if(user.avatarInfo.sid == "robothead-roundguy-01") {
                 hasColors = false;
                 hasHighlight = false;
                 hasBody = false;
@@ -616,43 +621,20 @@ function start() {
                 sim.scene.add(skeleton);
                 head = skeleton.getJoint("Head");
                 if(hasBody) spine = skeleton.getJoint("Spine");
-                loader.load(
-                    customURL + "/head.obj",
-                    customURL + "/head.mtl",
-                    function(obj) {
-                        obj.children[0].material.color.r = (1/256) * primaryColor[0];
-                        obj.children[0].material.color.g = (1/256) * primaryColor[1];
-                        obj.children[0].material.color.b = (1/256) * primaryColor[2];
-                        obj.addBehavior(new MirrorPart(head, 0.025));
-                        sim.scene.add(obj);
-                        if(hasHighlight) {
-                            loader.load(
-                                customURL + "/head_highlight.obj",
-                                customURL + "/head_highlight.mtl",
-                                function(highlight) {
-                                    highlight.children[0].material.color.r = (1/256) * highlightColor[0];
-                                    highlight.children[0].material.color.g = (1/256) * highlightColor[1];
-                                    highlight.children[0].material.color.b = (1/256) * highlightColor[2];
-                                    obj.add(highlight);
-                                }
-                            );
-                        }
-                    }
-                );
-                if(hasBody) {
+                if(!rubeM) {
                     loader.load(
-                        customURL + "/body.obj",
-                        customURL + "/body.mtl",
-                        function(obj) { 
+                        customURL + "/head.obj",
+                        customURL + "/head.mtl",
+                        function(obj) {
                             obj.children[0].material.color.r = (1/256) * primaryColor[0];
                             obj.children[0].material.color.g = (1/256) * primaryColor[1];
                             obj.children[0].material.color.b = (1/256) * primaryColor[2];
-                            obj.addBehavior(new MirrorPart(spine, -0.17));
+                            obj.addBehavior(new MirrorPart(head, 0.025));
                             sim.scene.add(obj);
                             if(hasHighlight) {
                                 loader.load(
-                                    customURL + "/body_highlight.obj",
-                                    customURL + "/body_highlight.mtl",
+                                    customURL + "/head_highlight.obj",
+                                    customURL + "/head_highlight.mtl",
                                     function(highlight) {
                                         highlight.children[0].material.color.r = (1/256) * highlightColor[0];
                                         highlight.children[0].material.color.g = (1/256) * highlightColor[1];
@@ -663,16 +645,41 @@ function start() {
                             }
                         }
                     );
+                    if(hasBody) {
+                        loader.load(
+                            customURL + "/body.obj",
+                            customURL + "/body.mtl",
+                            function(obj) { 
+                                obj.children[0].material.color.r = (1/256) * primaryColor[0];
+                                obj.children[0].material.color.g = (1/256) * primaryColor[1];
+                                obj.children[0].material.color.b = (1/256) * primaryColor[2];
+                                obj.addBehavior(new MirrorPart(spine, -0.17));
+                                sim.scene.add(obj);
+                                if(hasHighlight) {
+                                    loader.load(
+                                        customURL + "/body_highlight.obj",
+                                        customURL + "/body_highlight.mtl",
+                                        function(highlight) {
+                                            highlight.children[0].material.color.r = (1/256) * highlightColor[0];
+                                            highlight.children[0].material.color.g = (1/256) * highlightColor[1];
+                                            highlight.children[0].material.color.b = (1/256) * highlightColor[2];
+                                            obj.add(highlight);
+                                        }
+                                    );
+                                }
+                            }
+                        );
+                    }
+                } else {
+                    loader.load(
+                        chaysAvatarURL + "rubenoid-male-01_chays.obj",
+                        chaysAvatarURL + "rubenoid-male-01_chays.mtl",
+                        function(obj) {
+                            obj.addBehavior(new MirrorPart(spine, 0));
+                            sim.scene.add(obj);
+                        }
+                    );
                 }
-                // function Highlight(objURL, mtlURL, color) {
-                //     objURL, mtlURL,
-                //     function(highlight) {
-                //         highlight.children[0].material.color.r = (1/256) * highlightColor[0];
-                //         highlight.children[0].material.color.g = (1/256) * highlightColor[1];
-                //         highlight.children[0].material.color.b = (1/256) * highlightColor[2];
-                //         obj.add(highlight);
-                //     }
-                // }
             });
         });
     }
