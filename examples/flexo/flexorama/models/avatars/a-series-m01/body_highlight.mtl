@@ -8,53 +8,6 @@ Tr 0
 d 1
 Ni 0
 Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/a-series-m01/tex.jpg
+map_Kd tex.jpg
 
-newmtl Default
-Kd 1 1 1
-Ke 1 1 1
-Ka 0 0 0
-Ks 0 0 0
-Ns 0
-Tr 0
-d 1
-Ni 0
-Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/a-series-m01/tex.jpg
-
-newmtl Default
-Kd 1 1 1
-Ke 1 1 1
-Ka 0 0 0
-Ks 0.097 0.097 0.097
-Ns 0
-Tr 0
-d 1
-Ni 0
-Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/a-series-m01/tex.jpg
-
-newmtl Default
-Kd 1 1 1
-Ke 1 1 1
-Ka 0 0 0
-Ks 0 0 0
-Ns 0
-Tr 0
-d 1
-Ni 0
-Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/a-series-m01/tex.jpg
-
-newmtl Default
-Kd 1 1 1
-Ke 1 1 1
-Ka 0 0 0
-Ks 0 0 0
-Ns 0
-Tr 0
-d 1
-Ni 0
-Tf 1 1 1
-map_Kd E:Projects/GitHub/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/a-series-m01/tex.jpg
 
