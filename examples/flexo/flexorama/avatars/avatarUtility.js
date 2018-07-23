@@ -52,9 +52,10 @@ function GetAvatar(avatarInfo, _scene) {
 
     scene = _scene;
     
-    // avatar.sid = avatarSIDs[0];
-    avatar.sid = avatarInfo.sid;    
-    avatar.type = avatarClassification[avatarInfo.sid];
+    avatar.sid = avatarSIDs[5];
+    // avatar.sid = avatarInfo.sid;    
+    avatar.type = avatarClassification[avatar.sid];
+
     // wait for models
     GetAvatarModels(avatarInfo);
 
@@ -102,27 +103,28 @@ function GetAvatarModels(avatarInfo) {
             var locHead = modelLocation + (
                 avatar.type == 1 ?
                     modelNames.roundguyHead :
-                    modelNames.rubenoidHead + "."
+                    modelNames.rubenoidHead
             );
             var locBody = modelLocation + (
                 avatar.type == 1 ?
                     modelNames.roundguyBody :
-                    modelNames.rubenoidBody + "."
+                    modelNames.rubenoidBody
             );
+            console.log(locHead + ".mtl");
             loader.load(
-                locHead + "obj", locHead + "mtl",
+                locHead + ".obj", locHead + ".mtl",
                 function(head) {
                     loader.load(
-                        locBody + "obj", locBody + "mtl",
+                        locBody + ".obj", locBody + ".mtl",
                         function(body) { AvatarModelLoaded(head, body); }
                     );
                 }
             );
             break;
         case 2: // propellerhead
-            var loc = modelLocation + modelNames.propellerhead + ".";
+            var loc = modelLocation + modelNames.propellerhead;
             loader.load(
-                loc + "obj", loc + "mtl",
+                loc + ".obj", loc + ".mtl",
                 function(head) { 
                     avatar.head = head; 
                     AvatarModelLoaded(head);
