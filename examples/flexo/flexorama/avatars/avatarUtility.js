@@ -50,16 +50,12 @@ var avatar = {
 var scene;
 
 function GetAvatar(avatarInfo, _scene) {
-
     scene = _scene;
-    
     avatar.sid = avatarSIDs[2];
     // avatar.sid = avatarInfo.sid;    
     avatar.type = avatarClassification[avatar.sid];
-
     // wait for models
     GetAvatarModels(avatarInfo);
-
 };
 
 function GetAvatarModels(avatarInfo) {
@@ -111,7 +107,6 @@ function GetAvatarModels(avatarInfo) {
                     modelNames.roundguyBody :
                     modelNames.rubenoidBody
             );
-            console.log(locHead + ".mtl");
             loader.load(
                 locHead + ".obj", locHead + ".mtl",
                 function(head) {
@@ -131,9 +126,7 @@ function GetAvatarModels(avatarInfo) {
                     loader.load(
                         locSpin + ".obj", locSpin + ".mtl",
                         function(spin) {
-                            spin.addBehavior(
-                                new Spin(new THREE.Vector3(0, 1, 0), 20)
-                            );
+                            spin.addBehavior(new Spin(new THREE.Vector3(0, 1, 0), 20));
                             head.add(spin);
                         }
                     );
@@ -171,27 +164,24 @@ function SetMaterialColor(material, color) {
 
 function AvatarModelLoaded(head, body = null) {
     avatar.head = head;
-    avatar.body = body;
-
     avatar.head.position.set(-11, 1.73, -8.98);
     scene.add(avatar.head);
-    avatar.body.position.set(-11, 1, -9);
-    scene.add(avatar.body);
+
+    head.addBehavior(new BasicFloat(0.1));
+
+    if(body != null) {
+        avatar.body = body;
+        avatar.body.position.set(-11, 1, -9);
+        scene.add(avatar.body);
+    }
 }
 
 // BEHAVIORS
 Spin = function(axis, speed) {
-
     this.axis = axis;
     this.speed = speed;
-    // this.rotation = 0;
-
-    this.awake = function(parent) {
-        this.object3d = parent;
-    }
-
+    this.awake = function(parent) { this.object3d = parent; }
     this.update = function(deltaTime) {
-        // this.rotation += deltaTime * this.speed * 0.001;
-        this.object3d.rotateOnAxis(axis, THREE.Math.degToRad(this.speed));
+        this.object3d.rotateOnAxis(axis, THREE.Math.degToRad(this.speed * deltaTime));
     }
 }

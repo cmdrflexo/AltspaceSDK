@@ -25,6 +25,14 @@ var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/
 function start() {
     sim = new altspace.utilities.Simulation();
 
+    let nlayoutbrowser2D = new THREE.Mesh(new THREE.BoxBufferGeometry(5, 5, 5), Object.assign(new THREE.MeshBasicMaterial({ color: 0xccdd33, transparent: true, opacity: 0.2 }), { visible: false }));
+    nlayoutbrowser2D.position.set(-11, 1, -9);
+    nlayoutbrowser2D.scale.set(5, 5, 5);    
+    nlayoutbrowser2D.addBehavior(
+        new altspaceutil.behaviors.NativeComponent('n-layout-browser', { url: 'https://google.com' })
+    );
+    sim.scene.add(nlayoutbrowser2D);
+
     // var terrain = CreateTerrain(1, grassTextureURL);
     // terrain.position.y = 0;
     // sim.scene.add(terrain);
@@ -355,7 +363,7 @@ function start() {
 
     // GlowstickCube(new THREE.Vector3(-10, 0.1, -10));
     // GlowstickCube(new THREE.Vector3(10, 0.1, -10));
-    GlowstickCube(new THREE.Vector3(0, 0.1, 0));
+    // GlowstickCube(new THREE.Vector3(0, 0.1, 0));
 
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
@@ -528,14 +536,13 @@ function start() {
             flexoAvatarURL + "s-series-m01_flexo_02.obj",
             flexoAvatarURL + "s-series-m01_flexo_02.mtl",
             function(obj) {
-                // sim.scene.add(obj);
                 for(var z = 0; z < d; z++) {
                     for(var x = 0; x < w; x++) {
                         var newobj = obj.clone();
                         newobj.addBehavior(new Floaty(x, z));
                         newobj.position.set(
                             armyPos.clone().x - (w/2) + x*2, 
-                            armyPos.clone().y,// + (z * 0.5), 
+                            armyPos.clone().y,
                             armyPos.clone().z - z*2
                         );
                         var r = 0.5 + Math.random();
@@ -632,7 +639,6 @@ function start() {
         //                     highlightColor[i] = Math.floor(highlightColor[i] / highH * 255);
         //         }
         //     }
-
         //     var customURL = avatarModelsURL + user.avatarInfo.sid;
         //     var head;
         //     var spine;
@@ -988,13 +994,11 @@ function loadModel(objFilename, mtlFilename, position, size, scale, follow = fal
             obj.position.y = position.y * scale;
             obj.position.z = position.z * scale;
             obj.scale.set(size.x * scale, size.y * scale, size.z * scale);
-            // obj.addBehavior(new Hover(userHead));
-            // obj.addBehavior(new Fall());
             sim.scene.add(obj);
             if(clone) {
                 for(var i = 0; i < 45; i++) {
                     var newobj = obj.clone();
-                    newobj.position.y = 1.8 - 0.012 * i;//set(0, , 10);
+                    newobj.position.y = 1.8 - 0.012 * i;
                     sim.scene.add(newobj);
                 }
             }
