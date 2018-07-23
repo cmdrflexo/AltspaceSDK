@@ -132,7 +132,7 @@ function GetAvatarModels(avatarInfo) {
                         locSpin + ".obj", locSpin + ".mtl",
                         function(spin) {
                             spin.addBehavior(
-                                new Spin(new THREE.Vector3(0, 1, 0), 1)
+                                new Spin(new THREE.Vector3(0, 1, 0), 20)
                             );
                             head.add(spin);
                         }
@@ -184,14 +184,14 @@ Spin = function(axis, speed) {
 
     this.axis = axis;
     this.speed = speed;
-    this.rotation = 0;
+    // this.rotation = 0;
 
     this.awake = function(parent) {
         this.object3d = parent;
     }
 
     this.update = function(deltaTime) {
-        this.rotation += deltaTime * this.speed * 0.001;
-        this.object3d.rotateOnAxis(axis, THREE.Math.degToRad(rotation));
+        // this.rotation += deltaTime * this.speed * 0.001;
+        this.object3d.rotateOnAxis(axis, THREE.Math.degToRad(this.speed));
     }
 }
