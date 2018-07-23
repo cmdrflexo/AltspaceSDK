@@ -52,8 +52,8 @@ function GetAvatar(avatarInfo, _scene) {
 
     scene = _scene;
     
-    // avatar.sid = avatarInfo.sid;
-    avatar.sid = avatarSIDs[0];
+    // avatar.sid = avatarSIDs[0];
+    avatar.sid = avatarInfo.sid;    
     avatar.type = avatarClassification[avatarInfo.sid];
     // wait for models
     GetAvatarModels(avatarInfo);
