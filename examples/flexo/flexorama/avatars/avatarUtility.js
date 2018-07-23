@@ -29,7 +29,7 @@ var modelNames = {
     seriesHead        : "head",
     seriesHeadHL      : "head_highlight",
     seriesBody        : "body",
-    seriesBodyHL      : "body_hightlight",
+    seriesBodyHL      : "body_highlight",
     roundguyHead      : "head",
     roundguyBody      : "body",
     propellerheadHead : "head",
@@ -46,18 +46,24 @@ var avatar = {
     hColor   : null
 };
 
-function GetAvatar(avatarInfo) {
+var scene;
+
+function GetAvatar(avatarInfo, _scene) {
+
+    scene = _scene;
+    
     avatar.sid = avatarInfo.sid;
     avatar.type = avatarClassification[avatarInfo.sid];
     // wait for models
     GetAvatarModels(avatarInfo);
+
 };
 
-function GetAvatarModels() {
+function GetAvatarModels(avatarInfo) {
     var loader = new altspace.utilities.shims.OBJMTLLoader();
     var modelLocation = modelsURL + avatar.sid + "/";
     switch(avatar.type) {
-        case 0: // series
+        case 0: // custom color
             GetColors(avatarInfo);
             loader.load(
                 modelLocation + modelNames.seriesHead + ".obj", 
@@ -66,7 +72,11 @@ function GetAvatarModels() {
                     loader.load(
                         modelLocation + modelNames.seriesHeadHL + ".obj", 
                         modelLocation + modelNames.seriesHeadHL + ".mtl",
-                        function(headHL) { head.add(headHL); }
+                        function(headHL) { 
+                            SetMaterialColor(head.children[0].material, avatar.pColor);
+                            SetMaterialColor(headHL.children[0].material, avatar.hColor);
+                            head.add(headHL); 
+                        }
                     );
                     loader.load(
                         modelLocation + modelNames.seriesBody + ".obj", 
@@ -75,7 +85,9 @@ function GetAvatarModels() {
                             loader.load(
                                 modelLocation + modelNames.seriesBodyHL + ".obj", 
                                 modelLocation + modelNames.seriesBodyHL + ".mtl",
-                                function(bodyHL) { 
+                                function(bodyHL) {
+                                    SetMaterialColor(body.children[0].material, avatar.pColor);
+                                    SetMaterialColor(bodyHL.children[0].material, avatar.hColor);
                                     body.add(bodyHL); 
                                     AvatarModelLoaded(head, body);
                                 }
@@ -101,9 +113,7 @@ function GetAvatarModels() {
                 function(head) {
                     loader.load(
                         locBody + "obj", locBody + "mtl",
-                        function(body) {
-                            AvatarModelLoaded(head, body);
-                        }
+                        function(body) { AvatarModelLoaded(head, body); }
                     );
                 }
             );
@@ -129,9 +139,6 @@ function GetColors(avatarInfo) {
         case "darkgrey": avatar.pColor = [ 77,  77,  77]; return;
         case "black":    avatar.pColor = [ 26,  26,  26]; return;
     }
-    // ///
-    console.log("Primary color not preset");
-    // ///
     avatar.pColor = ReduceColor(avatarInfo.primaryColor.match(/\d+/g).map(Number));
 }
 
@@ -143,7 +150,18 @@ function ReduceColor(color) {
     return color;
 }
 
+function SetMaterialColor(material, color) {
+    material.color.r = (1/256) * color[0];
+    material.color.g = (1/256) * color[1];
+    material.color.b = (1/256) * color[2];
+}
+
 function AvatarModelLoaded(head, body = null) {
     avatar.head = head;
     avatar.body = body;
+
+    avatar.head.position.set(-11, 1.73, -8.98);
+    scene.add(avatar.head);
+    avatar.body.position.set(-11, 1, -9);
+    scene.add(avatar.body);
 }
