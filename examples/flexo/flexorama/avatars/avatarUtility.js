@@ -151,9 +151,9 @@ function ReduceColor(color) {
 }
 
 function SetMaterialColor(material, color) {
-    material.color.r = (1/256) * color[0];
-    material.color.g = (1/256) * color[1];
-    material.color.b = (1/256) * color[2];
+    material.color.r = 1 / 256 * color[0];
+    material.color.g = 1 / 256 * color[1];
+    material.color.b = 1 / 256 * color[2];
 }
 
 function AvatarModelLoaded(head, body = null) {
