@@ -33,6 +33,7 @@ var modelNames = {
     roundguyHead      : "head",
     roundguyBody      : "body",
     propellerheadHead : "head",
+    propellerheadSpin : "spin-01",
     rubenoidHead      : "head",
     rubenoidBody      : "body"
 };
@@ -52,7 +53,7 @@ function GetAvatar(avatarInfo, _scene) {
 
     scene = _scene;
     
-    avatar.sid = avatarSIDs[5];
+    avatar.sid = avatarSIDs[2];
     // avatar.sid = avatarInfo.sid;    
     avatar.type = avatarClassification[avatar.sid];
 
@@ -122,11 +123,20 @@ function GetAvatarModels(avatarInfo) {
             );
             break;
         case 2: // propellerhead
-            var loc = modelLocation + modelNames.propellerhead;
+            var locHead = modelLocation + modelNames.propellerheadHead;
+            var locSpin = modelLocation + modelNames.propellerheadSpin;
             loader.load(
-                loc + ".obj", loc + ".mtl",
+                locHead + ".obj", locHead + ".mtl",
                 function(head) { 
-                    avatar.head = head; 
+                    loader.load(
+                        locSpin + ".obj", locSpin + ".mtl",
+                        function(spin) {
+                            spin.addBehavior(
+                                new Spin(new THREE.Vector3(0, 1, 0), 1)
+                            );
+                            head.add(spin);
+                        }
+                    );
                     AvatarModelLoaded(head);
                 }
             );
@@ -167,4 +177,21 @@ function AvatarModelLoaded(head, body = null) {
     scene.add(avatar.head);
     avatar.body.position.set(-11, 1, -9);
     scene.add(avatar.body);
+}
+
+// BEHAVIORS
+Spin = function(axis, speed) {
+
+    this.axis = axis;
+    this.speed = speed;
+    this.rotation = 0;
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.rotation += deltaTime * this.speed * 0.001;
+        this.object3d.rotateOnAxis(axis, THREE.Math.degToRad(rotation));
+    }
 }
