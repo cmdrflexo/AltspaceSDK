@@ -576,22 +576,18 @@ function start() {
                 var h = skeleton.getJoint("Head");
                 var s = skeleton.getJoint("Spine");
 
-                // n-sphere-collider
-                let nspherecollider = new THREE.Mesh(
-                    new THREE.SphereBufferGeometry(1, 8, 8), 
-                    new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent : true, opacity: 0}));
-                // nspherecollider.position.set(s.position.x, s.position.y, s.position.z);
-                nspherecollider.position.set(-1.72, 2.13, -6.23);
-                sim.scene.add(nspherecollider);
-                nspherecollider.addBehaviors(
-                    new altspaceutil.behaviors.NativeComponent(
-                        'n-sphere-collider', 
-                        { radius: 2 }
-                    )
-                        // new altspaceutil.behaviors.NativeComponent('n-text', { 
-                        //     text: 'n-sphere-collider', height: 4, fontSize: 4, verticalAlign: 'top' }
-                    // )
-                );
+                // let nspherecollider = new THREE.Mesh(
+                //     new THREE.SphereBufferGeometry(1, 8, 8), 
+                //     new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent : true, opacity: 0})
+                // );
+                // nspherecollider.position.set(-1.72, 2.13, -6.23);
+                // nspherecollider.addBehaviors(
+                //     new altspaceutil.behaviors.NativeComponent(
+                //         'n-sphere-collider', 
+                //         { radius: 2 }
+                //     )
+                // );
+                // sim.scene.add(nspherecollider);
 
 
                 console.log(
