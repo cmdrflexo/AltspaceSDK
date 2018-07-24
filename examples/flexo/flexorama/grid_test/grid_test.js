@@ -25,13 +25,7 @@ var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/
 function start() {
     sim = new altspace.utilities.Simulation();
 
-    let nlayoutbrowser2D = new THREE.Mesh(new THREE.BoxBufferGeometry(5, 5, 5), Object.assign(new THREE.MeshBasicMaterial({ color: 0xccdd33, transparent: true, opacity: 0.2 }), { visible: false }));
-    nlayoutbrowser2D.position.set(-11, 1, -9);
-    nlayoutbrowser2D.scale.set(5, 5, 5);    
-    nlayoutbrowser2D.addBehavior(
-        new altspaceutil.behaviors.NativeComponent('n-layout-browser', { url: 'https://google.com' })
-    );
-    sim.scene.add(nlayoutbrowser2D);
+    // altspace.open("https://google.com/");
 
     // var terrain = CreateTerrain(1, grassTextureURL);
     // terrain.position.y = 0;
@@ -578,7 +572,17 @@ function start() {
     function MirrorSelf() {
 
         altspace.getUser().then(function(user){
+            
             GetAvatar(user.avatarInfo, sim.scene);
+        });
+
+        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
+            var skeleton = _skeleton;
+            // sim.scene.add(skeleton);
+            var h = skeleton.getJoint("Head");
+            var s = skeleton.getJoint("Spine");
+            console.log(h.position);
+            console.log(s.position);
         });
 
         // var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
