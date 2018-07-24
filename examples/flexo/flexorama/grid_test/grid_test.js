@@ -570,19 +570,58 @@ function start() {
     }
     */
     function MirrorSelf() {
-
         altspace.getUser().then(function(user){
-            
             GetAvatar(user.avatarInfo, sim.scene);
-        });
+            altspace.getThreeJSTrackingSkeleton().then(function(skeleton) {
+                var h = skeleton.getJoint("Head");
+                var s = skeleton.getJoint("Spine");
 
-        altspace.getThreeJSTrackingSkeleton().then(function(_skeleton) {
-            var skeleton = _skeleton;
-            // sim.scene.add(skeleton);
-            var h = skeleton.getJoint("Head");
-            var s = skeleton.getJoint("Spine");
-            console.log(h.position);
-            console.log(s.position);
+                // n-sphere-collider
+                let nspherecollider = new THREE.Mesh(
+                    new THREE.SphereBufferGeometry(1, 8, 8), 
+                    new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent : true, opacity: 0}));
+                // nspherecollider.position.set(s.position.x, s.position.y, s.position.z);
+                nspherecollider.position.set(-1.72, 2.13, -6.23);
+                sim.scene.add(nspherecollider);
+                nspherecollider.addBehaviors(
+                    new altspaceutil.behaviors.NativeComponent(
+                        'n-sphere-collider', 
+                        { radius: 2 }
+                    )
+                        // new altspaceutil.behaviors.NativeComponent('n-text', { 
+                        //     text: 'n-sphere-collider', height: 4, fontSize: 4, verticalAlign: 'top' }
+                    // )
+                );
+
+
+                console.log(
+                    "Avatar: " + user.avatarInfo.sid +
+                    "\nHead : " + h.position.x + ", " + h.position.y + ", " + h.position.z + 
+                    "\nSpine: " + s.position.x + ", " + s.position.y + ", " + s.position.z
+                );
+                // var modelLoc = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/js/models/hats/"
+                // var loader = new altspace.utilities.shims.OBJMTLLoader();
+                // var headAxis  = new THREE.Object3D();
+                // headAxis.position.set(h.position.x, h.position.y, h.position.z);
+                // sim.scene.add(headAxis);
+                // var spineAxis = new THREE.Object3D();
+                // spineAxis.position.set(s.position.x, s.position.y, s.position.z);
+                // sim.scene.add(spineAxis);
+                // loader.load(
+                //     modelLoc + "axis.obj", modelLoc + "axis.mtl",
+                //     function(obj) {
+                //         obj.scale.set(0.01, 0.01, 0.01);
+                //         headAxis.add(obj);
+                //     }
+                // );
+                // loader.load(
+                //     modelLoc + "axis.obj", modelLoc + "axis.mtl",
+                //     function(obj) {
+                //         obj.scale.set(0.01, 0.01, 0.01);
+                //         spineAxis.add(obj);
+                //     }
+                // );
+            });
         });
 
         // var avatarModelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";

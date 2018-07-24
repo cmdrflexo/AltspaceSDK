@@ -1,4 +1,24 @@
 
+/*
+Avatar: s-series-m01
+Head : -0.00039, 1.77814, 0.07475
+Spine: 0, 1.25307, 0.13965
+
+
+*/
+
+var avatarPivots = {
+    "a-series-m01" : [[0, 0, 0], [1, 1, 1]],
+    "s-series-f01" : [[0, 0, 0], [1, 1, 1]],
+    "s-series-m01" : [[0, 1.77814, 0.07475], [0, 1.25307, 0.13965]],
+    "x-series-m02" : [[0, 0, 0], [1, 1, 1]],
+    "pod-classic"  : [[0, 0, 0], [1, 1, 1]],
+    "rubenoid-female-01" : [[0, 0, 0], [1, 1, 1]],
+    "rubenoid-male-01"   : [[0, 0, 0], [1, 1, 1]],
+    "robothead-propellerhead-01" : [[0, 0, 0], [1, 1, 1]],
+    "robothead-roundguy-01" : [[0, 0, 0], [1, 1, 1]]
+};
+
 var modelsURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/";
 
 var avatarSIDs = [
