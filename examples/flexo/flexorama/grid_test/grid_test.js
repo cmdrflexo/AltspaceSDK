@@ -265,6 +265,9 @@ function start() {
 
     Apache();
     function Apache() {
+        var pos = new THREE.Vector3(-13, 0.7, -18);
+        var rotX = 2;
+        var rotY = 75;
         console.log("Loading Apache...");
         var apacheURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/apache/";
         var loader = new altspace.utilities.shims.OBJMTLLoader();
@@ -272,8 +275,9 @@ function start() {
             apacheURL + "apache_2018.obj",
             apacheURL + "apache_2018.mtl",
             function(obj) {
-                console.log("Loading apache_2018");
-                // obj.position.set(-5, 1, -10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
@@ -282,8 +286,9 @@ function start() {
             apacheURL + "apache_2018-rotors.obj",
             apacheURL + "apache_2018-rotors.mtl",
             function(obj) {
-                console.log("Loading Rotors");
-                // obj.position.set(-5, 1, -10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
@@ -292,8 +297,9 @@ function start() {
             apacheURL + "apache_2018-details1.obj",
             apacheURL + "apache_2018-details1.mtl",
             function(obj) {
-                console.log("Loading Details 1");
-                // obj.position.set(-5, 1, -10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
@@ -302,8 +308,9 @@ function start() {
             apacheURL + "apache_2018-details2.obj",
             apacheURL + "apache_2018-details2.mtl",
             function(obj) {
-                console.log("Loading Details 2");
-                // obj.position.set(-5, 1, -10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
@@ -312,18 +319,21 @@ function start() {
             apacheURL + "apache_2018-side.obj",
             apacheURL + "apache_2018-side.mtl",
             function(obj) {
-                console.log("Loading Sides");
-                // obj.position.set(-5, 1, -10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
         );
         loader.load(
-            apacheURL + "apache_2018-side.obj",
-            apacheURL + "apache_2018-side.mtl",
+            apacheURL + "apache_2018-side2.obj",
+            apacheURL + "apache_2018-side2.mtl",
             function(obj) {
-                // obj.position.set(-5, 1, -10);
-                obj.scale.set(-10, 10, 10);
+                obj.position.set(pos.x, pos.y, pos.z);
+                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
+                obj.rotation.z = THREE.Math.degToRad(rotX);
+                obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
         );
