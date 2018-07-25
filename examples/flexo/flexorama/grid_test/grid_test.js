@@ -279,6 +279,9 @@ function start() {
                 obj.rotation.y = THREE.Math.degToRad(180 + rotY);
                 obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
+                obj.addBehavior(
+                    new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
+                );
                 sim.scene.add(obj);
             }
         );
@@ -323,6 +326,9 @@ function start() {
                 obj.rotation.y = THREE.Math.degToRad(180 + rotY);
                 obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
+                obj.addBehavior(
+                    new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
+                );
                 sim.scene.add(obj);
             }
         );
@@ -334,6 +340,9 @@ function start() {
                 obj.rotation.y = THREE.Math.degToRad(180 + rotY);
                 obj.rotation.z = THREE.Math.degToRad(rotX);
                 obj.scale.set(10, 10, 10);
+                obj.addBehavior(
+                    new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
+                );
                 sim.scene.add(obj);
             }
         );
