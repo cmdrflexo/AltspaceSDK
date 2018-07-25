@@ -282,23 +282,49 @@ function start() {
             apacheURL + "apache_2018-rotors.obj",
             apacheURL + "apache_2018-rotors.mtl",
             function(obj) {
-                console.log("Loading apache_2018-rotors");
+                console.log("Loading Rotors");
                 // obj.position.set(-5, 1, -10);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
             }
         );
         loader.load(
-            apacheURL + "apache_2018-details.obj",
-            apacheURL + "apache_2018-details.mtl",
+            apacheURL + "apache_2018-details1.obj",
+            apacheURL + "apache_2018-details1.mtl",
             function(obj) {
-                console.log("Loading apache_2018-details");
+                console.log("Loading Details 1");
                 // obj.position.set(-5, 1, -10);
                 obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
-                var obj2 = obj.clone();
-                obj2.scale.set(-10, 10, 10);
-                sim.scene.add(obj2);
+            }
+        );
+        loader.load(
+            apacheURL + "apache_2018-details2.obj",
+            apacheURL + "apache_2018-details2.mtl",
+            function(obj) {
+                console.log("Loading Details 2");
+                // obj.position.set(-5, 1, -10);
+                obj.scale.set(10, 10, 10);
+                sim.scene.add(obj);
+            }
+        );
+        loader.load(
+            apacheURL + "apache_2018-side.obj",
+            apacheURL + "apache_2018-side.mtl",
+            function(obj) {
+                console.log("Loading Sides");
+                // obj.position.set(-5, 1, -10);
+                obj.scale.set(10, 10, 10);
+                sim.scene.add(obj);
+            }
+        );
+        loader.load(
+            apacheURL + "apache_2018-side.obj",
+            apacheURL + "apache_2018-side.mtl",
+            function(obj) {
+                // obj.position.set(-5, 1, -10);
+                obj.scale.set(-10, 10, 10);
+                sim.scene.add(obj);
             }
         );
     }
