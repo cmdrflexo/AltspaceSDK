@@ -265,14 +265,30 @@ function start() {
 
     Apache();
     function Apache() {
+        console.log("Loading Apache...");
         var apacheURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/apache/";
         var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
             apacheURL + "apache_2018.obj",
             apacheURL + "apache_2018.mtl",
             function(obj) {
-                obj.position.set(-5, 1, -10);
+                console.log("Loading apache_2018");
+                // obj.position.set(-5, 1, -10);
+                obj.scale.set(10, 10, 10);
                 sim.scene.add(obj);
+            }
+        );
+        loader.load(
+            apacheURL + "apache_2018-details.obj",
+            apacheURL + "apache_2018-details.mtl",
+            function(obj) {
+                console.log("Loading apache_2018-details");
+                // obj.position.set(-5, 1, -10);
+                obj.scale.set(10, 10, 10);
+                sim.scene.add(obj);
+                var obj2 = obj.clone();
+                obj2.scale.set(-10, 10, 10);
+                sim.scene.add(obj2);
             }
         );
     }
