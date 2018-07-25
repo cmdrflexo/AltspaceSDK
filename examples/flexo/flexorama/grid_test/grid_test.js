@@ -263,6 +263,20 @@ function start() {
         sim.scene.add(patty);
     }
 
+    Apache();
+    function Apache() {
+        var apacheURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/apache/";
+        var loader = new altspace.utilities.shims.OBJMTLLoader();
+        loader.load(
+            apacheURL + "apache_2018.obj",
+            apacheURL + "apache_2018.mtl",
+            function(obj) {
+                obj.position.set(-5, 1, -10);
+                sim.scene.add(obj);
+            }
+        );
+    }
+
     var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
     Retro();
     function Retro() {
