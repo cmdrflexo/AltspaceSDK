@@ -4,8 +4,8 @@
 #	LightWave3D OBJ Export v2.3
 #
 ####
-o apache_2018-details.obj
-mtllib apache_2018-details.mtl
+o apache_2018-side.obj
+mtllib apache_2018-side.mtl
 g default
 v 2.98023e-008 0.103066 0.562958
 v 2.98023e-008 0.103262 0.542755
