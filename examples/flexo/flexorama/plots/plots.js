@@ -75,6 +75,17 @@ PlotUserInfo = function(head) {
     }
 }
 
+RotateY2 = function() {
+
+    this.awake = function(parent) {
+        this.object3d = parent;
+    }
+
+    this.update = function(deltaTime) {
+        this.object3d.rotation.y += THREE.Math.degToRad(deltaTime * 3);
+    }
+}
+
 BasicFloat = function(movementScale = 1) {
     this.scale = movementScale;
     this.timer = 0;

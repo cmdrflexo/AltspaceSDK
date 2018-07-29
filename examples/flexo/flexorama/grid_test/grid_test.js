@@ -164,9 +164,11 @@ function start() {
         var loader = new altspace.utilities.shims.OBJMTLLoader();
 
         loader.load(
-            apacheURL + "/rotors1/rotors1.obj",
-            apacheURL + "/rotors1/rotors1.mtl",
-            function(obj) {
+            apacheURL + "rotors1/rotors1.obj",
+            apacheURL + "rotors1/rotors1.mtl",
+            function(obj) { 
+                obj.position.z = -0.22;
+                obj.addBehavior(new RotateY2());
                 root.add(obj);
             }
         );
@@ -181,13 +183,13 @@ function start() {
                 root.add(obj);
             }
         );
-        loader.load(
-            apacheURL + "apache_2018-rotors.obj",
-            apacheURL + "apache_2018-rotors.mtl",
-            function(obj) {
-                root.add(obj);
-            }
-        );
+        // loader.load(
+        //     apacheURL + "apache_2018-rotors.obj",
+        //     apacheURL + "apache_2018-rotors.mtl",
+        //     function(obj) {
+        //         root.add(obj);
+        //     }
+        // );
         loader.load(
             apacheURL + "apache_2018-details1.obj",
             apacheURL + "apache_2018-details1.mtl",
