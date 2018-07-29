@@ -148,95 +148,69 @@ function start() {
 
     Apache();
     function Apache() {
-        // var pos = new THREE.Vector3(-13, 0.7, -18);
-        // var rotX = 2;
-        // var rotY = 75;
-        var pos = new THREE.Vector3(3, 2.25, -5);
-        var rotX = -15;
-        var rotY = -25;
-        var rotZ = -15;
-        console.log("Loading Apache...");
+
+        var root = new THREE.Object3D();
+
+        root.position.set(3, 2.25, -6);
+        root.rotation.x = THREE.Math.degToRad(15);
+        root.rotation.y = THREE.Math.degToRad(180 + -25);
+        root.rotation.z = THREE.Math.degToRad(-15);
+
+        root.addBehavior(new BasicFloat(0.1));
+
+        sim.scene.add(root);
+
         var apacheURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/apache/";
         var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
             apacheURL + "apache_2018.obj",
             apacheURL + "apache_2018.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
                 obj.addBehavior(
                     new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
                 );
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
         loader.load(
             apacheURL + "apache_2018-rotors.obj",
             apacheURL + "apache_2018-rotors.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
         loader.load(
             apacheURL + "apache_2018-details1.obj",
             apacheURL + "apache_2018-details1.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
         loader.load(
             apacheURL + "apache_2018-details2.obj",
             apacheURL + "apache_2018-details2.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
         loader.load(
             apacheURL + "apache_2018-side.obj",
             apacheURL + "apache_2018-side.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
                 obj.addBehavior(
                     new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
                 );
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
         loader.load(
             apacheURL + "apache_2018-side2.obj",
             apacheURL + "apache_2018-side2.mtl",
             function(obj) {
-                obj.position.set(pos.x, pos.y, pos.z);
-                obj.rotation.x = THREE.Math.degToRad(15);
-                obj.rotation.y = THREE.Math.degToRad(180 + rotY);
-                obj.rotation.z = THREE.Math.degToRad(rotX);
-                // obj.scale.set(10, 10, 10);
                 obj.addBehavior(
                     new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: false, type: 'environment' }),
                 );
-                sim.scene.add(obj);
+                root.add(obj);
             }
         );
     }
