@@ -162,6 +162,15 @@ function start() {
 
         var apacheURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/apache/";
         var loader = new altspace.utilities.shims.OBJMTLLoader();
+
+        loader.load(
+            apacheURL + "/rotors1/rotors1.obj",
+            apacheURL + "/rotors1/rotors1.mtl",
+            function(obj) {
+                root.add(obj);
+            }
+        );
+
         loader.load(
             apacheURL + "apache_2018.obj",
             apacheURL + "apache_2018.mtl",
