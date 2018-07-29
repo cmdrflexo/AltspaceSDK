@@ -183,13 +183,13 @@ function start() {
                 root.add(obj);
             }
         );
-        // loader.load(
-        //     apacheURL + "apache_2018-rotors.obj",
-        //     apacheURL + "apache_2018-rotors.mtl",
-        //     function(obj) {
-        //         root.add(obj);
-        //     }
-        // );
+        loader.load(
+            apacheURL + "apache_2018-rotors.obj",
+            apacheURL + "apache_2018-rotors.mtl",
+            function(obj) {
+                root.add(obj);
+            }
+        );
         loader.load(
             apacheURL + "apache_2018-details1.obj",
             apacheURL + "apache_2018-details1.mtl",
