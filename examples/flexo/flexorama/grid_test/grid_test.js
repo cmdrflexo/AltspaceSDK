@@ -226,9 +226,10 @@ function start() {
         );
     }
 
+    var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
+    
     Retro();
     function Retro() {
-        var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
         var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
             retroURL + "retro_mountains.obj",
