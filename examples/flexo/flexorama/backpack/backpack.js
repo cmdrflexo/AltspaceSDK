@@ -56,10 +56,9 @@ function LoadParts() {
 }
 
 function PartsLoaded(backpack) {
-    console.log("PARTS LOADED");
-
     // backpack.root.position.set(0, 0.3562375, 0.2598);
-    backpack.root.position.set(0, 1.95 + 0.3962375, -10 - 0.2598);
+    backpack.root.position.set(0, 1.95 + 0.45, -10 - 0.23);
+    backpack.root.scale.set(0.85, 0.85, 0.85);
     backpack.root.addBehavior(new EyeIdle(backpack));
     sim.scene.add(backpack.root);
     altspace.getUser().then(
