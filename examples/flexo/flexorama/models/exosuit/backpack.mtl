@@ -8,6 +8,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl Default
 Kd 0.760784 0.760784 0.760784
@@ -19,6 +20,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl dark
 Kd 0.502 0.502 0.502
@@ -30,6 +32,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl red
 Kd 1 0 0
@@ -41,6 +44,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl white
 Kd 1 1 1
@@ -52,17 +56,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
-
-newmtl Default
-Kd 1 1 1
-Ke 1 1 1
-Ka 0 0 0
-Ks 0 0 0
-Ns 500
-Tr 0
-d 1
-Ni 1.5
-Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl blue
 Kd 0 0.45102 0.984353
@@ -74,6 +68,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl Default
 Kd 0.760784 0.760784 0.760784
@@ -85,6 +80,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl dark
 Kd 0.502 0.502 0.502
@@ -96,6 +92,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl red
 Kd 1 0 0
@@ -107,6 +104,7 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
 newmtl white
 Kd 1 1 1
@@ -118,4 +116,5 @@ Tr 0
 d 1
 Ni 1.5
 Tf 1 1 1
+map_Kd tex_AO.png
 
