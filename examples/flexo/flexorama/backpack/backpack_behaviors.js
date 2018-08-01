@@ -12,6 +12,8 @@ EyeIdle = function(backpack) {
             this.pack.arm02.rotation.y = deltaTime;
             var eyePitch = (Math.random() * 90) - 45;
             this.pack.eye.rotation.x = THREE.Math.degToRad(eyePitch);
+            var armY = (Math.random() * 90) - 45;
+            this.pack.arm01.rotation.y = THREE.Math.degToRad(armY);
         }
     }
 }
