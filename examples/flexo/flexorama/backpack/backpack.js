@@ -53,7 +53,7 @@ function LoadParts() {
 }
 
 function PartsLoaded(backpack) {
-    console.log("DONE");
+    console.log("PARTS LOADED");
 
     backpack.root.position.set(0, 0.3562375, 0.2598);
     // move up
