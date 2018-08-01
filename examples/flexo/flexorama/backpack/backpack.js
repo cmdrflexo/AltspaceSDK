@@ -19,6 +19,9 @@ function LoadParts() {
         partsURL + "backpack.mtl",
         function(base) {
             backpack.base = base;
+            backpack.root.addBehavior(
+                new altspaceutil.behaviors.NativeComponent('n-mesh-collider', { convex: true, type: 'environment' }),
+            );
             backpack.root.add(base);
             loader.load(
                 partsURL + "backpack_arm01.obj",
@@ -55,11 +58,13 @@ function LoadParts() {
 function PartsLoaded(backpack) {
     console.log("PARTS LOADED");
 
-    backpack.root.position.set(0, 0.3562375, 0.2598);
-    // move up
-    backpack.root.position.y += 1;
+    // backpack.root.position.set(0, 0.3562375, 0.2598);
+    backpack.root.position.set(0, 1.95 + 0.3962375, -10 - 0.2598);
     backpack.root.addBehavior(new EyeIdle(backpack));
     sim.scene.add(backpack.root);
-
-    // GetAvatar();
+    altspace.getUser().then(
+        function(user) {
+            GetAvatar(user.avatarInfo, sim.scene);
+        }
+    );
 }

@@ -54,6 +54,7 @@ var modelNames = {
 var avatar = {
     sid      : null,
     type     : null,
+    root     : new THREE.Object3D(),
     head     : null,
     body     : null,
     pColor   : null,
@@ -64,8 +65,8 @@ var scene;
 
 function GetAvatar(avatarInfo, _scene) {
     scene = _scene;
-    // avatar.sid = avatarSIDs[2];
-    avatar.sid = avatarInfo.sid;    
+    avatar.sid = avatarSIDs[7];
+    // avatar.sid = avatarInfo.sid;
     avatar.type = avatarClassification[avatar.sid];
     // wait for models
     GetAvatarModels(avatarInfo);
@@ -100,7 +101,7 @@ function GetAvatarModels(avatarInfo) {
                                 function(bodyHL) {
                                     SetMaterialColor(body.children[0].material, avatar.pColor);
                                     SetMaterialColor(bodyHL.children[0].material, avatar.hColor);
-                                    body.add(bodyHL); 
+                                    body.add(bodyHL);
                                     AvatarModelLoaded(head, body);
                                 }
                             ); 
@@ -177,16 +178,16 @@ function SetMaterialColor(material, color) {
 
 function AvatarModelLoaded(head, body = null) {
     avatar.head = head;
-    avatar.head.position.set(-11, 1.73, -8.98);
-    scene.add(avatar.head);
-
-    head.addBehavior(new BasicFloat(0.1));
+    avatar.head.position.set(0, 0.73, 0.03);
+    avatar.root.add(avatar.head);
 
     if(body != null) {
         avatar.body = body;
-        avatar.body.position.set(-11, 1, -9);
-        scene.add(avatar.body);
+        avatar.root.add(avatar.body);
     }
+
+    avatar.root.position.set(0, 1.95, -10.03);
+    scene.add(avatar.root);
 }
 
 // BEHAVIORS
