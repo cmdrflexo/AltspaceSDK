@@ -12,10 +12,53 @@ var podURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexo
 var skyDayURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/sky_test3.png";
 var skyNightURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/images/sky/purple_galaxy.png";
 
+var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
+
 function start() {
     sim = new altspace.utilities.Simulation();
 
     CreateSky();
+    CreateGrid();
+    Retro();
+    // Apache();
+    // Glowsticks();
+    // GlowstickCube(new THREE.Vector3(0, 0.1, 0));
+    // Meteors();
+    // Burgers();
+    // Ring();
+    // FlexoArmy();
+
+    ServerComms();
+    function ServerComms() {
+        var siteURL = "http://rocketfoss.org/";
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', siteURL, true);
+        xhr.responseType = 'text';
+        xhr.onload = function () {
+            if (xhr.readyState === xhr.DONE)
+                if (xhr.status === 200) {
+                    console.log(xhr.response);
+                    console.log(xhr.responseText);
+                }
+        };
+        xhr.send(null);
+
+        // $.get(siteURL, function(data){
+        //     alert("Data: " + data);
+        // });
+    
+        // var req = new XMLHttpRequest();
+    
+        // req.open('GET', 'http://www.google.com', false);
+        // req.send(null);
+    
+        // if(req.status == 200) {
+        //     alert(req.responseText);
+        // }
+    }
+
+
+    
     function CreateSky() {
         var sky = new THREE.Mesh(
             new THREE.SphereGeometry(2500, 32, 16),
@@ -33,7 +76,6 @@ function start() {
         sim.scene.add(sky);
     }
 
-    Glowsticks();
     function Glowsticks() {
         if(false) {
             for(var z = 0; z < 20; z++) {
@@ -96,8 +138,7 @@ function start() {
             sim.scene.add(glowstick2);
         }
     }
-
-    // Meteors();
+    
     function Meteors() {
         for(var i = 0; i < 5; i++) {
             setTimeout(function() {
@@ -124,7 +165,6 @@ function start() {
         }
     }
 
-    // Burgers();
     function Burgers() {
         var bun = new THREE.Object3D();
         bun.addBehaviors(
@@ -145,8 +185,7 @@ function start() {
         );
         sim.scene.add(patty);
     }
-
-    Apache();
+    
     function Apache() {
 
         var root = new THREE.Object3D();
@@ -226,9 +265,6 @@ function start() {
         );
     }
 
-    var retroURL = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/retro/";
-    
-    Retro();
     function Retro() {
         var loader = new altspace.utilities.shims.OBJMTLLoader();
         loader.load(
@@ -240,29 +276,27 @@ function start() {
             }
         );
 
-        loader.load(
-            retroURL + "TSR.obj",
-            retroURL + "TSR.mtl",
-            function(obj) {
-                obj.position.set(0, 500, 500);
-                obj.rotation.y = THREE.Math.degToRad(180);
-                obj.rotation.x = THREE.Math.degToRad(-15);
-                obj.scale.set(80, 80, 80);
-                sim.scene.add(obj);
-            }
-        );
+        // loader.load(
+        //     retroURL + "TSR.obj",
+        //     retroURL + "TSR.mtl",
+        //     function(obj) {
+        //         obj.position.set(0, 500, 500);
+        //         obj.rotation.y = THREE.Math.degToRad(180);
+        //         obj.rotation.x = THREE.Math.degToRad(-15);
+        //         obj.scale.set(80, 80, 80);
+        //         sim.scene.add(obj);
+        //     }
+        // );
 
-        var apo = new THREE.Mesh(
-            new THREE.BoxGeometry(10, 30, 0.1),
-            new THREE.MeshBasicMaterial({ color: 0xfb05af })
-        );
-        apo.position.set(-455, 550, 500);
-        apo.rotation.z = THREE.Math.degToRad(35);
-        sim.scene.add(apo);
+        // var apo = new THREE.Mesh(
+        //     new THREE.BoxGeometry(10, 30, 0.1),
+        //     new THREE.MeshBasicMaterial({ color: 0xfb05af })
+        // );
+        // apo.position.set(-455, 550, 500);
+        // apo.rotation.z = THREE.Math.degToRad(35);
+        // sim.scene.add(apo);
     }
-
-    var grid = CreateGrid();
-    sim.scene.add(grid);
+    
     function CreateGrid() {
         var plane = new THREE.Mesh(
             new THREE.PlaneGeometry(1000, 1000),
@@ -277,10 +311,9 @@ function start() {
         plane.material.map.wrapS = plane.material.map.wrapT = THREE.RepeatWrapping;
         plane.position.set(0, -3.01, 0);
         plane.rotation.x = THREE.Math.degToRad(-90);
-        return plane;
+        sim.scene.add(plane);
     }
     
-    // GlowstickCube(new THREE.Vector3(0, 0.1, 0));
     function GlowstickCube(pos) {
         var glows = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
@@ -340,7 +373,6 @@ function start() {
         }
     }
 
-    Ring();
     function Ring() {
         let gemSpawner = new THREE.Object3D();
         gemSpawner.position.set(0, 0.1, 0);
@@ -365,10 +397,7 @@ function start() {
     var chaysAvatarURL   = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/rubenoid-male-01/rubenoid-male-01_chays/";
     var jaywAvatarURL    = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/avatars/robothead-roundguy-01/";
     var mrHandyURL       = "https://cmdrflexo.github.io/AltspaceSDK-Flexo/examples/flexo/flexorama/models/mr_handy/";
-    
     var avatarPos = new THREE.Vector3(-20, 0, -14);
-    
-    // FlexoArmy();
     function FlexoArmy() {
         var armyPos = new THREE.Vector3(0, 0, 0);
         var w = 15;

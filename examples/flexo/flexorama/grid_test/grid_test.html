@@ -7,10 +7,43 @@
         <script src = "https://altspacevr.github.io/AltspaceSDK/dist/altspace.js"></script>        
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
         <script src = "https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v1.0.0/js/altspaceutil.min.js"></script>
+        <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
 
         <script src = "../plots/plots.js"></script>
         <script src = "flexo.js"></script>
         <script src = "../avatars/avatarUtility.js"></script>
         <script src = "grid_test.js"></script>
     </head>
+    <body>
+        <script>
+            ServerComms();
+            function ServerComms() {
+                var siteURL = "https://rocketfoss.org/";
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', siteURL, true);
+                xhr.responseType = 'text';
+                xhr.onload = function () {
+                    if (xhr.readyState === xhr.DONE)
+                        if (xhr.status === 200) {
+                            console.log(xhr.response);
+                            console.log(xhr.responseText);
+                        }
+                };
+                xhr.send(null);
+
+                // $.get(siteURL, function(data){
+                //     alert("Data: " + data);
+                // });
+            
+                // var req = new XMLHttpRequest();
+            
+                // req.open('GET', 'http://www.google.com', false);
+                // req.send(null);
+            
+                // if(req.status == 200) {
+                //     alert(req.responseText);
+                // }
+            }    
+        </script>
+    </body>
 </html>

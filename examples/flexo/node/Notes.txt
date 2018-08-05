@@ -1,0 +1,40 @@
+Installed Nginx and setup Server Blocks
+  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04
+
+  manage nginx:
+    sudo systemctl start nginx
+    sudo systemctl restart nginx
+    sudo systemctl stop nginx
+
+
+Secure Nginx with Let's Encrypt
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://rocketfoss.org          
+You should test your configuration at:                                         
+https://www.ssllabs.com/ssltest/analyze.html?d=rocketfoss.org                  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+IMPORTANT NOTES:                                                               
+ - Congratulations! Your certificate and chain have been saved at:             
+   /etc/letsencrypt/live/rocketfoss.org/fullchain.pem                          
+   Your key file has been saved at:                                            
+   /etc/letsencrypt/live/rocketfoss.org/privkey.pem                            
+   Your cert will expire on 2018-11-01. To obtain a new or tweaked             
+   version of this certificate in the future, simply run certbot again         
+   with the "certonly" option. To non-interactively renew *all* of             
+   your certificates, run "certbot renew"
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Set Up Node.js
+  https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
+
+  PM2 process manager
+    pm2 start /var/www/rocketfoss.org/js/hello.js
+    Configures a startup script to launch PM2 and its managed processes on server boot
+      pm2 startup systemd
+    pm2 list
+    pm2 info app_name
+    pm2 restart app_name_or_id
+    pm2 stop app_name_or_id
+    pm2 monit
